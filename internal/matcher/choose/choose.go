@@ -22,7 +22,7 @@ func (m Matcher) Identifier() string {
 
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Check if text starts with /choose and if not, ignore is
+	// Check if text starts with /choose and if not, ignore it
 	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
 		return nil
 	}
@@ -42,7 +42,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if a text starts with /choose
 func (m Matcher) doesMatch(text string) bool {
 	// Check if message starts with /choose
-	match, _ := regexp.MatchString(`^/choose`, text)
+	match, _ := regexp.MatchString(`^/choose(\s|$)`, text)
 
 	return match
 }
@@ -82,7 +82,8 @@ func (m Matcher) sendInsultResponse(requestMessage telegram.RequestMessage) erro
 // Send the result to the user who sent the request message
 func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage, result string) error {
 	responseMessage := telegram.Message{
-		Text: fmt.Sprintf("👁 Das Orakel wurde befragt und hat sich entschieden für: %s", result),
+		Text:             fmt.Sprintf("👁 Das Orakel wurde befragt und hat sich entschieden für: %s", result),
+		ReplyToMessageID: requestMessage.ID,
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)
