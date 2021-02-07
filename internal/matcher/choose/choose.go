@@ -82,7 +82,8 @@ func (m Matcher) sendInsultResponse(requestMessage telegram.RequestMessage) erro
 // Send the result to the user who sent the request message
 func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage, result string) error {
 	responseMessage := telegram.Message{
-		Text: fmt.Sprintf("👁 Das Orakel wurde befragt und hat sich entschieden für: %s", result),
+		Text:             fmt.Sprintf("👁 Das Orakel wurde befragt und hat sich entschieden für: %s", result),
+		ReplyToMessageID: requestMessage.ID,
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)
