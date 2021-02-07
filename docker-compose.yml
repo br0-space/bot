@@ -16,5 +16,6 @@ services:
   kmptnzbot:
     build: .
     ports:
-      - 3000:3000
-
+     - 3000:3000
+    volumes:
+     - ./config.yml:/go/src/app/config.yml
