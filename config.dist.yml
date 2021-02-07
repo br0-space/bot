@@ -1,0 +1,8 @@
+server:
+  listenAddr: ":3000"
+telegram:
+  apiKey: ""
+  baseUrl: "https://api.telegram.org/bot%s/"
+  endpointSendMessage: "sendMessage"
+stonksMatcher:
+  quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"
