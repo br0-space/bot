@@ -41,6 +41,12 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Return a list of substrings in the format {name}++ / {name}+- / {name}-- contained in a text
 // The list is not unique, the same substring might be contained multiple times
 func (m Matcher) getMatches(text string) []string {
+	// Check if message starts with / and if yes, ignore it
+	match, _ := regexp.MatchString(`^/`, text)
+	if match {
+		return make([]string, 0, 0)
+	}
+
 	// Initialize the regular expression
 	r := regexp.MustCompile(`(^|\s)[\p{L}\w]+(\+\+|\+-|--)`)
 
