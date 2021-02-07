@@ -6,6 +6,7 @@ import (
 	"github.com/neovg/kmptnzbot/internal/logger"
 	"github.com/neovg/kmptnzbot/internal/matcher/choose"
 	"github.com/neovg/kmptnzbot/internal/matcher/janein"
+	"github.com/neovg/kmptnzbot/internal/matcher/ping"
 	"github.com/neovg/kmptnzbot/internal/matcher/plusplus"
 	"github.com/neovg/kmptnzbot/internal/matcher/stonks"
 	"github.com/neovg/kmptnzbot/internal/telegram"
@@ -37,6 +38,7 @@ func registerMatcher(matcher Matcher) {
 func RegisterMatchers() {
 	registerMatcher(choose.Matcher{})
 	registerMatcher(janein.Matcher{})
+	registerMatcher(ping.Matcher{})
 	registerMatcher(plusplus.Matcher{})
 	registerMatcher(stonks.Matcher{})
 }
