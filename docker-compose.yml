@@ -9,13 +9,17 @@ services:
     environment:
       POSTGRES_USER: example
       POSTGRES_PASSWORD: example
+      POSTGRES_DB: example
+      PGDATA: /var/lib/postgresql/data
     volumes:
-     - ./data/postgres:/var/lib/postgresql/data/pgdata
+     - ./data/postgres:/var/lib/postgresql/data
     ports:
      - 5432:5432
+
   kmptnzbot:
     build: .
     ports:
      - 3000:3000
+    restart: on-failure
     volumes:
      - ./config.yml:/go/src/app/config.yml
