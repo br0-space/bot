@@ -24,7 +24,7 @@ func (m Matcher) Identifier() string {
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
 	// Extract symbols from text
 	symbols := m.getSymbols(requestMessage.Text)
-	if symbols == nil {
+	if len(symbols) == 0 {
 		return nil
 	}
 
