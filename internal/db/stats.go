@@ -4,6 +4,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/neovg/kmptnzbot/internal/telegram"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
@@ -26,7 +27,7 @@ func MigrateStats(db *gorm.DB) {
 	}
 }
 
-func UpdateStats(userID int64, username string) {
+func UpdateStats(user telegram.User) {
 	// Prevent race conditions
 	mutexStats.Lock()
 
@@ -38,13 +39,13 @@ func UpdateStats(userID int64, username string) {
 	DB.Clauses(clause.OnConflict{
 		Columns: []clause.Column{{Name: "user_id"}},
 		DoUpdates: clause.Assignments(map[string]interface{}{
-			"username": username,
+			"username": user.UsernameOrName(),
 			"posts": gorm.Expr("posts + 1"),
 			"last_post": time.Now(),
 		}),
 	}).Create(&Stats{
-		UserID:   userID,
-		Username: username,
+		UserID:   user.ID,
+		Username: user.UsernameOrName(),
 		Posts:    1,
 		LastPost: time.Now(),
 	})
