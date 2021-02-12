@@ -23,7 +23,7 @@ func (m Matcher) Identifier() string {
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
 	// Extract symbols from text
-	symbols := m.getSymbols(requestMessage.Text)
+	symbols := m.getSymbols(requestMessage.TextOrCaption())
 	if len(symbols) == 0 {
 		return nil
 	}
