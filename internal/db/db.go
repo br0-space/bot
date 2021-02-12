@@ -17,6 +17,7 @@ func init() {
 	}
 
 	MigratePlusplus(db)
+	MigrateStats(db)
 
 	DB = db
 }
