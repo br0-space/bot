@@ -29,7 +29,7 @@ func (m Matcher) Identifier() string {
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
 	// Tokenize text
-	matches := m.getMatches(requestMessage.Text)
+	matches := m.getMatches(requestMessage.TextOrCaption())
 	tokens := m.getTokens(matches)
 
 	// Process tokens
