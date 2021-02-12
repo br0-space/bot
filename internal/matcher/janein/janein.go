@@ -21,20 +21,33 @@ func (m Matcher) Identifier() string {
 
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Check if text starts with /jn
-	match := m.getMatch(requestMessage.Text)
-
-	// If match is empty, text didn't start with /jn
-	if match == "" {
+	// Check if text starts with /jn or /yn and if not, ignore it
+	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
 		return nil
 	}
 
-	// Send a randomized response
-	return m.sendResponse(requestMessage, match, m.getRandomYesOrNo())
+	// Get the option
+	option := m.getOption(requestMessage.Text)
+
+	// If not enough options were found, insult the idiot who sent the request message
+	if len(option) == 0 {
+		return m.sendInsultResponse(requestMessage)
+	}
+
+	// Choose one option and send the result
+	return m.sendResultResponse(requestMessage, option, m.getRandomYesOrNo())
+}
+
+// Check if a text starts with /jn or /yn
+func (m Matcher) doesMatch(text string) bool {
+	// Check if message starts with /choose
+	match, _ := regexp.MatchString(`^/(jn|yn)(\s|$)`, text)
+
+	return match
 }
 
 // Check if a text starts with /jn and return the text behind
-func (m Matcher) getMatch(text string) string {
+func (m Matcher) getOption(text string) string {
 	match, _ := regexp.MatchString(`^/(jn|yn) .+`, text)
 	if !match {
 		return ""
@@ -48,8 +61,18 @@ func (m Matcher) getRandomYesOrNo() bool {
 	return rand.Float32() < 0.5
 }
 
+// Send an insult to the user who sent the request message
+func (m Matcher) sendInsultResponse(requestMessage telegram.RequestMessage) error {
+	responseMessage := telegram.Message{
+		Text:             "Bist du behindert?! 🤪",
+		ReplyToMessageID: requestMessage.ID,
+	}
+
+	return telegram.SendMessage(requestMessage, responseMessage)
+}
+
 // Send a message with the result to Telegram
-func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, text string, result bool) error {
+func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage, text string, result bool) error {
 	if result {
 		text = fmt.Sprintf("👍 Ja, du solltest %s!", text)
 	} else {
