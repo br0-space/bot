@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"sync"
 	"time"
 
@@ -27,6 +28,7 @@ func MigrateStats(db *gorm.DB) {
 	}
 }
 
+// Is called when any new message arrives update updates that users stats
 func UpdateStats(user telegram.User) {
 	// Prevent race conditions
 	mutexStats.Lock()
@@ -51,9 +53,23 @@ func UpdateStats(user telegram.User) {
 	})
 }
 
-func GetStatsTops() []Stats {
+// Finds all stats sorted by the number of posts
+func FindStatsTop() []Stats {
 	var records []Stats
 	DB.Order("posts desc").Find(&records)
 
 	return records
+}
+
+// Finds all usernames for use in @all
+func FindAllUsernames(exclude string) []string {
+	var records []Stats
+	DB.Where(fmt.Sprintf("username like '@%%' and username != '@%s'", exclude)).Order("username asc").Find(&records)
+
+	usernames := make([]string, 0, len(records))
+	for _, record := range records {
+		usernames = append(usernames, record.Username)
+	}
+
+	return usernames
 }

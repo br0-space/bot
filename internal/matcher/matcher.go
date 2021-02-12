@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/neovg/kmptnzbot/internal/logger"
+	"github.com/neovg/kmptnzbot/internal/matcher/atall"
 	"github.com/neovg/kmptnzbot/internal/matcher/choose"
 	"github.com/neovg/kmptnzbot/internal/matcher/janein"
 	"github.com/neovg/kmptnzbot/internal/matcher/ping"
@@ -38,6 +39,7 @@ func registerMatcher(matcher Matcher) {
 
 // Creates an instance of each matcher and adds it to the list
 func RegisterMatchers() {
+	registerMatcher(atall.Matcher{})
 	registerMatcher(choose.Matcher{})
 	registerMatcher(janein.Matcher{})
 	registerMatcher(ping.Matcher{})
