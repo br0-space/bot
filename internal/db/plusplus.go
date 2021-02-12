@@ -16,6 +16,13 @@ type Plusplus struct {
 
 var mutexPlusplus sync.Mutex
 
+// Migrates the table plusplus
+func MigratePlusplus(db *gorm.DB) {
+	if err := db.AutoMigrate(&Plusplus{}); err != nil {
+		panic("failed to migrate database: " + err.Error())
+	}
+}
+
 // Atomically increments a plusplus entry and returns the new value
 func IncrementPlusplus(name string, increment int) int {
 	// Prevent race conditions between two plusplus matcher goroutines trying to increment the same entry at the same time
@@ -38,9 +45,18 @@ func IncrementPlusplus(name string, increment int) int {
 	return record.Value
 }
 
-// Migrates the table plusplus
-func MigratePlusplus(db *gorm.DB) {
-	if err := db.AutoMigrate(&Plusplus{}); err != nil {
-		panic("failed to migrate database: " + err.Error())
-	}
+// Find the top 10 plusplus entries
+func FindTops() []Plusplus {
+	var records []Plusplus
+	DB.Where("value > 0").Order("value desc").Limit(10).Find(&records)
+
+	return records
+}
+
+// Find the lowest 10 plusplus entries
+func FindFlops() []Plusplus {
+	var records []Plusplus
+	DB.Where("value <= 0").Order("value asc").Limit(10).Find(&records)
+
+	return records
 }

@@ -19,7 +19,7 @@ func (m Matcher) Identifier() string {
 
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Check if text starts with /ping and if not, ignore is
+	// Check if text starts with /ping and if not, ignore it
 	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
 		return nil
 	}
