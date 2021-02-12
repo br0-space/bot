@@ -52,7 +52,7 @@ func UpdateStats(userID int64, username string) {
 
 func GetStatsTops() []Stats {
 	var records []Stats
-	DB.Order("last_post desc").Find(&records)
+	DB.Order("posts desc").Find(&records)
 
 	return records
 }
