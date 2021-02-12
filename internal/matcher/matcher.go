@@ -9,6 +9,7 @@ import (
 	"github.com/neovg/kmptnzbot/internal/matcher/ping"
 	"github.com/neovg/kmptnzbot/internal/matcher/plusplus"
 	"github.com/neovg/kmptnzbot/internal/matcher/stonks"
+	"github.com/neovg/kmptnzbot/internal/matcher/topflop"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -41,6 +42,7 @@ func RegisterMatchers() {
 	registerMatcher(ping.Matcher{})
 	registerMatcher(plusplus.Matcher{})
 	registerMatcher(stonks.Matcher{})
+	registerMatcher(topflop.Matcher{})
 }
 
 // Executes all matchers for a given request message
