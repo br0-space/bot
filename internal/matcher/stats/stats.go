@@ -22,7 +22,7 @@ func (m Matcher) Identifier() string {
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
 	// Write stats on each post
-	db.UpdateStats(requestMessage.From.ID, requestMessage.From.Username)
+	db.UpdateStats(requestMessage.From)
 
 	// Check if text starts with /stats and if not, ignore it
 	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
