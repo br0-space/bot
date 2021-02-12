@@ -31,9 +31,9 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 	var records []db.Plusplus
 	switch match {
 	case "top":
-		records = db.FindTops()
+		records = db.FindPlusplusTops()
 	case "flop":
-		records = db.FindFlops()
+		records = db.FindPlusplusFlops()
 	}
 
 	// Choose one option and send the result
@@ -43,7 +43,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if a text starts with /top or /flop
 func (m Matcher) getMatch(text string) string {
 	// Initialize the regular expression
-	r := regexp.MustCompile(`^(?:/)(top|flop)(\s|$)`)
+	r := regexp.MustCompile(`^/(top|flop)(\s|$)`)
 
 	// Find either "top" or "flop"
 	match := r.FindString(text)
@@ -56,7 +56,7 @@ func (m Matcher) getMatch(text string) string {
 func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage, records []db.Plusplus) error {
 	responseText := "```"
 
-	// Add one record per record
+	// Add one line per record
 	for _, record := range records {
 		responseText = responseText + fmt.Sprintf("\n%5d | %s", record.Value, record.Name)
 	}

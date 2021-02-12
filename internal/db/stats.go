@@ -49,3 +49,10 @@ func UpdateStats(userID int64, username string) {
 		LastPost: time.Now(),
 	})
 }
+
+func GetStatsTops() []Stats {
+	var records []Stats
+	DB.Order("last_post desc").Find(&records)
+
+	return records
+}

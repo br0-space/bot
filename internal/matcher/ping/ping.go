@@ -25,7 +25,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 	}
 
 	// Choose one option and send the result
-	return m.sendResultResponse(requestMessage)
+	return m.sendResponse(requestMessage)
 }
 
 // Check if a text starts with /ping
@@ -37,7 +37,7 @@ func (m Matcher) doesMatch(text string) bool {
 }
 
 // Send the result to the user who sent the request message
-func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage) error {
+func (m Matcher) sendResponse(requestMessage telegram.RequestMessage) error {
 	responseMessage := telegram.Message{
 		Text:             "pong",
 		ReplyToMessageID: requestMessage.ID,

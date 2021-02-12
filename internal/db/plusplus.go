@@ -51,7 +51,7 @@ func IncrementPlusplus(name string, increment int) int {
 }
 
 // Find the top 10 plusplus entries
-func FindTops() []Plusplus {
+func FindPlusplusTops() []Plusplus {
 	var records []Plusplus
 	DB.Where("value > 0").Order("value desc").Limit(10).Find(&records)
 
@@ -59,7 +59,7 @@ func FindTops() []Plusplus {
 }
 
 // Find the lowest 10 plusplus entries
-func FindFlops() []Plusplus {
+func FindPlusplusFlops() []Plusplus {
 	var records []Plusplus
 	DB.Where("value <= 0").Order("value asc").Limit(10).Find(&records)
 

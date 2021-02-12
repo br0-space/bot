@@ -1,6 +1,9 @@
 package stats
 
 import (
+	"fmt"
+	"regexp"
+
 	"github.com/neovg/kmptnzbot/internal/db"
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
 	"github.com/neovg/kmptnzbot/internal/telegram"
@@ -18,7 +21,42 @@ func (m Matcher) Identifier() string {
 
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
+	// Write stats on each post
 	db.UpdateStats(requestMessage.From.ID, requestMessage.From.Username)
 
-	return nil
+	// Check if text starts with /stats and if not, ignore it
+	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
+		return nil
+	}
+
+	records := db.GetStatsTops()
+
+	return m.sendResponse(requestMessage, records)
+}
+
+// Check if a text starts with /stats
+func (m Matcher) doesMatch(text string) bool {
+	// Check if message starts with /choose
+	match, _ := regexp.MatchString(`^/stats(\s|$)`, text)
+
+	return match
+}
+
+func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, records []db.Stats) error {
+	responseText := "```"
+
+	// Add one line per record
+	for _, record := range records {
+		responseText = responseText + fmt.Sprintf("\n%6d | %s", record.Posts, record.Username)
+	}
+
+	responseText = responseText + "```"
+
+	responseMessage := telegram.Message{
+		Text:             responseText,
+		ReplyToMessageID: requestMessage.ID,
+		ParseMode:        "Markdown",
+	}
+
+	return telegram.SendMessage(requestMessage, responseMessage)
 }
