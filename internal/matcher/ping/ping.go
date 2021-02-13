@@ -40,7 +40,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if a text starts with /ping
 func (m Matcher) doesMatch(text string) bool {
 	// Check if message starts with /ping
-	match, _ := regexp.MatchString(`^/ping(\s|$)`, text)
+	match, _ := regexp.MatchString(`^/ping(@|\s|$)`, text)
 
 	return match
 }
