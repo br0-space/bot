@@ -40,7 +40,6 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 
 // Check if a text starts with /jn or /yn
 func (m Matcher) doesMatch(text string) bool {
-	// Check if message starts with /choose
 	match, _ := regexp.MatchString(`^/(jn|yn)(\s|$)`, text)
 
 	return match
