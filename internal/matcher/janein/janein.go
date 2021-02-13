@@ -6,6 +6,7 @@ import (
 	"regexp"
 
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -17,6 +18,14 @@ type Matcher struct {
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
 	return "janein"
+}
+
+// This is a command matcher and generates a help item
+func (m Matcher) GetHelpItems() []registry.HelpItem {
+	return []registry.HelpItem{{
+		Command:     "jn",
+		Description: "Sagt dir, ob du etwas machen sollst oder nicht (Beispiel: `/jn Bugs fixen`)",
+	}}
 }
 
 // Process a message received from Telegram
@@ -45,7 +54,7 @@ func (m Matcher) doesMatch(text string) bool {
 	return match
 }
 
-// Check if a text starts with /jn and return the text behind
+// Check if a text starts with /jn or /yn and return the text behind
 func (m Matcher) getOption(text string) string {
 	match, _ := regexp.MatchString(`^/(jn|yn) .+`, text)
 	if !match {

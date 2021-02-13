@@ -7,6 +7,7 @@ import (
 
 	"github.com/neovg/kmptnzbot/internal/fortune"
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -15,14 +16,17 @@ type Matcher struct {
 	abstract.Matcher
 }
 
-type helpItem struct {
-	command     string
-	description string
-}
-
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
 	return "fortune"
+}
+
+// This is a command matcher and generates a help item
+func (m Matcher) GetHelpItems() []registry.HelpItem {
+	return []registry.HelpItem{{
+		Command:     "fortune",
+		Description: "Zeigt ein Fortune Cookie an. Siehe `/fortune help` für mehr Optionen.",
+	}}
 }
 
 // Process a message received from Telegram
@@ -113,28 +117,28 @@ func (m Matcher) sendFortuneResponse(requestMessage telegram.RequestMessage, tex
 
 // Send a list of available /fortune commands
 func (m Matcher) sendHelpResponse(requestMessage telegram.RequestMessage) error {
-	helpItems := make([]helpItem, 0, 0)
-	helpItems = append(helpItems, helpItem{
-		command:     "",
-		description: "Zeigt ein zufällig ausgewähltes Fortune-Cookie an",
+	helpItems := make([]registry.HelpItem, 0, 0)
+	helpItems = append(helpItems, registry.HelpItem{
+		Command:     "",
+		Description: "Zeigt ein zufällig ausgewähltes Fortune-Cookie an",
 	})
-	helpItems = append(helpItems, helpItem{
-		command:     "help",
-		description: "Zeigt diese Hilfe an",
+	helpItems = append(helpItems, registry.HelpItem{
+		Command:     "help",
+		Description: "Zeigt diese Hilfe an",
 	})
-	helpItems = append(helpItems, helpItem{
-		command:     "list",
-		description: "Zeigt eine Liste verfügbarer Cookie-Dateien an",
+	helpItems = append(helpItems, registry.HelpItem{
+		Command:     "list",
+		Description: "Zeigt eine Liste verfügbarer Cookie-Dateien an",
 	})
-	helpItems = append(helpItems, helpItem{
-		command:     "{cookie-datei}",
-		description: "Zeigt ein Fortune-Cookie aus der angegebenen Datei an",
+	helpItems = append(helpItems, registry.HelpItem{
+		Command:     "{cookie-datei}",
+		Description: "Zeigt ein Fortune-Cookie aus der angegebenen Datei an",
 	})
 
 	responseText := ""
 
 	for _, helpItem := range helpItems {
-		responseText = responseText + fmt.Sprintf("\n`/fortune %s`\n   _%s_\n", helpItem.command, helpItem.description)
+		responseText = responseText + fmt.Sprintf("\n`/fortune %s`\n   _%s_\n", helpItem.Command, helpItem.Description)
 	}
 
 	responseMessage := telegram.Message{
@@ -196,7 +200,7 @@ func (m Matcher) formatQuoteFortune(lines []string) string {
 	text := ""
 	for i, line := range lines {
 		// Ignore the last line (with the author of the quote)
-		if i < len(lines) - 1 {
+		if i < len(lines)-1 {
 			// Every line in the formatted quote starts with <i>
 			if len(text) == 0 || text[len(text)-1:] == "\n" {
 				text = text + "<i>"
@@ -207,7 +211,7 @@ func (m Matcher) formatQuoteFortune(lines []string) string {
 			// while we view lines with less than 50 characters as end of a paragraph
 			if len(line) >= 50 {
 				// Long lines will be directly followed by the next line, the line break is removed
-				if i == len(lines) - 2 {
+				if i == len(lines)-2 {
 					// The last line of a quote always ends with </i> and a line break, regardless of its length
 					text = text + "</i>\n"
 				} else {

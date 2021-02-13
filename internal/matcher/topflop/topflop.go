@@ -7,6 +7,7 @@ import (
 
 	"github.com/neovg/kmptnzbot/internal/db"
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -18,6 +19,17 @@ type Matcher struct {
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
 	return "topflop"
+}
+
+// This is a command matcher and generates a help item
+func (m Matcher) GetHelpItems() []registry.HelpItem {
+	return []registry.HelpItem{{
+		Command:     "top",
+		Description: "Zeigt eine Liste der am meisten geplusten Begriffe an",
+	},{
+		Command:     "flop",
+		Description: "Zeigt eine Liste der am meisten geminusten Begriffe an",
+	}}
 }
 
 // Process a message received from Telegram

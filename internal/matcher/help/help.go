@@ -1,10 +1,9 @@
-package stats
+package help
 
 import (
 	"fmt"
 	"regexp"
 
-	"github.com/neovg/kmptnzbot/internal/db"
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
 	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
@@ -17,54 +16,49 @@ type Matcher struct {
 
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
-	return "choose"
+	return "help"
 }
 
 // This is a command matcher and generates a help item
 func (m Matcher) GetHelpItems() []registry.HelpItem {
 	return []registry.HelpItem{{
-		Command:     "stats",
-		Description: "Zeigt alle dem Bot bekannten User an, sortiert nach der Anzahl ihrer bisherigen Posts",
+		Command:     "help",
+		Description: "Zeigt die verfügbaren Befehle an",
 	}}
 }
 
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Write stats on each post
-	db.UpdateStats(requestMessage.From)
-
-	// Check if text starts with /stats and if not, ignore it
+	// Check if text starts with /help and if not, ignore it
 	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
 		return nil
 	}
 
-	records := db.FindStatsTop()
-
-	return m.sendResponse(requestMessage, records)
+	// Choose one option and send the result
+	return m.sendResponse(requestMessage)
 }
 
-// Check if a text starts with /stats
+// Check if a text starts with /help
 func (m Matcher) doesMatch(text string) bool {
-	// Check if message starts with /choose
-	match, _ := regexp.MatchString(`^/stats(\s|$)`, text)
+	// Check if message starts with /help
+	match, _ := regexp.MatchString(`^/help(\s|$)`, text)
 
 	return match
 }
 
-func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, records []db.Stats) error {
-	responseText := "```"
+// Send the result to the user who sent the request message
+func (m Matcher) sendResponse(requestMessage telegram.RequestMessage) error {
+	text := ""
 
-	// Add one line per record
-	for _, record := range records {
-		responseText = responseText + fmt.Sprintf("\n%6d | %s", record.Posts, record.Username)
+	for _, matcher := range registry.GetRegisteredMatchers() {
+		for _, helpItem := range matcher.GetHelpItems() {
+			text = text + fmt.Sprintf("%s - %s\n", helpItem.Command, helpItem.Description)
+		}
 	}
 
-	responseText = responseText + "```"
-
 	responseMessage := telegram.Message{
-		Text:             responseText,
+		Text:             text,
 		ReplyToMessageID: requestMessage.ID,
-		ParseMode:        "Markdown",
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)
