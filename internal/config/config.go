@@ -9,10 +9,11 @@ import (
 )
 
 type Config struct {
-	Server        Server
-	Database      Database
-	Telegram      Telegram
-	StonksMatcher StonksMatcher
+	Server           Server
+	Database         Database
+	Telegram         Telegram
+	StonksMatcher    StonksMatcher
+	BuzzwordsMatcher []BuzzwordsMatcher
 }
 
 type Server struct {
@@ -43,6 +44,11 @@ type Telegram struct {
 
 type StonksMatcher struct {
 	QuotesUrl string `yaml:"quotesUrl"`
+}
+
+type BuzzwordsMatcher struct {
+	Trigger string `yaml:"trigger"`
+	Reply   string `yaml:"reply"`
 }
 
 var Cfg Config

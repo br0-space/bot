@@ -5,6 +5,7 @@ import (
 
 	"github.com/neovg/kmptnzbot/internal/logger"
 	"github.com/neovg/kmptnzbot/internal/matcher/atall"
+	"github.com/neovg/kmptnzbot/internal/matcher/buzzwords"
 	"github.com/neovg/kmptnzbot/internal/matcher/choose"
 	"github.com/neovg/kmptnzbot/internal/matcher/fortune"
 	"github.com/neovg/kmptnzbot/internal/matcher/help"
@@ -21,6 +22,7 @@ import (
 // At setup, create an instance of each matcher and store it in a list
 func init() {
 	registry.RegisterMatcher(atall.Matcher{})
+	registry.RegisterMatcher(buzzwords.Matcher{})
 	registry.RegisterMatcher(choose.Matcher{})
 	registry.RegisterMatcher(fortune.Matcher{})
 	registry.RegisterMatcher(help.Matcher{})
@@ -35,7 +37,7 @@ func init() {
 // Executes all matchers for a given request message
 // Through the magic of goroutines, this is done in parallel
 func ExecuteMatchers(requestMessage telegram.RequestMessage) {
-	logger.Log.Infof("%s wrote: %s", requestMessage.From.Username, requestMessage.Text)
+	logger.Log.Debugf("%s wrote: %s", requestMessage.From.Username, requestMessage.Text)
 
 	// Create a wait group for synchronization
 	var waitGroup sync.WaitGroup
@@ -58,6 +60,4 @@ func ExecuteMatchers(requestMessage telegram.RequestMessage) {
 
 	// Wait until all matchers are executed
 	waitGroup.Wait()
-
-	logger.Log.Debug("all matchers executed")
 }
