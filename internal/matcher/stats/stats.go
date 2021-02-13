@@ -62,9 +62,8 @@ func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, records []
 	responseText = responseText + "```"
 
 	responseMessage := telegram.Message{
-		Text:             responseText,
-		ReplyToMessageID: requestMessage.ID,
-		ParseMode:        "Markdown",
+		Text:      responseText,
+		ParseMode: "Markdown",
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)

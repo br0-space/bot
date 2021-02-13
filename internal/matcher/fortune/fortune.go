@@ -164,9 +164,8 @@ func (m Matcher) sendListResponse(requestMessage telegram.RequestMessage) error 
 	responseText = responseText + "```"
 
 	responseMessage := telegram.Message{
-		Text:             responseText,
-		ReplyToMessageID: requestMessage.ID,
-		ParseMode:        "Markdown",
+		Text:      responseText,
+		ParseMode: "Markdown",
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)

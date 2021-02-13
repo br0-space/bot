@@ -26,7 +26,7 @@ func (m Matcher) GetHelpItems() []registry.HelpItem {
 	return []registry.HelpItem{{
 		Command:     "top",
 		Description: "Zeigt eine Liste der am meisten geplusten Begriffe an",
-	},{
+	}, {
 		Command:     "flop",
 		Description: "Zeigt eine Liste der am meisten geminusten Begriffe an",
 	}}
@@ -76,9 +76,8 @@ func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage, reco
 	responseText = responseText + "```"
 
 	responseMessage := telegram.Message{
-		Text:             responseText,
-		ReplyToMessageID: requestMessage.ID,
-		ParseMode:        "Markdown",
+		Text:      responseText,
+		ParseMode: "Markdown",
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)

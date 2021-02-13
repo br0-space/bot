@@ -57,8 +57,7 @@ func (m Matcher) sendResponse(requestMessage telegram.RequestMessage) error {
 	}
 
 	responseMessage := telegram.Message{
-		Text:             text,
-		ReplyToMessageID: requestMessage.ID,
+		Text: text,
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)
