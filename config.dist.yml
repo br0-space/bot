@@ -1,8 +1,26 @@
 server:
   listenAddr: ":3000"
+database:
+  driver: "sqlite"
+  sqlite:
+    file: "test.db"
+  postgres:
+    host: "127.0.0.1"
+    port: 5432
+    dbName: "kmptnzbot"
+    user: "kmptnzbot"
+    password: ""
+    ssl: "disable"
+    timezone: "UTC"
 telegram:
   apiKey: ""
   baseUrl: "https://api.telegram.org/bot%s/"
   endpointSendMessage: "sendMessage"
 stonksMatcher:
   quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"
+buzzwords:
+  - trigger: "huan"
+    reply: "und wieder wurde einer zum Huan ernannt, Huan ist jetzt auf %v"
+  - trigger: "tzn"
+  - trigger: "bier"
+    reply: "scho wieder am saufem, Bier ist jetzt auf %v"
