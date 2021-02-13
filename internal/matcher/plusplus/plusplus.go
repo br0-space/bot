@@ -8,6 +8,7 @@ import (
 
 	"github.com/neovg/kmptnzbot/internal/db"
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -24,6 +25,11 @@ type Token struct {
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
 	return "plusplus"
+}
+
+// This matcher is no command and generates no help items
+func (m Matcher) GetHelpItems() []registry.HelpItem {
+	return []registry.HelpItem{}
 }
 
 // Process a message received from Telegram

@@ -4,6 +4,7 @@ import (
 	"regexp"
 
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -15,6 +16,14 @@ type Matcher struct {
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
 	return "ping"
+}
+
+// This is a command matcher and generates a help item
+func (m Matcher) GetHelpItems() []registry.HelpItem {
+	return []registry.HelpItem{{
+		Command:     "ping",
+		Description: "Antwortet mit `pong`",
+	}}
 }
 
 // Process a message received from Telegram
@@ -30,7 +39,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 
 // Check if a text starts with /ping
 func (m Matcher) doesMatch(text string) bool {
-	// Check if message starts with /choose
+	// Check if message starts with /ping
 	match, _ := regexp.MatchString(`^/ping(\s|$)`, text)
 
 	return match

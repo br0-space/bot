@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
@@ -18,6 +19,14 @@ type Matcher struct {
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
 	return "choose"
+}
+
+// This is a command matcher and generates a help item
+func (m Matcher) GetHelpItems() []registry.HelpItem {
+	return []registry.HelpItem{{
+		Command:     "choose",
+		Description: "Wählt eine aus mehreren Optionen (Beispiel: `/choose one two three`)",
+	}}
 }
 
 // Process a message received from Telegram

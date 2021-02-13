@@ -7,48 +7,29 @@ import (
 	"github.com/neovg/kmptnzbot/internal/matcher/atall"
 	"github.com/neovg/kmptnzbot/internal/matcher/choose"
 	"github.com/neovg/kmptnzbot/internal/matcher/fortune"
+	"github.com/neovg/kmptnzbot/internal/matcher/help"
 	"github.com/neovg/kmptnzbot/internal/matcher/janein"
 	"github.com/neovg/kmptnzbot/internal/matcher/ping"
 	"github.com/neovg/kmptnzbot/internal/matcher/plusplus"
+	"github.com/neovg/kmptnzbot/internal/matcher/registry"
 	"github.com/neovg/kmptnzbot/internal/matcher/stats"
 	"github.com/neovg/kmptnzbot/internal/matcher/stonks"
 	"github.com/neovg/kmptnzbot/internal/matcher/topflop"
 	"github.com/neovg/kmptnzbot/internal/telegram"
 )
 
-// Each matcher must implement a function to process request messages
-type Matcher interface {
-	ProcessRequestMessage(requestMessage telegram.RequestMessage) error
-	HandleError(requestMessage telegram.RequestMessage, identifier string, err error)
-	Identifier() string
-}
-
-// List of all registered matcher instances
-var matchers = make([]Matcher, 0, 0)
-
 // At setup, create an instance of each matcher and store it in a list
 func init() {
-	RegisterMatchers()
-}
-
-// Adds a matcher to the list
-func registerMatcher(matcher Matcher) {
-	logger.Log.Debug("register matcher", matcher.Identifier())
-
-	matchers = append(matchers, matcher)
-}
-
-// Creates an instance of each matcher and adds it to the list
-func RegisterMatchers() {
-	registerMatcher(atall.Matcher{})
-	registerMatcher(choose.Matcher{})
-	registerMatcher(fortune.Matcher{})
-	registerMatcher(janein.Matcher{})
-	registerMatcher(ping.Matcher{})
-	registerMatcher(plusplus.Matcher{})
-	registerMatcher(stats.Matcher{})
-	registerMatcher(stonks.Matcher{})
-	registerMatcher(topflop.Matcher{})
+	registry.RegisterMatcher(atall.Matcher{})
+	registry.RegisterMatcher(choose.Matcher{})
+	registry.RegisterMatcher(fortune.Matcher{})
+	registry.RegisterMatcher(help.Matcher{})
+	registry.RegisterMatcher(janein.Matcher{})
+	registry.RegisterMatcher(ping.Matcher{})
+	registry.RegisterMatcher(plusplus.Matcher{})
+	registry.RegisterMatcher(stats.Matcher{})
+	registry.RegisterMatcher(stonks.Matcher{})
+	registry.RegisterMatcher(topflop.Matcher{})
 }
 
 // Executes all matchers for a given request message
@@ -60,11 +41,11 @@ func ExecuteMatchers(requestMessage telegram.RequestMessage) {
 	var waitGroup sync.WaitGroup
 
 	// We need to wait until all matchers are executed
-	waitGroup.Add(len(matchers))
+	waitGroup.Add(len(registry.GetRegisteredMatchers()))
 
 	// Launch a goroutine for each matcher
-	for _, matcher := range matchers {
-		go func(matcher Matcher) {
+	for _, matcher := range registry.GetRegisteredMatchers() {
+		go func(matcher registry.Matcher) {
 			defer waitGroup.Done()
 
 			// Let the matcher process the request message
