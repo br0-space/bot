@@ -497,3 +497,244 @@ Your job is being a professor and researcher: That's one hell of a good excuse
 for some of the brain-damages of minix.
 (Linus Torvalds to Andrew Tanenbaum)
 %
+/usr/bin/fortune: Permission denied
+%
+Arctic: Tredix is the king of boomers
+Tredix: Ye- no wait.
+%
+Arctic: Could we maybe have mods so this can be prevented in the future?
+%
+Arctic: I probably sound the like the ultimate boomer but when I use Arch I
+        want to use Arch and when I use Debian I want to use Debian
+%
+Arctic: [Deleted bad joke]
+%
+Arctic: Just use your BIOS
+        OSs are for noobs
+Phate6660: Pffffft, using an OS is stupid.
+           Obviously you need to hack into the mainframe using electromagnetic waves and control technology that way.
+           Don't forget to use a block of wood to conduct electricity better.
+%
+Shardion: emacs i need you
+dmt: :emacs: I'm here for you, babe.
+%
+Arctic: Imagine thinking Ubuntu was better than Fedora
+%
+Arctic: oh shoot
+Arctic: there is another kernel update
+Arctic: time to debloat my kernel :)
+%
+Dexter of Ebonheart: I've never had any full on problems with systemd on mint. Just confusion when I tried to do something like `/etc/init.d/disdick restart`
+Dexter of Ebonheart: But I was not a fan of the actual maintenance commands I needed to do things. And I don't like the direction it's heading. So no D for me.
+%
+Dexter of Ebonheart: a small botnet of one million bots
+%
+Dexter of Ebonheart: You can eat anything if you put your mind to it
+%
+Guillotine: Imagine not using Debian
+Dexter of Ebonheart: imagine being able to install debian
+%
+dmt: hmmm
+     if i could get a phone that just ran emacs
+     that'd be the best
+     It needs to be bare metal -> Kernel -> Emacs
+     otherwise what's the point
+Phate6660: That'll never happen unless you make it yourself.
+dmt: Time to pull myself up by my boot straps
+     Introducing... the ePhone
+     :emacs:Phone
+     I wonder if apple would sue
+Dexter of Ebonheart: They would sue and claim it was their idea originally
+%
+Hoshi: Dexter of Ebonheart, you can't star your own messages.
+%
+DDOSed: I'm actually surprised firefox respects /etc/hosts
+Martianhunter: Firefox doesn't get a choice in the matter.
+%
+Phate6660: Welp, I'm gonna go get coma-stoned, eat some food, and go to bed.
+%
+Phate6660: Honestly, I'd take Windows over using SystemD.
+%
+Phate6660: Honestly, the very concept of a country is stupid.
+%
+Phate6660: I love meat. I don't know what I'd do without it.
+%
+Phate6660: I think that over the course of my years of Linux, I had forgotten
+           about why I really hated Windows. Over the course of these past few
+           hours, not only have the flames of hatred been rekindled, but they
+           are burning hotter and brighter than ever before.
+%
+Phate6660: The problem is that people just don't want to admit to themselves
+           how evil and disgusting humanity is.
+%
+Phate6660: I JUST HAD THE BIGGEST DERP
+           i was trying to figure out why the fuck mpc was skipping like 12 tracks at a time when switching to the next song
+           i had fucking random mode on without realizing it
+           fml
+%
+Dexter of Ebonheart: > "This branch has no conflicts with the base branch"
+       	  	     Shardion: This branch conflicts with my morals
+%
+Phate6660: >implying that netbooks aren't a thing anymore
+Phate6660: Pfffffft, netbooks are too still a thing.
+Phate6660: Just a little while ago I bought a refurbished lenovo netbook locally for like ~$50.
+...
+Phate6660: Oh wait, I don't think it's Lenovo.
+Phate6660: It was an ASUS EeePC.
+Phate6660: That came with Windows XP.
+...
+Arctic: it looks kind of like a tiny macbook
+Arctic: the old ones
+Phate6660: Now I can never use it again, thank you.
+%
+Phate6660: Tfw all the comments on your post are about the music you're listening to and not the
+           actual contents of the post itself.
+%
+Phate6660: Don't be a distroist, it's like the Linux equivalent of being a racist.
+Shardion: So Arch users are the ultimate racists?
+%
+Phate6660: Tfw Gentoo and LFS are too easy but Debian is a hurdle you will never get over.
+%
+Phate6660: Who hurt you in your life so much that you would want to use Debian?
+%
+Phate6660: I gave up. Debian mentally broke me. It made me hate Linux for a while.
+%
+Phate6660: fdisk > cfdisk, parted
+           Oh God I just had another ptsd flashback to fucking Void.
+           I was forced to use fucking cfdisk to partition my disks.
+           I hated every second of it.
+           cfdisk is so god damn confusing, it makes no sense half the time.
+           I almost gave up on the Void install like 6 times because of it.
+           On top of being confusing, it's missing a lot of features that are available in fdisk.
+           For example, the ability to change the disk label to MBR or GPT.
+%
+Phate6660: [meme about someone calling html a programming language]
+Shardion: HTML is a markup language
+Phate6660: Yeah, but people don't seem to understand that.
+           I can't tell you how many times I've seen people call it a programming language.
+           And every time I go: "DID YOU EVER EVEN READ THE FUCKING NAME!?"
+           And they go: "...Uh............ HTML?"
+%
+Phate6660: OMG
+           Look at the soliders chest
+           Fucking Debian
+           Lol
+           Does this mean that Debian is a soldier for SystemD?
+Shardion: there had better be artix just fucking razing them with a flamethrower
+%
+Shardion: quiet, gentoo user
+          go change runlevel to 0 (please dont)
+%
+Shardion: alright sweet. progctl can now read your XDG_CONFIG_HOME environment variable
+          better have it set nerds
+%
+Tredix: .iam Powershell
+%
+Shardion: <...details about the router he's using...>
+          `OS details: Huawei HG8245T GPON ONU WAP (Linux 2.6.21) or Sagemcom F@st 4350 WAP`
+          Who spilled their alphabet soup?
+          It's running dnsmasq on port 53 (which is open).        
+          Version 2.55.
+          lighttpd on port 80 (no version provided).
+Phate6660: Uh huh, yep, keep going.
+           [Scribbles network info into notepad for when I hack Shardion.]
+           (I'm joking, if it wasn't clearly obvious.)
+The 25th Bam: thanks for making his attention go into you our plan is going great @Phate6660
+              [Scribbles network info into ***VIM*** for when I hack Shardion.]
+              sadly i cant hack him since i dont know how to either save or close VIM
+              *cries in desperation*
+Phate6660: Pfffft, we all know that to close Vim you need to unplug your PC. Duh.
+           <emoji of pepe kek'ing>
+%
+Tredix: am I done with distro-hopping? I think so.
+%
+Tredix: > "the dick only makes it better"
+Phate6660: Probably the truest thing I've read on this server.
+%
+Tredix: >What is testing?
+Shardion: unstable mess
+%
+Tredix: "I can `mount` in my dreams, but I can't `unmount` the pain"
+dmt: Huh. Same except I can't `mount` my dreams, but I do `mount` in them. ;)
+%
+dmt: @Phate6660 I get that. Also, don't microwave PC parts, that's a serious fire hazard.
+dmt: Use a blowtorch instead.
+Phate6660: Oh, good idea. I have like a couple of those lying around somewhere.
+%
+dmt: In the future, when we all have government-mandated brain implants, there
+needs to be a message that fades in and out in the top-left side of your vision
+that says: "The algorithm will remember that".
+%
+dmt: right now I'm in the "--- when you realize you didn't do your homework and
+     spent all night chatting on discord" zone
+%
+dmt: this sketchy guy on discord just told me to excecute a script he made.. what do?
+DrownNotably: run it with sudo
+              go big or go home
+%
+Shardion: I have 8GB RAM, 15GB swap partition. Memory won't be an issue.
+Phate6660: Wha....
+           Why...
+           Are you using 15GBs on your SWAP partition?
+Shardion: I have the space.
+          Why not?
+Phate6660: Does not compute.
+Shardion: Yeah it won't with your puny 512MB swap
+%
+Dexter of Ebonheart: Apt, stop yelling at me, I'm sorry
+%
+Arctic: does the matrix run on emacs?
+dmt: Probably not, no
+dmt: However, there exists an elisp package that will connect your emacs session to the Matrix instance.
+Dexter of Etcetera: The universe is Emacs subjectively experiencing itself
+%
+Phate6660: "Messaging App Signal Is Working on Encrypted Group Video Calls"
+           <https://www.pcmag.com/news/messaging-app-signal-is-working-on-encrypted-group-video-calls>
+gnu/ech: Zoom caused this.
+Arctic: lol
+Phate6660: Zoom needs to fucking die.
+%
+Phate6660: "You should use Y(A)ML."
+           - Some fucking masochist
+%
+Shardion: OpenBSD.
+          Discuss.
+dmt: good shit.
+%
+Phate6660: Welp, now I'mma play some DOOM and NOT accidentally end my X session this time.
+%
+Phate6660: I feel like an idiot.
+           I was playing DOOM and accidentally hit `A-S-q`.
+           Which is bspwm's default quit keybinding.
+           I forgot to change it to `C-A-del` like I usually do. [crying pepe with hands up emoji]
+%
+Phate6660: Holy shit. Somehow I played almost 300 songs yesterday. God damn.
+%
+Phate6660: Oh what the fuck... this is kinda creepy.
+           I just loaded up DOOM like normal, but when I spawned in, every monster was already dead and there were no items in the level.(edited)
+           Wtf. Doors are activating on their own, and now I'm seeing bodies of the player character.
+           I swear I didn't change up any mods or anything.
+           I just started it up like I usually do.
+           What the hell. The monsters are already dead in the next level too.
+           I don't know why, but there's just something really fucking creepy about this.
+           DOOM just went from stress reliever to horror game.
+           It's all ominous and shit.
+Arctic: lol
+        ~~inb4 DOOM became DOOM 3~~
+%
+Phate6660: Holy shit, I just realized something.
+           All of my favorite Seether songs are all track 2 of the respective albums.
+           That's some trippy shit.
+%
+Phate6660: What, the fuck, did I just read?
+           And why the fuck do they keep expanding the letters?
+           LGBT is already hard enough to remember without making it LGBTQIA+.
+%
+Phate6660: I am very close to saying fuck Windows, it's users, and cross-platform as a concept in general.
+           I've had this weird shitty night of:
+           "Oh hey it works"
+           "Now it doesn't"
+           "Wtf why do I have to do this just to something so simple"
+           "Fucking piece of shit APIs with shitty pretty much non-existent docs"
+           "asdfkuhasdfihusdaifuhasdifnhvadsiufh"
+%
