@@ -1,3 +1,9 @@
+# Config files
+/.env
 /config.yml
+
+# Test database
 /test.db
-./data
+
+# Compiled binary
+main

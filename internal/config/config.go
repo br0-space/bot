@@ -1,116 +1,104 @@
 package config
 
 import (
-	"flag"
-	"fmt"
-	"os"
+	"log"
+	"strings"
 
 	"github.com/neovg/kmptnzbot/internal/logger"
-	"gopkg.in/yaml.v2"
+	"github.com/spf13/viper"
 )
 
+type Config struct {
+	Server        Server
+	Database      Database
+	Telegram      Telegram
+	StonksMatcher StonksMatcher
+}
+
 type Server struct {
-	ListenAddr string `yaml:"listenAddr"`
+	ListenAddr string
+}
+
+type Database struct {
+	Driver string
+	SQLite struct {
+		File string
+	}
+	Postgres struct {
+		Host     string
+		Port     uint
+		DBName   string
+		User     string
+		Password string
+		SSL      bool
+		Timezone string
+	}
 }
 
 type Telegram struct {
-	ApiKey              string `yaml:"apiKey"`
-	BaseUrl             string `yaml:"baseUrl"`
-	EndpointSendMessage string `yaml:"endpointSendMessage"`
+	ApiKey              string
+	BaseUrl             string
+	EndpointSendMessage string
 }
 
 type StonksMatcher struct {
 	QuotesUrl string `yaml:"quotesUrl"`
 }
 
-type Config struct {
-	Server        Server        `yaml:"server"`
-	Telegram      Telegram      `yaml:"telegram"`
-	StonksMatcher StonksMatcher `yaml:"stonksMatcher"`
-}
-
-var Cfg *Config
+var Cfg Config
 
 func init() {
 	logger.Log.Debug("init config")
 
-	// Generate our config based on the config supplied
-	// by the user in the flags
-	cfgPath, err := ParseFlags()
-	if err != nil {
-		logger.Log.Fatal(err)
+	// Search config files in current directory only
+	viper.AddConfigPath(".")
+
+	// Load config file
+	viper.SetConfigFile("config.yml")
+	if err := viper.ReadInConfig(); err != nil {
+		log.Panicln(err)
 	}
-	cfg, err := NewConfig(cfgPath)
-	if err != nil {
-		logger.Log.Fatal(err)
+
+	// Load .env file
+	viper.SetConfigFile(".env")
+	if err := viper.MergeInConfig(); err != nil {
+		log.Println("no .env file found")
+	}
+
+	// Mapping between keys in .env file or environment to config
+	envToConfig := map[string]string{
+		"listen_addr":       "server.listenAddr",
+		"db_driver":         "database.driver",
+		"sqlite_file":       "database.sqlite.file",
+		"postgres_host":     "database.postgres.host",
+		"postgres_port":     "database.postgres.port",
+		"postgres_dbname":   "database.postgres.dbname",
+		"postgres_user":     "database.postgres.user",
+		"postgres_password": "database.postgres.password",
+		"postgres_ssl":      "database.postgres.ssl",
+		"postgres_timezone": "database.postgres.timezone",
+		"telegram_api_key":  "telegram.apiKey",
+	}
+
+	// Map directives from environment variables to config
+	for envKey, configKey := range envToConfig {
+		// Value from .env file overwrites value from config.yml
+		val := viper.GetString(envKey)
+		if len(val) > 0 {
+			viper.Set(configKey, val)
+		}
+
+		// Bind environment variable to config
+		if err := viper.BindEnv(configKey, strings.ToUpper(envKey)); err != nil {
+			log.Panicln(err)
+		}
+	}
+
+	// Convert completed config data in Viper to Config struct
+	var cfg Config
+	if err := viper.Unmarshal(&cfg); err != nil {
+		log.Panicln(err)
 	}
 
 	Cfg = cfg
-}
-
-// NewConfig returns a new decoded Config struct
-func NewConfig(cfgPath string) (*Config, error) {
-	// Create config structure
-	cfg := &Config{}
-
-	// Open config file
-	file, err := os.Open(cfgPath)
-	if err != nil {
-		return nil, err
-	}
-
-	// Init new YAML decode
-	d := yaml.NewDecoder(file)
-
-	// Start YAML decoding from file
-	if err := d.Decode(&cfg); err != nil {
-		err = file.Close()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, err
-	}
-
-	err = file.Close()
-	if err != nil {
-		return nil, err
-	}
-
-	return cfg, nil
-}
-
-// ValidateConfigPath just makes sure, that the path provided is a file,
-// that can be read
-func ValidateConfigPath(path string) error {
-	s, err := os.Stat(path)
-	if err != nil {
-		return err
-	}
-	if s.IsDir() {
-		return fmt.Errorf("'%s' is a directory, not a normal file", path)
-	}
-	return nil
-}
-
-// ParseFlags will create and parse the CLI flags
-// and return the path to be used elsewhere
-func ParseFlags() (string, error) {
-	// String that contains the configured configuration path
-	var configPath string
-
-	// Set up a CLI flag called "-config" to allow users
-	// to supply the configuration file
-	flag.StringVar(&configPath, "config", "./config.yml", "path to config file")
-
-	// Actually parse the flags
-	flag.Parse()
-
-	// Validate the path first
-	if err := ValidateConfigPath(configPath); err != nil {
-		return "", err
-	}
-
-	// Return the configuration path
-	return configPath, nil
 }
