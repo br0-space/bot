@@ -18,9 +18,12 @@ telegram:
   endpointSendMessage: "sendMessage"
 stonksMatcher:
   quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"
-buzzwords:
+buzzwordsMatcher:
   - trigger: "huan"
-    reply: "und wieder wurde einer zum Huan ernannt, Huan ist jetzt auf %v"
+    reply: "Und wieder wurde einer zum Huan ernannt, *Huan* ist jetzt auf *%d*"
   - trigger: "tzn"
+    reply: "Schon wieder ist etwas am Arsch: *Tzn* ist jetzt auf *%d*"
   - trigger: "bier"
-    reply: "scho wieder am saufem, Bier ist jetzt auf %v"
+    reply: "Scho wieder am saufem, Bier ist jetzt auf *%d*"
+  - trigger: "420"
+    reply: "Nice! *420* ist jetzt auf *%d*"
