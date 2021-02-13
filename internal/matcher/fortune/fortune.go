@@ -170,6 +170,9 @@ func (m Matcher) sendListResponse(requestMessage telegram.RequestMessage) error 
 
 // Try to format a fortune cookie in a way which is nice to read in Telegram
 func (m Matcher) formatFortune(text string) string {
+	text = strings.ReplaceAll(text, "<", "&lt;")
+	text = strings.ReplaceAll(text, ">", "&gt;")
+
 	lines := strings.Split(text, "\n")
 
 	if m.looksLikeQuote(lines) {
