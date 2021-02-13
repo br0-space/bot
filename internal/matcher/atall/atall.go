@@ -48,8 +48,13 @@ func (m Matcher) doesMatch(text string) bool {
 func (m Matcher) sendResponse(requestMessage telegram.RequestMessage) error {
 	usernames := db.FindAllUsernames(requestMessage.From.Username)
 
+	text := requestMessage.TextOrCaption()
+	text = strings.ReplaceAll(text, "@alle", "")
+	text = strings.ReplaceAll(text, "@all", "")
+	text = text + " " + strings.Join(usernames, " ")
+
 	responseMessage := telegram.Message{
-		Text:             strings.Join(usernames, " "),
+		Text:             text,
 		ReplyToMessageID: requestMessage.ID,
 	}
 
