@@ -30,7 +30,7 @@ type Database struct {
 		DBName   string
 		User     string
 		Password string
-		SSL      bool
+		SSL      string
 		Timezone string
 	}
 }

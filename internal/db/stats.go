@@ -42,7 +42,7 @@ func UpdateStats(user telegram.User) {
 		Columns: []clause.Column{{Name: "user_id"}},
 		DoUpdates: clause.Assignments(map[string]interface{}{
 			"username": user.UsernameOrName(),
-			"posts": gorm.Expr("posts + 1"),
+			"posts": gorm.Expr("stats.posts + 1"),
 			"last_post": time.Now(),
 		}),
 	}).Create(&Stats{

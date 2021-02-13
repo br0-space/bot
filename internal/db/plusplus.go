@@ -36,7 +36,7 @@ func IncrementPlusplus(name string, increment int) int {
 	DB.Clauses(clause.OnConflict{
 		Columns: []clause.Column{{Name: "name"}},
 		DoUpdates: clause.Assignments(map[string]interface{}{
-			"value": gorm.Expr("value + ?", increment),
+			"value": gorm.Expr("plusplus.value + ?", increment),
 		}),
 	}).Create(&Plusplus{
 		Name:  name,
