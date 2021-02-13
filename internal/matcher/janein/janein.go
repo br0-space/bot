@@ -49,7 +49,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 
 // Check if a text starts with /jn or /yn
 func (m Matcher) doesMatch(text string) bool {
-	match, _ := regexp.MatchString(`^/(jn|yn)(\s|$)`, text)
+	match, _ := regexp.MatchString(`^/(jn|yn)(@|\s|$)`, text)
 
 	return match
 }
@@ -72,7 +72,7 @@ func (m Matcher) getRandomYesOrNo() bool {
 // Send an insult to the user who sent the request message
 func (m Matcher) sendInsultResponse(requestMessage telegram.RequestMessage) error {
 	responseMessage := telegram.Message{
-		Text:             "Bist du behindert?! 🤪",
+		Text:             "Ob du behindert bist hab ich gefragt?! 🤪",
 		ReplyToMessageID: requestMessage.ID,
 	}
 

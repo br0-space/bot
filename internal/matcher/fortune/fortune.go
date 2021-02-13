@@ -65,7 +65,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 
 // Check if a text starts with /fortune
 func (m Matcher) doesMatch(text string) bool {
-	match, _ := regexp.MatchString(`^/fortune(\s|$)`, text)
+	match, _ := regexp.MatchString(`^/fortune(@|\s|$)`, text)
 
 	return match
 }

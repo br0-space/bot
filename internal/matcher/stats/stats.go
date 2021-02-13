@@ -46,7 +46,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if a text starts with /stats
 func (m Matcher) doesMatch(text string) bool {
 	// Check if message starts with /choose
-	match, _ := regexp.MatchString(`^/stats(\s|$)`, text)
+	match, _ := regexp.MatchString(`^/stats(@|\s|$)`, text)
 
 	return match
 }

@@ -55,7 +55,7 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if a text starts with /top or /flop
 func (m Matcher) getMatch(text string) string {
 	// Initialize the regular expression
-	r := regexp.MustCompile(`^/(top|flop)(\s|$)`)
+	r := regexp.MustCompile(`^/(top|flop)(@|\s|$)`)
 
 	// Find either "top" or "flop"
 	match := r.FindString(text)
