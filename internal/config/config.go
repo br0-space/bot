@@ -78,7 +78,7 @@ func init() {
 		"sqlite_file":       "database.sqlite.file",
 		"postgres_host":     "database.postgres.host",
 		"postgres_port":     "database.postgres.port",
-		"postgres_dbname":   "database.postgres.dbname",
+		"postgres_db":       "database.postgres.dbname",
 		"postgres_user":     "database.postgres.user",
 		"postgres_password": "database.postgres.password",
 		"postgres_ssl":      "database.postgres.ssl",
