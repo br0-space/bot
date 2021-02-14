@@ -108,7 +108,6 @@ func (m Matcher) sendFortuneResponse(requestMessage telegram.RequestMessage, tex
 
 	responseMessage := telegram.Message{
 		Text:             responseText,
-		ReplyToMessageID: requestMessage.ID,
 		ParseMode:        "HTML",
 	}
 
@@ -143,7 +142,6 @@ func (m Matcher) sendHelpResponse(requestMessage telegram.RequestMessage) error 
 
 	responseMessage := telegram.Message{
 		Text:             responseText,
-		ReplyToMessageID: requestMessage.ID,
 		ParseMode:        "Markdown",
 	}
 
