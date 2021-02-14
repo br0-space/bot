@@ -1,6 +1,5 @@
 # Config files
 /.env
-/config.yml
 
 # Test database
 /test.db
