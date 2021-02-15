@@ -19,4 +19,4 @@ services:
     volumes:
      - ./config.yml:/opt/kmptnzbot/config.yml
      - ./files:/opt/kmptnzbot/bin/files
-    restart: on-failure
+    restart: always

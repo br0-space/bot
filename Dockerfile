@@ -12,7 +12,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.schema-version="1.0"
 
 # Build-time req.
-RUN apk --no-cache add git
+RUN apk --no-cache add git ca-certificates
 
 # go config
 ENV GO111MODULE=on
@@ -23,11 +23,11 @@ COPY . .
 
 RUN go build -o bin/kmptnzbot main.go
 
-FROM alpine:latest
+FROM scratch
 
-RUN apk --no-cache add ca-certificates
 WORKDIR /opt/kmptnzbot
 
 COPY --from=build /go/src/app/bin/kmptnzbot /opt/kmptnzbot/bin/kmptnzbot
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 CMD ["/opt/kmptnzbot/bin/kmptnzbot"]
