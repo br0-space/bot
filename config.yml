@@ -14,7 +14,9 @@ database:
     timezone: "UTC"
 telegram:
   apiKey: ""
+  webhookUrl: ""
   baseUrl: "https://api.telegram.org/bot%s/"
+  endpointSetWebhook: "setWebhook"
   endpointSendMessage: "sendMessage"
 stonksMatcher:
   quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"

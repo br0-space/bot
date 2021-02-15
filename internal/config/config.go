@@ -38,17 +38,19 @@ type Database struct {
 
 type Telegram struct {
 	ApiKey              string
+	WebhookURL          string
 	BaseUrl             string
+	EndpointSetWebhook  string
 	EndpointSendMessage string
 }
 
 type StonksMatcher struct {
-	QuotesUrl string `yaml:"quotesUrl"`
+	QuotesUrl string
 }
 
 type BuzzwordsMatcher struct {
-	Trigger string `yaml:"trigger"`
-	Reply   string `yaml:"reply"`
+	Trigger string
+	Reply   string
 }
 
 var Cfg Config
@@ -73,17 +75,18 @@ func init() {
 
 	// Mapping between keys in .env file or environment to config
 	envToConfig := map[string]string{
-		"listen_addr":       "server.listenAddr",
-		"db_driver":         "database.driver",
-		"sqlite_file":       "database.sqlite.file",
-		"postgres_host":     "database.postgres.host",
-		"postgres_port":     "database.postgres.port",
-		"postgres_db":       "database.postgres.dbname",
-		"postgres_user":     "database.postgres.user",
-		"postgres_password": "database.postgres.password",
-		"postgres_ssl":      "database.postgres.ssl",
-		"postgres_timezone": "database.postgres.timezone",
-		"telegram_api_key":  "telegram.apiKey",
+		"listen_addr":          "server.listenAddr",
+		"db_driver":            "database.driver",
+		"sqlite_file":          "database.sqlite.file",
+		"postgres_host":        "database.postgres.host",
+		"postgres_port":        "database.postgres.port",
+		"postgres_db":          "database.postgres.dbname",
+		"postgres_user":        "database.postgres.user",
+		"postgres_password":    "database.postgres.password",
+		"postgres_ssl":         "database.postgres.ssl",
+		"postgres_timezone":    "database.postgres.timezone",
+		"telegram_api_key":     "telegram.apiKey",
+		"telegram_webhook_url": "telegram.webhookUrl",
 	}
 
 	// Map directives from environment variables to config
