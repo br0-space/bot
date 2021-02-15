@@ -17,5 +17,6 @@ services:
     ports:
      - 3000:3000
     volumes:
-     - ./config.yml:/go/src/app/config.yml
+     - ./config.yml:/opt/kmptnzbot/config.yml
+     - ./files:/opt/kmptnzbot/bin/files
     restart: on-failure
