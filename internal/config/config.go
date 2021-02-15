@@ -84,6 +84,7 @@ func init() {
 		"postgres_ssl":      "database.postgres.ssl",
 		"postgres_timezone": "database.postgres.timezone",
 		"telegram_api_key":  "telegram.apiKey",
+		"telegram_baseurl":  "telegram.baseUrl",
 	}
 
 	// Map directives from environment variables to config
