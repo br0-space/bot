@@ -46,7 +46,3 @@ func init() {
 
 	DB = db
 }
-
-type timeResult struct {
-	Time string
-}

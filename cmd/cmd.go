@@ -13,6 +13,8 @@ import (
 
 // Create an HTTP server listening for webhook requests from Telegram on port 3000
 func RunServer() {
+	telegram.SetWebhookURL()
+
 	log.Fatal(http.ListenAndServe(config.Cfg.Server.ListenAddr, http.HandlerFunc(HandleWebhookRequest)))
 }
 
