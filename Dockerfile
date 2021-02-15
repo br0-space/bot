@@ -27,7 +27,8 @@ FROM scratch
 
 WORKDIR /opt/kmptnzbot
 
-COPY --from=build /go/src/app/bin/kmptnzbot /opt/kmptnzbot/bin/kmptnzbot
+COPY --from=build /go/src/app/bin/kmptnzbot /opt/kmptnzbot/kmptnzbot
+COPY --from=build /go/src/app/files /opt/kmptnzbot/files
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-CMD ["/opt/kmptnzbot/bin/kmptnzbot"]
+CMD ["/opt/kmptnzbot/kmptnzbot"]

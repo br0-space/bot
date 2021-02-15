@@ -18,5 +18,5 @@ services:
      - 3000:3000
     volumes:
      - ./config.yml:/opt/kmptnzbot/config.yml
-     - ./files:/opt/kmptnzbot/bin/files
+#     - ./files:/opt/kmptnzbot/files #optional overwrite fortune txt's
     restart: always
