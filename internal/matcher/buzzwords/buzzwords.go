@@ -57,14 +57,14 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if the message contains a buzzword and process it
 func (m Matcher) processBuzzword(requestMessage telegram.RequestMessage, buzzword config.BuzzwordsMatcher) error {
 	// Check if message contains the trigger
-	pattern := fmt.Sprintf("(?i)%s(\\W|$)", buzzword.Trigger)
+	pattern := fmt.Sprintf("(?i)(^|\\s)%s(\\W|$)", buzzword.Trigger)
 	match, _ := regexp.MatchString(pattern, requestMessage.Text)
 	if !match {
 		return nil
 	}
 
 	// Check if trigger is in plusplus
-	pattern = fmt.Sprintf("(?i)%s(\\+\\+|\\+-|--|—)", buzzword.Trigger)
+	pattern = fmt.Sprintf("(?i)(^|\\s)%s(\\+\\+|\\+-|--|—)", buzzword.Trigger)
 	match, _ = regexp.MatchString(pattern, requestMessage.Text)
 	if match {
 		return nil
