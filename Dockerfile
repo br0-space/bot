@@ -1,4 +1,4 @@
-FROM golang:1.15-alpine as build
+FROM golang:1.16-alpine as build
 
 # Build-time metadata as defined at http://label-schema.org
 ARG CI_COMMIT_SHA
