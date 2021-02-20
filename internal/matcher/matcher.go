@@ -10,6 +10,7 @@ import (
 	"github.com/neovg/kmptnzbot/internal/matcher/fortune"
 	"github.com/neovg/kmptnzbot/internal/matcher/help"
 	"github.com/neovg/kmptnzbot/internal/matcher/janein"
+	"github.com/neovg/kmptnzbot/internal/matcher/messagestats"
 	"github.com/neovg/kmptnzbot/internal/matcher/ping"
 	"github.com/neovg/kmptnzbot/internal/matcher/plusplus"
 	"github.com/neovg/kmptnzbot/internal/matcher/registry"
@@ -27,6 +28,7 @@ func init() {
 	registry.RegisterMatcher(fortune.Matcher{})
 	registry.RegisterMatcher(help.Matcher{})
 	registry.RegisterMatcher(janein.Matcher{})
+	registry.RegisterMatcher(messagestats.Matcher{})
 	registry.RegisterMatcher(ping.Matcher{})
 	registry.RegisterMatcher(plusplus.Matcher{})
 	registry.RegisterMatcher(stats.Matcher{})
