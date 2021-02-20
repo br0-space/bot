@@ -1,4 +1,4 @@
-package stats
+package messagestats
 
 import (
 	"fmt"
@@ -17,15 +17,12 @@ type Matcher struct {
 
 // Return the identifier of this matcher for use in logging
 func (m Matcher) Identifier() string {
-	return "stats"
+	return "messagestats"
 }
 
 // This is a command matcher and generates a help item
 func (m Matcher) GetHelpItems() []registry.HelpItem {
 	return []registry.HelpItem{{
-		Command:     "stats",
-		Description: "Zeigt alle dem Bot bekannten User an, sortiert nach der Anzahl ihrer bisherigen Posts",
-	}, {
 		Command:     "words",
 		Description: "Zeigt alle dem Bot bekannten User an, sortiert nach der Anzahl ihrer bisher geschriebenen Worte",
 	}}
@@ -34,14 +31,14 @@ func (m Matcher) GetHelpItems() []registry.HelpItem {
 // Process a message received from Telegram
 func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
 	// Write stats on each post
-	db.UpdateStats(requestMessage.From)
+	db.InsertMessageStats(requestMessage)
 
 	// Check if text starts with /stats and if not, ignore it
 	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
 		return nil
 	}
 
-	records := db.FindStatsTop()
+	records := db.GetWordCounts()
 
 	return m.sendResponse(requestMessage, records)
 }
@@ -49,17 +46,17 @@ func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) e
 // Check if a text starts with /stats
 func (m Matcher) doesMatch(text string) bool {
 	// Check if message starts with /choose
-	match, _ := regexp.MatchString(`^/stats(@|\s|$)`, text)
+	match, _ := regexp.MatchString(`^/words(@|\s|$)`, text)
 
 	return match
 }
 
-func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, records []db.Stats) error {
+func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, records []db.WordCount) error {
 	responseText := "```"
 
 	// Add one line per record
 	for _, record := range records {
-		responseText = responseText + fmt.Sprintf("\n%6d | %s", record.Posts, record.Username)
+		responseText = responseText + fmt.Sprintf("\n%6d | %s", record.Words, record.Username)
 	}
 
 	responseText = responseText + "```"

@@ -43,6 +43,7 @@ func init() {
 
 	MigratePlusplus(db)
 	MigrateStats(db)
+	MigrateMessageStats(db)
 
 	DB = db
 }

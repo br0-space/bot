@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"regexp"
 	"strings"
 )
 
@@ -57,6 +58,15 @@ func (r RequestMessage) TextOrCaption() string {
 	}
 
 	return ""
+}
+
+func (r RequestMessage) WordCount() int {
+	// Match non-space character sequences.
+	re := regexp.MustCompile(`[\S]+`)
+
+	// Find all matches and return count.
+	results := re.FindAllString(r.TextOrCaption(), -1)
+	return len(results)
 }
 
 // Returns the username of a user or if he has none, the firstname and lastname
