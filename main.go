@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/neovg/kmptnzbot/cmd"
+	"github.com/kmptnz/bot/cmd"
 )
 
 func main() {

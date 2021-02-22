@@ -1,8 +1,8 @@
 package registry
 
 import (
-	"github.com/neovg/kmptnzbot/internal/logger"
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/logger"
+	"github.com/kmptnz/bot/internal/telegram"
 )
 
 // Each matcher must implement a function to process request messages
@@ -32,4 +32,3 @@ func RegisterMatcher(matcher Matcher) {
 func GetRegisteredMatchers() []Matcher {
 	return matchers
 }
-

@@ -1,4 +1,4 @@
-module github.com/neovg/kmptnzbot
+module github.com/kmptnz/bot
 
 go 1.16
 

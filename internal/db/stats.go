@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/telegram"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
@@ -41,8 +41,8 @@ func UpdateStats(user telegram.User) {
 	DB.Clauses(clause.OnConflict{
 		Columns: []clause.Column{{Name: "user_id"}},
 		DoUpdates: clause.Assignments(map[string]interface{}{
-			"username": user.UsernameOrName(),
-			"posts": gorm.Expr("stats.posts + 1"),
+			"username":  user.UsernameOrName(),
+			"posts":     gorm.Expr("stats.posts + 1"),
 			"last_post": time.Now(),
 		}),
 	}).Create(&Stats{

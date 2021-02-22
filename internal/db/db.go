@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/neovg/kmptnzbot/internal/config"
-	"github.com/neovg/kmptnzbot/internal/logger"
+	"github.com/kmptnz/bot/internal/config"
+	"github.com/kmptnz/bot/internal/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"

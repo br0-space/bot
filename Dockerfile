@@ -6,7 +6,7 @@ ARG CI_COMMIT_REF_SLUG
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="kmptnz telegram bot" \
       org.label-schema.description="Telegram bot written in golang" \
-      org.label-schema.url="https://github.com/NeoVG/kmptnzbot" \
+      org.label-schema.url="https://github.com/kmptnz/bot" \
       org.label-schema.vendor="NeoVG" \
       org.label-schema.version=$CI_COMMIT_REF_SLUG \
       org.label-schema.schema-version="1.0"

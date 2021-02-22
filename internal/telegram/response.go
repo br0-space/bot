@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/neovg/kmptnzbot/internal/config"
-	"github.com/neovg/kmptnzbot/internal/logger"
+	"github.com/kmptnz/bot/internal/config"
+	"github.com/kmptnz/bot/internal/logger"
 )
 
 // Create a struct that is accepted by Telegram's sendMessage endpoint
