@@ -3,22 +3,22 @@ package db
 import (
 	"time"
 
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/telegram"
 	"gorm.io/gorm"
 )
 
 type MessageStats struct {
 	gorm.Model
-	UserID int64 `gorm:"index;<-:create"`
-	UserStats Stats `gorm:"foreignKey:user_id;references:user_id;constraint:OnDelete:CASCADE"`
-	Time time.Time `gorm:"index;<-:create"`
-	Words int `gorm:"<-:create"`
+	UserID    int64     `gorm:"index;<-:create"`
+	UserStats Stats     `gorm:"foreignKey:user_id;references:user_id;constraint:OnDelete:CASCADE"`
+	Time      time.Time `gorm:"index;<-:create"`
+	Words     int       `gorm:"<-:create"`
 }
 
 type WordCount struct {
-	UserID int64
+	UserID   int64
 	Username string
-	Words int
+	Words    int
 }
 
 // Migrates the table message_stats

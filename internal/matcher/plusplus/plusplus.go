@@ -6,19 +6,19 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/neovg/kmptnzbot/internal/db"
-	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
-	"github.com/neovg/kmptnzbot/internal/matcher/registry"
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/db"
+	"github.com/kmptnz/bot/internal/matcher/abstract"
+	"github.com/kmptnz/bot/internal/matcher/registry"
+	"github.com/kmptnz/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher
-type Matcher struct{
+type Matcher struct {
 	abstract.Matcher
 }
 
 type Token struct {
-	name string
+	name      string
 	increment int
 }
 
@@ -86,7 +86,7 @@ func (m Matcher) getTokens(matches []string) []Token {
 		mode := r.FindString(match)
 
 		// Ignore the case to avoid duplicates
-		name := strings.ToLower(match[:len(match) - len(mode)])
+		name := strings.ToLower(match[:len(match)-len(mode)])
 
 		// ++ will increment by 1, -- will decrement and +- leaves the value as it is
 		increment := 0

@@ -5,11 +5,11 @@ import (
 	"regexp"
 	"sync"
 
-	"github.com/neovg/kmptnzbot/internal/config"
-	"github.com/neovg/kmptnzbot/internal/db"
-	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
-	"github.com/neovg/kmptnzbot/internal/matcher/registry"
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/config"
+	"github.com/kmptnz/bot/internal/db"
+	"github.com/kmptnz/bot/internal/matcher/abstract"
+	"github.com/kmptnz/bot/internal/matcher/registry"
+	"github.com/kmptnz/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher

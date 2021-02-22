@@ -5,10 +5,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/neovg/kmptnzbot/internal/fortune"
-	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
-	"github.com/neovg/kmptnzbot/internal/matcher/registry"
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/fortune"
+	"github.com/kmptnz/bot/internal/matcher/abstract"
+	"github.com/kmptnz/bot/internal/matcher/registry"
+	"github.com/kmptnz/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher
@@ -107,8 +107,8 @@ func (m Matcher) sendFortuneResponse(requestMessage telegram.RequestMessage, tex
 	responseText := text
 
 	responseMessage := telegram.Message{
-		Text:             responseText,
-		ParseMode:        "HTML",
+		Text:      responseText,
+		ParseMode: "HTML",
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)
@@ -141,8 +141,8 @@ func (m Matcher) sendHelpResponse(requestMessage telegram.RequestMessage) error 
 	}
 
 	responseMessage := telegram.Message{
-		Text:             responseText,
-		ParseMode:        "Markdown",
+		Text:      responseText,
+		ParseMode: "Markdown",
 	}
 
 	return telegram.SendMessage(requestMessage, responseMessage)

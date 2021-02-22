@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/neovg/kmptnzbot/internal/matcher/abstract"
-	"github.com/neovg/kmptnzbot/internal/matcher/registry"
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/matcher/abstract"
+	"github.com/kmptnz/bot/internal/matcher/registry"
+	"github.com/kmptnz/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher

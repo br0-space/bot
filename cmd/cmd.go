@@ -4,11 +4,11 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/neovg/kmptnzbot/internal/config"
-	_ "github.com/neovg/kmptnzbot/internal/db"
-	"github.com/neovg/kmptnzbot/internal/logger"
-	"github.com/neovg/kmptnzbot/internal/matcher"
-	"github.com/neovg/kmptnzbot/internal/telegram"
+	"github.com/kmptnz/bot/internal/config"
+	_ "github.com/kmptnz/bot/internal/db"
+	"github.com/kmptnz/bot/internal/logger"
+	"github.com/kmptnz/bot/internal/matcher"
+	"github.com/kmptnz/bot/internal/telegram"
 )
 
 // Create an HTTP server listening for webhook requests from Telegram on port 3000
