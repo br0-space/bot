@@ -50,7 +50,7 @@ func (m Matcher) getMatches(text string) []string {
 	// Check if message starts with / and if yes, ignore it
 	match, _ := regexp.MatchString(`^/`, text)
 	if match {
-		return make([]string, 0, 0)
+		return make([]string, 0)
 	}
 
 	// Super complex patterns to catch emojis also
