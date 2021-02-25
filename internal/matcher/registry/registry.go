@@ -19,7 +19,7 @@ type HelpItem struct {
 }
 
 // List of all registered matcher instances
-var matchers = make([]Matcher, 0, 0)
+var matchers = make([]Matcher, 0)
 
 // Add a matcher to the list
 func RegisterMatcher(matcher Matcher) {

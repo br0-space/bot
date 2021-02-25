@@ -116,7 +116,7 @@ func (m Matcher) sendFortuneResponse(requestMessage telegram.RequestMessage, tex
 
 // Send a list of available /fortune commands
 func (m Matcher) sendHelpResponse(requestMessage telegram.RequestMessage) error {
-	helpItems := make([]registry.HelpItem, 0, 0)
+	helpItems := make([]registry.HelpItem, 0)
 	helpItems = append(helpItems, registry.HelpItem{
 		Command:     "",
 		Description: "Zeigt ein zufällig ausgewähltes Fortune-Cookie an",

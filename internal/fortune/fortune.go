@@ -21,7 +21,7 @@ func GetList() []string {
 		panic(err)
 	}
 
-	files := make([]string, 0, 0)
+	files := make([]string, 0)
 	for _, filename := range filenames {
 		if filename[len(filename)-4:] == ".txt" {
 			files = append(files, filename[len(path)+1:len(filename)-4])
