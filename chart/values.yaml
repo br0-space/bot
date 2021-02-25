@@ -8,7 +8,7 @@ image:
   repository: kmptnz/bot
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.1"
+  tag: "0.0.1"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -97,7 +97,7 @@ bot:
         reply: "Immer ist irgendwas kaputt! Obegfoin ist jetzt auf *%d*"    
   telegram:
     apiKey: 123
-
+    webhookurl: 
 postgresql:
   postgresqlUsername: kmptnz
   # This just needs to be set. It will use a second entry in existingSecret for postgresql-postgres-password
