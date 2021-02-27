@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "kmptnzbot.fullname" . }}
+  labels:
+    app: {{ template "kmptnzbot.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+  config.yml: |-
+    server:
+      listenAddr: ":3000"
+    database:
+      driver: "postgres"
+      postgres:
+        host: "{{ include "kmptnzbot.postgresql.fullname" . }}"
+        port: 5432
+        dbName: "{{ .Values.postgresql.postgresqlDatabase }}"
+        user: "{{ .Values.postgresql.postgresqlUsername }}"
+        password: "{{ .Values.postgresql.postgresqlPassword }}"
+        ssl: "disable"
+        timezone: "UTC"
+    telegram:
+      apiKey: "{{ .Values.bot.telegram.apiKey }}"
+      baseUrl: "https://api.telegram.org/bot%s/"
+      webhookUrl: "{{ .Values.bot.telegram.webhookurl }}"
+      endpointSetWebhook: "setWebhook"
+      endpointSendMessage: "sendMessage"
+    stonksMatcher:
+      quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"
+
+    # Buzzword Configuration
+    {{- if .Values.bot.buzzwords }}
+    {{- toYaml .Values.bot.buzzwords | nindent 4 }}
+    {{- end }}
