@@ -4,7 +4,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/kmptnz/bot/internal/logger"
+	"github.com/br0fessional/bot/internal/logger"
 	"github.com/spf13/viper"
 )
 

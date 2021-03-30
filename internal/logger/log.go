@@ -6,7 +6,7 @@ import (
 	"github.com/op/go-logging"
 )
 
-var Log = logging.MustGetLogger("kmptnzbot")
+var Log = logging.MustGetLogger("br0fessionalbot")
 
 var format = logging.MustStringFormatter(
 	`%{color}%{time:15:04:05.000} %{shortfile} %{shortfunc} %{level}:%{color:reset} %{message}`,

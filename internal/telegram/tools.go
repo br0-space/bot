@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/kmptnz/bot/internal/config"
-	"github.com/kmptnz/bot/internal/logger"
+	"github.com/br0fessional/bot/internal/config"
+	"github.com/br0fessional/bot/internal/logger"
 )
 
 // Use the Telegram API to set the webhook URL messages to the bot will be sent to

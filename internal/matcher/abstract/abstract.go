@@ -3,8 +3,8 @@ package abstract
 import (
 	"fmt"
 
-	"github.com/kmptnz/bot/internal/logger"
-	"github.com/kmptnz/bot/internal/telegram"
+	"github.com/br0fessional/bot/internal/logger"
+	"github.com/br0fessional/bot/internal/telegram"
 )
 
 // Create a struct each matcher is inherited from
