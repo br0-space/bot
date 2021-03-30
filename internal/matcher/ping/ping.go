@@ -3,9 +3,9 @@ package ping
 import (
 	"regexp"
 
-	"github.com/kmptnz/bot/internal/matcher/abstract"
-	"github.com/kmptnz/bot/internal/matcher/registry"
-	"github.com/kmptnz/bot/internal/telegram"
+	"github.com/br0fessional/bot/internal/matcher/abstract"
+	"github.com/br0fessional/bot/internal/matcher/registry"
+	"github.com/br0fessional/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher

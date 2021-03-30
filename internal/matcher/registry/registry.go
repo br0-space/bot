@@ -1,8 +1,8 @@
 package registry
 
 import (
-	"github.com/kmptnz/bot/internal/logger"
-	"github.com/kmptnz/bot/internal/telegram"
+	"github.com/br0fessional/bot/internal/logger"
+	"github.com/br0fessional/bot/internal/telegram"
 )
 
 // Each matcher must implement a function to process request messages

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/kmptnz/bot/internal/config"
+	"github.com/br0fessional/bot/internal/config"
 )
 
 type ResponseQuote struct {

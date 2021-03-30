@@ -19,7 +19,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v2.1.0
         with:
-          images: kmptnz/bot,ghcr.io/${{ github.repository_owner }}/bot
+          images: br0fessional/bot,ghcr.io/${{ github.repository_owner }}/bot
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
