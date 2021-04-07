@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/br0fessional/bot/internal/config"
-	"github.com/br0fessional/bot/internal/logger"
+	"gitlab.com/br0fessional/bot/internal/config"
+	"gitlab.com/br0fessional/bot/internal/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"

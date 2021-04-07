@@ -1,4 +1,4 @@
-module github.com/br0fessional/bot
+module gitlab.com/br0fessional/bot
 
 go 1.16
 
