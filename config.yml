@@ -21,6 +21,8 @@ telegram:
 stonksMatcher:
   quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"
 buzzwordsMatcher:
+  - trigger: "anal"
+    reply: "ein weiterer centimeter mehr, unsere Arschlöcher sind nun *d* groß"
   - trigger: "huan"
     reply: "Und wieder wurde einer zum Huan ernannt, *Huan* ist jetzt auf *%d*"
   - trigger: "tzn"
