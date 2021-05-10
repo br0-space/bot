@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"gitlab.com/br0fessional/bot/internal/config"
-	"gitlab.com/br0fessional/bot/internal/logger"
+	"gitlab.com/br0-space/bot/internal/config"
+	"gitlab.com/br0-space/bot/internal/logger"
 )
 
 // Create a struct that is accepted by Telegram's sendMessage endpoint

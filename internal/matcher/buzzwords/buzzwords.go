@@ -5,11 +5,11 @@ import (
 	"regexp"
 	"sync"
 
-	"gitlab.com/br0fessional/bot/internal/config"
-	"gitlab.com/br0fessional/bot/internal/db"
-	"gitlab.com/br0fessional/bot/internal/matcher/abstract"
-	"gitlab.com/br0fessional/bot/internal/matcher/registry"
-	"gitlab.com/br0fessional/bot/internal/telegram"
+	"gitlab.com/br0-space/bot/internal/config"
+	"gitlab.com/br0-space/bot/internal/db"
+	"gitlab.com/br0-space/bot/internal/matcher/abstract"
+	"gitlab.com/br0-space/bot/internal/matcher/registry"
+	"gitlab.com/br0-space/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher

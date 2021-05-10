@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"gitlab.com/br0fessional/bot/cmd"
+	"gitlab.com/br0-space/bot/cmd"
 )
 
 func main() {

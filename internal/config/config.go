@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/spf13/viper"
-	"gitlab.com/br0fessional/bot/internal/logger"
+	"gitlab.com/br0-space/bot/internal/logger"
 )
 
 type Config struct {
