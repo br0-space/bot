@@ -19,7 +19,7 @@ jobs:
         id: meta
         uses: crazy-max/ghaction-docker-meta@v3.1.0
         with:
-          images: br0fessional/bot,ghcr.io/${{ github.repository_owner }}/bot
+          images: ghcr.io/${{ github.repository_owner }}/bot
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -32,11 +32,13 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       -
-        name: Login to DockerHub
-        uses: docker/login-action@v1
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
+        if: github.event_name != 'pull_request'
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - 
         name: Build and push
         uses: docker/build-push-action@v2
