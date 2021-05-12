@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"gitlab.com/br0-space/bot/internal/config"
+	"github.com/br0-space/bot/internal/config"
 )
 
 type ResponseQuote struct {

@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"gitlab.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/telegram"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )

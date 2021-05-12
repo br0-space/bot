@@ -4,11 +4,11 @@ import (
 	"log"
 	"net/http"
 
-	"gitlab.com/br0-space/bot/internal/config"
-	_ "gitlab.com/br0-space/bot/internal/db"
-	"gitlab.com/br0-space/bot/internal/logger"
-	"gitlab.com/br0-space/bot/internal/matcher"
-	"gitlab.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/config"
+	_ "github.com/br0-space/bot/internal/db"
+	"github.com/br0-space/bot/internal/logger"
+	"github.com/br0-space/bot/internal/matcher"
+	"github.com/br0-space/bot/internal/telegram"
 )
 
 // Create an HTTP server listening for webhook requests from Telegram on port 3000

@@ -1,8 +1,8 @@
 package registry
 
 import (
-	"gitlab.com/br0-space/bot/internal/logger"
-	"gitlab.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/logger"
+	"github.com/br0-space/bot/internal/telegram"
 )
 
 // Each matcher must implement a function to process request messages

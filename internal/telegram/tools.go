@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"gitlab.com/br0-space/bot/internal/config"
-	"gitlab.com/br0-space/bot/internal/logger"
+	"github.com/br0-space/bot/internal/config"
+	"github.com/br0-space/bot/internal/logger"
 )
 
 // Use the Telegram API to set the webhook URL messages to the bot will be sent to

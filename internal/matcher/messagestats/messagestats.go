@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"regexp"
 
-	"gitlab.com/br0-space/bot/internal/db"
-	"gitlab.com/br0-space/bot/internal/matcher/abstract"
-	"gitlab.com/br0-space/bot/internal/matcher/registry"
-	"gitlab.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/db"
+	"github.com/br0-space/bot/internal/matcher/abstract"
+	"github.com/br0-space/bot/internal/matcher/registry"
+	"github.com/br0-space/bot/internal/telegram"
 )
 
 // Each matcher extends the abstract matcher

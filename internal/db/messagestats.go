@@ -3,7 +3,7 @@ package db
 import (
 	"time"
 
-	"gitlab.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/telegram"
 	"gorm.io/gorm"
 )
 

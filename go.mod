@@ -1,4 +1,4 @@
-module gitlab.com/br0-space/bot
+module github.com/br0-space/bot
 
 go 1.16
 

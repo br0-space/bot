@@ -4,8 +4,8 @@ import (
 	"log"
 	"strings"
 
+	"github.com/br0-space/bot/internal/logger"
 	"github.com/spf13/viper"
-	"gitlab.com/br0-space/bot/internal/logger"
 )
 
 type Config struct {
