@@ -42,13 +42,15 @@ type SonglinkEntry struct {
 //
 // Spotify album: https://open.spotify.com/album/2Gbv0Wjtwn9zQYMvWtTHnK
 // Spotify track: https://open.spotify.com/track/0Q5IOvNoREy7gzT0CWmayo?si=d2b1a4b4ae204358
-// Apple Music album: https://music.apple.com/de/album/the-music-of-red-dead-redemption-2-original-score/1472283462
-// Apple Music track: https://music.apple.com/de/album/by-1899-the-age-of-outlaws-and-gunslingers-was-at-an-end/1472283462?i=1472283463
+// Apple Music album 1: https://music.apple.com/de/album/the-music-of-red-dead-redemption-2-original-score/1472283462
+// Apple Music album 2: https://music.apple.com/de/album/life-thrills/1140071785?l=en
+// Apple Music track 1: https://music.apple.com/de/album/by-1899-the-age-of-outlaws-and-gunslingers-was-at-an-end/1472283462?i=1472283463
+// Apple Music track 2: https://music.apple.com/de/album/hi/1140071785?i=1140071869&l=en
 func GetSonglinkEntry(url string) (*SonglinkEntry, error) {
-	const spotifyAlbumPattern = "https:\\/\\/open\\.spotify\\.com\\/album\\/([a-zA-Z0-9]+)$"
+	const spotifyAlbumPattern = "https:\\/\\/open\\.spotify\\.com\\/album\\/([a-zA-Z0-9]+)"
 	const spotifyTrackPattern = "https:\\/\\/open\\.spotify\\.com\\/track\\/([a-zA-Z0-9]+)\\?si=[0-9abcdef]+"
-	const appleMusicAlbumPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/([0-9]+)$"
-	const appleMusicTrackPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/[0-9]+\\?i=([0-9]+)$"
+	const appleMusicAlbumPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/([0-9]+)(\\?l=.+)?$"
+	const appleMusicTrackPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/[0-9]+\\?i=([0-9]+)(&l=.+)?$"
 
 	spotifyAlbumRegex := regexp.MustCompile(spotifyAlbumPattern)
 	spotifyTrackRegex := regexp.MustCompile(spotifyTrackPattern)
@@ -80,7 +82,7 @@ func GetSonglinkEntry(url string) (*SonglinkEntry, error) {
 		_type = "song"
 		ID = matches[1]
 	} else {
-		return nil, fmt.Errorf("unable to parse platform, type and ID from `%s`", url)
+		return nil, fmt.Errorf("unable to parse platform, type and ID from %s", url)
 	}
 
 	return getSonglinkEntry(platform, _type, ID)
