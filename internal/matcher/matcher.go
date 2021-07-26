@@ -11,6 +11,7 @@ import (
 	"github.com/br0-space/bot/internal/matcher/help"
 	"github.com/br0-space/bot/internal/matcher/janein"
 	"github.com/br0-space/bot/internal/matcher/messagestats"
+	"github.com/br0-space/bot/internal/matcher/music"
 	"github.com/br0-space/bot/internal/matcher/ping"
 	"github.com/br0-space/bot/internal/matcher/plusplus"
 	"github.com/br0-space/bot/internal/matcher/registry"
@@ -29,6 +30,7 @@ func init() {
 	registry.RegisterMatcher(help.Matcher{})
 	registry.RegisterMatcher(janein.Matcher{})
 	registry.RegisterMatcher(messagestats.Matcher{})
+	registry.RegisterMatcher(music.Matcher{})
 	registry.RegisterMatcher(ping.Matcher{})
 	registry.RegisterMatcher(plusplus.Matcher{})
 	registry.RegisterMatcher(stats.Matcher{})
