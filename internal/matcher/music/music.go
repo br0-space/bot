@@ -5,7 +5,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/br0-space/bot/internal/logger"
 	"github.com/br0-space/bot/internal/matcher/abstract"
 	"github.com/br0-space/bot/internal/matcher/registry"
 	"github.com/br0-space/bot/internal/telegram"
@@ -73,16 +72,12 @@ func (m Matcher) processMatches(requestMessage telegram.RequestMessage, matches 
 }
 
 func (m Matcher) processMatch(requestMessage telegram.RequestMessage, match string) error {
-	logger.Log.Info(match)
-
 	songlinkEntry, err := GetSonglinkEntry(match)
 	if err != nil {
 		m.HandleError(requestMessage, m.Identifier(), err)
 	}
 
-	err = m.sendResponse(requestMessage, *songlinkEntry)
-
-	return nil
+	return m.sendResponse(requestMessage, *songlinkEntry)
 }
 
 func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, songlinkEntry SonglinkEntry) error {
