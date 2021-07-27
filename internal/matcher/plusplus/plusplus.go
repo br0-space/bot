@@ -138,10 +138,10 @@ func (m Matcher) processToken(requestMessage telegram.RequestMessage, token Toke
 // Send a message with the new value to Telegram
 func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, token Token, newValue int) error {
 	mode := "+-"
-	if newValue > 0 {
+	if token.increment > 0 {
 		mode = "++"
 	}
-	if newValue < 0 {
+	if token.increment < 0 {
 		mode = "--"
 	}
 
