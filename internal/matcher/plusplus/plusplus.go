@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
-	"sync"
 
 	"github.com/br0-space/bot/internal/db"
 	"github.com/br0-space/bot/internal/matcher/abstract"
@@ -117,27 +116,14 @@ func (m Matcher) getTokens(matches []string) []Token {
 
 // Take a list of tokens and process each one in a goroutine
 func (m Matcher) processTokens(requestMessage telegram.RequestMessage, tokens []Token) {
-	// Create a wait group for synchronization
-	var waitGroup sync.WaitGroup
-
-	// We need to wait until all tokens are processed
-	waitGroup.Add(len(tokens))
-
-	// Launch a goroutine for each token
+	// Process one token after another to get the output in a deterministic order
 	for _, token := range tokens {
-		go func(token Token) {
-			defer waitGroup.Done()
-
-			// Process the token
-			err := m.processToken(requestMessage, token)
-			if err != nil {
-				m.HandleError(requestMessage, m.Identifier(), err)
-			}
-		}(token)
+		// Process the token
+		err := m.processToken(requestMessage, token)
+		if err != nil {
+			m.HandleError(requestMessage, m.Identifier(), err)
+		}
 	}
-
-	// Wait until all tokens are processed
-	waitGroup.Wait()
 }
 
 // Update a token in the database and send a notification message with the new value to Telegram
@@ -152,10 +138,10 @@ func (m Matcher) processToken(requestMessage telegram.RequestMessage, token Toke
 // Send a message with the new value to Telegram
 func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, token Token, newValue int) error {
 	mode := "+-"
-	if newValue > 0 {
+	if token.increment > 0 {
 		mode = "++"
 	}
-	if newValue < 0 {
+	if token.increment < 0 {
 		mode = "--"
 	}
 

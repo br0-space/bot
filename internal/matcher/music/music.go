@@ -83,6 +83,7 @@ func (m Matcher) processMatch(requestMessage telegram.RequestMessage, match stri
 func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, songlinkEntry SonglinkEntry) error {
 	responseText := fmt.Sprintf(
 		"<b>%s</b> by <b>%s</b>\n\n",
+		songlinkEntry.Type,
 		songlinkEntry.Title,
 		songlinkEntry.Artist,
 	)
