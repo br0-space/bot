@@ -23,9 +23,9 @@ type ResponseLinks struct {
 }
 
 type Response struct {
-	PageURL  string `json:"pageUrl"`
+	PageURL  string                    `json:"pageUrl"`
 	Entities map[string]ResponseEntity `json:"entitiesByUniqueId"`
-	Links    ResponseLinks `json:"linksByPlatform"`
+	Links    ResponseLinks             `json:"linksByPlatform"`
 }
 
 type SonglinkEntry struct {
