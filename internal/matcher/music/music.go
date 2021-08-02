@@ -74,7 +74,7 @@ func (m Matcher) processMatches(requestMessage telegram.RequestMessage, matches 
 func (m Matcher) processMatch(requestMessage telegram.RequestMessage, match string) error {
 	songlinkEntry, err := GetSonglinkEntry(match)
 	if err != nil {
-		m.HandleError(requestMessage, m.Identifier(), err)
+		return err
 	}
 
 	return m.sendResponse(requestMessage, *songlinkEntry)
