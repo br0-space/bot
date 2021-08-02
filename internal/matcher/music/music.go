@@ -44,8 +44,8 @@ func (m Matcher) getMatches(text string) []string {
 		return make([]string, 0)
 	}
 
-	const spotifyUrlPattern = "https?:\\/\\/open.spotify.com\\/(album|track)\\/.+?"
-	const appleMusicUrlPattern = "https?:\\/\\/music.apple.com\\/[a-z]{2}\\/album\\/.+?"
+	const spotifyUrlPattern = "https?:\\/\\/open.spotify.com\\/(album|track)\\/.+"
+	const appleMusicUrlPattern = "https?:\\/\\/music.apple.com\\/[a-z]{2}\\/album\\/.+"
 	urlPattern := fmt.Sprintf("(%s|%s)(\\s|$)", spotifyUrlPattern, appleMusicUrlPattern)
 
 	// Initialize the regular expression
@@ -74,7 +74,7 @@ func (m Matcher) processMatches(requestMessage telegram.RequestMessage, matches 
 func (m Matcher) processMatch(requestMessage telegram.RequestMessage, match string) error {
 	songlinkEntry, err := GetSonglinkEntry(match)
 	if err != nil {
-		m.HandleError(requestMessage, m.Identifier(), err)
+		return err
 	}
 
 	return m.sendResponse(requestMessage, *songlinkEntry)
@@ -82,29 +82,28 @@ func (m Matcher) processMatch(requestMessage telegram.RequestMessage, match stri
 
 func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, songlinkEntry SonglinkEntry) error {
 	responseText := fmt.Sprintf(
-		"%s:\n\n%s\n(%s)\n\n",
-		songlinkEntry.Type,
+		"<b>%s</b> by <b>%s</b>\n\n",
 		songlinkEntry.Title,
 		songlinkEntry.Artist,
 	)
 
 	// The entry may not be available at each platform, so just add existing links
 	if songlinkEntry.SpotifyURL != "" {
-		responseText += fmt.Sprintf("Spotify: %s\n\n", songlinkEntry.SpotifyURL)
+		responseText += fmt.Sprintf("· Spotify: %s\n\n", songlinkEntry.SpotifyURL)
 	}
 	if songlinkEntry.AppleMusicURL != "" {
-		responseText += fmt.Sprintf("Apple Music: %s\n\n", songlinkEntry.AppleMusicURL)
+		responseText += fmt.Sprintf("· Apple Music: %s\n\n", songlinkEntry.AppleMusicURL)
 	}
 	if songlinkEntry.YoutubeURL != "" {
-		responseText += fmt.Sprintf("YouTube: %s\n\n", songlinkEntry.YoutubeURL)
+		responseText += fmt.Sprintf("· YouTube: %s\n\n", songlinkEntry.YoutubeURL)
 	}
 
 	// Add link so Songlink page for convenience
-	responseText += fmt.Sprintf("Weitere Links bei Songlink: %s", songlinkEntry.SonglinkURL)
+	responseText += fmt.Sprintf("Weitere Links: %s", songlinkEntry.SonglinkURL)
 
 	responseMessage := telegram.Message{
 		Text: responseText,
-		// ParseMode: "Markdown",
+		ParseMode: "HTML",
 		DisableWebPagePreview: true,
 	}
 
