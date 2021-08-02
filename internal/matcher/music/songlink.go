@@ -48,9 +48,9 @@ type SonglinkEntry struct {
 // Apple Music track 2: https://music.apple.com/de/album/hi/1140071785?i=1140071869&l=en
 func GetSonglinkEntry(url string) (*SonglinkEntry, error) {
 	const spotifyAlbumPattern = "https:\\/\\/open\\.spotify\\.com\\/album\\/([a-zA-Z0-9]+)"
-	const spotifyTrackPattern = "https:\\/\\/open\\.spotify\\.com\\/track\\/([a-zA-Z0-9]+)\\?si=[0-9abcdef]+"
-	const appleMusicAlbumPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/([0-9]+)(\\?l=.+)?$"
-	const appleMusicTrackPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/[0-9]+\\?i=([0-9]+)(&l=.+)?$"
+	const spotifyTrackPattern = "https:\\/\\/open\\.spotify\\.com\\/track\\/([a-zA-Z0-9]+)"
+	const appleMusicAlbumPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/([0-9]+)"
+	const appleMusicTrackPattern = "https:\\/\\/music\\.apple\\.com\\/[a-z]{2}\\/album\\/.+?\\/[0-9]+\\?i=([0-9]+)"
 
 	spotifyAlbumRegex := regexp.MustCompile(spotifyAlbumPattern)
 	spotifyTrackRegex := regexp.MustCompile(spotifyTrackPattern)

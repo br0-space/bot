@@ -44,8 +44,8 @@ func (m Matcher) getMatches(text string) []string {
 		return make([]string, 0)
 	}
 
-	const spotifyUrlPattern = "https?:\\/\\/open.spotify.com\\/(album|track)\\/.+?"
-	const appleMusicUrlPattern = "https?:\\/\\/music.apple.com\\/[a-z]{2}\\/album\\/.+?"
+	const spotifyUrlPattern = "https?:\\/\\/open.spotify.com\\/(album|track)\\/.+"
+	const appleMusicUrlPattern = "https?:\\/\\/music.apple.com\\/[a-z]{2}\\/album\\/.+"
 	urlPattern := fmt.Sprintf("(%s|%s)(\\s|$)", spotifyUrlPattern, appleMusicUrlPattern)
 
 	// Initialize the regular expression
