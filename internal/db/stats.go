@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/oldtelegram"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
@@ -29,7 +29,7 @@ func MigrateStats(db *gorm.DB) {
 }
 
 // Is called when any new message arrives update updates that users stats
-func UpdateStats(user telegram.User) {
+func UpdateStats(user oldtelegram.User) {
 	// Prevent race conditions
 	mutexStats.Lock()
 

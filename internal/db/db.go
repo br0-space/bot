@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/br0-space/bot/internal/config"
-	"github.com/br0-space/bot/internal/logger"
+	"github.com/br0-space/bot/internal/oldconfig"
+	"github.com/br0-space/bot/internal/oldlogger"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -14,27 +14,27 @@ import (
 var DB *gorm.DB
 
 func init() {
-	logger.Log.Debug("init database")
+	oldlogger.Log.Debug("init database")
 
 	var db *gorm.DB
 	var err error
-	switch config.Cfg.Database.Driver {
+	switch oldconfig.Cfg.Database.Driver {
 	case "sqlite":
-		db, err = gorm.Open(sqlite.Open(config.Cfg.Database.SQLite.File), &gorm.Config{})
+		db, err = gorm.Open(sqlite.Open(oldconfig.Cfg.Database.SQLite.File), &gorm.Config{})
 	case "postgres":
 		dsn := fmt.Sprintf(
 			"host=%s port=%d dbname=%s user=%s password=%s sslmode=%s TimeZone=%s",
-			config.Cfg.Database.Postgres.Host,
-			config.Cfg.Database.Postgres.Port,
-			config.Cfg.Database.Postgres.DBName,
-			config.Cfg.Database.Postgres.User,
-			config.Cfg.Database.Postgres.Password,
-			config.Cfg.Database.Postgres.SSL,
-			config.Cfg.Database.Postgres.Timezone,
+			oldconfig.Cfg.Database.Postgres.Host,
+			oldconfig.Cfg.Database.Postgres.Port,
+			oldconfig.Cfg.Database.Postgres.DBName,
+			oldconfig.Cfg.Database.Postgres.User,
+			oldconfig.Cfg.Database.Postgres.Password,
+			oldconfig.Cfg.Database.Postgres.SSL,
+			oldconfig.Cfg.Database.Postgres.Timezone,
 		)
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	default:
-		log.Panicln("unknown database driver", config.Cfg.Database.Driver)
+		log.Panicln("unknown database driver", oldconfig.Cfg.Database.Driver)
 	}
 
 	if err != nil {

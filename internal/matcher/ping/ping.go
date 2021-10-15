@@ -3,54 +3,50 @@ package ping
 import (
 	"regexp"
 
-	"github.com/br0-space/bot/internal/matcher/abstract"
-	"github.com/br0-space/bot/internal/matcher/registry"
+	"github.com/br0-space/bot/container"
+	"github.com/br0-space/bot/internal/logger"
+	"github.com/br0-space/bot/internal/matcher"
 	"github.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/telegram/webhook"
+	"github.com/segmentio/stats/v4"
 )
 
-// Each matcher extends the abstract matcher
 type Matcher struct {
-	abstract.Matcher
+	matcher.Matcher
+	log      logger.Interface
+	telegram telegram.Interface
 }
 
-// Return the identifier of this matcher for use in logging
+func MakeMatcher() Matcher {
+	return Matcher{
+		log:      container.ProvideLoggerService(),
+		telegram: container.ProvideTelegramService(),
+	}
+}
+
 func (m Matcher) Identifier() string {
 	return "ping"
 }
 
-// This is a command matcher and generates a help item
-func (m Matcher) GetHelpItems() []registry.HelpItem {
-	return []registry.HelpItem{{
-		Command:     "ping",
-		Description: "Antwortet mit `pong`",
-	}}
-}
-
-// Process a message received from Telegram
-func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Check if text starts with /ping and if not, ignore it
-	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
+func (m Matcher) ProcessMessage(messageIn webhook.Message) error {
+	if doesMatch := m.doesMatch(messageIn.Text); !doesMatch {
 		return nil
 	}
 
-	// Choose one option and send the result
-	return m.sendResponse(requestMessage)
+	stats.Incr("ping")
+
+	return m.sendResponse(messageIn)
 }
 
-// Check if a text starts with /ping
 func (m Matcher) doesMatch(text string) bool {
-	// Check if message starts with /ping
 	match, _ := regexp.MatchString(`^/ping(@|\s|$)`, text)
-
 	return match
 }
 
-// Send the result to the user who sent the request message
-func (m Matcher) sendResponse(requestMessage telegram.RequestMessage) error {
-	responseMessage := telegram.Message{
+func (m Matcher) sendResponse(messageIn webhook.Message) error {
+	messageOut := telegram.Message{
 		Text:             "pong",
-		ReplyToMessageID: requestMessage.ID,
+		ReplyToMessageID: messageIn.ID,
 	}
-
-	return telegram.SendMessage(requestMessage, responseMessage)
+	return m.telegram.SendMessage(messageIn.Chat.ID, messageOut)
 }

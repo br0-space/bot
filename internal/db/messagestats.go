@@ -3,7 +3,7 @@ package db
 import (
 	"time"
 
-	"github.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/oldtelegram"
 	"gorm.io/gorm"
 )
 
@@ -28,7 +28,7 @@ func MigrateMessageStats(db *gorm.DB) {
 	}
 }
 
-func InsertMessageStats(requestMessage telegram.RequestMessage) {
+func InsertMessageStats(requestMessage oldtelegram.RequestMessage) {
 	DB.Create(&MessageStats{
 		UserID: requestMessage.From.ID,
 		Time:   time.Now(),

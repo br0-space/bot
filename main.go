@@ -5,12 +5,18 @@ import (
 	"time"
 
 	"github.com/br0-space/bot/cmd"
+	"github.com/br0-space/bot/container"
 )
 
 func main() {
+	logger := container.ProvideLoggerService()
+
 	// Seed rand before doing anything else
 	rand.Seed(time.Now().UnixNano())
 
 	// Run server
-	cmd.RunServer()
+	err := cmd.NewCmd().RunServer()
+	if err != nil {
+		logger.Fatal(err)
+	}
 }

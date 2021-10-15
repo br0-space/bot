@@ -1,34 +1,59 @@
 package registry
 
 import (
+	"sync"
+
+	"github.com/br0-space/bot/container"
 	"github.com/br0-space/bot/internal/logger"
-	"github.com/br0-space/bot/internal/telegram"
+	"github.com/br0-space/bot/internal/matcher"
+	"github.com/br0-space/bot/internal/matcher/ping"
+	"github.com/br0-space/bot/internal/telegram/webhook"
 )
 
-// Each matcher must implement a function to process request messages
-type Matcher interface {
-	Identifier() string
-	GetHelpItems() []HelpItem
-	ProcessRequestMessage(requestMessage telegram.RequestMessage) error
-	HandleError(requestMessage telegram.RequestMessage, identifier string, err error)
+type Registry struct {
+	log logger.Interface
+	matchers []matcher.Interface
 }
 
-type HelpItem struct {
-	Command     string
-	Description string
+var registry *Registry
+
+func NewRegistry() *Registry {
+	if registry == nil {
+		registry = &Registry{
+			log:      container.ProvideLoggerService(),
+			matchers: make([]matcher.Interface, 0),
+		}
+		registry.registerMatcher(ping.MakeMatcher())
+	}
+
+	return registry
 }
 
-// List of all registered matcher instances
-var matchers = make([]Matcher, 0)
-
-// Add a matcher to the list
-func RegisterMatcher(matcher Matcher) {
-	logger.Log.Debug("register matcher", matcher.Identifier())
-
-	matchers = append(matchers, matcher)
+func (r *Registry) registerMatcher(matcher matcher.Interface) {
+	r.matchers = append(r.matchers, matcher)
 }
 
-// Return all registered matchers
-func GetRegisteredMatchers() []Matcher {
-	return matchers
+// Executes all matchers for a given request message
+// Through the magic of goroutines, this is done in parallel
+func (r *Registry) ProcessWebhookMessageInAllMatchers(messageIn webhook.Message) {
+	r.log.Debugf("%s wrote: %s", messageIn.From.Username, messageIn.Text)
+
+	// Create a wait group for synchronization
+	var waitGroup sync.WaitGroup
+
+	// We need to wait until all matchers are executed
+	waitGroup.Add(len(r.matchers))
+
+	// Launch a goroutine for each matcher
+	for _, m := range r.matchers {
+		go func(m matcher.Interface) {
+			defer waitGroup.Done()
+
+			// Let the matcher process the request message
+			if err := m.ProcessMessage(messageIn); err != nil {
+				m.HandleError(messageIn, err)
+				return
+			}
+		}(m)
+	}
 }

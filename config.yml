@@ -15,9 +15,11 @@ database:
 telegram:
   apiKey: ""
   webhookUrl: ""
-  baseUrl: "https://api.telegram.org/bot%s/"
+  baseUrl: "https://api.oldtelegram.org/bot%s/"
   endpointSetWebhook: "setWebhook"
   endpointSendMessage: "sendMessage"
+bots:
+
 stonksMatcher:
   quotesUrl: "https://query1.finance.yahoo.com/v7/finance/quote?symbols=%s"
 buzzwordsMatcher:
@@ -34,7 +36,7 @@ buzzwordsMatcher:
   - trigger: "(weggesynced|weggesynct)"
     reply: "`rm -rf /` *Weggesynced* ist jetzt auf *%d*"
   - trigger: "sync"
-    reply: "Der Sync ist stark in diesem! *Sync* ist damit auf *%d*"
+    reply: "Der Sync ist stark webhook diesem! *Sync* ist damit auf *%d*"
   - trigger: "obegfoin"
     reply: "Immer ist irgendwas kaputt! *Obegfoin* ist jetzt auf *%d*"
   - trigger: "lel"

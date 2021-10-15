@@ -14,7 +14,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 # Build-time req.
 RUN apk --no-cache add git ca-certificates
 
-# go config
+# go oldconfig
 ENV GO111MODULE=on
 ENV CGO_ENABLED=0
 
