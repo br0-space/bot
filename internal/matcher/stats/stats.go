@@ -25,9 +25,6 @@ func (m Matcher) GetHelpItems() []registry.HelpItem {
 	return []registry.HelpItem{{
 		Command:     "stats",
 		Description: "Zeigt alle dem Bot bekannten User an, sortiert nach der Anzahl ihrer bisherigen Posts",
-	}, {
-		Command:     "words",
-		Description: "Zeigt alle dem Bot bekannten User an, sortiert nach der Anzahl ihrer bisher geschriebenen Worte",
 	}}
 }
 
