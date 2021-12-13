@@ -41,3 +41,5 @@ buzzwordsMatcher:
     reply: "Und schon wieder wurde extrem laut gelacht! *Lel* ist jetzt auf *%d*"
   - trigger: "kartoffel"
     reply: "Kartoffel? 🤜🤛👊 Pommes! Schon *%d* Kilo zugenommen"
+  - trigger: "vapoctl"
+    reply: "🥦 schon wieder raucht sich einer dicht, schon *%d* mal"
