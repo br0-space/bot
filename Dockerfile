@@ -23,7 +23,8 @@ COPY . .
 
 RUN go build -o bin/br0bot main.go
 
-FROM scratch
+FROM alpine:latest
+RUN apk --no-cache add bash
 
 WORKDIR /opt/br0bot
 
