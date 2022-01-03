@@ -42,4 +42,4 @@ buzzwordsMatcher:
   - trigger: "kartoffel"
     reply: "Kartoffel? 🤜🤛👊 Pommes! Schon *%d* Kilo zugenommen"
   - trigger: "vapoctl"
-    reply: "🥦 schon wieder raucht sich einer gesund, Bereits *%d* mal wurde Medizin genommen"
+    reply: "🥦 schon wieder vaped sich einer gesund, Bereits *%d* mal wurde Medizin genommen"
