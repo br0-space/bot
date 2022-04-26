@@ -7,7 +7,7 @@ require (
 	github.com/spf13/viper v1.11.0
 	gorm.io/driver/postgres v1.3.4
 	gorm.io/driver/sqlite v1.3.1
-	gorm.io/gorm v1.23.4
+	gorm.io/gorm v1.23.5
 )
 
 require (
