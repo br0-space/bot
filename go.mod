@@ -6,7 +6,7 @@ require (
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7
 	github.com/spf13/viper v1.12.0
 	gorm.io/driver/postgres v1.3.7
-	gorm.io/driver/sqlite v1.3.4
+	gorm.io/driver/sqlite v1.3.6
 	gorm.io/gorm v1.23.8
 )
 
