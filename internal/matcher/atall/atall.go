@@ -1,68 +1,65 @@
 package atall
 
 import (
+	"fmt"
+	"github.com/br0-space/bot/interfaces"
+	"github.com/br0-space/bot/internal/matcher/abstract"
+	"github.com/br0-space/bot/internal/telegram"
 	"regexp"
 	"strings"
-
-	"github.com/br0-space/bot/internal/db"
-	"github.com/br0-space/bot/internal/matcher/abstract"
-	"github.com/br0-space/bot/internal/matcher/registry"
-	"github.com/br0-space/bot/internal/telegram"
 )
 
-// Each matcher extends the abstract matcher
+const identifier = "atall"
+
+var pattern = regexp.MustCompile(`(^|\s)@alle?(\s|$)`)
+
+var help []interfaces.MatcherHelpStruct
+
 type Matcher struct {
 	abstract.Matcher
+	cfg  interfaces.AtallMatcherConfigStruct
+	repo interfaces.StatsRepoInterface
 }
 
-// Return the identifier of this matcher for use in logging
-func (m Matcher) Identifier() string {
-	return "atall"
+func NewMatcher(
+	logger interfaces.LoggerInterface,
+	config interfaces.AtallMatcherConfigStruct,
+	repo interfaces.StatsRepoInterface,
+) *Matcher {
+	return &Matcher{
+		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		cfg:     config,
+		repo:    repo,
+	}
 }
 
-// This matcher is no command and generates no help items
-func (m Matcher) GetHelpItems() []registry.HelpItem {
-	return []registry.HelpItem{}
-}
-
-// Process a message received from Telegram
-func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Check if text contains @all or @alle and if not, ignore it
-	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
-		return nil
+func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+	matches := m.GetInlineMatches(messageIn)
+	if len(matches) == 0 {
+		return nil, nil
 	}
 
-	// Choose one option and send the result
-	return m.sendResponse(requestMessage)
-}
-
-// Check if a text contains @all or @alle
-func (m Matcher) doesMatch(text string) bool {
-	// Check if message is a command and if yes, ignore it
-	cmd, _ := regexp.MatchString(`^/`, text)
-	if cmd {
-		return false
+	users, err := m.repo.GetKnownUsers(messageIn.Chat.ID)
+	if err != nil {
+		return nil, err
 	}
 
-	// Check if message contains @all or @alle
-	match, _ := regexp.MatchString(`(^|\s)@alle?(\s|$)`, text)
-
-	return match
+	return reply(messageIn.TextOrCaption(), users)
 }
 
-// Send the original text together with a list of mentioned users
-func (m Matcher) sendResponse(requestMessage telegram.RequestMessage) error {
-	usernames := db.FindAllUsernames(requestMessage.From.Username)
-
-	text := requestMessage.TextOrCaption()
+func reply(text string, users []interfaces.StatsUserStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	text = strings.ReplaceAll(text, "@alle", "")
 	text = strings.ReplaceAll(text, "@all", "")
-	text = text + " " + strings.Join(usernames, " ")
 
-	responseMessage := telegram.Message{
-		Text:             text,
-		ReplyToMessageID: requestMessage.ID,
+	for _, user := range users {
+		text += fmt.Sprintf(
+			" [%s](tg://user?id=%d)",
+			telegram.EscapeMarkdown(user.Username),
+			user.ID,
+		)
 	}
 
-	return telegram.SendMessage(requestMessage, responseMessage)
+	return &[]interfaces.TelegramMessageStruct{
+		telegram.NewMarkdownMessage(text),
+	}, nil
 }

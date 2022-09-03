@@ -2,69 +2,66 @@ package stats
 
 import (
 	"fmt"
-	"regexp"
-
-	"github.com/br0-space/bot/internal/db"
+	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/internal/matcher/abstract"
-	"github.com/br0-space/bot/internal/matcher/registry"
 	"github.com/br0-space/bot/internal/telegram"
+	"regexp"
+	"strings"
 )
 
-// Each matcher extends the abstract matcher
+const identifier = "stats"
+
+var pattern = regexp.MustCompile(`(?i)^/(stats)(@\w+)?($| )`)
+
+var help = []interfaces.MatcherHelpStruct{{
+	Description: `Zeigt eine Liste der dem Bot bekannten User an.`,
+}}
+
+const template = "```\n%s\n```"
+
 type Matcher struct {
 	abstract.Matcher
+	cfg  interfaces.StatsMatcherConfigStruct
+	repo interfaces.StatsRepoInterface
 }
 
-// Return the identifier of this matcher for use in logging
-func (m Matcher) Identifier() string {
-	return "stats"
+func NewMatcher(
+	logger interfaces.LoggerInterface,
+	config interfaces.StatsMatcherConfigStruct,
+	repo interfaces.StatsRepoInterface,
+) *Matcher {
+	return &Matcher{
+		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		cfg:     config,
+		repo:    repo,
+	}
 }
 
-// This is a command matcher and generates a help item
-func (m Matcher) GetHelpItems() []registry.HelpItem {
-	return []registry.HelpItem{{
-		Command:     "stats",
-		Description: "Zeigt alle dem Bot bekannten User an, sortiert nach der Anzahl ihrer bisherigen Posts",
-	}}
-}
-
-// Process a message received from Telegram
-func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Write stats on each post
-	db.UpdateStats(requestMessage.From)
-
-	// Check if text starts with /stats and if not, ignore it
-	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
-		return nil
+func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+	if !m.DoesMatch(messageIn) {
+		return nil, fmt.Errorf("message does not match")
 	}
 
-	records := db.FindStatsTop()
-
-	return m.sendResponse(requestMessage, records)
-}
-
-// Check if a text starts with /stats
-func (m Matcher) doesMatch(text string) bool {
-	// Check if message starts with /choose
-	match, _ := regexp.MatchString(`^/stats(@|\s|$)`, text)
-
-	return match
-}
-
-func (m Matcher) sendResponse(requestMessage telegram.RequestMessage, records []db.Stats) error {
-	responseText := "```"
-
-	// Add one line per record
-	for _, record := range records {
-		responseText = responseText + fmt.Sprintf("\n%6d | %s", record.Posts, record.Username)
+	users, err := m.repo.GetTopUsers(messageIn.Chat.ID)
+	if err != nil {
+		return nil, err
 	}
 
-	responseText = responseText + "```"
+	return reply(users)
+}
 
-	responseMessage := telegram.Message{
-		Text:      responseText,
-		ParseMode: "Markdown",
+func reply(users []interfaces.StatsUserStruct) (*[]interfaces.TelegramMessageStruct, error) {
+	var lines []string
+	for _, user := range users {
+		lines = append(lines, fmt.Sprintf("%6d | %s", user.Posts, user.Username))
 	}
 
-	return telegram.SendMessage(requestMessage, responseMessage)
+	text := fmt.Sprintf(
+		template,
+		strings.Join(lines, "\n"),
+	)
+
+	return &[]interfaces.TelegramMessageStruct{
+		telegram.NewMarkdownMessage(text),
+	}, nil
 }

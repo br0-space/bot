@@ -2,95 +2,78 @@ package janein
 
 import (
 	"fmt"
+	"github.com/br0-space/bot/interfaces"
+	"github.com/br0-space/bot/internal/matcher/abstract"
+	"github.com/br0-space/bot/internal/telegram"
 	"math/rand"
 	"regexp"
-
-	"github.com/br0-space/bot/internal/matcher/abstract"
-	"github.com/br0-space/bot/internal/matcher/registry"
-	"github.com/br0-space/bot/internal/telegram"
+	"strings"
 )
 
-// Each matcher extends the abstract matcher
+const identifier = "janein"
+
+var pattern = regexp.MustCompile(`(?i)^/(jn|yn)(@\w+)?($| )(.+)?$`)
+
+var help = []interfaces.MatcherHelpStruct{{
+	Command:     `jn`,
+	Description: `Hilft dir, Entscheidungen zu treffen.`,
+	Usage:       `/jn <Frage>`,
+	Example:     `/jn ein Bier trinken`,
+}}
+
+var templates = struct {
+	insult string
+	yes    string
+	no     string
+}{
+	insult: `Ob du behindert bist hab ich gefragt?\! 🤪`,
+	yes:    `👍 *Ja*, du solltest *%s*\!`,
+	no:     `👎 *Nein*, du solltest nicht *%s*\!`,
+}
+
 type Matcher struct {
 	abstract.Matcher
+	cfg interfaces.JaneinMatcherConfigStruct
 }
 
-// Return the identifier of this matcher for use in logging
-func (m Matcher) Identifier() string {
-	return "janein"
+func NewMatcher(logger interfaces.LoggerInterface, config interfaces.JaneinMatcherConfigStruct) *Matcher {
+	return &Matcher{
+		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		cfg:     config,
+	}
 }
 
-// This is a command matcher and generates a help item
-func (m Matcher) GetHelpItems() []registry.HelpItem {
-	return []registry.HelpItem{{
-		Command:     "jn",
-		Description: "Sagt dir, ob du etwas machen sollst oder nicht (Beispiel: `/jn Bugs fixen`)",
-	}}
-}
-
-// Process a message received from Telegram
-func (m Matcher) ProcessRequestMessage(requestMessage telegram.RequestMessage) error {
-	// Check if text starts with /jn or /yn and if not, ignore it
-	if doesMatch := m.doesMatch(requestMessage.Text); !doesMatch {
-		return nil
+func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+	match := m.GetCommandMatch(messageIn)
+	if match == nil {
+		return nil, fmt.Errorf("message does not match")
 	}
 
-	// Get the option
-	option := m.getOption(requestMessage.Text)
-
-	// If not enough options were found, insult the idiot who sent the request message
-	if len(option) == 0 {
-		return m.sendInsultResponse(requestMessage)
+	match[3] = strings.TrimSpace(match[3])
+	if match[3] == "" {
+		return reply(templates.insult, "", messageIn.ID)
 	}
 
-	// Choose one option and send the result
-	return m.sendResultResponse(requestMessage, option, m.getRandomYesOrNo())
-}
-
-// Check if a text starts with /jn or /yn
-func (m Matcher) doesMatch(text string) bool {
-	match, _ := regexp.MatchString(`^/(jn|yn)(@|\s|$)`, text)
-
-	return match
-}
-
-// Check if a text starts with /jn or /yn and return the text behind
-func (m Matcher) getOption(text string) string {
-	match, _ := regexp.MatchString(`^/(jn|yn) .+`, text)
-	if !match {
-		return ""
+	if getRandomYesOrNo() {
+		return reply(templates.yes, match[3], messageIn.ID)
+	} else {
+		return reply(templates.no, match[3], messageIn.ID)
 	}
-
-	return text[4:]
 }
 
-// Maybe yeeeees, maybe noooooo
-func (m Matcher) getRandomYesOrNo() bool {
+func getRandomYesOrNo() bool {
 	return rand.Float32() < 0.5
 }
 
-// Send an insult to the user who sent the request message
-func (m Matcher) sendInsultResponse(requestMessage telegram.RequestMessage) error {
-	responseMessage := telegram.Message{
-		Text:             "Ob du behindert bist hab ich gefragt?! 🤪",
-		ReplyToMessageID: requestMessage.ID,
+func reply(template string, topic string, messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
+	if strings.Contains(template, "%s") {
+		template = fmt.Sprintf(
+			template,
+			telegram.EscapeMarkdown(topic),
+		)
 	}
 
-	return telegram.SendMessage(requestMessage, responseMessage)
-}
-
-// Send a message with the result to Telegram
-func (m Matcher) sendResultResponse(requestMessage telegram.RequestMessage, text string, result bool) error {
-	if result {
-		text = fmt.Sprintf("👍 Ja, du solltest %s!", text)
-	} else {
-		text = fmt.Sprintf("👎 Nein, du solltest nicht %s!", text)
-	}
-
-	responseMessage := telegram.Message{
-		Text:             text,
-		ReplyToMessageID: requestMessage.ID,
-	}
-
-	return telegram.SendMessage(requestMessage, responseMessage)
+	return &[]interfaces.TelegramMessageStruct{
+		telegram.NewMarkdownReply(template, messageID),
+	}, nil
 }
