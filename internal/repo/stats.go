@@ -1,4 +1,4 @@
-package db
+package repo
 
 import (
 	"github.com/br0-space/bot/interfaces"
@@ -20,7 +20,7 @@ func NewStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *StatsRepo {
 	return &StatsRepo{
 		BaseRepo: NewBaseRepo(
 			logger,
-			&Stats{},
+			&interfaces.Stats{},
 			tx,
 		),
 		log: logger,
@@ -39,7 +39,7 @@ func (r *StatsRepo) UpdateStats(chatID int64, userID int64, username string) err
 			"posts":     gorm.Expr("stats.posts + 1"),
 			"last_post": time.Now(),
 		}),
-	}).Create(&Stats{
+	}).Create(&interfaces.Stats{
 		ChatID:   chatID,
 		UserID:   userID,
 		Username: username,
@@ -49,7 +49,7 @@ func (r *StatsRepo) UpdateStats(chatID int64, userID int64, username string) err
 }
 
 func (r *StatsRepo) GetKnownUsers(chatID int64) ([]interfaces.StatsUserStruct, error) {
-	var records []Stats
+	var records []interfaces.Stats
 	r.tx.Where("chat_id = ?", chatID).Order("username asc").Find(&records)
 
 	var users []interfaces.StatsUserStruct
@@ -66,7 +66,7 @@ func (r *StatsRepo) GetKnownUsers(chatID int64) ([]interfaces.StatsUserStruct, e
 }
 
 func (r *StatsRepo) GetTopUsers(chatID int64) ([]interfaces.StatsUserStruct, error) {
-	var records []Stats
+	var records []interfaces.Stats
 	r.tx.Where("chat_id = ?", chatID).Order("posts desc").Find(&records)
 
 	var users []interfaces.StatsUserStruct

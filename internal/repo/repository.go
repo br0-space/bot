@@ -1,4 +1,4 @@
-package db
+package repo
 
 import (
 	"github.com/br0-space/bot/interfaces"

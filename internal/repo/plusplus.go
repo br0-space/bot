@@ -1,4 +1,4 @@
-package db
+package repo
 
 import (
 	"github.com/br0-space/bot/interfaces"
@@ -19,7 +19,7 @@ func NewPlusplusRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *PlusplusRe
 	return &PlusplusRepo{
 		BaseRepo: NewBaseRepo(
 			logger,
-			&Plusplus{},
+			&interfaces.Plusplus{},
 			tx,
 		),
 		log: logger,
@@ -36,7 +36,7 @@ func (r *PlusplusRepo) Increment(chatID int64, name string, increment int) (int,
 		DoUpdates: clause.Assignments(map[string]interface{}{
 			"value": gorm.Expr("plusplus.value + ?", increment),
 		}),
-	}).Create(&Plusplus{
+	}).Create(&interfaces.Plusplus{
 		ChatID: chatID,
 		Name:   name,
 		Value:  increment,
@@ -44,10 +44,41 @@ func (r *PlusplusRepo) Increment(chatID int64, name string, increment int) (int,
 		return 0, err
 	}
 
-	var record Plusplus
-	if err := r.tx.Where("chat_id = ? AND name = ?", chatID, name).First(&record).Error; err != nil {
+	var record interfaces.Plusplus
+	if err := r.tx.
+		Where("chat_id = ? AND name = ?", chatID, name).
+		First(&record).
+		Error; err != nil {
 		return 0, err
 	}
 
 	return record.Value, nil
+}
+
+func (r *PlusplusRepo) FindTops(chatID int64) ([]interfaces.Plusplus, error) {
+	var records []interfaces.Plusplus
+	if err := r.tx.
+		Where("chat_id = ?", chatID).
+		Order("value desc").
+		Limit(10).
+		Find(&records).
+		Error; err != nil {
+		return nil, err
+	}
+
+	return records, nil
+}
+
+func (r *PlusplusRepo) FindFlops(chatID int64) ([]interfaces.Plusplus, error) {
+	var records []interfaces.Plusplus
+	if err := r.tx.
+		Where("chat_id = ?", chatID).
+		Order("value asc").
+		Limit(10).
+		Find(&records).
+		Error; err != nil {
+		return nil, err
+	}
+
+	return records, nil
 }

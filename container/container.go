@@ -8,6 +8,7 @@ import (
 	"github.com/br0-space/bot/internal/db"
 	"github.com/br0-space/bot/internal/logger"
 	"github.com/br0-space/bot/internal/matcher"
+	"github.com/br0-space/bot/internal/repo"
 	"github.com/br0-space/bot/internal/telegram"
 	"github.com/br0-space/bot/internal/webhook"
 	"gorm.io/gorm"
@@ -98,7 +99,7 @@ func ProvideDatabaseMigration() *db.DatabaseMigration {
 func ProvideDatabaseRepository() interfaces.DatabaseRepositoryInterface {
 	tx := ProvideDatabaseConnection()
 
-	return db.NewRepository(
+	return repo.NewRepository(
 		ProvideLogger(),
 		ProvideMessageStatsRepo(tx),
 		ProvidePlusplusRepo(tx),
@@ -107,21 +108,21 @@ func ProvideDatabaseRepository() interfaces.DatabaseRepositoryInterface {
 }
 
 func ProvideMessageStatsRepo(tx *gorm.DB) interfaces.MessageStatsRepoInterface {
-	return db.NewMessageStatsRepo(
+	return repo.NewMessageStatsRepo(
 		ProvideLogger(),
 		tx,
 	)
 }
 
 func ProvidePlusplusRepo(tx *gorm.DB) interfaces.PlusplusRepoInterface {
-	return db.NewPlusplusRepo(
+	return repo.NewPlusplusRepo(
 		ProvideLogger(),
 		tx,
 	)
 }
 
 func ProvideStatsRepo(tx *gorm.DB) interfaces.StatsRepoInterface {
-	return db.NewStatsRepo(
+	return repo.NewStatsRepo(
 		ProvideLogger(),
 		tx,
 	)

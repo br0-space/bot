@@ -9,6 +9,7 @@ import (
 	"github.com/br0-space/bot/internal/matcher/ping"
 	"github.com/br0-space/bot/internal/matcher/plusplus"
 	"github.com/br0-space/bot/internal/matcher/stats"
+	"github.com/br0-space/bot/internal/matcher/topflop"
 	"sync"
 )
 
@@ -57,6 +58,9 @@ func (r *Registry) Init() {
 	}
 	if r.cfg.Stats.Enabled {
 		r.registerMatcher(stats.NewMatcher(r.log, r.cfg.Stats, r.repo.Stats()))
+	}
+	if r.cfg.Topflop.Enabled {
+		r.registerMatcher(topflop.NewMatcher(r.log, r.cfg.Topflop, r.repo.Plusplus()))
 	}
 }
 

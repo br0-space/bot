@@ -1,4 +1,4 @@
-package db
+package repo
 
 import (
 	"github.com/br0-space/bot/interfaces"
@@ -16,7 +16,7 @@ func NewMessageStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *Messag
 	return &MessageStatsRepo{
 		BaseRepo: NewBaseRepo(
 			logger,
-			&MessageStats{},
+			&interfaces.MessageStats{},
 			tx,
 		),
 		log: logger,
@@ -25,7 +25,7 @@ func NewMessageStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *Messag
 }
 
 func (r *MessageStatsRepo) InsertMessageStats(chatID int64, userID int64, words int) error {
-	return r.tx.Create(&MessageStats{
+	return r.tx.Create(&interfaces.MessageStats{
 		ChatID: chatID,
 		UserID: userID,
 		Time:   time.Now(),
@@ -46,7 +46,7 @@ func (r *MessageStatsRepo) GetKnownUserIDs(chatID int64) ([]int64, error) {
 
 func (r *MessageStatsRepo) GetWordCounts(chatID int64) ([]interfaces.MessageStatsWordCountStruct, error) {
 	var records []interfaces.MessageStatsWordCountStruct
-	err := r.tx.Model(&MessageStats{}).
+	err := r.tx.Model(&interfaces.MessageStats{}).
 		Joins("UserStats").
 		Select(`"message_stats".user_id, "UserStats".username, count("message_stats".words) as words`).
 		Where(`"message_stats".chat_id = ?`, chatID).

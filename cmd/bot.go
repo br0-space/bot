@@ -31,9 +31,11 @@ func main() {
 	// Gracefully stops stats collection.
 	defer procStatsCollector.Close()
 
-	logger.Info("Running database migrations")
-	if err := databaseMigration.Migrate(); err != nil {
-		logger.Fatal(err)
+	if config.Database.AutoMigrate {
+		logger.Info("Running database migrations")
+		if err := databaseMigration.Migrate(); err != nil {
+			logger.Fatal(err)
+		}
 	}
 
 	logger.Info("Initializing Matchers")

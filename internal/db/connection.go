@@ -6,6 +6,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"time"
 )
 
 func NewConnection(logger interfaces.LoggerInterface, config interfaces.DatabaseConfigStruct) *gorm.DB {
@@ -30,7 +31,16 @@ func NewConnection(logger interfaces.LoggerInterface, config interfaces.Database
 		logger.Panic("unknown database driver", config.Driver)
 	}
 
-	db, err := gorm.Open(dialector, &gorm.Config{})
+	db, err := gorm.Open(dialector, &gorm.Config{
+		FullSaveAssociations:   false,
+		AllowGlobalUpdate:      false,
+		SkipDefaultTransaction: true,
+		PrepareStmt:            true,
+		Logger:                 NewGormLoggerBridge(logger),
+		NowFunc: func() time.Time {
+			return time.Now().UTC()
+		},
+	})
 	if err != nil {
 		logger.Error("failed to connect database:", err)
 

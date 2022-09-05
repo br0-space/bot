@@ -53,7 +53,11 @@ func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[
 func reply(users []interfaces.StatsUserStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	var lines []string
 	for _, user := range users {
-		lines = append(lines, fmt.Sprintf("%6d | %s", user.Posts, user.Username))
+		lines = append(lines, fmt.Sprintf(
+			"%6d | %s",
+			user.Posts,
+			telegram.EscapeMarkdown(user.Username),
+		))
 	}
 
 	text := fmt.Sprintf(

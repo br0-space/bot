@@ -74,6 +74,7 @@ func loadConfig() (*interfaces.ConfigStruct, error) {
 		"postgres_password":    "database.postgresql.password",
 		"postgres_ssl":         "database.postgresql.ssl",
 		"postgres_timezone":    "database.postgresql.timezone",
+		"db_automigrate":       "database.autoMigrate",
 		"telegram_api_key":     "telegram.apiKey",
 		"telegram_webhook_url": "telegram.webhookUrl",
 		"telegram_chat_id":     "telegram.chatID",

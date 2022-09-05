@@ -13,6 +13,7 @@ database:
     password: ""
     ssl: "disable"
     timezone: "UTC"
+  autoMigrate: false
 
 telegram:
   apiKey: ""
@@ -38,4 +39,6 @@ matchers:
   plusplus:
     enabled: true
   stats:
+    enabled: true
+  topflop:
     enabled: true

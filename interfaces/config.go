@@ -29,6 +29,7 @@ type DatabaseConfigStruct struct {
 		SSL      string
 		Timezone string
 	}
+	AutoMigrate bool
 }
 
 type TelegramConfigStruct struct {
@@ -49,6 +50,7 @@ type MatchersConfigStruct struct {
 	Ping       PingMatcherConfigStruct
 	Plusplus   PlusplusMatcherConfigStruct
 	Stats      StatsMatcherConfigStruct
+	Topflop    TopflopMatcherConfigStruct
 }
 
 type AtallMatcherConfigStruct struct {
@@ -80,6 +82,10 @@ type PlusplusMatcherConfigStruct struct {
 }
 
 type StatsMatcherConfigStruct struct {
+	Enabled bool
+}
+
+type TopflopMatcherConfigStruct struct {
 	Enabled bool
 }
 
