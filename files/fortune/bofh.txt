@@ -1861,4 +1861,3 @@ DNS server drank too much and had a hiccup
 BOFH excuse #466:
 
 Your machine had the fuses in backwards.
-%

@@ -557,4 +557,3 @@ Why didn't the chicken cross the road? Because Chuck Norris got to it first.
 You know Chuck Norris' pet lizard, right? Last I heard, he was in the movie "Godzilla". Oh, and his pet turtle starred in "Gamera" as well.
 %
 http://chucknorrisfacts.com/ is built in Drupal because Chuck Norris knows a good CMS when he sees one.
-%

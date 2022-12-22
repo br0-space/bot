@@ -3325,4 +3325,3 @@ Great results can be achieved by small teams focused on the correct actions.
 Most APTs are not very advanced.
 
 -- Sun Tzu, The Art of Cyber War
-%

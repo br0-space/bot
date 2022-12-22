@@ -2185,8 +2185,12 @@ Alright, yes, date, and shop, and hang out, and go to school ... and save the wo
 -- Buffy, Buffy the Vampire Slayer, "Faith, Hope & Trick"
 Season 3, Episode 3
 %
-Although a fifth-generation American, Father Sweeny was more Irish than most of Erin's natives. He spoke with an Irish brogue which had mysteriously appeared during his nineteenth year and he *hated* the English. Due to his proclivity to belabor the British from his pulpit, complaints to his superiors were not infrequent. He would blame anything evil or merely inconvenient on the English people. If there was an act of terrorism, the responsibility was promptly laid at the feet of the Brits. If there was a natural disaster, undoubtedly the English government was an accessory to the fact, if not outrightly culpable. Repeatedly, his superiors called him on the carpet for his behavior. After a particularly vituperative anti-British broadside, the Bishop instructed Father Sweeny to come straight to his office; do not pass GO; do not collect two hundred dollars. Summing up a humiliating and soul-marking reprimand, the Bishop ended with: "Next week is Saint Patrick's Day. If you so much as *mention* the British, it's your last sermon!"
+Although a fifth-generation American, Father Sweeny was more Irish than most of Erin's natives. He spoke with an Irish brogue which had mysteriously appeared during his nineteenth year and he *hated* the English. Due to his proclivity to belabor the British from his pulpit, complaints to his superiors were not infrequent. He would blame anything evil or merely inconvenient on the English people. If there was an act of terrorism, the responsibility was promptly laid at the feet of the Brits. If there was a natural disaster, undoubtedly the English government was an accessory to the fact, if not outrightly culpable. Repeatedly, his superiors called him on the carpet for his behavior. After a particularly vituperative anti-British broadside, the Bishop instructed Father Sweeny to come straight to his office; do not pass GO; do not collect two hundred dollars. Summing up a humiliating and soul-marking reprimand, the Bishop ended with:
+
+"Next week is Saint Patrick's Day. If you so much as *mention* the British, it's your last sermon!"
+
 The following Sunday, as Father Sweeny spoke lovingly and eloquently of Saint Patrick, and he made a reference to the last Passover celebrated by Christ and His disciples. "Sure, an' you're all familiar with the tale.
+
 You know that Our Lord sat at the table and told his disciples that one among them would betray Him. As He looked around the table, He stopped at Peter, the Rock, who said, `Not I, Lord!' He looked at Thomas, who doubted, and Thomas said, `I could never do such a thing!' Then the Lord looked long and hard at Judas Iscariot, who said, `Cor, bloimy, Guv'na, you couldn't main may!'"
 %
 Always talk to your wife while you're making love... if there's a phone handy.
@@ -10350,4 +10354,3 @@ Zippity doo dah, zippity ay, I just gave my sister's cherry away!
 To a couple of truckers from Erie P.A., Zippity doo dah, zippity ay.
 
 -- John Valby
-%

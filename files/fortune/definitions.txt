@@ -5411,4 +5411,3 @@ The result of shutting down a production line.
 Zymurgy's Law of Volunteer Labor:
 
 People are always available for work in the past tense.
-%

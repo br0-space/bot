@@ -10,8 +10,8 @@ import (
 const (
 	typeText          Type   = "text"
 	typeQuote         Type   = "quote"
-	typeQuotePattern  string = `(?s)^(.+?)\n\n-- ([^\n]+)$`
-	typeQuoteTemplate string = "%s\n_\\-\\- %s_"
+	typeQuotePattern  string = `(?s)^(.+?)\n\n-- (.+)$`
+	typeQuoteTemplate string = "%s\n\n_*\\-\\- %s*_"
 	lineQuotePattern  string = `^(.+?): (.+)$`
 	lineQuoteTemplate string = "*%s*: %s"
 )
@@ -30,6 +30,8 @@ func getType(text string) Type {
 }
 
 func (t Type) getFortune(text string) Fortune {
+	text = strings.TrimSpace(text)
+
 	var lines []string
 	var source *string
 
@@ -93,7 +95,7 @@ func formatLines(lines []string) string {
 		res += formatLine(line) + "\n"
 	}
 
-	return res
+	return strings.TrimSpace(res)
 }
 
 func formatLine(line string) string {

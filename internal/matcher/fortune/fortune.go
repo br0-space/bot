@@ -27,7 +27,7 @@ var templates = struct {
 	fromFile string
 }{
 	list:     "*Available Fortune Cookie Files*\n\n%s",
-	random:   "\\[from `%s`\\]\n\n%s",
+	random:   "%s\n\n_\\[from `%s`\\]_",
 	fromFile: "%s",
 }
 
@@ -49,26 +49,26 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]
 
 	switch strings.TrimSpace(match[3]) {
 	case "list":
-		return replyList(messageIn.ID)
+		return replyList()
 	case "":
-		return replyRandom(messageIn.ID)
+		return replyRandom()
 	default:
-		return replyFromFile(strings.TrimSpace(match[3]), messageIn.ID)
+		return replyFromFile(strings.TrimSpace(match[3]))
 	}
 }
 
-func replyList(messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
+func replyList() (*[]interfaces.TelegramMessageStruct, error) {
 	text := fmt.Sprintf(
 		templates.list,
 		strings.Join(fortune.GetList(), "\n"),
 	)
 
 	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownReply(text, messageID),
+		telegram.NewMarkdownMessage(text),
 	}, nil
 }
 
-func replyRandom(messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
+func replyRandom() (*[]interfaces.TelegramMessageStruct, error) {
 	res, err := fortune.GetRandomFortune()
 	if err != nil {
 		return nil, err
@@ -76,16 +76,16 @@ func replyRandom(messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
 
 	text := fmt.Sprintf(
 		templates.random,
-		res.GetFile(),
 		res.ToMarkdown(),
+		res.GetFile(),
 	)
 
 	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownReply(text, messageID),
+		telegram.NewMarkdownMessage(text),
 	}, nil
 }
 
-func replyFromFile(file string, messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
+func replyFromFile(file string) (*[]interfaces.TelegramMessageStruct, error) {
 	if !fortune.Exists(file) {
 		return nil, fmt.Errorf(`fortune file "%s" does not exist`, file)
 	}
@@ -101,6 +101,6 @@ func replyFromFile(file string, messageID int64) (*[]interfaces.TelegramMessageS
 	)
 
 	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownReply(text, messageID),
+		telegram.NewMarkdownMessage(text),
 	}, nil
 }

@@ -151,4 +151,3 @@ What does it mean if there is no fortune for you?
 When you're not looking at it, this fortune is written in FORTRAN.
 %
 You will think of something funnier than this to add to the fortunes.
-%

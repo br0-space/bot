@@ -2616,4 +2616,3 @@ Diese FAQ ist ein großer Haufen Pferdemist.
 "Javascript ist ein Sicherheitsrisiko, weil man damit ActiveX freischalten kann"?! Utz solltes seine Entziehungskur fortsetzen und hier keine gequirlte Scheiße posten.
 
 -- Felix von Leitner in de.comp.security.firewall 2002-03-11 <3c8bfceb@fefe.de>
-%

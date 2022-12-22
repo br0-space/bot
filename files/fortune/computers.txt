@@ -3642,4 +3642,3 @@ Your mode of life will be changed to EBCDIC.
 Your password is pitifully obvious.
 %
 Your program is sick! Shoot it and put it out of its memory.
-%

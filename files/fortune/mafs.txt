@@ -422,4 +422,3 @@ A: One-half percent of alcohol.
 %
 Q:What is a dilemma?
 A: A lemma that proves two results.
-%
