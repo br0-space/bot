@@ -3,9 +3,6 @@ package main
 import (
 	"github.com/br0-space/bot/container"
 	"github.com/gorilla/mux"
-	"github.com/segmentio/stats/v4"
-	"github.com/segmentio/stats/v4/procstats"
-	"github.com/segmentio/stats/v4/prometheus"
 	"github.com/spf13/pflag"
 	"net/http"
 	"time"
@@ -20,16 +17,16 @@ func main() {
 	webhookHandler := container.ProvideTelegramWebhookHandler()
 	webhookTools := container.ProvideTelegramWebhookTools()
 
-	logger.Info("Initializing Prometheus stats collector")
-
-	prometheusHandler := prometheus.Handler{}
-	stats.Register(&prometheusHandler)
-	defer stats.Flush()
-
-	// Start a new collector for the current process, reporting Go metrics.
-	procStatsCollector := procstats.StartCollector(procstats.NewGoMetrics())
-	// Gracefully stops stats collection.
-	defer procStatsCollector.Close()
+	//logger.Info("Initializing Prometheus stats collector")
+	//
+	//prometheusHandler := prometheus.Handler{}
+	//stats.Register(&prometheusHandler)
+	//defer stats.Flush()
+	//
+	//// Start a new collector for the current process, reporting Go metrics.
+	//procStatsCollector := procstats.StartCollector(procstats.NewGoMetrics())
+	//// Gracefully stops stats collection.
+	//defer procStatsCollector.Close()
 
 	if config.Database.AutoMigrate {
 		logger.Info("Running database migrations")
@@ -48,7 +45,7 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/webhook", webhookHandler.ServeHTTP)
-	r.HandleFunc("/metrics", prometheusHandler.ServeHTTP)
+	//r.HandleFunc("/metrics", prometheusHandler.ServeHTTP)
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	http.Handle("/", r)
 
