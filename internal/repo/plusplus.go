@@ -27,26 +27,25 @@ func NewPlusplusRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *PlusplusRe
 	}
 }
 
-func (r *PlusplusRepo) Increment(chatID int64, name string, increment int) (int, error) {
+func (r *PlusplusRepo) Increment(name string, increment int) (int, error) {
 	mutexPlusplus.Lock()
 	defer mutexPlusplus.Unlock()
 
 	if err := r.tx.Clauses(clause.OnConflict{
-		Columns: []clause.Column{{Name: "chat_id"}, {Name: "name"}},
+		Columns: []clause.Column{{Name: "name"}},
 		DoUpdates: clause.Assignments(map[string]interface{}{
 			"value": gorm.Expr("plusplus.value + ?", increment),
 		}),
 	}).Create(&interfaces.Plusplus{
-		ChatID: chatID,
-		Name:   name,
-		Value:  increment,
+		Name:  name,
+		Value: increment,
 	}).Error; err != nil {
 		return 0, err
 	}
 
 	var record interfaces.Plusplus
 	if err := r.tx.
-		Where("chat_id = ? AND name = ?", chatID, name).
+		Where("name = ?", name).
 		First(&record).
 		Error; err != nil {
 		return 0, err
@@ -55,12 +54,11 @@ func (r *PlusplusRepo) Increment(chatID int64, name string, increment int) (int,
 	return record.Value, nil
 }
 
-func (r *PlusplusRepo) FindTops(chatID int64) ([]interfaces.Plusplus, error) {
+func (r *PlusplusRepo) FindTops(limit int) ([]interfaces.Plusplus, error) {
 	var records []interfaces.Plusplus
 	if err := r.tx.
-		Where("chat_id = ?", chatID).
 		Order("value desc").
-		Limit(10).
+		Limit(limit).
 		Find(&records).
 		Error; err != nil {
 		return nil, err
@@ -69,12 +67,11 @@ func (r *PlusplusRepo) FindTops(chatID int64) ([]interfaces.Plusplus, error) {
 	return records, nil
 }
 
-func (r *PlusplusRepo) FindFlops(chatID int64) ([]interfaces.Plusplus, error) {
+func (r *PlusplusRepo) FindFlops(limit int) ([]interfaces.Plusplus, error) {
 	var records []interfaces.Plusplus
 	if err := r.tx.
-		Where("chat_id = ?", chatID).
 		Order("value asc").
-		Limit(10).
+		Limit(limit).
 		Find(&records).
 		Error; err != nil {
 		return nil, err

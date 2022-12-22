@@ -6,6 +6,7 @@ type MatcherRegistryInterface interface {
 }
 
 type MatcherInterface interface {
+	IsEnabled() bool
 	GetIdentifier() string
 	GetHelp() []MatcherHelpStruct
 	DoesMatch(messageIn TelegramWebhookMessageStruct) bool

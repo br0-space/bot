@@ -7,7 +7,6 @@ import (
 
 type MessageStats struct {
 	gorm.Model
-	ChatID int64 `gorm:"<-:create;index"`
 	UserID int64 `gorm:"<-:create;index"`
 	//UserStats Stats     `gorm:"foreignKey:user_id;references:user_id;constraint:OnDelete:CASCADE"`
 	Time  time.Time `gorm:"<-:create;index"`
@@ -21,7 +20,7 @@ type MessageStatsWordCountStruct struct {
 }
 
 type MessageStatsRepoInterface interface {
-	InsertMessageStats(chatID int64, userID int64, words int) error
-	GetKnownUserIDs(chatID int64) ([]int64, error)
-	GetWordCounts(chatID int64) ([]MessageStatsWordCountStruct, error)
+	InsertMessageStats(userID int64, words int) error
+	GetKnownUserIDs() ([]int64, error)
+	GetWordCounts() ([]MessageStatsWordCountStruct, error)
 }

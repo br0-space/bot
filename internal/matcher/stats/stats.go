@@ -21,28 +21,25 @@ const template = "```\n%s\n```"
 
 type Matcher struct {
 	abstract.Matcher
-	cfg  interfaces.StatsMatcherConfigStruct
 	repo interfaces.StatsRepoInterface
 }
 
 func NewMatcher(
 	logger interfaces.LoggerInterface,
-	config interfaces.StatsMatcherConfigStruct,
 	repo interfaces.StatsRepoInterface,
-) *Matcher {
-	return &Matcher{
+) Matcher {
+	return Matcher{
 		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
-		cfg:     config,
 		repo:    repo,
 	}
 }
 
-func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
 		return nil, fmt.Errorf("message does not match")
 	}
 
-	users, err := m.repo.GetTopUsers(messageIn.Chat.ID)
+	users, err := m.repo.GetTopUsers()
 	if err != nil {
 		return nil, err
 	}

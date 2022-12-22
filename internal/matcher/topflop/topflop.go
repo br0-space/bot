@@ -6,63 +6,76 @@ import (
 	"github.com/br0-space/bot/internal/matcher/abstract"
 	"github.com/br0-space/bot/internal/telegram"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
 const identifier = "topflop"
+const defaultLimit = 10
 
-var pattern = regexp.MustCompile(`(?i)^/(top|flop)(@\w+)?($| )`)
+var pattern = regexp.MustCompile(`(?i)^/(top|flop)(@\w+)?($| )(\d+)?`)
 
 var help = []interfaces.MatcherHelpStruct{{
 	Command:     `top`,
 	Description: `Zeigt eine Liste der am meisten geplusten Begriffe an.`,
+	Usage:       `/top <optional: Anzahl der Einträge>`,
+	Example:     `/top 10`,
 }, {
 	Command:     `flop`,
 	Description: `Zeigt eine Liste der am meisten geminusten Begriffe an.`,
+	Usage:       `/flop <optional: Anzahl der Einträge>`,
+	Example:     `/flop 10`,
 }}
 
 const template = "```\n%s\n```"
 
 type Matcher struct {
 	abstract.Matcher
-	cfg  interfaces.TopflopMatcherConfigStruct
 	repo interfaces.PlusplusRepoInterface
 }
 
 func NewMatcher(
 	logger interfaces.LoggerInterface,
-	config interfaces.TopflopMatcherConfigStruct,
 	repo interfaces.PlusplusRepoInterface,
-) *Matcher {
-	return &Matcher{
+) Matcher {
+	return Matcher{
 		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
-		cfg:     config,
 		repo:    repo,
 	}
 }
 
-func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
 	}
 
+	cmd := match[0]
+	limit := defaultLimit
+	if match[3] != "" {
+		res, err := strconv.ParseInt(match[3], 10, 0)
+		if err != nil {
+			return nil, err
+		}
+		limit = int(res)
+	}
+
 	var records []interfaces.Plusplus
 	var err error
-	switch match[0] {
+	switch cmd {
 	case "top":
-		records, err = m.repo.FindTops(messageIn.Chat.ID)
+		records, err = m.repo.FindTops(limit)
 	case "flop":
-		records, err = m.repo.FindFlops(messageIn.Chat.ID)
+		records, err = m.repo.FindFlops(limit)
 	}
 	if err != nil {
 		return nil, err
 	}
 
-	return reply(records)
+	return reply(records, messageIn.ID)
 }
 
-func reply(records []interfaces.Plusplus) (*[]interfaces.TelegramMessageStruct, error) {
+func reply(records []interfaces.Plusplus, messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
 	var lines []string
 	for _, record := range records {
 		lines = append(lines, fmt.Sprintf(
@@ -78,6 +91,6 @@ func reply(records []interfaces.Plusplus) (*[]interfaces.TelegramMessageStruct, 
 	)
 
 	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownMessage(text),
+		telegram.NewMarkdownReply(text, messageID),
 	}, nil
 }

@@ -46,7 +46,6 @@ func ProvideConfig() *interfaces.ConfigStruct {
 func ProvideMatchersRegistry() interfaces.MatcherRegistryInterface {
 	return matcher.NewRegistry(
 		ProvideLogger(),
-		ProvideConfig().Matchers,
 		ProvideTelegramClient(),
 		ProvideDatabaseRepository(),
 	)

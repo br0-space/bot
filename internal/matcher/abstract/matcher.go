@@ -1,7 +1,9 @@
 package abstract
 
 import (
+	"fmt"
 	"github.com/br0-space/bot/interfaces"
+	"github.com/spf13/viper"
 	"regexp"
 	"strings"
 )
@@ -11,6 +13,11 @@ type Matcher struct {
 	identifier string
 	regexp     *regexp.Regexp
 	help       []interfaces.MatcherHelpStruct
+	cfg        *Config
+}
+
+type Config struct {
+	enabled *bool
 }
 
 func NewMatcher(
@@ -27,23 +34,37 @@ func NewMatcher(
 	}
 }
 
-func (m *Matcher) GetLogger() interfaces.LoggerInterface {
+func (m Matcher) WithConfig(cfg *Config) Matcher {
+	m.cfg = cfg
+
+	return m
+}
+
+func (m Matcher) IsEnabled() bool {
+	if m.cfg == nil || m.cfg.enabled == nil {
+		return true
+	}
+
+	return *m.cfg.enabled
+}
+
+func (m Matcher) GetLogger() interfaces.LoggerInterface {
 	return m.logger
 }
 
-func (m *Matcher) GetIdentifier() string {
+func (m Matcher) GetIdentifier() string {
 	return m.identifier
 }
 
-func (m *Matcher) GetHelp() []interfaces.MatcherHelpStruct {
+func (m Matcher) GetHelp() []interfaces.MatcherHelpStruct {
 	return m.help
 }
 
-func (m *Matcher) DoesMatch(messageIn interfaces.TelegramWebhookMessageStruct) bool {
+func (m Matcher) DoesMatch(messageIn interfaces.TelegramWebhookMessageStruct) bool {
 	return m.regexp.MatchString(messageIn.Text)
 }
 
-func (m *Matcher) GetCommandMatch(messageIn interfaces.TelegramWebhookMessageStruct) []string {
+func (m Matcher) GetCommandMatch(messageIn interfaces.TelegramWebhookMessageStruct) []string {
 	match := m.regexp.FindStringSubmatch(messageIn.Text)
 	if match == nil {
 		return nil
@@ -55,7 +76,7 @@ func (m *Matcher) GetCommandMatch(messageIn interfaces.TelegramWebhookMessageStr
 	return match
 }
 
-func (m *Matcher) GetInlineMatches(messageIn interfaces.TelegramWebhookMessageStruct) []string {
+func (m Matcher) GetInlineMatches(messageIn interfaces.TelegramWebhookMessageStruct) []string {
 	matches := m.regexp.FindAllString(messageIn.Text, -1)
 	if matches == nil {
 		return []string{}
@@ -68,6 +89,19 @@ func (m *Matcher) GetInlineMatches(messageIn interfaces.TelegramWebhookMessageSt
 	return matches
 }
 
-func (m *Matcher) HandleError(messageIn interfaces.TelegramWebhookMessageStruct, identifier string, err error) {
+func (m Matcher) HandleError(_ interfaces.TelegramWebhookMessageStruct, identifier string, err error) {
 	m.logger.Error(identifier, err.Error())
+}
+
+func LoadMatcherConfig(identifier string, cfg interface{}) {
+	v := viper.New()
+
+	v.SetConfigFile(fmt.Sprintf("config/%s.yaml", identifier))
+	if err := v.ReadInConfig(); err != nil {
+		panic(err)
+	}
+
+	if err := v.Unmarshal(cfg); err != nil {
+		panic(err)
+	}
 }

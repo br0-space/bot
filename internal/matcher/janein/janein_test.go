@@ -47,10 +47,9 @@ var tests = []struct {
 	{"/yn@bot foo* bar_", expectedReply},
 }
 
-func provideMatcher() *janein.Matcher {
+func provideMatcher() janein.Matcher {
 	return janein.NewMatcher(
 		container.ProvideLogger(),
-		container.ProvideConfig().Matchers.Janein,
 	)
 }
 

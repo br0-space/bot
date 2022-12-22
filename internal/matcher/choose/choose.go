@@ -31,17 +31,15 @@ var templates = struct {
 
 type Matcher struct {
 	abstract.Matcher
-	cfg interfaces.ChooseMatcherConfigStruct
 }
 
-func NewMatcher(logger interfaces.LoggerInterface, config interfaces.ChooseMatcherConfigStruct) *Matcher {
-	return &Matcher{
+func NewMatcher(logger interfaces.LoggerInterface) Matcher {
+	return Matcher{
 		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
-		cfg:     config,
 	}
 }
 
-func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")

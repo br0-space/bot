@@ -17,29 +17,26 @@ var help []interfaces.MatcherHelpStruct
 
 type Matcher struct {
 	abstract.Matcher
-	cfg  interfaces.AtallMatcherConfigStruct
 	repo interfaces.StatsRepoInterface
 }
 
 func NewMatcher(
 	logger interfaces.LoggerInterface,
-	config interfaces.AtallMatcherConfigStruct,
 	repo interfaces.StatsRepoInterface,
-) *Matcher {
-	return &Matcher{
+) Matcher {
+	return Matcher{
 		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
-		cfg:     config,
 		repo:    repo,
 	}
 }
 
-func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 	if len(matches) == 0 {
 		return nil, nil
 	}
 
-	users, err := m.repo.GetKnownUsers(messageIn.Chat.ID)
+	users, err := m.repo.GetKnownUsers()
 	if err != nil {
 		return nil, err
 	}

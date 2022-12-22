@@ -34,9 +34,7 @@ func NewMarkdownReply(text string, messageID int64) interfaces.TelegramMessageSt
 }
 
 func EscapeMarkdown(text string) string {
-	//return escape.MarkdownCharacters(text)
-
-	re := regexp.MustCompile("[_*\\[\\]()~`>#+\\-=|{}.!]")
+	re := regexp.MustCompile("[_*\\[\\]()~`>#+\\-=|{}.!\\\\]")
 
 	return re.ReplaceAllString(text, "\\$0")
 }

@@ -42,10 +42,9 @@ var tests = []struct {
 	{"/choose@bot foo* bar_ baz#", expectedReply},
 }
 
-func provideMatcher() *choose.Matcher {
+func provideMatcher() choose.Matcher {
 	return choose.NewMatcher(
 		container.ProvideLogger(),
-		container.ProvideConfig().Matchers.Choose,
 	)
 }
 

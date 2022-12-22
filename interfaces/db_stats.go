@@ -7,8 +7,7 @@ import (
 
 type Stats struct {
 	gorm.Model
-	ChatID   int64  `gorm:"<-:create;index:idx_stats_chat_id_user_id,unique"`
-	UserID   int64  `gorm:"<-:create;index:idx_stats_chat_id_user_id,unique"`
+	UserID   int64  `gorm:"<-:create;uniqueIndex"`
 	Username string `gorm:"<-"`
 	Posts    uint32 `gorm:"<-"`
 	LastPost time.Time
@@ -22,7 +21,7 @@ type StatsUserStruct struct {
 }
 
 type StatsRepoInterface interface {
-	UpdateStats(chatID int64, userID int64, username string) error
-	GetKnownUsers(chatID int64) ([]StatsUserStruct, error)
-	GetTopUsers(chatID int64) ([]StatsUserStruct, error)
+	UpdateStats(userID int64, username string) error
+	GetKnownUsers() ([]StatsUserStruct, error)
+	GetTopUsers() ([]StatsUserStruct, error)
 }

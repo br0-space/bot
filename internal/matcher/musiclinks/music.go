@@ -17,17 +17,15 @@ var help []interfaces.MatcherHelpStruct
 
 type Matcher struct {
 	abstract.Matcher
-	cfg interfaces.MusicLinksMatcherConfigStruct
 }
 
-func NewMatcher(logger interfaces.LoggerInterface, config interfaces.MusicLinksMatcherConfigStruct) *Matcher {
-	return &Matcher{
+func NewMatcher(logger interfaces.LoggerInterface) Matcher {
+	return Matcher{
 		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
-		cfg:     config,
 	}
 }
 
-func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	res := make([]interfaces.TelegramMessageStruct, 0)
 
 	matches := m.GetInlineMatches(messageIn)

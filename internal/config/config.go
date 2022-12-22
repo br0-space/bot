@@ -30,35 +30,34 @@ func NewConfig() *interfaces.ConfigStruct {
 
 func NewTestConfig() *interfaces.ConfigStruct {
 	return &interfaces.ConfigStruct{
-		Verbose:          false,
-		Quiet:            false,
-		Server:           interfaces.ServerConfigStruct{},
-		Database:         interfaces.DatabaseConfigStruct{},
-		Telegram:         interfaces.TelegramConfigStruct{},
-		Matchers:         interfaces.MatchersConfigStruct{},
-		StonksMatcher:    interfaces.StonksMatcherConfigStruct{},
-		BuzzwordsMatcher: []interfaces.BuzzwordsMatcherConfigStruct{},
+		Verbose:  false,
+		Quiet:    false,
+		Server:   interfaces.ServerConfigStruct{},
+		Database: interfaces.DatabaseConfigStruct{},
+		Telegram: interfaces.TelegramConfigStruct{},
 	}
 }
 
 func loadConfig() (*interfaces.ConfigStruct, error) {
+	v := viper.New()
+
 	// Bind to command line flags
-	if err := viper.BindPFlags(pflag.CommandLine); err != nil {
+	if err := v.BindPFlags(pflag.CommandLine); err != nil {
 		return nil, err
 	}
 
 	// Search config files in current directory only
-	viper.AddConfigPath(".")
+	v.AddConfigPath(".")
 
 	// Load config file
-	viper.SetConfigFile("config.yml")
-	if err := viper.ReadInConfig(); err != nil {
+	v.SetConfigFile("config.yaml")
+	if err := v.ReadInConfig(); err != nil {
 		log.Panicln(err)
 	}
 
 	// Load .env file
-	viper.SetConfigFile(".env")
-	if err := viper.MergeInConfig(); err != nil {
+	v.SetConfigFile(".env")
+	if err := v.MergeInConfig(); err != nil {
 		log.Println("no .env file found")
 	}
 
@@ -83,20 +82,20 @@ func loadConfig() (*interfaces.ConfigStruct, error) {
 	// Map directives from environment variables to config
 	for envKey, configKey := range envToConfig {
 		// Value from .env file overwrites value from config.yml
-		val := viper.GetString(envKey)
+		val := v.GetString(envKey)
 		if len(val) > 0 {
-			viper.Set(configKey, val)
+			v.Set(configKey, val)
 		}
 
 		// Bind environment variable to config
-		if err := viper.BindEnv(configKey, strings.ToUpper(envKey)); err != nil {
+		if err := v.BindEnv(configKey, strings.ToUpper(envKey)); err != nil {
 			log.Panicln(err)
 		}
 	}
 
 	// Convert completed config data in Viper to Config struct
 	var cfg interfaces.ConfigStruct
-	if err := viper.Unmarshal(&cfg); err != nil {
+	if err := v.Unmarshal(&cfg); err != nil {
 		log.Panicln(err)
 	}
 

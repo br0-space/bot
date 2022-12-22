@@ -32,10 +32,9 @@ var tests = []struct {
 	{"/ping@bot foo", expectedReply},
 }
 
-func provideMatcher() *ping.Matcher {
+func provideMatcher() ping.Matcher {
 	return ping.NewMatcher(
 		container.ProvideLogger(),
-		container.ProvideConfig().Matchers.Ping,
 	)
 }
 

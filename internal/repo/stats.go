@@ -28,19 +28,18 @@ func NewStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *StatsRepo {
 	}
 }
 
-func (r *StatsRepo) UpdateStats(chatID int64, userID int64, username string) error {
+func (r *StatsRepo) UpdateStats(userID int64, username string) error {
 	mutexStats.Lock()
 	defer mutexStats.Unlock()
 
 	return r.tx.Clauses(clause.OnConflict{
-		Columns: []clause.Column{{Name: "chat_id"}, {Name: "user_id"}},
+		Columns: []clause.Column{{Name: "user_id"}},
 		DoUpdates: clause.Assignments(map[string]interface{}{
 			"username":  username,
 			"posts":     gorm.Expr("stats.posts + 1"),
 			"last_post": time.Now(),
 		}),
 	}).Create(&interfaces.Stats{
-		ChatID:   chatID,
 		UserID:   userID,
 		Username: username,
 		Posts:    1,
@@ -48,9 +47,12 @@ func (r *StatsRepo) UpdateStats(chatID int64, userID int64, username string) err
 	}).Error
 }
 
-func (r *StatsRepo) GetKnownUsers(chatID int64) ([]interfaces.StatsUserStruct, error) {
+func (r *StatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
 	var records []interfaces.Stats
-	r.tx.Where("chat_id = ?", chatID).Order("username asc").Find(&records)
+	r.tx.
+		Where("user_id != 0").
+		Order("username asc").
+		Find(&records)
 
 	var users []interfaces.StatsUserStruct
 	for _, record := range records {
@@ -65,9 +67,12 @@ func (r *StatsRepo) GetKnownUsers(chatID int64) ([]interfaces.StatsUserStruct, e
 	return users, nil
 }
 
-func (r *StatsRepo) GetTopUsers(chatID int64) ([]interfaces.StatsUserStruct, error) {
+func (r *StatsRepo) GetTopUsers() ([]interfaces.StatsUserStruct, error) {
 	var records []interfaces.Stats
-	r.tx.Where("chat_id = ?", chatID).Order("posts desc").Find(&records)
+	r.tx.
+		Where("user_id != 0").
+		Order("posts desc").
+		Find(&records)
 
 	var users []interfaces.StatsUserStruct
 	for _, record := range records {

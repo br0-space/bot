@@ -20,17 +20,15 @@ const template = `pong`
 
 type Matcher struct {
 	abstract.Matcher
-	cfg interfaces.PingMatcherConfigStruct
 }
 
-func NewMatcher(logger interfaces.LoggerInterface, config interfaces.PingMatcherConfigStruct) *Matcher {
-	return &Matcher{
+func NewMatcher(logger interfaces.LoggerInterface) Matcher {
+	return Matcher{
 		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
-		cfg:     config,
 	}
 }
 
-func (m *Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
 		return nil, fmt.Errorf("message does not match")
 	}

@@ -22,23 +22,3 @@ telegram:
   endpointSetWebhook: "setWebhook"
   endpointSendMessage: "sendMessage"
   chatID: ""
-
-matchers:
-  atall:
-    enabled: true
-  choose:
-    enabled: true
-  help:
-    enabled: true
-  janein:
-    enabled: true
-  musiclinks:
-    enabled: true
-  ping:
-    enabled: true
-  plusplus:
-    enabled: true
-  stats:
-    enabled: true
-  topflop:
-    enabled: true

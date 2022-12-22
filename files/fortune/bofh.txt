@@ -172,7 +172,7 @@ boss forgot system password
 %
 BOFH excuse #44:
 
-bank holiday - system operating credits  not recharged
+bank holiday - system operating credits not recharged
 %
 BOFH excuse #45:
 
@@ -312,7 +312,7 @@ Yes, yes, its called a design limitation
 %
 BOFH excuse #79:
 
-Look, buddy:  Windows 3.1 IS A General Protection Fault.
+Look, buddy: Windows 3.1 IS A General Protection Fault.
 %
 BOFH excuse #80:
 
@@ -576,7 +576,7 @@ Too few computrons available.
 %
 BOFH excuse #145:
 
-Flat tire on station wagon with tapes.  ("Never underestimate the bandwidth of a station wagon full of tapes hurling down the highway" Andrew S. Tannenbaum)
+Flat tire on station wagon with tapes. ("Never underestimate the bandwidth of a station wagon full of tapes hurling down the highway" Andrew S. Tannenbaum)
 %
 BOFH excuse #146:
 
@@ -824,7 +824,7 @@ Police are examining all internet packets in the search for a narco-net-traffick
 %
 BOFH excuse #207:
 
-We are currently trying a new concept of using a live mouse.  Unfortunately, one has yet to survive being hooked up to the computer.....please bear with us.
+We are currently trying a new concept of using a live mouse. Unfortunately, one has yet to survive being hooked up to the computer.....please bear with us.
 %
 BOFH excuse #208:
 
@@ -860,7 +860,7 @@ High nuclear activity in your area.
 %
 BOFH excuse #216:
 
-What office are you in? Oh, that one.  Did you know that your building was built over the universities first nuclear research site? And wow, aren't you the lucky one, your office is right over where the core is buried!
+What office are you in? Oh, that one. Did you know that your building was built over the universities first nuclear research site? And wow, aren't you the lucky one, your office is right over where the core is buried!
 %
 BOFH excuse #217:
 
@@ -872,7 +872,7 @@ The UPS doesn't have a battery backup.
 %
 BOFH excuse #219:
 
-Recursivity.  Call back if it happens again.
+Recursivity. Call back if it happens again.
 %
 BOFH excuse #220:
 
@@ -880,11 +880,11 @@ Someone thought The Big Red Button was a light switch.
 %
 BOFH excuse #221:
 
-The mainframe needs to rest.  It's getting old, you know.
+The mainframe needs to rest. It's getting old, you know.
 %
 BOFH excuse #222:
 
-I'm not sure.  Try calling the Internet's head office -- it's in the book.
+I'm not sure. Try calling the Internet's head office -- it's in the book.
 %
 BOFH excuse #223:
 
@@ -892,11 +892,11 @@ The lines are all busy (busied out, that is -- why let them in to begin with?).
 %
 BOFH excuse #224:
 
-Jan  9 16:41:27 huber su: 'su root' succeeded for .... on /dev/pts/1
+Jan 9 16:41:27 huber su: 'su root' succeeded for .... on /dev/pts/1
 %
 BOFH excuse #225:
 
-It's those computer people in X {city of world}.  They keep stuffing things up.
+It's those computer people in X {city of world}. They keep stuffing things up.
 %
 BOFH excuse #226:
 
@@ -1116,7 +1116,7 @@ The static electricity routing is acting up...
 %
 BOFH excuse #280:
 
-Traceroute says that there is a routing problem in the backbone.  It's not our problem.
+Traceroute says that there is a routing problem in the backbone. It's not our problem.
 %
 BOFH excuse #281:
 
@@ -1288,7 +1288,7 @@ Your Pentium has a heating problem - try cooling it with ice cold water.(Do not 
 %
 BOFH excuse #323:
 
-Your processor has processed too many instructions.  Turn it off immediately, do not type any commands!!
+Your processor has processed too many instructions. Turn it off immediately, do not type any commands!!
 %
 BOFH excuse #324:
 
@@ -1368,11 +1368,11 @@ HTTPD Error 4004 : very old Intel cpu - insufficient processing power
 %
 BOFH excuse #343:
 
-The ATM board has run out of 10 pound notes.  We are having a whip round to refill it, care to contribute ?
+The ATM board has run out of 10 pound notes. We are having a whip round to refill it, care to contribute ?
 %
 BOFH excuse #344:
 
-Network failure -  call NBC
+Network failure - call NBC
 %
 BOFH excuse #345:
 
@@ -1448,7 +1448,7 @@ Plasma conduit breach
 %
 BOFH excuse #363:
 
-Out of cards on drive D:
+Out of cards on drive D
 %
 BOFH excuse #364:
 
@@ -1596,7 +1596,7 @@ We are a 100% Microsoft Shop.
 %
 BOFH excuse #400:
 
-We are Microsoft.  What you are experiencing is not a problem; it is an undocumented feature.
+We are Microsoft. What you are experiencing is not a problem; it is an undocumented feature.
 %
 BOFH excuse #401:
 
@@ -1664,7 +1664,7 @@ We're out of slots on the server
 %
 BOFH excuse #417:
 
-Computer room being moved.  Our systems are down for the weekend.
+Computer room being moved. Our systems are down for the weekend.
 %
 BOFH excuse #418:
 
@@ -1812,7 +1812,7 @@ Rhythmic variations in the voltage reaching the power supply.
 %
 BOFH excuse #454:
 
-Keyboard Actuator Failure.  Order and Replace.
+Keyboard Actuator Failure. Order and Replace.
 %
 BOFH excuse #455:
 
