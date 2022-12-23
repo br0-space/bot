@@ -29,7 +29,7 @@ func NewMatcher(
 	var cfg Config
 	abstract.LoadMatcherConfig(identifier, &cfg)
 
-	foo := fmt.Sprintf(`(?i)(^|\s)(%s)(\s|$)`, cfg.GetPattern())
+	foo := fmt.Sprintf(`(?i)(%s)`, cfg.GetPattern())
 	pattern = regexp.MustCompile(
 		foo,
 	)
