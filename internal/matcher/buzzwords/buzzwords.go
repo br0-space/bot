@@ -55,7 +55,7 @@ func (m Matcher) parseTriggers(matches []string) []string {
 	var triggers []string
 
 	for _, match := range matches {
-		triggers = append(triggers, m.cfg.GetTrigger(strings.TrimSpace(match)))
+		triggers = append(triggers, m.cfg.GetTrigger(match))
 	}
 
 	unique.Sort(unique.StringSlice{P: &triggers})

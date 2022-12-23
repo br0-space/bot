@@ -7,15 +7,24 @@ import (
 	"strings"
 )
 
-type Config struct {
-	abstract.Config
-	Buzzwords []Buzzword `mapstructure:"buzzwords"`
-}
-
 type Buzzword struct {
 	Trigger string `mapstructure:"trigger"`
 	Pattern string `mapstructure:"pattern"`
 	Reply   string `mapstructure:"reply"`
+}
+
+func (b Buzzword) Matches(text string) bool {
+	if b.Pattern != "" {
+		pattern := fmt.Sprintf(`(?i)%s`, b.Pattern)
+		return regexp.MustCompile(pattern).MatchString(text)
+	}
+
+	return strings.ToLower(b.Trigger) == strings.ToLower(text)
+}
+
+type Config struct {
+	abstract.Config
+	Buzzwords []Buzzword `mapstructure:"buzzwords"`
 }
 
 func (c Config) GetPattern() string {
@@ -32,11 +41,10 @@ func (c Config) GetPattern() string {
 }
 
 func (c Config) GetTrigger(match string) string {
+	match = strings.TrimSpace(match)
+
 	for _, buzzword := range c.Buzzwords {
-		if buzzword.Pattern != "" && regexp.MustCompile(buzzword.Pattern).MatchString(match) {
-			return buzzword.Trigger
-		}
-		if buzzword.Trigger == match {
+		if buzzword.Matches(match) {
 			return buzzword.Trigger
 		}
 	}

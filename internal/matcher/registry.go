@@ -90,12 +90,13 @@ func (r *Registry) Process(messageIn interfaces.TelegramWebhookMessageStruct) {
 
 				*messagesOut = append(
 					*messagesOut,
-					telegram.NewMarkdownMessage(
+					telegram.NewMarkdownReply(
 						fmt.Sprintf(
 							errorTemplate,
 							m.GetIdentifier(),
 							telegram.EscapeMarkdown(err.Error()),
 						),
+						messageIn.ID,
 					),
 				)
 			}
