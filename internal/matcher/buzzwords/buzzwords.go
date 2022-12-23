@@ -29,7 +29,7 @@ func NewMatcher(
 	var cfg Config
 	abstract.LoadMatcherConfig(identifier, &cfg)
 
-	foo := fmt.Sprintf(`(?i)(%s)`, cfg.GetPattern())
+	foo := fmt.Sprintf(`(?i)\b(%s)\b`, cfg.GetPattern())
 	pattern = regexp.MustCompile(
 		foo,
 	)
@@ -42,9 +42,6 @@ func NewMatcher(
 }
 
 func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
-	// Double all whitespaces to work around missing support for lookahead/lookbehind in Go's regexp
-	messageIn.Text = regexp.MustCompile(`\s`).ReplaceAllString(messageIn.Text, "  ")
-
 	matches := m.GetInlineMatches(messageIn)
 	triggers := m.parseTriggers(matches)
 
