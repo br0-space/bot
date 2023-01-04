@@ -43,20 +43,28 @@ func NewMatcher(
 
 func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
-	tokens := m.ParseTokens(matches)
 
-	return m.processTokens(messageIn.Chat.ID, tokens)
+	err, tokens := ParseTokens(matches)
+	if err != nil {
+		return nil, err
+	}
+
+	return m.processTokens(tokens)
 }
 
-func (m Matcher) ParseTokens(matches []string) []Token {
-	re := regexp.MustCompile(`([+-]{2,}|\+-|—)$`)
+func ParseTokens(matches []string) (error, []Token) {
+	re := regexp.MustCompile(`(\+{2,}|-{2,}|\+-|-\+|—)$`)
 
 	names := make([]string, 0)
 	values := make(map[string]int, 0)
 	for _, match := range matches {
 		mode := re.FindString(match)
 		name := strings.ToLower(match[:len(match)-len(mode)])
-		increment := m.getTokenIncrement(mode)
+
+		err, increment := GetTokenIncrement(mode)
+		if err != nil {
+			return err, nil
+		}
 
 		if _, exists := values[name]; !exists {
 			names = append(names, name)
@@ -71,29 +79,29 @@ func (m Matcher) ParseTokens(matches []string) []Token {
 		tokens = append(tokens, Token{Name: name, Increment: values[name]})
 	}
 
-	return tokens
+	return nil, tokens
 }
 
-func (m Matcher) getTokenIncrement(mode string) int {
+func GetTokenIncrement(mode string) (error, int) {
 	switch {
 	case regexp.MustCompile(`^\++$`).MatchString(mode):
-		return len(mode) - 1
+		return nil, len(mode) - 1
 	case regexp.MustCompile(`^-+$`).MatchString(mode):
-		return -1 * (len(mode) - 1)
-	case mode == "+-":
-		return 0
+		return nil, -1 * (len(mode) - 1)
+	case mode == "+-" || mode == "-+":
+		return nil, 0
 	case mode == "—":
-		return -1
+		return nil, -1
 	}
 
-	return 0
+	return fmt.Errorf(`unable to get increment value from mode "%s"`, mode), 0
 }
 
-func (m Matcher) processTokens(chatID int64, tokens []Token) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) processTokens(tokens []Token) (*[]interfaces.TelegramMessageStruct, error) {
 	messages := make([]interfaces.TelegramMessageStruct, 0)
 
 	for _, token := range tokens {
-		message, err := m.processToken(chatID, token)
+		message, err := m.processToken(token)
 		if err != nil {
 			return nil, err
 		}
@@ -104,7 +112,7 @@ func (m Matcher) processTokens(chatID int64, tokens []Token) (*[]interfaces.Tele
 	return &messages, nil
 }
 
-func (m Matcher) processToken(chatID int64, token Token) (*interfaces.TelegramMessageStruct, error) {
+func (m Matcher) processToken(token Token) (*interfaces.TelegramMessageStruct, error) {
 	value, err := m.repo.Increment(token.Name, token.Increment)
 	if err != nil {
 		return nil, err
@@ -119,9 +127,9 @@ func reply(token Token, value int) interfaces.TelegramMessageStruct {
 	var mode string
 	switch {
 	case token.Increment > 0:
-		mode = "++"
+		mode = fmt.Sprintf("+%d", token.Increment)
 	case token.Increment < 0:
-		mode = "--"
+		mode = fmt.Sprintf("%d", token.Increment)
 	default:
 		mode = "+-"
 	}
