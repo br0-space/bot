@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/br0-space/bot/container"
 	"github.com/gorilla/mux"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/pflag"
 	"net/http"
 	"time"
@@ -16,17 +17,6 @@ func main() {
 	databaseMigration := container.ProvideDatabaseMigration()
 	webhookHandler := container.ProvideTelegramWebhookHandler()
 	webhookTools := container.ProvideTelegramWebhookTools()
-
-	//logger.Info("Initializing Prometheus stats collector")
-	//
-	//prometheusHandler := prometheus.Handler{}
-	//stats.Register(&prometheusHandler)
-	//defer stats.Flush()
-	//
-	//// Start a new collector for the current process, reporting Go metrics.
-	//procStatsCollector := procstats.StartCollector(procstats.NewGoMetrics())
-	//// Gracefully stops stats collection.
-	//defer procStatsCollector.Close()
 
 	if config.Database.AutoMigrate {
 		logger.Info("Running database migrations")
@@ -45,7 +35,7 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/webhook", webhookHandler.ServeHTTP)
-	//r.HandleFunc("/metrics", prometheusHandler.ServeHTTP)
+	r.Handle("/metrics", promhttp.Handler())
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	http.Handle("/", r)
 
