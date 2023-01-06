@@ -27,13 +27,15 @@ var parseTests = []struct {
 	{[]string{"foo++", "bar--"}, nil, []plusplus.Token{{"foo", 1}, {"bar", -1}}},
 	{[]string{"foo+bar++"}, nil, []plusplus.Token{{"foo+bar", 1}}},
 	{[]string{"foo++bar++"}, nil, []plusplus.Token{{"foo++bar", 1}}},
+	{[]string{"foo"}, fmt.Errorf(`unable to find mode in match "foo"`), nil},
+	{[]string{"++"}, fmt.Errorf(`unable to find name in match "++"`), nil},
 }
 
 func TestParseTokens(t *testing.T) {
 	t.Parallel()
 
 	for _, tt := range parseTests {
-		err, tokens := plusplus.ParseTokens(tt.in)
+		err, tokens := plusplus.GetTokens(tt.in)
 		assert.Equal(t, tt.err, err, tt.in)
 		assert.Equal(t, tt.expected, tokens, tt.in)
 	}

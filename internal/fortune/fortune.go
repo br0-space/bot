@@ -47,6 +47,10 @@ func GetRandomFortune() (Fortune, error) {
 }
 
 func GetFortune(file string) (Fortune, error) {
+	if !Exists(file) {
+		return Fortune{}, fmt.Errorf(`fortune file "%s" does not exist`, file)
+	}
+
 	fortunes, err := readFortuneFile(file)
 	if err != nil {
 		return Fortune{}, err
