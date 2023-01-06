@@ -3,14 +3,14 @@ package container
 import (
 	"flag"
 	"github.com/br0-space/bot/interfaces"
-	"github.com/br0-space/bot/internal/config"
-	_ "github.com/br0-space/bot/internal/config"
-	"github.com/br0-space/bot/internal/db"
-	"github.com/br0-space/bot/internal/logger"
-	"github.com/br0-space/bot/internal/matcher"
-	"github.com/br0-space/bot/internal/repo"
-	"github.com/br0-space/bot/internal/telegram"
-	"github.com/br0-space/bot/internal/webhook"
+	"github.com/br0-space/bot/pkg/config"
+	_ "github.com/br0-space/bot/pkg/config"
+	"github.com/br0-space/bot/pkg/db"
+	"github.com/br0-space/bot/pkg/logger"
+	"github.com/br0-space/bot/pkg/matcher"
+	"github.com/br0-space/bot/pkg/repo"
+	"github.com/br0-space/bot/pkg/telegram"
+	"github.com/br0-space/bot/pkg/webhook"
 	"gorm.io/gorm"
 )
 
