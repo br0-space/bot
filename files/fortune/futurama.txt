@@ -397,113 +397,155 @@ Were-Bender: Oh boy, I feel like a car in a candy store.
 Bender: Hey, that's my last beer, you bastard. I'll kill you!
 Fry: I'll kill you too, buddy, I'll kill you too.
 %
-"C'mon guys. Tonight we're gonna party like it's 1999...again." -Fry "I'm gonna drink 'till I reboot." -Bender
+Fry: C'mon guys. Tonight we're gonna party like it's 1999...again.
+Bender: I'm gonna drink 'till I reboot.
 %
-"Who was that guy?" -Fry "Your momma! Now shut up and drag me to work." -Bender
+Fry: Who was that guy?
+Bender: Your momma! Now shut up and drag me to work.
 %
-"Bender, we didn't mind your drinking or your cleptomania or your pornography ring." -Leela "In fact, that's why we love you." -Zoidberg
+Leela: Bender, we didn't mind your drinking or your cleptomania or your pornography ring.
+Zoidberg: In fact, that's why we love you.
 %
 "If only he had joined a mainstream religion, like Oprahism or Voodoo."
 -Professor
 %
-"Who would have though hell would really exist? And that it would be in New Jersey?" -Leela "Actually..." - Fry
+Leela: Who would have though hell would really exist? And that it would be in New Jersey?
+ Fry: Actually...
 %
-"Good news, everyone. Tomorrow you'll be making a delivery to Ebola 9, the virus planet." -Professor "Why can't they go today?"
-"Because tonight's a special night, and I want all of you to be alive."
--Professor
+Professor: Good news, everyone. Tomorrow you'll be making a delivery to Ebola 9, the virus planet.
+Hermes: Why can't they go today?
+Professor: Because tonight's a special night, and I want all of you to be alive.
 %
-"Eureka!" -Professor "Did you build the Smell-o-scope?" -Fry "No. I remembered that I built one last year." -Professor
+Professor: Eureka!
+Fry: Did you build the Smell-o-scope?
+Professor: No. I remembered that I built one last year.
 %
-"This is a great, as long as you don't make me smell Uranus. Heh heh."
--Fry "I don't get it." -Leela "I'm sorry, Fry, but astronomers renamed Uranus in 2620 to end that stupid joke once and for all." -Professor "Oh. What's it called now?" -Fry "Urectum." -Professor
+Fry: This is a great, as long as you don't make me smell Uranus. Heh heh.
+Leela: I don't get it.
+Professor: I'm sorry, Fry, but astronomers renamed Uranus in 2620 to end that stupid joke once and for all.
+Fry: Oh. What's it called now?
+Professor: Urectum.
 %
-"I gotta be sure this isn't another scientific fraud like global warming or second-hand smoke." -Mayor
+Mayor: I gotta be sure this isn't another scientific fraud like global warming or second-hand smoke.
 %
-"But suppose we sent a crew to plant an explosive precisely on the fault line between this mass of coffee grounds and this deposit of America Online floppy disks." -Professor "In theory, it could work." -General "In theory, perhaps, but you'll never find a crew willing to take on a mission so suicidally dangerous." -Wernstrom "Aw, jeez." -Bender
+Professor: But suppose we sent a crew to plant an explosive precisely on the fault line between this mass of coffee grounds and this deposit of America Online floppy disks.
+General: In theory, it could work.
+Wernstrom: In theory, perhaps, but you'll never find a crew willing to take on a mission so suicidally dangerous.
+Bender: Aw, jeez.
 %
-"Ahhh! We're gonna die! Right?" -Fry "Right." -Bender "Ahhh!" -Fry
+Fry: Ahhh! We're gonna die! Right?
+Bender: Right.
+Fry: Ahhh!
 %
-"And so, on behalf of the entire city, I thank you Professor Farnsworth. I now present you with the Academy Prize, which we confiscated from Dr. Wernstrom after it became apparent that he was a jackass." -Mayor
+Mayor: And so, on behalf of the entire city, I thank you Professor Farnsworth. I now present you with the Academy Prize, which we confiscated from Dr. Wernstrom after it became apparent that he was a jackass.
 %
-"And Fry, we owe you a tremendous debt as well. Were it not for your twentieth century garbage-making skills, we'd all be buried under twentieth century garbage." -Mayor
+Mayor: And Fry, we owe you a tremendous debt as well. Were it not for your twentieth century garbage-making skills, we'd all be buried under twentieth century garbage.
 %
-"Good news, everyone." -Professor "Uh oh. I don't like the sound of that." -Bender "You'll be making a delivery to the planet Trisaw." -Professor "Here it comes." -Bender "A mysterious world in the darkest depths of the forbidden zone."
--Professor "Thank you, and goodnight." -Bender
+Professor: Good news, everyone.
+Bender: Uh oh. I don't like the sound of that.
+Professor: You'll be making a delivery to the planet Trisaw.
+Bender: Here it comes.
+Professor: A mysterious world in the darkest depths of the forbidden zone.
+Bender: Thank you, and goodnight.
 %
-"What am I gonna do?" -Fry "We've got to get the emperor out of your body before they kill you." -Amy "Relax, Fry, I'll simply spin you in a high-speed centrifuge separating out the denser fluid of his highness."
-"Won't that crush my bones?" -Fry "Oh, right, right, with the bones. I always forget about the bones."
+Fry: What am I gonna do?
+Amy: We've got to get the emperor out of your body before they kill you.
+Zoidberg: Relax, Fry, I'll simply spin you in a high-speed centrifuge separating out the denser fluid of his highness.
+Fry: Won't that crush my bones?
+Zoidberg: Oh, right, right, with the bones. I always forget about the bones.
 %
-"Lightspeed briefs: style and comfort for the discriminating crotch."
--announcer
+Announcer: Lightspeed briefs: style and comfort for the discriminating crotch.
 %
-"Didn't you have ads in the twentieth century?" -Leela "Well, sure, but not in our dreams. Only on TV and radio...and in magazines...and movies, and at ballgames, and on buses, and milk cartons, and T-shirts, and bananas, and written in the sky. But not in dreams, no sirree." -Fry
+Leela: Didn't you have ads in the twentieth century?
+Fry: Well, sure, but not in our dreams. Only on TV and radio...and in magazines...and movies, and at ballgames, and on buses, and milk cartons, and T-shirts, and bananas, and written in the sky. But not in dreams, no sirree.
 %
-"I don't get it. Who was this Ted Danson, and why would you pay $10,000 for his skeleton?" -Leela
+Leela: I don't get it. Who was this Ted Danson, and why would you pay $10,000 for his skeleton?
 %
-"Maybe you can't understand this, but I finally found what I need to be happy, and it's not friends, it's things." -Fry
+Fry: Maybe you can't understand this, but I finally found what I need to be happy, and it's not friends, it's things.
 %
-"Face it, Fry, baseball was as boring as mom and apple pie. That's why they jazzed it up." -Leela "Boring? Baseball wasn't...hmmm, so they finally jazzed it up." -Fry
+Leela: Face it, Fry, baseball was as boring as mom and apple pie. That's why they jazzed it up.
+Fry: Boring? Baseball wasn't...hmmm, so they finally jazzed it up.
 %
-"Hey, I'm startin' to get the hang of this game. The blerns are loaded. The count's three blerns and two anti-blerns, and the infield blern rule is in effect. Right?" -Fry "Other than the word blern, that was complete gibberish." -Leela
+Fry: Hey, I'm startin' to get the hang of this game. The blerns are loaded. The count's three blerns and two anti-blerns, and the infield blern rule is in effect. Right?
+Leela: Other than the word blern, that was complete gibberish.
 %
-"I love this planet. I've got wealth, fame, and access to the depths of sleaze that those things bring." -Bender
+Bender: I love this planet. I've got wealth, fame, and access to the depths of sleaze that those things bring.
 %
-"This is Vergon 6." -Professor "Bah." -Amy It's a sunny little doomed planet, inhabited by a number of frisky little doomed animals." -Professor
+Professor: This is Vergon 6.
+Amy: Bah.
+Professor: It's a sunny little doomed planet, inhabited by a number of frisky little doomed animals.
 %
-"I betcha Leela's holding out for a nice guy with one eye." -Fry "That'll take forever. What she oughta do is find a nice guy with two eyes and poke one out." -Bender "Yeah, that'd be a timesaver." -Fry
+Fry: I betcha Leela's holding out for a nice guy with one eye.
+Bender: That'll take forever. What she oughta do is find a nice guy with two eyes and poke one out.
+Fry: Yeah, that'd be a timesaver.
 %
-"I don't care how many eyes a man has... as long as it's less than five."
--Leela
+Leela: I don't care how many eyes a man has... as long as it's less than five.
 %
-"I heard one time you single-handedly defeated a hoard of rampaging of somethings in the something something system." -Fry
+Fry: I heard one time you single-handedly defeated a hoard of rampaging of somethings in the something something system.
 %
-"I might have liked Zap Brannigan if he weren't a pompous dimwit who threw me in prison." -Leela "You really are too picky."
--Bender
+Leela: I might have liked Zap Brannigan if he weren't a pompous dimwit who threw me in prison.
+Bender: You really are too picky.
 %
-"Y'know, Zap, once I thought you were a big pompous buffoon. Then I realized that inside you were just a pitiful child. But now I realize that outside that child is just a big pompous buffoon."
--Leela
+Leela: Y'know, Zap, once I thought you were a big pompous buffoon. Then I realized that inside you were just a pitiful child. But now I realize that outside that child is just a big pompous buffoon.
 %
-"Bachelor Chow. Now with flavor." -announcer
+Announcer: Bachelor Chow. Now with flavor.
 %
-"Why don't you just come move in with me?" -Bender "Really? That would be great! You sure I won't be imposing?" -Fry "Nah. I've always wanted a pet." -Bender
+Bender: Why don't you just come move in with me?
+Fry: Really? That would be great! You sure I won't be imposing?
+Bender: Nah. I've always wanted a pet.
 %
-"Listen, Bender, where's your bathroom?" -Fry "Bath what?" -Bender "Bathroom." -Fry "What room?" -Bender "Bathroom!" -Fry "What what?" Bender "Ah, nevermind." -Fry
+Fry: Listen, Bender, where's your bathroom?
+Bender: Bath what?
+Fry: Bathroom.
+Bender: What room?
+Fry: Bathroom!
+"What what?" Bender
+Fry: Ah, nevermind.
 %
-"Hey, sexy mama. Wanna kill all the humans?" -Bender
+Bender: Hey, sexy mama. Wanna kill all the humans?
 %
-"Well, I give up. What's the catch?" -Fry "Oh, no catch. Although we are, technically, in New Jersey." -Real estate agent
+Fry: Well, I give up. What's the catch?
+Real estate agent: Oh, no catch. Although we are, technically, in New Jersey.
 %
-"Look at that five o'clock rust. You've been up all night not drinking, haven't you?" -Leela
+Leela: Look at that five o'clock rust. You've been up all night not drinking, haven't you?
 %
-"Planet Express: our crew is replaceable, your package isn't." -Advertisement
+Advertisement: Planet Express: our crew is replaceable, your package isn't.
 %
-"I'm never gonna get used to the thirty-first century. Caffeinated bacon?
-Baconated grapefruit? Admiral Crunch?" -Fry "Well if you don't like that, try some Archduke Chocula." -Leela
+Fry: I'm never gonna get used to the thirty-first century. Caffeinated bacon? Baconated grapefruit? Admiral Crunch?
+Leela: Well if you don't like that, try some Archduke Chocula.
 %
-"I'm gonna be a famous hero just like Neil Armstrong and those other brave guys no one ever heard of." -Fry
+Fry: I'm gonna be a famous hero just like Neil Armstrong and those other brave guys no one ever heard of.
 %
-"Hurry up! I wanna see the moon." -Fry "Relax. It's open 'till nine." -Leela
+Fry: Hurry up! I wanna see the moon.
+Leela: Relax. It's open 'till nine.
 %
-"That's one small step for Fry..." -Fry "...and one giant line for admission." -stranger in line
+Fry: That's one small step for Fry...
+stranger in line: ...and one giant line for admission.
 %
-"C'mon, it's just like making love. Y'know, left, down, rotate sixty-two degrees, engage rotors...." -Bender
+Bender: C'mon, it's just like making love. Y'know, left, down, rotate sixty-two degrees, engage rotors....
 %
-"I'm gonna go build my own theme park... with blackjack and hookers! In fact, forget the park!" -Bender
+Bender: I'm gonna go build my own theme park... with blackjack and hookers! In fact, forget the park!
 %
-"Trespassers, eh?" -farmer "No, sir. We're amusement park patrons." -Fry "Oooh, that's a wicked sinful place. Tilt-a-whirl's okay, but the rest is mighty wicked." -farmer
+farmer: Trespassers, eh?
+Fry: No, sir. We're amusement park patrons.
+farmer: Oooh, that's a wicked sinful place. Tilt-a-whirl's okay, but the rest is mighty wicked.
 %
-"I never told anybody this, but a thousand years ago I used to look up at the moon and dream about being an astronaut. I just didn't have the grades, or the physical endurance, plus I threw up a lot, and nobody liked spending a week with me." -Fry
+Fry: I never told anybody this, but a thousand years ago I used to look up at the moon and dream about being an astronaut. I just didn't have the grades, or the physical endurance, plus I threw up a lot, and nobody liked spending a week with me.
 %
-"Please select mode of death: quick and painless or slow and horrible."
-"Yeah, I'd like to place a collect call." -Fry "You have selected slow and horrible." -Automated voice "Great choice." -Bender
+Suicide booth: Please select mode of death: quick and painless or slow and horrible.
+Fry: Yeah, I'd like to place a collect call.
+Automated voice: You have selected slow and horrible.
+Bender: Great choice.
 %
-"Why would a robot need to drink?" -Fry "I don't need to drink, I can quit anytime I want." -Bender
+Fry: Why would a robot need to drink?
+Bender: I don't need to drink, I can quit anytime I want.
 %
-"Good lord. What is this?" -Fry "It's the decaying ruins of old New York. Welcome home, pal!" -Bender
+Fry: Good lord. What is this?
+Bender: It's the decaying ruins of old New York. Welcome home, pal!
 %
 "It was nice of you to let me reattach your arm."
 
---Zoidber
+--Zoidberg
 %
 "Finally, I have a good claw! See? Three human females, a number, and a king giving himself brain surgery!"
 
@@ -588,7 +630,7 @@ Fry: "No, no, I was just picking my nose."
 Cop: "He's picking his nose. Get him!"
 %
 Bender: "One of you will have to fill in for me while I'm gone."
-Professor Farnsworth: "Better yet, I'll build someone to fill in for you.
+Professor Farnsworth: "Better yet, I'll build someone to fill in for you."
 Some kind of gamma-powered mechanical monsters with freeway on-ramps for arms and a heart as black as coal..."
 %
 The boss: "Get a load of ball bearings on this guy."
@@ -692,39 +734,60 @@ Bob Barker: "I may be against the fur industry, but that won't stop me from skin
 Fry: "How can I live my life if I can't tell good from evil?"
 Bender: "Ah, they're both fine choices, whatever floats your boat."
 %
-"Are you all right?" -Leela "Ah, it's nothing a a law suit won't cure." -Bender
+Leela: Are you all right?
+Bender: Ah, it's nothing a a law suit won't cure.
 %
-"Aw, poor baby, chipped a fang." -Leela "Hey, I got a busted ass here! I don't see anyone kissing it." -Bender "All right, I'm coming." -Zoidberg
+Leela: Aw, poor baby, chipped a fang.
+Bender: Hey, I got a busted ass here! I don't see anyone kissing it.
+Zoidberg: All right, I'm coming.
 %
 "Just make a simple cake. And this time, if someone's going to jump out of it, make sure to put them in after you cook it."
 -Leela
 %
 "And so we say goodbye to our beloved pet, Nibbler, who's gone to a place where I too hope one day to go: the toilet."
--Prof. Farnsworth
+
+-- Prof. Farnsworth
 %
-"Hey, you know what'd cheer you up? You should get yourself a puppy." -Amy "A puppy? Nibbler loved to eat puppies...." -Leela
+Amy: Hey, you know what'd cheer you up? You should get yourself a puppy.
+Leela: A puppy? Nibbler loved to eat puppies....
 %
-"I love every living creature." -Leela "Even me?" -Fry "As a friend." -Leela
+Leela: I love every living creature.
+Fry: Even me?
+Leela: As a friend.
 %
-"Wow, so this is a real TV station, huh." -Fry "Well, it's a Fox affiliate." -TV worker guy "What are you showing right now?" -Fry "'Single Female Lawyer.' It's the season finale. Wanna watch?" -TV worker guy "I dunno. That's a chick show. I prefer programs of the genre, World's Blankiest Blank." -Fry "She is wearing the world's shortiest skirt." -TV worker guy "I'm in." -Fry
+Fry: Wow, so this is a real TV station, huh.
+TV worker guy: Well, it's a Fox affiliate.
+Fry: What are you showing right now?
+TV worker guy: 'Single Female Lawyer.' It's the season finale. Wanna watch?
+Fry: I dunno. That's a chick show. I prefer programs of the genre, World's Blankiest Blank.
+TV worker guy: She is wearing the world's shortiest skirt.
+Fry: I'm in.
 %
-"Oh my god, you knocked Fox off the air!" -TV worker guy "Like anyone on earth cares." -Fry
+TV worker guy: Oh my god, you knocked Fox off the air!
+Fry: Like anyone on earth cares.
 %
-"This is an outrage! I demand to know what happened to the plucky lawyer and her compellingly short garments." -alien
+alien: This is an outrage! I demand to know what happened to the plucky lawyer and her compellingly short garments.
 %
-"Fry, you're wasting your life sitting in front of that TV. You need to get out and see the real world." -Leela "But this is HDTV. It's got better resolution than the real world." -Fry "Everyone's too polite to say anything, but you're covered with bed sores."
--Leela "Not covered." -Fry
+Leela: Fry, you're wasting your life sitting in front of that TV. You need to get out and see the real world.
+Fry: But this is HDTV. It's got better resolution than the real world.
+Leela: Everyone's too polite to say anything, but you're covered with bed sores.
+Fry: Not covered.
 %
-"This is the kind of castle King Arthur would have lived in... if he were a fiddler crab." -Fry
+"This is the kind of castle King Arthur would have lived in... if he were a fiddler crab."
+
+-- Fry
 %
-"I refuse to fight! I'm a concientious objector." -Bender "A what?" -Fry "You know, a coward." -Bender
+Bender: I refuse to fight! I'm a concientious objector.
+Fry: A what?
+Bender: You know, a coward.
 %
-"This is turning into one very sexy struggle for the human race."
--Zapp Brannigan
+Zapp Brannigan: This is turning into one very sexy struggle for the human race.
 %
-"I'm gonna be a science fiction hero, just like Uhura, or Captain Janeway, or Xena!" -Fry "Fry, this isn't TV, it's real life. Can't you tell the difference?" -Leela "Sure, I just like TV better." -Fry
+Fry: I'm gonna be a science fiction hero, just like Uhura, or Captain Janeway, or Xena!
+Leela: Fry, this isn't TV, it's real life. Can't you tell the difference?
+Fry: Sure, I just like TV better.
 %
-"It was just a matter of knowing the secret of all TV shows: at the end of the episode, everything's always right back to normal." -Fry
+Fry: It was just a matter of knowing the secret of all TV shows: at the end of the episode, everything's always right back to normal.
 %
 Fry: "Very impressive. Back in the 20th century we had no idea there was a university on Mars."
 Prof. Farnsworth: "Well in those days Mars was just a dreary uninhabitable wasteland... much like Utah. But unlike Utah, it was eventually made livable, when the university was founded in 2636."
@@ -733,45 +796,47 @@ Leela: "They planted traditional college foliage: ivy, trees, hemp...."
 Fatbot: "I heard that in one single night you drank a whole keg, streaked across campus, and crammed fifty-eight humans into a phone booth."
 Bender: "Yeah, well, a lot of 'em were children...."
 %
-"Don't take this the wrong way, Fry, but you don't seem like the educated type." -Leela
+Leela: Don't take this the wrong way, Fry, but you don't seem like the educated type.
 %
 Fry: "Hey, professor, what are you teaching this semester?"
 Prof. Farnsworth: "Same thing I teach every semester, the mathematics of quantum nutrino fields. I made up the title so that no student would dare take it."
 Fry: "Mathematics of wonton burrito meals...."
 Prof. Farnsworth: "Please, Fry, I don't know how to teach. I'm a professor."
 %
-"From this day forth, Robot House is on dodecatuple secret probation." -Dean Vernon
+Dean Vernon: From this day forth, Robot House is on dodecatuple secret probation.
 %
-"He's an animal. He belongs in the wild. Or in the circus on one of those tiny tricycles. Now that's entertainment." -Fry
+Fry: He's an animal. He belongs in the wild. Or in the circus on one of those tiny tricycles. Now that's entertainment.
 %
-"Take it off or else I break it off." -Leela, with Fry's arm around her
+Leela, with Fry's arm around her: Take it off or else I break it off.
 %
-"Leela, perhaps this is an awkward time, but if things don't work out with this pipsqueak here, I just want you to know I'll be there to score you on the rebound." -Zapp
+Zapp: Leela, perhaps this is an awkward time, but if things don't work out with this pipsqueak here, I just want you to know I'll be there to score you on the rebound.
 %
 "In case you were wondering, that was just for Zapp."
--Leela, after kissing Fry
+
+-- Leela, after kissing Fry
 %
 Fry: "Do you have anything else for him?"
 Contess de la Roca: "Lovely, isn't it?"
 Bender: "Yeah, but only 93% as lovely as you."
 Contess de la Roca: "Oh, Bender. Either that was a computing error, or you're the most romantic robot I've ever met."
 %
-"I'm a fraud - a poor, lazy, sexy fraud." -Bender
+Bender: I'm a fraud - a poor, lazy, sexy fraud.
 %
 "Bender, I don't care whether you have money. I love you for your artificial intelligence and your sincerity simulator."
 -Countess de la Roca
 %
-"As a gentleman, I must warn you, if you so much as glance at another woman, I'll be over Leela like a fly on a pile of very seductive manure." -Zapp
+Zapp: As a gentleman, I must warn you, if you so much as glance at another woman, I'll be over Leela like a fly on a pile of very seductive manure.
 %
-"I learned how to handle delicate social situations from a little show called 'Three's Company.'" -Fry
+Fry: I learned how to handle delicate social situations from a little show called 'Three's Company.'
 %
 Leela: "Oh my God, we're heading straight into a black hole!"
 Fry: "Talk about a mood killer."
 %
-"Wait a second, aren't you a member of the yacht club?" -Bender "My God, you're right. I'm a class 3 yacht." -Countess de la Roca
+Bender: Wait a second, aren't you a member of the yacht club?
+Countess de la Roca: My God, you're right. I'm a class 3 yacht.
 %
 "Look, it's our nebula. Whenever I see it I'll think back to when we almost..." (nebula gets sucked into the black hole)
-"Oop. Nevermind." -Fry
+Fry: Oop. Nevermind.
 %
 Amy: "Bender, your beer belly's so big your door won't even close. And that doesn't even make sense."
 %
@@ -831,8 +896,7 @@ Bender: He's gay.
 Leela: How do you know?
 Bender: I have this thing called gaydar.
 %
-Bender: Yeah, well I'm gonna build my own lunar space lander!
-With blackjack aaaaannd Hookers! Actually, forget the space lander, and the blackjack. Ahhhh forget the whole thing!
+Bender: Yeah, well I'm gonna build my own lunar space lander! With blackjack aaaaannd Hookers! Actually, forget the space lander, and the blackjack. Ahhhh forget the whole thing!
 %
 Bender: A woman like that you gotta romance first!
 %
@@ -846,9 +910,7 @@ Morbo: "Morbo agrees."
 Human female: "All in all. This is one day that mitten the kitten will not soon forget."
 Morbo: "Kittens give Morbo gas. In later news the city of New New York is doomed. Blame rests with known human professor Hubert Farnsworth and his tiny inferior brain."
 %
-Human female: "And so with two weeks left in the campaign, the question on everyone's mind is, who will be the president of Earth?
-Jack Johnson or bitter rival John Jackson.
-Two terrific candidates, Morbo?"
+Human female: "And so with two weeks left in the campaign, the question on everyone's mind is, who will be the president of Earth? Jack Johnson or bitter rival John Jackson. Two terrific candidates, Morbo?"
 Morbo: "All humans are vermin in the eyes of Morbo."
 Human female: "In other local news, disaster struck on Saturn's moon of Titan today, where titanium mine collapsed, trapping one thousand robot workers. Unless something is done quickly the trapped robots will be dead within 300 years. Sir, what rescue operations are planned?"
 Mine spokesman: "The plan is basically to pave over the area and get on with our lives."
@@ -872,6 +934,4 @@ Morbo: "Morbo congratulates our gargantuan cyborg president. May death come quic
 %
 Human female: "The holiday season is time of celebration for most but it is also the time to remember the tragic suffering of the less fortunate."
 Morbo: "Earthlings do not yet know the meaning of suffering."
-Human female: "Earlier today I visited the shelter for down-and-out robots.
-Homeless robots too poor to afford even the basic alcohol they need fuel their circuits. Is there anything sadder?
-Only drowning puppies and there have to be a lot of them."
+Human female: "Earlier today I visited the shelter for down-and-out robots. Homeless robots too poor to afford even the basic alcohol they need fuel their circuits. Is there anything sadder? Only drowning puppies and there have to be a lot of them."

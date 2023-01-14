@@ -14,16 +14,16 @@ func main() {
 
 	logger := container.ProvideLogger()
 	config := container.ProvideConfig()
-	databaseMigration := container.ProvideDatabaseMigration()
-	webhookHandler := container.ProvideTelegramWebhookHandler()
-	webhookTools := container.ProvideTelegramWebhookTools()
 
 	if config.Database.AutoMigrate {
 		logger.Info("Running database migrations")
-		if err := databaseMigration.Migrate(); err != nil {
+		if err := container.ProvideDatabaseMigration().Migrate(); err != nil {
 			logger.Fatal(err)
 		}
 	}
+	
+	webhookHandler := container.ProvideTelegramWebhookHandler()
+	webhookTools := container.ProvideTelegramWebhookTools()
 
 	logger.Info("Initializing Matchers")
 	webhookHandler.InitMatchers()

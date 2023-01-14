@@ -9,7 +9,7 @@ import (
 )
 
 type Matcher struct {
-	logger     interfaces.LoggerInterface
+	log        interfaces.LoggerInterface
 	identifier string
 	regexp     *regexp.Regexp
 	help       []interfaces.MatcherHelpStruct
@@ -20,14 +20,14 @@ type Config struct {
 	enabled *bool
 }
 
-func NewMatcher(
+func MakeMatcher(
 	logger interfaces.LoggerInterface,
 	identifier string,
 	pattern *regexp.Regexp,
 	help []interfaces.MatcherHelpStruct,
 ) Matcher {
 	return Matcher{
-		logger:     logger,
+		log:        logger,
 		identifier: identifier,
 		regexp:     pattern,
 		help:       help,
@@ -48,15 +48,11 @@ func (m Matcher) IsEnabled() bool {
 	return *m.cfg.enabled
 }
 
-func (m Matcher) GetLogger() interfaces.LoggerInterface {
-	return m.logger
-}
-
-func (m Matcher) GetIdentifier() string {
+func (m Matcher) Identifier() string {
 	return m.identifier
 }
 
-func (m Matcher) GetHelp() []interfaces.MatcherHelpStruct {
+func (m Matcher) Help() []interfaces.MatcherHelpStruct {
 	return m.help
 }
 
@@ -90,7 +86,7 @@ func (m Matcher) GetInlineMatches(messageIn interfaces.TelegramWebhookMessageStr
 }
 
 func (m Matcher) HandleError(_ interfaces.TelegramWebhookMessageStruct, identifier string, err error) {
-	m.logger.Error(identifier, err.Error())
+	m.log.Error(identifier, err.Error())
 }
 
 func LoadMatcherConfig(identifier string, cfg interface{}) {

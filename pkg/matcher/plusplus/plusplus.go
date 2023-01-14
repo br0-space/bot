@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"strings"
 )
@@ -26,89 +25,63 @@ type Matcher struct {
 	repo interfaces.PlusplusRepoInterface
 }
 
-type Token struct {
-	Name      string
-	Increment int
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-func NewMatcher(
+func MakeMatcher(
 	logger interfaces.LoggerInterface,
 	repo interfaces.PlusplusRepoInterface,
 ) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
 		repo:    repo,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 
-	err, tokens := GetTokens(matches)
+	tokens, err := GetTokens(matches)
 	if err != nil {
 		return nil, err
 	}
 
-	return m.processTokens(tokens)
+	return m.makeRepliesFromTokens(tokens)
 }
 
-func (m Matcher) processTokens(tokens []Token) (*[]interfaces.TelegramMessageStruct, error) {
-	messages := make([]interfaces.TelegramMessageStruct, 0)
+func (m Matcher) makeRepliesFromTokens(tokens []Token) ([]interfaces.TelegramMessageStruct, error) {
+	replies := make([]interfaces.TelegramMessageStruct, 0)
 
 	for _, token := range tokens {
-		message, err := m.processToken(token)
+		tokenReplies, err := m.makeRepliesFromToken(token)
 		if err != nil {
 			return nil, err
 		}
 
-		messages = append(messages, *message)
+		for _, reply := range tokenReplies {
+			replies = append(replies, reply)
+		}
 	}
 
-	return &messages, nil
+	return replies, nil
 }
 
-func (m Matcher) processToken(token Token) (*interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeRepliesFromToken(token Token) ([]interfaces.TelegramMessageStruct, error) {
 	value, err := m.repo.Increment(token.Name, token.Increment)
 	if err != nil {
 		return nil, err
 	}
 
-	reply := token.GetReply(value)
+	reply := token.MakeReply(value)
 
-	return &reply, nil
+	return []interfaces.TelegramMessageStruct{reply}, nil
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-func (t Token) GetReply(value int) interfaces.TelegramMessageStruct {
-	var mode string
-	switch {
-	case t.Increment > 0:
-		mode = fmt.Sprintf("+%d", t.Increment)
-	case t.Increment < 0:
-		mode = fmt.Sprintf("%d", t.Increment)
-	default:
-		mode = "+-"
-	}
-
-	return telegram.NewMarkdownMessage(
-		fmt.Sprintf(
-			template,
-			telegram.EscapeMarkdown(mode),
-			telegram.EscapeMarkdown(t.Name),
-			telegram.EscapeMarkdown(fmt.Sprintf("%d", value)),
-		),
-	)
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-func GetTokens(matches []string) (error, []Token) {
-	err, names, increments := GetTokenIncrements(matches)
+func GetTokens(matches []string) ([]Token, error) {
+	names, increments, err := GetTokenIncrements(matches)
 	if err != nil {
-		return err, nil
+		return nil, err
 	}
 
 	tokens := make([]Token, 0, len(names))
@@ -116,27 +89,27 @@ func GetTokens(matches []string) (error, []Token) {
 		tokens = append(tokens, Token{Name: name, Increment: increments[name]})
 	}
 
-	return nil, tokens
+	return tokens, nil
 }
 
-func GetTokenIncrements(matches []string) (error, []string, map[string]int) {
+func GetTokenIncrements(matches []string) ([]string, map[string]int, error) {
 	names := make([]string, 0)
 	increments := make(map[string]int, 0)
 
 	for _, match := range matches {
 		mode := regexp.MustCompile(`(\+{2,}|-{2,}|\+-|-\+|—)$`).FindString(match)
 		if mode == "" {
-			return fmt.Errorf(`unable to find mode in match "%s"`, match), nil, nil
+			return nil, nil, fmt.Errorf(`unable to find mode in match "%s"`, match)
 		}
 
 		name := strings.ToLower(match[:len(match)-len(mode)])
 		if name == "" {
-			return fmt.Errorf(`unable to find name in match "%s"`, match), nil, nil
+			return nil, nil, fmt.Errorf(`unable to find name in match "%s"`, match)
 		}
 
-		err, increment := GetTokenIncrement(mode)
+		increment, err := GetTokenIncrement(mode)
 		if err != nil {
-			return err, nil, nil
+			return nil, nil, err
 		}
 
 		if _, exists := increments[name]; !exists {
@@ -147,20 +120,20 @@ func GetTokenIncrements(matches []string) (error, []string, map[string]int) {
 		}
 	}
 
-	return nil, names, increments
+	return names, increments, nil
 }
 
-func GetTokenIncrement(mode string) (error, int) {
+func GetTokenIncrement(mode string) (int, error) {
 	switch {
 	case regexp.MustCompile(`^\++$`).MatchString(mode):
-		return nil, len(mode) - 1
+		return len(mode) - 1, nil
 	case regexp.MustCompile(`^-+$`).MatchString(mode):
-		return nil, -1 * (len(mode) - 1)
+		return -1 * (len(mode) - 1), nil
 	case mode == "+-" || mode == "-+":
-		return nil, 0
+		return 0, nil
 	case mode == "—":
-		return nil, -1
+		return -1, nil
 	}
 
-	return fmt.Errorf(`unable to get increment value from mode "%s"`, mode), 0
+	return 0, fmt.Errorf(`unable to get increment value from mode "%s"`, mode)
 }

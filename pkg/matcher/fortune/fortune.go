@@ -3,7 +3,6 @@ package fortune
 import (
 	"fmt"
 	"github.com/br0-space/bot/interfaces"
-	"github.com/br0-space/bot/pkg/fortune"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
 	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
@@ -33,15 +32,20 @@ var templates = struct {
 
 type Matcher struct {
 	abstract.Matcher
+	fortuneService interfaces.FortuneServiceInterface
 }
 
-func NewMatcher(logger interfaces.LoggerInterface) Matcher {
+func MakeMatcher(
+	logger interfaces.LoggerInterface,
+	fortune interfaces.FortuneServiceInterface,
+) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher:        abstract.MakeMatcher(logger, identifier, pattern, help),
+		fortuneService: fortune,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
@@ -49,58 +53,58 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]
 
 	switch strings.TrimSpace(match[3]) {
 	case "list":
-		return replyList()
+		return m.makeListReplies()
 	case "":
-		return replyRandom()
+		return m.makeRandomReplies()
 	default:
-		return replyFromFile(strings.TrimSpace(match[3]))
+		return m.makeFromFileReplies(strings.TrimSpace(match[3]))
 	}
 }
 
-func replyList() (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeListReplies() ([]interfaces.TelegramMessageStruct, error) {
 	text := fmt.Sprintf(
 		templates.list,
-		strings.Join(fortune.GetList(), "\n"),
+		strings.Join(m.fortuneService.GetList(), "\n"),
 	)
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownMessage(text),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownMessage(text),
 	}, nil
 }
 
-func replyRandom() (*[]interfaces.TelegramMessageStruct, error) {
-	res, err := fortune.GetRandomFortune()
+func (m Matcher) makeRandomReplies() ([]interfaces.TelegramMessageStruct, error) {
+	fortune, err := m.fortuneService.GetRandomFortune()
 	if err != nil {
 		return nil, err
 	}
 
 	text := fmt.Sprintf(
 		templates.random,
-		res.ToMarkdown(),
-		res.GetFile(),
+		fortune.ToMarkdown(),
+		fortune.File(),
 	)
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownMessage(text),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownMessage(text),
 	}, nil
 }
 
-func replyFromFile(file string) (*[]interfaces.TelegramMessageStruct, error) {
-	if !fortune.Exists(file) {
+func (m Matcher) makeFromFileReplies(file string) ([]interfaces.TelegramMessageStruct, error) {
+	if !m.fortuneService.Exists(file) {
 		return nil, fmt.Errorf(`fortune file "%s" does not exist`, file)
 	}
 
-	res, err := fortune.GetFortune(file)
+	fortune, err := m.fortuneService.GetFortune(file)
 	if err != nil {
 		return nil, err
 	}
 
 	text := fmt.Sprintf(
 		templates.fromFile,
-		res.ToMarkdown(),
+		fortune.ToMarkdown(),
 	)
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownMessage(text),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownMessage(text),
 	}, nil
 }

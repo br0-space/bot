@@ -1,10 +1,8 @@
 package musiclinks
 
 import (
-	"fmt"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/songlink"
 	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 )
@@ -17,57 +15,38 @@ var help []interfaces.MatcherHelpStruct
 
 type Matcher struct {
 	abstract.Matcher
+	songlinkService interfaces.SonglinkServiceInterface
 }
 
-func NewMatcher(logger interfaces.LoggerInterface) Matcher {
+func MakeMatcher(
+	logger interfaces.LoggerInterface,
+	songlinkService interfaces.SonglinkServiceInterface,
+) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher:         abstract.MakeMatcher(logger, identifier, pattern, help),
+		songlinkService: songlinkService,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+	matches := m.GetInlineMatches(messageIn)
+
 	res := make([]interfaces.TelegramMessageStruct, 0)
 
-	matches := m.GetInlineMatches(messageIn)
 	for _, match := range matches {
-		songlinkEntry, err := songlink.GetSonglinkEntry(match)
+		songlinkEntry, err := m.songlinkService.GetEntryForUrl(match)
 		if err != nil {
 			return nil, err
 		}
 
-		res = append(res, reply(*songlinkEntry))
+		res = append(res, makeReply(songlinkEntry))
 	}
 
-	return &res, nil
+	return res, nil
 }
 
-func reply(songlinkEntry songlink.Entry) interfaces.TelegramMessageStruct {
-	text := fmt.Sprintf(
-		"*%s*\n*%s* · %s\n\n",
-		telegram.EscapeMarkdown(songlinkEntry.Title),
-		telegram.EscapeMarkdown(songlinkEntry.Artist),
-		songlinkEntry.Type.Natural(),
-	)
-
-	for i := range songlinkEntry.Links {
-		if songlinkEntry.Links[i].Platform == songlink.Songlink {
-			continue
-		}
-
-		text += fmt.Sprintf(
-			"🎧 [%s](%s)\n\n",
-			songlinkEntry.Links[i].Platform.Natural(),
-			songlinkEntry.Links[i].URL,
-		)
-	}
-
-	text = text + fmt.Sprintf(
-		"🔗 [%s](%s)",
-		songlink.Songlink.Natural(),
-		songlinkEntry.Links[0].URL,
-	)
-
-	res := telegram.NewMarkdownMessage(text)
+func makeReply(songlinkEntry interfaces.SonglinkEntryInterface) interfaces.TelegramMessageStruct {
+	res := telegram.MakeMarkdownMessage(songlinkEntry.ToMarkdown())
 	res.DisableWebPagePreview = true
 
 	return res

@@ -10,25 +10,21 @@ import (
 
 var mutexStats sync.Mutex
 
-type StatsRepo struct {
+type UserStatsRepo struct {
 	BaseRepo
-	log interfaces.LoggerInterface
-	tx  *gorm.DB
 }
 
-func NewStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *StatsRepo {
-	return &StatsRepo{
+func NewUserStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *UserStatsRepo {
+	return &UserStatsRepo{
 		BaseRepo: NewBaseRepo(
 			logger,
-			&interfaces.Stats{},
 			tx,
+			&interfaces.Stats{},
 		),
-		log: logger,
-		tx:  tx,
 	}
 }
 
-func (r *StatsRepo) UpdateStats(userID int64, username string) error {
+func (r UserStatsRepo) UpdateStats(userID int64, username string) error {
 	mutexStats.Lock()
 	defer mutexStats.Unlock()
 
@@ -47,7 +43,7 @@ func (r *StatsRepo) UpdateStats(userID int64, username string) error {
 	}).Error
 }
 
-func (r *StatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
+func (r UserStatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
 	var records []interfaces.Stats
 	r.tx.
 		Where("user_id != 0").
@@ -67,7 +63,7 @@ func (r *StatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
 	return users, nil
 }
 
-func (r *StatsRepo) GetTopUsers() ([]interfaces.StatsUserStruct, error) {
+func (r UserStatsRepo) GetTopUsers() ([]interfaces.StatsUserStruct, error) {
 	var records []interfaces.Stats
 	r.tx.
 		Where("user_id != 0").

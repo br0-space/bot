@@ -20,7 +20,7 @@ type StatsUserStruct struct {
 	LastPost time.Time
 }
 
-type StatsRepoInterface interface {
+type UserStatsRepoInterface interface {
 	UpdateStats(userID int64, username string) error
 	GetKnownUsers() ([]StatsUserStruct, error)
 	GetTopUsers() ([]StatsUserStruct, error)

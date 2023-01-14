@@ -22,30 +22,27 @@ type Matcher struct {
 	cfg  Config
 }
 
-func NewMatcher(
+func MakeMatcher(
 	logger interfaces.LoggerInterface,
 	repo interfaces.PlusplusRepoInterface,
 ) Matcher {
 	var cfg Config
 	abstract.LoadMatcherConfig(identifier, &cfg)
 
-	foo := fmt.Sprintf(`(?i)\b(%s)\b`, cfg.GetPattern())
-	pattern = regexp.MustCompile(
-		foo,
-	)
+	pattern = regexp.MustCompile(fmt.Sprintf(`(?i)\b(%s)\b`, cfg.GetPattern()))
 
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help).WithConfig(&cfg.Config),
+		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help).WithConfig(&cfg.Config),
 		repo:    repo,
 		cfg:     cfg,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 	triggers := m.parseTriggers(matches)
 
-	return m.processTriggers(triggers)
+	return m.makeRepliesFromTriggers(triggers)
 }
 
 func (m Matcher) parseTriggers(matches []string) []string {
@@ -60,21 +57,24 @@ func (m Matcher) parseTriggers(matches []string) []string {
 	return triggers
 }
 
-func (m Matcher) processTriggers(triggers []string) (*[]interfaces.TelegramMessageStruct, error) {
-	var messages []interfaces.TelegramMessageStruct
+func (m Matcher) makeRepliesFromTriggers(triggers []string) ([]interfaces.TelegramMessageStruct, error) {
+	var replies []interfaces.TelegramMessageStruct
 
 	for _, match := range triggers {
-		message, err := m.processTrigger(match)
+		triggerReplies, err := m.makeRepliesFromTrigger(match)
 		if err != nil {
 			return nil, err
 		}
-		messages = append(messages, *message)
+
+		for _, reply := range triggerReplies {
+			replies = append(replies, reply)
+		}
 	}
 
-	return &messages, nil
+	return replies, nil
 }
 
-func (m Matcher) processTrigger(trigger string) (*interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeRepliesFromTrigger(trigger string) ([]interfaces.TelegramMessageStruct, error) {
 	value, err := m.repo.Increment(trigger, 1)
 	if err != nil {
 		return nil, err
@@ -85,15 +85,15 @@ func (m Matcher) processTrigger(trigger string) (*interfaces.TelegramMessageStru
 		return nil, err
 	}
 
-	reply := reply(template, trigger, value)
+	reply := makeReply(template, trigger, value)
 
-	return &reply, nil
+	return []interfaces.TelegramMessageStruct{reply}, nil
 }
 
-func reply(template string, match string, value int) interfaces.TelegramMessageStruct {
+func makeReply(template string, match string, value int) interfaces.TelegramMessageStruct {
 	match = strings.ToUpper(match[:1]) + match[1:]
 
-	return telegram.NewMarkdownMessage(
+	return telegram.MakeMarkdownMessage(
 		fmt.Sprintf(
 			template,
 			value,

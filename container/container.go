@@ -6,22 +6,33 @@ import (
 	"github.com/br0-space/bot/pkg/config"
 	_ "github.com/br0-space/bot/pkg/config"
 	"github.com/br0-space/bot/pkg/db"
+	"github.com/br0-space/bot/pkg/fortune"
 	"github.com/br0-space/bot/pkg/logger"
 	"github.com/br0-space/bot/pkg/matcher"
 	"github.com/br0-space/bot/pkg/repo"
+	"github.com/br0-space/bot/pkg/songlink"
+	"github.com/br0-space/bot/pkg/state"
 	"github.com/br0-space/bot/pkg/telegram"
 	"github.com/br0-space/bot/pkg/webhook"
 	"gorm.io/gorm"
+	"sync"
 )
 
 var loggerInstance interfaces.LoggerInterface
+var loggerLock = &sync.Mutex{}
 var configInstance *interfaces.ConfigStruct
+var configLock = &sync.Mutex{}
+var stateInstance interfaces.StateServiceInterface
+var stateLock = &sync.Mutex{}
 
 func runsAsTest() bool {
 	return flag.Lookup("test.v") != nil
 }
 
 func ProvideLogger() interfaces.LoggerInterface {
+	loggerLock.Lock()
+	defer loggerLock.Unlock()
+
 	if loggerInstance == nil {
 		if runsAsTest() {
 			loggerInstance = logger.NewNullLogger()
@@ -29,10 +40,14 @@ func ProvideLogger() interfaces.LoggerInterface {
 			loggerInstance = logger.NewDefaultLogger()
 		}
 	}
+
 	return loggerInstance
 }
 
 func ProvideConfig() *interfaces.ConfigStruct {
+	configLock.Lock()
+	defer configLock.Unlock()
+
 	if configInstance == nil {
 		if runsAsTest() {
 			configInstance = config.NewTestConfig()
@@ -40,15 +55,36 @@ func ProvideConfig() *interfaces.ConfigStruct {
 			configInstance = config.NewConfig()
 		}
 	}
+
 	return configInstance
 }
 
 func ProvideMatchersRegistry() interfaces.MatcherRegistryInterface {
 	return matcher.NewRegistry(
 		ProvideLogger(),
+		ProvideState(),
 		ProvideTelegramClient(),
-		ProvideDatabaseRepository(),
+		ProvideMessageStatsRepo(),
+		ProvidePlusplusRepo(),
+		ProvideUserStatsRepo(),
+		ProvideFortuneService(),
+		ProvideSonglinkService(),
 	)
+}
+
+func ProvideState() interfaces.StateServiceInterface {
+	stateLock.Lock()
+	defer stateLock.Unlock()
+
+	if stateInstance == nil {
+		stateInstance = state.NewService(
+			ProvideLogger(),
+			ProvideUserStatsRepo(),
+			ProvideMessageStatsRepo(),
+		)
+	}
+
+	return stateInstance
 }
 
 func ProvideTelegramWebhookHandler() interfaces.TelegramWebhookHandlerInterface {
@@ -56,6 +92,7 @@ func ProvideTelegramWebhookHandler() interfaces.TelegramWebhookHandlerInterface 
 		ProvideLogger(),
 		ProvideConfig(),
 		ProvideMatchersRegistry(),
+		ProvideState(),
 	)
 }
 
@@ -88,41 +125,40 @@ func ProvideDatabaseConnection() *gorm.DB {
 	)
 }
 
-func ProvideDatabaseMigration() *db.DatabaseMigration {
-	return db.NewDatabaseMigration(
+func ProvideDatabaseMigration() interfaces.DatabaseMigrationInterface {
+	return db.MakeDatabaseMigration(
 		ProvideLogger(),
-		ProvideDatabaseRepository(),
+		ProvideMessageStatsRepo(),
+		ProvidePlusplusRepo(),
+		ProvideUserStatsRepo(),
 	)
 }
 
-func ProvideDatabaseRepository() interfaces.DatabaseRepositoryInterface {
-	tx := ProvideDatabaseConnection()
-
-	return repo.NewRepository(
-		ProvideLogger(),
-		ProvideMessageStatsRepo(tx),
-		ProvidePlusplusRepo(tx),
-		ProvideStatsRepo(tx),
-	)
-}
-
-func ProvideMessageStatsRepo(tx *gorm.DB) interfaces.MessageStatsRepoInterface {
+func ProvideMessageStatsRepo() interfaces.MessageStatsRepoInterface {
 	return repo.NewMessageStatsRepo(
 		ProvideLogger(),
-		tx,
+		ProvideDatabaseConnection(),
 	)
 }
 
-func ProvidePlusplusRepo(tx *gorm.DB) interfaces.PlusplusRepoInterface {
+func ProvidePlusplusRepo() interfaces.PlusplusRepoInterface {
 	return repo.NewPlusplusRepo(
 		ProvideLogger(),
-		tx,
+		ProvideDatabaseConnection(),
 	)
 }
 
-func ProvideStatsRepo(tx *gorm.DB) interfaces.StatsRepoInterface {
-	return repo.NewStatsRepo(
+func ProvideUserStatsRepo() interfaces.UserStatsRepoInterface {
+	return repo.NewUserStatsRepo(
 		ProvideLogger(),
-		tx,
+		ProvideDatabaseConnection(),
 	)
+}
+
+func ProvideFortuneService() fortune.Service {
+	return fortune.MakeService()
+}
+
+func ProvideSonglinkService() interfaces.SonglinkServiceInterface {
+	return songlink.MakeService()
 }

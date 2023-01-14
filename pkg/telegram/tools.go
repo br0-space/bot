@@ -5,27 +5,27 @@ import (
 	"regexp"
 )
 
-func NewMessage(text string) interfaces.TelegramMessageStruct {
+func MakeMessage(text string) interfaces.TelegramMessageStruct {
 	return interfaces.TelegramMessageStruct{
 		Text: text,
 	}
 }
 
-func NewMarkdownMessage(text string) interfaces.TelegramMessageStruct {
+func MakeMarkdownMessage(text string) interfaces.TelegramMessageStruct {
 	return interfaces.TelegramMessageStruct{
 		Text:      text,
 		ParseMode: "MarkdownV2",
 	}
 }
 
-func NewReply(text string, messageID int64) interfaces.TelegramMessageStruct {
+func MakeReply(text string, messageID int64) interfaces.TelegramMessageStruct {
 	return interfaces.TelegramMessageStruct{
 		Text:             text,
 		ReplyToMessageID: messageID,
 	}
 }
 
-func NewMarkdownReply(text string, messageID int64) interfaces.TelegramMessageStruct {
+func MakeMarkdownReply(text string, messageID int64) interfaces.TelegramMessageStruct {
 	return interfaces.TelegramMessageStruct{
 		Text:             text,
 		ReplyToMessageID: messageID,

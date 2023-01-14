@@ -34,17 +34,17 @@ type Matcher struct {
 	repo interfaces.PlusplusRepoInterface
 }
 
-func NewMatcher(
+func MakeMatcher(
 	logger interfaces.LoggerInterface,
 	repo interfaces.PlusplusRepoInterface,
 ) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
 		repo:    repo,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
@@ -72,10 +72,10 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]
 		return nil, err
 	}
 
-	return reply(records, messageIn.ID)
+	return makeReplies(records, messageIn.ID)
 }
 
-func reply(records []interfaces.Plusplus, messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
+func makeReplies(records []interfaces.Plusplus, messageID int64) ([]interfaces.TelegramMessageStruct, error) {
 	var lines []string
 	for _, record := range records {
 		lines = append(lines, fmt.Sprintf(
@@ -90,7 +90,7 @@ func reply(records []interfaces.Plusplus, messageID int64) (*[]interfaces.Telegr
 		strings.Join(lines, "\n"),
 	)
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownReply(text, messageID),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownReply(text, messageID),
 	}, nil
 }

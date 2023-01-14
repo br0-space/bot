@@ -87,6 +87,14 @@ func (u TelegramWebhookMessageUserStruct) UsernameOrName() string {
 	return strings.Trim(fmt.Sprintf("%s %s", u.FirstName, u.LastName), " ")
 }
 
+func (u TelegramWebhookMessageUserStruct) FirstnameOrUsername() string {
+	if len(u.FirstName) > 0 {
+		return u.FirstName
+	}
+
+	return fmt.Sprintf("@%s", u.Username)
+}
+
 // Test functions
 
 func NewTestTelegramWebhookMessage(text string) TelegramWebhookMessageStruct {

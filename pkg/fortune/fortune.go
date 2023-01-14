@@ -2,72 +2,69 @@ package fortune
 
 import (
 	"fmt"
-	"math/rand"
-	"os"
-	"path/filepath"
+	"github.com/br0-space/bot/pkg/telegram"
+	"regexp"
 	"strings"
 )
 
-const path = "files/fortune"
+const (
+	typeQuoteTemplate string = "%s\n\n_*\\-\\- %s*_"
+	lineQuotePattern  string = `^(.+?): (.+)$`
+	lineQuoteTemplate string = "*%s*: %s"
+)
 
-func GetList() []string {
-	var filenames []string
-	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
-		filenames = append(filenames, path)
-		return nil
-	})
-	if err != nil {
-		panic(err)
-	}
-
-	files := make([]string, 0)
-	for _, filename := range filenames {
-		if filename[len(filename)-4:] == ".txt" {
-			files = append(files, filename[len(path)+1:len(filename)-4])
-		}
-	}
-
-	return files
+type Fortune struct {
+	_type   Type
+	file    string
+	content []string
+	source  *string
 }
 
-func Exists(fileToSearch string) bool {
-	for _, file := range GetList() {
-		if file == fileToSearch {
-			return true
-		}
-	}
-	return false
+func MakeFortune(file string, text string) Fortune {
+	fortune := getType(text).getFortune(text)
+	fortune.file = file
+
+	return fortune
 }
 
-func GetRandomFortune() (Fortune, error) {
-	files := GetList()
-	file := files[rand.Intn(len(files))]
-
-	return GetFortune(file)
+func (f Fortune) File() string {
+	return f.file
 }
 
-func GetFortune(file string) (Fortune, error) {
-	if !Exists(file) {
-		return Fortune{}, fmt.Errorf(`fortune file "%s" does not exist`, file)
+func (f Fortune) ToMarkdown() string {
+	switch f._type {
+	case typeText:
+		return f.formatLines(f.content)
+	case typeQuote:
+		return fmt.Sprintf(
+			typeQuoteTemplate,
+			f.formatLines(f.content),
+			telegram.EscapeMarkdown(*f.source),
+		)
+	default:
+		return "unknown fortune type"
 	}
-
-	fortunes, err := readFortuneFile(file)
-	if err != nil {
-		return Fortune{}, err
-	}
-	fortune := fortunes[rand.Intn(len(fortunes))]
-
-	return MakeFortune(file, fortune), nil
 }
 
-// Read a fortune file and return
-func readFortuneFile(file string) ([]string, error) {
-	filename := fmt.Sprintf("%s/%s.txt", path, file)
+func (f Fortune) formatLines(lines []string) string {
+	res := ""
 
-	content, err := os.ReadFile(filename)
-	var fortunes []string = nil
-	if err == nil {
-		fortunes = strings.Split(string(content), "\n%\n")
+	for _, line := range lines {
+		res += f.formatLine(line) + "\n"
 	}
-	return fortunes, err
+
+	return strings.TrimSpace(res)
+}
+
+func (f Fortune) formatLine(line string) string {
+	if regexp.MustCompile(lineQuotePattern).MatchString(line) {
+		matches := regexp.MustCompile(lineQuotePattern).FindStringSubmatch(line)
+		return fmt.Sprintf(
+			lineQuoteTemplate,
+			telegram.EscapeMarkdown(matches[1]),
+			telegram.EscapeMarkdown(matches[2]),
+		)
+	}
+
+	return telegram.EscapeMarkdown(line)
 }

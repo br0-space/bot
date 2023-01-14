@@ -8,23 +8,19 @@ import (
 
 type MessageStatsRepo struct {
 	BaseRepo
-	log interfaces.LoggerInterface
-	tx  *gorm.DB
 }
 
 func NewMessageStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *MessageStatsRepo {
 	return &MessageStatsRepo{
 		BaseRepo: NewBaseRepo(
 			logger,
-			&interfaces.MessageStats{},
 			tx,
+			&interfaces.MessageStats{},
 		),
-		log: logger,
-		tx:  tx,
 	}
 }
 
-func (r *MessageStatsRepo) InsertMessageStats(userID int64, words int) error {
+func (r MessageStatsRepo) InsertMessageStats(userID int64, words int) error {
 	return r.tx.Create(&interfaces.MessageStats{
 		UserID: userID,
 		Time:   time.Now(),
@@ -32,7 +28,7 @@ func (r *MessageStatsRepo) InsertMessageStats(userID int64, words int) error {
 	}).Error
 }
 
-func (r *MessageStatsRepo) GetKnownUserIDs() ([]int64, error) {
+func (r MessageStatsRepo) GetKnownUserIDs() ([]int64, error) {
 	var userIDs []int64
 	err := r.tx.
 		Select("DISTINCT user_id").
@@ -43,7 +39,7 @@ func (r *MessageStatsRepo) GetKnownUserIDs() ([]int64, error) {
 	return userIDs, err
 }
 
-func (r *MessageStatsRepo) GetWordCounts() ([]interfaces.MessageStatsWordCountStruct, error) {
+func (r MessageStatsRepo) GetWordCounts() ([]interfaces.MessageStatsWordCountStruct, error) {
 	var records []interfaces.MessageStatsWordCountStruct
 	err := r.tx.Model(&interfaces.MessageStats{}).
 		Joins("UserStats").

@@ -33,13 +33,13 @@ type Matcher struct {
 	abstract.Matcher
 }
 
-func NewMatcher(logger interfaces.LoggerInterface) Matcher {
+func MakeMatcher(logger interfaces.LoggerInterface) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
@@ -47,15 +47,15 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]
 
 	match[3] = strings.TrimSpace(match[3])
 	if match[3] == "" {
-		return reply(templates.insult, "", messageIn.ID)
+		return makeReplies(templates.insult, "", messageIn.ID)
 	}
 
 	options := splitOptions(match[3])
 	if len(options) < 2 {
-		return reply(templates.insult, "", messageIn.ID)
+		return makeReplies(templates.insult, "", messageIn.ID)
 	}
 
-	return reply(templates.success, chooseOption(options), messageIn.ID)
+	return makeReplies(templates.success, chooseRandomOption(options), messageIn.ID)
 }
 
 func splitOptions(options string) []string {
@@ -64,11 +64,11 @@ func splitOptions(options string) []string {
 	})
 }
 
-func chooseOption(options []string) string {
+func chooseRandomOption(options []string) string {
 	return options[rand.Intn(len(options))]
 }
 
-func reply(template string, topic string, messageID int64) (*[]interfaces.TelegramMessageStruct, error) {
+func makeReplies(template string, topic string, messageID int64) ([]interfaces.TelegramMessageStruct, error) {
 	if strings.Contains(template, "%s") {
 		template = fmt.Sprintf(
 			template,
@@ -76,7 +76,7 @@ func reply(template string, topic string, messageID int64) (*[]interfaces.Telegr
 		)
 	}
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownReply(template, messageID),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownReply(template, messageID),
 	}, nil
 }

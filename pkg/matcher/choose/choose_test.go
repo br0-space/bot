@@ -43,7 +43,7 @@ var tests = []struct {
 }
 
 func provideMatcher() choose.Matcher {
-	return choose.NewMatcher(
+	return choose.MakeMatcher(
 		container.ProvideLogger(),
 	)
 }
@@ -72,21 +72,21 @@ func TestMatcher_Process(t *testing.T) {
 		} else {
 			assert.NoError(t, err, tt.in)
 			assert.NotNil(t, replies, tt.in)
-			assert.Len(t, *replies, 1, tt.in)
+			assert.Len(t, replies, 1, tt.in)
 
 			expectedReplies := tt.expectedReplies
 			switch {
-			case strings.Contains((*replies)[0].Text, "behindert"):
+			case strings.Contains((replies)[0].Text, "behindert"):
 				expectedReplies[0].Text = expected.insult
-			case strings.Contains((*replies)[0].Text, "foo"):
+			case strings.Contains((replies)[0].Text, "foo"):
 				expectedReplies[0].Text = fmt.Sprintf(expected.success, `foo\*`)
-			case strings.Contains((*replies)[0].Text, "bar"):
+			case strings.Contains((replies)[0].Text, "bar"):
 				expectedReplies[0].Text = fmt.Sprintf(expected.success, `bar\_`)
-			case strings.Contains((*replies)[0].Text, "baz"):
+			case strings.Contains((replies)[0].Text, "baz"):
 				expectedReplies[0].Text = fmt.Sprintf(expected.success, `baz\#`)
 			}
 
-			assert.Equal(t, expectedReplies, *replies, tt.in)
+			assert.Equal(t, expectedReplies, replies, tt.in)
 		}
 	}
 }

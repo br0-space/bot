@@ -8,55 +8,61 @@ import (
 )
 
 type Handler struct {
-	Log      interfaces.LoggerInterface
-	Cfg      *interfaces.ConfigStruct
-	Matchers interfaces.MatcherRegistryInterface
+	log      interfaces.LoggerInterface
+	cfg      *interfaces.ConfigStruct
+	matchers interfaces.MatcherRegistryInterface
+	state    interfaces.StateServiceInterface
 }
 
-func NewHandler(logger interfaces.LoggerInterface, config *interfaces.ConfigStruct, matchers interfaces.MatcherRegistryInterface) *Handler {
+func NewHandler(
+	logger interfaces.LoggerInterface,
+	config *interfaces.ConfigStruct,
+	matchers interfaces.MatcherRegistryInterface,
+	state interfaces.StateServiceInterface,
+) *Handler {
 	return &Handler{
-		Log:      logger,
-		Cfg:      config,
-		Matchers: matchers,
+		log:      logger,
+		cfg:      config,
+		matchers: matchers,
+		state:    state,
 	}
 }
 
 func (h *Handler) InitMatchers() {
-	h.Matchers.Init()
+	h.matchers.Init()
 }
 
 func (h *Handler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	h.Log.Debugf("%s %s %s from %s", req.Method, req.URL, req.Proto, req.RemoteAddr)
+	h.log.Debugf("%s %s %s from %s", req.Method, req.URL, req.Proto, req.RemoteAddr)
 
-	switch req.Method {
-	case "POST":
-	default:
-		h.Log.Error("method not allowed")
-		res.WriteHeader(http.StatusMethodNotAllowed)
-		return
-	}
-
-	messageIn, err := h.ParseRequest(req)
+	messageIn, err, status := h.parseRequest(req)
 	if err != nil {
-		h.Log.Error(err)
-		http.Error(res, err.Error(), http.StatusBadRequest)
+		h.log.Error(err)
+		http.Error(res, err.Error(), status)
 		return
 	}
 
-	if messageIn.Chat.ID != h.Cfg.Telegram.ChatID {
-		h.Log.Warningf("chat id mismatch: %d (actual) != %d (expected)", messageIn.Chat.ID, h.Cfg.Telegram.ChatID)
-		http.Error(res, "chat id mismatch", http.StatusOK)
-		return
-	}
-
-	h.Matchers.Process(*messageIn)
+	h.processRequest(*messageIn)
 }
 
-func (h *Handler) ParseRequest(req *http.Request) (*interfaces.TelegramWebhookMessageStruct, error) {
-	body := &interfaces.TelegramWebhookBodyStruct{}
-	if err := json.NewDecoder(req.Body).Decode(body); err != nil {
-		return nil, fmt.Errorf("unable to decode request body: %s", err.Error())
+func (h *Handler) parseRequest(req *http.Request) (*interfaces.TelegramWebhookMessageStruct, error, int) {
+	if req.Method != http.MethodPost {
+		return nil, fmt.Errorf("method not allowed: %s (actual) != POST (expected)", req.Method), http.StatusMethodNotAllowed
 	}
 
-	return &body.Message, nil
+	body := &interfaces.TelegramWebhookBodyStruct{}
+	if err := json.NewDecoder(req.Body).Decode(body); err != nil {
+		return nil, fmt.Errorf("unable to decode request body: %s", err.Error()), http.StatusBadRequest
+	}
+
+	if body.Message.Chat.ID != h.cfg.Telegram.ChatID {
+		return nil, fmt.Errorf("chat id mismatch: %d (actual) != %d (expected)", body.Message.Chat.ID, h.cfg.Telegram.ChatID), http.StatusBadRequest
+	}
+
+	return &body.Message, nil, 0
+}
+
+func (h *Handler) processRequest(messageIn interfaces.TelegramWebhookMessageStruct) {
+	h.matchers.Process(messageIn)
+	h.state.ProcessMessage(messageIn)
 }

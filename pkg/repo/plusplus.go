@@ -11,23 +11,19 @@ var mutexPlusplus sync.Mutex
 
 type PlusplusRepo struct {
 	BaseRepo
-	log interfaces.LoggerInterface
-	tx  *gorm.DB
 }
 
 func NewPlusplusRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *PlusplusRepo {
 	return &PlusplusRepo{
 		BaseRepo: NewBaseRepo(
 			logger,
-			&interfaces.Plusplus{},
 			tx,
+			&interfaces.Plusplus{},
 		),
-		log: logger,
-		tx:  tx,
 	}
 }
 
-func (r *PlusplusRepo) Increment(name string, increment int) (int, error) {
+func (r PlusplusRepo) Increment(name string, increment int) (int, error) {
 	mutexPlusplus.Lock()
 	defer mutexPlusplus.Unlock()
 
@@ -54,7 +50,7 @@ func (r *PlusplusRepo) Increment(name string, increment int) (int, error) {
 	return record.Value, nil
 }
 
-func (r *PlusplusRepo) FindTops(limit int) ([]interfaces.Plusplus, error) {
+func (r PlusplusRepo) FindTops(limit int) ([]interfaces.Plusplus, error) {
 	var records []interfaces.Plusplus
 	if err := r.tx.
 		Order("value desc").
@@ -67,7 +63,7 @@ func (r *PlusplusRepo) FindTops(limit int) ([]interfaces.Plusplus, error) {
 	return records, nil
 }
 
-func (r *PlusplusRepo) FindFlops(limit int) ([]interfaces.Plusplus, error) {
+func (r PlusplusRepo) FindFlops(limit int) ([]interfaces.Plusplus, error) {
 	var records []interfaces.Plusplus
 	if err := r.tx.
 		Order("value asc").

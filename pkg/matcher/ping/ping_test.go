@@ -33,7 +33,7 @@ var tests = []struct {
 }
 
 func provideMatcher() ping.Matcher {
-	return ping.NewMatcher(
+	return ping.MakeMatcher(
 		container.ProvideLogger(),
 	)
 }
@@ -62,7 +62,7 @@ func TestMatcher_Process(t *testing.T) {
 		} else {
 			assert.NoError(t, err, tt.in)
 			assert.NotNil(t, replies, tt.in)
-			assert.Equal(t, tt.expectedReplies, *replies, tt.in)
+			assert.Equal(t, tt.expectedReplies, replies, tt.in)
 		}
 	}
 }

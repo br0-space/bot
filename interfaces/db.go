@@ -7,7 +7,7 @@ type DatabaseMigrationInterface interface {
 type DatabaseRepositoryInterface interface {
 	MessageStats() MessageStatsRepoInterface
 	Plusplus() PlusplusRepoInterface
-	Stats() StatsRepoInterface
+	Stats() UserStatsRepoInterface
 }
 
 type RepoInterface interface {

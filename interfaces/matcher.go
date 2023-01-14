@@ -7,12 +7,12 @@ type MatcherRegistryInterface interface {
 
 type MatcherInterface interface {
 	IsEnabled() bool
-	GetIdentifier() string
-	GetHelp() []MatcherHelpStruct
+	Identifier() string
+	Help() []MatcherHelpStruct
 	DoesMatch(messageIn TelegramWebhookMessageStruct) bool
 	GetCommandMatch(messageIn TelegramWebhookMessageStruct) []string
 	GetInlineMatches(messageIn TelegramWebhookMessageStruct) []string
-	Process(messageIn TelegramWebhookMessageStruct) (*[]TelegramMessageStruct, error)
+	Process(messageIn TelegramWebhookMessageStruct) ([]TelegramMessageStruct, error)
 	HandleError(messageIn TelegramWebhookMessageStruct, identifier string, err error)
 }
 

@@ -9,35 +9,35 @@ import (
 
 var parseTests = []struct {
 	in       []string
-	err      error
 	expected []plusplus.Token
+	err      error
 }{
-	{[]string{}, nil, []plusplus.Token{}},
-	{[]string{"foo++"}, nil, []plusplus.Token{{"foo", 1}}},
-	{[]string{"foo+++"}, nil, []plusplus.Token{{"foo", 2}}},
-	{[]string{"foo--"}, nil, []plusplus.Token{{"foo", -1}}},
-	{[]string{"foo---"}, nil, []plusplus.Token{{"foo", -2}}},
-	{[]string{"foo+-"}, nil, []plusplus.Token{{"foo", 0}}},
-	{[]string{"foo+--"}, nil, []plusplus.Token{{"foo+", -1}}},
-	{[]string{"foo-+"}, nil, []plusplus.Token{{"foo", 0}}},
-	{[]string{"foo-++"}, nil, []plusplus.Token{{"foo-", 1}}},
-	{[]string{"foo—"}, nil, []plusplus.Token{{"foo", -1}}},
-	{[]string{"foo++", "foo++"}, nil, []plusplus.Token{{"foo", 2}}},
-	{[]string{"foo++", "foo--"}, nil, []plusplus.Token{{"foo", 0}}},
-	{[]string{"foo++", "bar--"}, nil, []plusplus.Token{{"foo", 1}, {"bar", -1}}},
-	{[]string{"foo+bar++"}, nil, []plusplus.Token{{"foo+bar", 1}}},
-	{[]string{"foo++bar++"}, nil, []plusplus.Token{{"foo++bar", 1}}},
-	{[]string{"foo"}, fmt.Errorf(`unable to find mode in match "foo"`), nil},
-	{[]string{"++"}, fmt.Errorf(`unable to find name in match "++"`), nil},
+	{[]string{}, []plusplus.Token{}, nil},
+	{[]string{"foo++"}, []plusplus.Token{{"foo", 1}}, nil},
+	{[]string{"foo+++"}, []plusplus.Token{{"foo", 2}}, nil},
+	{[]string{"foo--"}, []plusplus.Token{{"foo", -1}}, nil},
+	{[]string{"foo---"}, []plusplus.Token{{"foo", -2}}, nil},
+	{[]string{"foo+-"}, []plusplus.Token{{"foo", 0}}, nil},
+	{[]string{"foo+--"}, []plusplus.Token{{"foo+", -1}}, nil},
+	{[]string{"foo-+"}, []plusplus.Token{{"foo", 0}}, nil},
+	{[]string{"foo-++"}, []plusplus.Token{{"foo-", 1}}, nil},
+	{[]string{"foo—"}, []plusplus.Token{{"foo", -1}}, nil},
+	{[]string{"foo++", "foo++"}, []plusplus.Token{{"foo", 2}}, nil},
+	{[]string{"foo++", "foo--"}, []plusplus.Token{{"foo", 0}}, nil},
+	{[]string{"foo++", "bar--"}, []plusplus.Token{{"foo", 1}, {"bar", -1}}, nil},
+	{[]string{"foo+bar++"}, []plusplus.Token{{"foo+bar", 1}}, nil},
+	{[]string{"foo++bar++"}, []plusplus.Token{{"foo++bar", 1}}, nil},
+	{[]string{"foo"}, nil, fmt.Errorf(`unable to find mode in match "foo"`)},
+	{[]string{"++"}, nil, fmt.Errorf(`unable to find name in match "++"`)},
 }
 
 func TestParseTokens(t *testing.T) {
 	t.Parallel()
 
 	for _, tt := range parseTests {
-		err, tokens := plusplus.GetTokens(tt.in)
-		assert.Equal(t, tt.err, err, tt.in)
+		tokens, err := plusplus.GetTokens(tt.in)
 		assert.Equal(t, tt.expected, tokens, tt.in)
+		assert.Equal(t, tt.err, err, tt.in)
 	}
 }
 
@@ -45,30 +45,30 @@ func TestParseTokens(t *testing.T) {
 
 var getTokenIncrementTests = []struct {
 	in       string
-	err      error
 	expected int
+	err      error
 }{
-	{"++", nil, 1},
-	{"+++", nil, 2},
-	{"++++", nil, 3},
-	{"--", nil, -1},
-	{"---", nil, -2},
-	{"----", nil, -3},
-	{"+-", nil, 0},
-	{"-+", nil, 0},
-	{"—", nil, -1},
-	{"foo", fmt.Errorf(`unable to get increment value from mode "foo"`), 0},
-	{"+--", fmt.Errorf(`unable to get increment value from mode "+--"`), 0},
-	{"-++", fmt.Errorf(`unable to get increment value from mode "-++"`), 0},
+	{"++", 1, nil},
+	{"+++", 2, nil},
+	{"++++", 3, nil},
+	{"--", -1, nil},
+	{"---", -2, nil},
+	{"----", -3, nil},
+	{"+-", 0, nil},
+	{"-+", 0, nil},
+	{"—", -1, nil},
+	{"foo", 0, fmt.Errorf(`unable to get increment value from mode "foo"`)},
+	{"+--", 0, fmt.Errorf(`unable to get increment value from mode "+--"`)},
+	{"-++", 0, fmt.Errorf(`unable to get increment value from mode "-++"`)},
 }
 
 func TestGetTokenIncrement(t *testing.T) {
 	t.Parallel()
 
 	for _, tt := range getTokenIncrementTests {
-		err, increment := plusplus.GetTokenIncrement(tt.in)
-		assert.Equal(t, tt.err, err, tt.in)
+		increment, err := plusplus.GetTokenIncrement(tt.in)
 		assert.Equal(t, tt.expected, increment, tt.in)
+		assert.Equal(t, tt.err, err, tt.in)
 	}
 }
 

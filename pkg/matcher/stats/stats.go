@@ -21,20 +21,20 @@ const template = "```\n%s\n```"
 
 type Matcher struct {
 	abstract.Matcher
-	repo interfaces.StatsRepoInterface
+	repo interfaces.UserStatsRepoInterface
 }
 
-func NewMatcher(
+func MakeMatcher(
 	logger interfaces.LoggerInterface,
-	repo interfaces.StatsRepoInterface,
+	repo interfaces.UserStatsRepoInterface,
 ) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
 		repo:    repo,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
 		return nil, fmt.Errorf("message does not match")
 	}
@@ -44,10 +44,10 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]
 		return nil, err
 	}
 
-	return reply(users)
+	return makeReplies(users)
 }
 
-func reply(users []interfaces.StatsUserStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func makeReplies(users []interfaces.StatsUserStruct) ([]interfaces.TelegramMessageStruct, error) {
 	var lines []string
 	for _, user := range users {
 		lines = append(lines, fmt.Sprintf(
@@ -62,7 +62,7 @@ func reply(users []interfaces.StatsUserStruct) (*[]interfaces.TelegramMessageStr
 		strings.Join(lines, "\n"),
 	)
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownMessage(text),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownMessage(text),
 	}, nil
 }

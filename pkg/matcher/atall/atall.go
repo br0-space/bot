@@ -17,20 +17,20 @@ var help []interfaces.MatcherHelpStruct
 
 type Matcher struct {
 	abstract.Matcher
-	repo interfaces.StatsRepoInterface
+	repo interfaces.UserStatsRepoInterface
 }
 
-func NewMatcher(
+func MakeMatcher(
 	logger interfaces.LoggerInterface,
-	repo interfaces.StatsRepoInterface,
+	repo interfaces.UserStatsRepoInterface,
 ) Matcher {
 	return Matcher{
-		Matcher: abstract.NewMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
 		repo:    repo,
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 	if len(matches) == 0 {
 		return nil, nil
@@ -41,10 +41,10 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) (*[]
 		return nil, err
 	}
 
-	return reply(messageIn.TextOrCaption(), users)
+	return makeReplies(messageIn.TextOrCaption(), users)
 }
 
-func reply(text string, users []interfaces.StatsUserStruct) (*[]interfaces.TelegramMessageStruct, error) {
+func makeReplies(text string, users []interfaces.StatsUserStruct) ([]interfaces.TelegramMessageStruct, error) {
 	text = strings.ReplaceAll(text, "@alle", "")
 	text = strings.ReplaceAll(text, "@all", "")
 
@@ -56,7 +56,7 @@ func reply(text string, users []interfaces.StatsUserStruct) (*[]interfaces.Teleg
 		)
 	}
 
-	return &[]interfaces.TelegramMessageStruct{
-		telegram.NewMarkdownMessage(text),
+	return []interfaces.TelegramMessageStruct{
+		telegram.MakeMarkdownMessage(text),
 	}, nil
 }

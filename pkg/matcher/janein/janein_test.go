@@ -48,7 +48,7 @@ var tests = []struct {
 }
 
 func provideMatcher() janein.Matcher {
-	return janein.NewMatcher(
+	return janein.MakeMatcher(
 		container.ProvideLogger(),
 	)
 }
@@ -77,19 +77,19 @@ func TestMatcher_Process(t *testing.T) {
 		} else {
 			assert.NoError(t, err, tt.in)
 			assert.NotNil(t, replies, tt.in)
-			assert.Len(t, *replies, 1, tt.in)
+			assert.Len(t, replies, 1, tt.in)
 
 			expectedReplies := tt.expectedReplies
 			switch {
-			case strings.Contains((*replies)[0].Text, "behindert"):
+			case strings.Contains((replies)[0].Text, "behindert"):
 				expectedReplies[0].Text = expected.insult
-			case strings.Contains((*replies)[0].Text, "Ja"):
+			case strings.Contains((replies)[0].Text, "Ja"):
 				expectedReplies[0].Text = expected.yes
-			case strings.Contains((*replies)[0].Text, "Nein"):
+			case strings.Contains((replies)[0].Text, "Nein"):
 				expectedReplies[0].Text = expected.no
 			}
 
-			assert.Equal(t, expectedReplies, *replies, tt.in)
+			assert.Equal(t, expectedReplies, replies, tt.in)
 		}
 	}
 }

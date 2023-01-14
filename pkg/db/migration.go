@@ -5,33 +5,39 @@ import (
 )
 
 type DatabaseMigration struct {
-	log  interfaces.LoggerInterface
-	repo interfaces.DatabaseRepositoryInterface
+	log              interfaces.LoggerInterface
+	messageStatsRepo interfaces.MessageStatsRepoInterface
+	plusplusRepo     interfaces.PlusplusRepoInterface
+	userStatsRepo    interfaces.UserStatsRepoInterface
 }
 
-func NewDatabaseMigration(
-	log interfaces.LoggerInterface,
-	repo interfaces.DatabaseRepositoryInterface,
-) *DatabaseMigration {
-	return &DatabaseMigration{
-		log:  log,
-		repo: repo,
+func MakeDatabaseMigration(
+	logger interfaces.LoggerInterface,
+	messageStatsRepo interfaces.MessageStatsRepoInterface,
+	plusplusRepo interfaces.PlusplusRepoInterface,
+	userStatsRepo interfaces.UserStatsRepoInterface,
+) DatabaseMigration {
+	return DatabaseMigration{
+		log:              logger,
+		messageStatsRepo: messageStatsRepo,
+		plusplusRepo:     plusplusRepo,
+		userStatsRepo:    userStatsRepo,
 	}
 }
 
-func (m *DatabaseMigration) Migrate() error {
-	m.log.Debug("Migrating table", m.repo.MessageStats().(interfaces.RepoInterface).TableName())
-	if err := m.repo.MessageStats().(interfaces.RepoInterface).Migrate(); err != nil {
+func (m DatabaseMigration) Migrate() error {
+	m.log.Debug("Migrating table", m.messageStatsRepo.(interfaces.RepoInterface).TableName())
+	if err := m.messageStatsRepo.(interfaces.RepoInterface).Migrate(); err != nil {
 		return err
 	}
 
-	m.log.Debug("Migrating table", m.repo.Plusplus().(interfaces.RepoInterface).TableName())
-	if err := m.repo.Plusplus().(interfaces.RepoInterface).Migrate(); err != nil {
+	m.log.Debug("Migrating table", m.plusplusRepo.(interfaces.RepoInterface).TableName())
+	if err := m.plusplusRepo.(interfaces.RepoInterface).Migrate(); err != nil {
 		return err
 	}
 
-	m.log.Debug("Migrating table", m.repo.Stats().(interfaces.RepoInterface).TableName())
-	if err := m.repo.Stats().(interfaces.RepoInterface).Migrate(); err != nil {
+	m.log.Debug("Migrating table", m.userStatsRepo.(interfaces.RepoInterface).TableName())
+	if err := m.userStatsRepo.(interfaces.RepoInterface).Migrate(); err != nil {
 		return err
 	}
 
