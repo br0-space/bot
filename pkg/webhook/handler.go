@@ -59,7 +59,7 @@ func (h *Handler) parseRequest(req *http.Request) (*interfaces.TelegramWebhookMe
 	spew.Dump(body.Message)
 
 	if body.Message.Chat.ID != h.cfg.Telegram.ChatID {
-		return nil, fmt.Errorf("chat id mismatch: %d (actual) != %d (expected)", body.Message.Chat.ID, h.cfg.Telegram.ChatID), http.StatusBadRequest
+		return nil, fmt.Errorf("chat id mismatch: %d (actual) != %d (expected)", body.Message.Chat.ID, h.cfg.Telegram.ChatID), http.StatusOK
 	}
 
 	return &body.Message, nil, 0
