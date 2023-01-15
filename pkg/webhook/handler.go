@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/br0-space/bot/interfaces"
+	"github.com/davecgh/go-spew/spew"
 	"net/http"
 )
 
@@ -41,6 +42,8 @@ func (h *Handler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, err.Error(), status)
 		return
 	}
+
+	spew.Dump(messageIn)
 
 	h.processRequest(*messageIn)
 }
