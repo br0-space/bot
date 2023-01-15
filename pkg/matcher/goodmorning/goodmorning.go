@@ -46,17 +46,13 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 func (m Matcher) doesMatch(messageIn interfaces.TelegramWebhookMessageStruct) bool {
 	now := time.Now()
 
-	if now.Hour() < 6 || now.Hour() > 18 {
+	if now.Hour() < 6 || now.Hour() > 14 {
 		return false
 	}
 
 	lastPost := m.state.GetLastPost(messageIn.From.ID)
 
-	if lastPost == nil {
-		return true
-	}
-
-	if now.Sub(*lastPost) > time.Hour*5 {
+	if lastPost == nil || now.Sub(*lastPost) > time.Hour*6 {
 		return true
 	}
 
