@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/br0-space/bot/interfaces"
-	"github.com/davecgh/go-spew/spew"
 	"net/http"
 )
 
@@ -55,8 +54,6 @@ func (h *Handler) parseRequest(req *http.Request) (*interfaces.TelegramWebhookMe
 	if err := json.NewDecoder(req.Body).Decode(body); err != nil {
 		return nil, fmt.Errorf("unable to decode request body: %s", err.Error()), http.StatusBadRequest
 	}
-
-	spew.Dump(body.Message)
 
 	if body.Message.Chat.ID != h.cfg.Telegram.ChatID {
 		return nil, fmt.Errorf("chat id mismatch: %d (actual) != %d (expected)", body.Message.Chat.ID, h.cfg.Telegram.ChatID), http.StatusOK
