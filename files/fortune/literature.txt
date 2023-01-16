@@ -6,7 +6,7 @@ A classic is something that everyone wants to have read and nobody wants to read
 
 -- Mark Twain, "The Disappearance of Literature"
 %
-A horse!  A horse!  My kingdom for a horse!
+A horse! A horse! My kingdom for a horse!
 
 -- Wm. Shakespeare, "Henry VI"
 %
@@ -26,7 +26,7 @@ A light wife doth make a heavy husband.
 
 -- Wm. Shakespeare, "The Merchant of Venice"
 %
-A man was reading The Canterbury Tales one Saturday morning, when his wife asked "What have you got there?"  Replied he, "Just my cup and Chaucer."
+A man was reading The Canterbury Tales one Saturday morning, when his wife asked "What have you got there?" Replied he, "Just my cup and Chaucer."
 %
 ... A solemn, unsmiling, sanctimonious old iceberg who looked like he was waiting for a vacancy in the Trinity.
 
@@ -34,37 +34,32 @@ A man was reading The Canterbury Tales one Saturday morning, when his wife asked
 %
 A Tale of Two Cities LITE(tm)
 
--- by Charles Dickens 
+-- by Charles Dickens
 A lawyer who looks like a French Nobleman is executed in his place.
-
 The Metamorphosis LITE(tm)
 
--- by Franz Kafka 
+-- by Franz Kafka
 A man turns into a bug and his family gets annoyed.
-
 Lord of the Rings LITE(tm)
 
--- by J.R.R. Tolkien 
+-- by J.R.R. Tolkien
 Some guys take a long vacation to throw a ring into a volcano.
-
 Hamlet LITE(tm)
 
--- by Wm. Shakespeare 
+-- by Wm. Shakespeare
 A college student on vacation with family problems, a screwy girl-friend and a mother who won't act her age.
 %
 A Tale of Two Cities LITE(tm)
 
--- by Charles Dickens 
+-- by Charles Dickens
 A man in love with a girl who loves another man who looks just like him has his head chopped off in France because of a mean lady who knits.
-
 Crime and Punishment LITE(tm)
 
--- by Fyodor Dostoevski 
+-- by Fyodor Dostoevski
 A man sends a nasty letter to a pawnbroker, but later feels guilty and apologizes.
-
 The Odyssey LITE(tm)
 
--- by Homer 
+-- by Homer
 After working late, a valiant warrior gets lost on his way home.
 %
 After all, all he did was string together a lot of old, well-known quotations.
@@ -79,8 +74,7 @@ All generalizations are false, including this one.
 
 -- Mark Twain
 %
-All I know is what the words know, and dead things, and that makes a handsome little sum, with a beginning and a middle and 
-an end, as in the well-built phrase and the long sonata of the dead.
+All I know is what the words know, and dead things, and that makes a handsome little sum, with a beginning and a middle and  an end, as in the well-built phrase and the long sonata of the dead.
 
 -- Samuel Beckett
 %
@@ -96,7 +90,7 @@ All things that are, are with more spirit chased than enjoyed.
 
 -- Shakespeare, "Merchant of Venice"
 %
-Always do right.  This will gratify some people and astonish the rest.
+Always do right. This will gratify some people and astonish the rest.
 
 -- Mark Twain
 %
@@ -118,7 +112,7 @@ Anyone who has had a bull by the tail knows five or six more things than someone
 
 -- Mark Twain
 %
-April 1 
+April 1
 This is the day upon which we are reminged of what we are on the other three hundred and sixty-four.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
@@ -161,7 +155,7 @@ But, for my own part, it was Greek to me.
 
 -- William Shakespeare, "Julius Caesar"
 %
-By trying we can easily learn to endure adversity.  Another man's, I mean.
+By trying we can easily learn to endure adversity. Another man's, I mean.
 
 -- Mark Twain
 %
@@ -169,7 +163,7 @@ Civilization is the limitless multiplication of unnecessary necessities.
 
 -- Mark Twain
 %
-Clothes make the man.  Naked people have little or no influence on society.
+Clothes make the man. Naked people have little or no influence on society.
 
 -- Mark Twain
 %
@@ -179,32 +173,32 @@ Conscience doth make cowards of us all.
 
 -- Shakespeare
 %
-Consider well the proportions of things.  It is better to be a young June-bug than an old bird of paradise.
+Consider well the proportions of things. It is better to be a young June-bug than an old bird of paradise.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
-Courage is resistance to fear, mastery of fear--not absence of fear.  Except a creature be part coward it is not a compliment to say it is brave; it is merely a loose misapplication of the word.  Consider the flea!--incomparably the bravest of all the creatures of God, if ignorance of fear were courage. 
-Whether you are asleep or awake he will attack you, caring nothing for the fact that in bulk and strength you are to him as are the massed armies of the earth to a sucking child; he lives both day and night and all days and nights in the very lap of peril and the immediate presence of death, and yet is no more afraid than is the man who walks the streets of a city that was threatened by an earthquake ten centuries before.  When we speak of Clive, Nelson, and Putnam as men who "didn't know what fear was," we ought always to add the flea--and put him at the head of the procession.
+Courage is resistance to fear, mastery of fear--not absence of fear. Except a creature be part coward it is not a compliment to say it is brave; it is merely a loose misapplication of the word. Consider the flea!--incomparably the bravest of all the creatures of God, if ignorance of fear were courage.
+Whether you are asleep or awake he will attack you, caring nothing for the fact that in bulk and strength you are to him as are the massed armies of the earth to a sucking child; he lives both day and night and all days and nights in the very lap of peril and the immediate presence of death, and yet is no more afraid than is the man who walks the streets of a city that was threatened by an earthquake ten centuries before. When we speak of Clive, Nelson, and Putnam as men who "didn't know what fear was," we ought always to add the flea--and put him at the head of the procession.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
-Delay not, Caesar.  Read it instantly.
+Delay not, Caesar. Read it instantly.
 
--- Shakespeare, "Julius Caesar" 3,1 
+-- Shakespeare, "Julius Caesar" 3,1
 Here is a letter, read it at your leisure.
 
--- Shakespeare, "Merchant of Venice" 5,1 
+-- Shakespeare, "Merchant of Venice" 5,1
 [Quoted in "VMS Internals and Data Structures", V4.4, when referring to I/O system services.]
 %
 Delores breezed along the surface of her life like a flat stone forever skipping along smooth water, rippling reality sporadically but oblivious to it consistently, until she finally lost momentum, sank, and due to an overdose of flouride as a child which caused her to suffer from chronic apathy, doomed herself to lie forever on the floor of her life as useless as an appendix and as lonely as a five-hundred pound barbell in a steroid-free fitness center.
 
 -- Winning sentence, 1990 Bulwer-Lytton bad fiction contest.
 %
-Don't go around saying the world owes you a living.  The world owes you nothing.  It was here first.
+Don't go around saying the world owes you a living. The world owes you nothing. It was here first.
 
 -- Mark Twain
 %
-"Elves and Dragons!" I says to him.  "Cabbages and potatoes are better for you and me."
+"Elves and Dragons!" I says to him. "Cabbages and potatoes are better for you and me."
 
 -- J. R. R. Tolkien
 %
@@ -212,7 +206,7 @@ English literature's performing flea.
 
 -- Sean O'Casey on P.G. Wodehouse
 %
-Even the clearest and most perfect circumstantial evidence is likely to be at fault, after all, and therefore ought to be received with great caution.  Take the case of any pencil, sharpened by any woman; if you have witnesses, you will find she did it with a knife; but if you take simply the aspect of the pencil, you will say that she did it with her teeth.
+Even the clearest and most perfect circumstantial evidence is likely to be at fault, after all, and therefore ought to be received with great caution. Take the case of any pencil, sharpened by any woman; if you have witnesses, you will find she did it with a knife; but if you take simply the aspect of the pencil, you will say that she did it with her teeth.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -229,9 +223,12 @@ Extreme fear can neither fight nor fly.
 -- William Shakespeare, "The Rape of Lucrece"
 %
 F.S. Fitzgerald to Hemingway:
+
 "Ernest, the rich are different from us."
+
 Hemingway:
-"Yes.  They have more money."
+
+"Yes. They have more money."
 %
 Fame is a vapor; popularity an accident; the only earthly certainty is oblivion.
 
@@ -256,19 +253,18 @@ For courage mounteth with occasion.
 For the fashion of Minas Tirith was such that it was built on seven levels, each delved into a hill, and about each was set a wall, and in each wall was a gate.
 
 -- J.R.R. Tolkien, "The Return of the King"
-
 [Quoted in "VMS Internals and Data Structures", V4.4, when referring to system overview.]
-
 %
-For there are moments when one can neither think nor feel.  And if one can neither think nor feel, she thought, where is one?
+For there are moments when one can neither think nor feel. And if one can neither think nor feel, she thought, where is one?
 
 -- Virginia Woolf, "To the Lighthouse"
-
 [Quoted in "VMS Internals and Data Structures", V4.4, when referring to powerfail recovery.]
 %
 For years a secret shame destroyed my peace--
 I'd not read Eliot, Auden or MacNiece.
+
 But now I think a thought that brings me hope:
+
 Neither had Chaucer, Shakespeare, Milton, Pope.
 
 -- Justin Richardson.
@@ -279,25 +275,22 @@ Go not to the elves for counsel, for they will say both yes and no.
 %
 Gone With The Wind LITE(tm)
 
--- by Margaret Mitchell 
+-- by Margaret Mitchell
 A woman only likes men she can't have and the South gets trashed.
-
 Gift of the Magi LITE(tm)
 
--- by O. Henry 
+-- by O. Henry
 A husband and wife forget to register their gift preferences.
-
 The Old Man and the Sea LITE(tm)
 
--- by Ernest Hemingway 
+-- by Ernest Hemingway
 An old man goes fishing, but doesn't have much luck.
-
 Diary of a Young Girl LITE(tm)
 
--- by Anne Frank 
+-- by Anne Frank
 A young girl hides in an attic but is discovered.
 %
-Gratitude and treachery are merely the two extremities of the same procession. 
+Gratitude and treachery are merely the two extremities of the same procession.
 You have seen all of it that is worth staying for when the band and the gaudy officials have gone by.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
@@ -310,7 +303,7 @@ Habit is habit, and not to be flung out of the window by any man, but coaxed dow
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar
 %
-Hain't we got all the fools in town on our side?  And hain't that a big enough majority in any town?
+Hain't we got all the fools in town on our side? And hain't that a big enough majority in any town?
 
 -- Mark Twain, "Huckleberry Finn"
 %
@@ -358,9 +351,8 @@ Hell is empty and all the devils are here.
 
 -- Wm. Shakespeare, "The Tempest"
 %
-His followers called him Mahasamatman and said he was a god.  He preferred to drop the Maha- and the -atman, however, and called himself Sam.  He never claimed to be a god.  But then, he never claimed not to be a god.  Circum-
-stances being what they were, neither admission could be of any benefit.
-Silence, though, could.  It was in the days of the rains that their prayers went up, not from the fingering of knotted prayer cords or the spinning of prayer wheels, but from the great pray-machine in the monastery of Ratri, goddess of the Night.  The high-frequency prayers were directed upward through the atmosphere and out beyond it, passing into that golden cloud called the Bridge of the Gods, which circles the entire world, is seen as a bronze rainbow at night and is the place where the red sun becomes orange at midday.
+His followers called him Mahasamatman and said he was a god. He preferred to drop the Maha- and the -atman, however, and called himself Sam. He never claimed to be a god. But then, he never claimed not to be a god. Circum- stances being what they were, neither admission could be of any benefit.
+Silence, though, could. It was in the days of the rains that their prayers went up, not from the fingering of knotted prayer cords or the spinning of prayer wheels, but from the great pray-machine in the monastery of Ratri, goddess of the Night. The high-frequency prayers were directed upward through the atmosphere and out beyond it, passing into that golden cloud called the Bridge of the Gods, which circles the entire world, is seen as a bronze rainbow at night and is the place where the red sun becomes orange at midday.
 Some of the monks doubted the orthodoxy of this prayer technique...
 
 -- Roger Zelazny, "Lord of Light"
@@ -391,7 +383,7 @@ I must have a prodigious quantity of mind; it takes me as much as a week sometim
 
 -- Mark Twain, "The Innocents Abroad"
 %
-I reverently believe that the maker who made us all  makes everything in New England, but the weather.  I don't know who makes that, but I think it must be raw apprentices in the weather-clerks factory who experiment and learn how, in New England, for board and clothes, and then are promoted to make weather for countries that require a good article, and will take their custom elsewhere if they don't get it.
+I reverently believe that the maker who made us all makes everything in New England, but the weather. I don't know who makes that, but I think it must be raw apprentices in the weather-clerks factory who experiment and learn how, in New England, for board and clothes, and then are promoted to make weather for countries that require a good article, and will take their custom elsewhere if they don't get it.
 
 -- Mark Twain
 %
@@ -403,13 +395,11 @@ I was gratified to be able to answer promptly, and I did. I said I didn't know.
 
 -- Mark Twain
 %
-I will honour Christmas in my heart, and try to keep it all the year.  I will live in the Past, the Present, and the Future.  The Spirits of all Three shall strive within me.  I will not shut out the lessons that they teach.  Oh, tell me that I may sponge away the writing on this stone!
+I will honour Christmas in my heart, and try to keep it all the year. I will live in the Past, the Present, and the Future. The Spirits of all Three shall strive within me. I will not shut out the lessons that they teach. Oh, tell me that I may sponge away the writing on this stone!
 
 -- Charles Dickens
 %
-"I wonder", he said to himself, "what's in a book while it's closed.  Oh, I 
-know it's full of letters printed on paper, but all the same, something must 
-be happening, because as soon as I open it, there's a whole story with people 
+"I wonder", he said to himself, "what's in a book while it's closed. Oh, I know it's full of letters printed on paper, but all the same, something must  be happening, because as soon as I open it, there's a whole story with people
 I don't know yet and all kinds of adventures and battles."
 
 -- Bastian B. Bux
@@ -419,7 +409,7 @@ I'll burn my books.
 -- Christopher Marlowe
 %
 I've touch'd the highest point of all my greatness;
-And from that full meridian of my glory I haste now to my setting.  I shall fall, Like a bright exhalation in the evening And no man see me more.
+And from that full meridian of my glory I haste now to my setting. I shall fall, Like a bright exhalation in the evening And no man see me more.
 
 -- Shakespeare
 %
@@ -439,7 +429,7 @@ If you laid all of our laws end to end, there would be no end.
 
 -- Mark Twain
 %
-If you pick up a starving dog and make him prosperous, he will not bite you. 
+If you pick up a starving dog and make him prosperous, he will not bite you.
 This is the principal difference between a dog and a man.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
@@ -464,11 +454,11 @@ In the first place, God made idiots; this was for practice; then he made school 
 
 -- Mark Twain
 %
-In the plot, people came to the land; the land loved them; they worked and struggled and had lots of children.  There was a Frenchman who talked funny and a greenhorn from England who was a fancy-pants but when it came to the crunch he was all courage.  Those novels would make you retch.
+In the plot, people came to the land; the land loved them; they worked and struggled and had lots of children. There was a Frenchman who talked funny and a greenhorn from England who was a fancy-pants but when it came to the crunch he was all courage. Those novels would make you retch.
 
 -- Canadian novelist Robertson Davies, on the generic Canadian novel.
 %
-In the space of one hundred and seventy-six years the Mississippi has shortened itself two hundred and forty-two miles.  Therefore ... in the Old Silurian Period the Mississippi River was upward of one million three hundred thousand miles long ... seven hundred and forty-two years from now the Mississippi will be only a mile and three-quarters long.  ... There is something fascinating about science.  One gets such wholesome returns of conjecture out of such a trifling investment of fact.
+In the space of one hundred and seventy-six years the Mississippi has shortened itself two hundred and forty-two miles. Therefore ... in the Old Silurian Period the Mississippi River was upward of one million three hundred thousand miles long ... seven hundred and forty-two years from now the Mississippi will be only a mile and three-quarters long. ... There is something fascinating about science. One gets such wholesome returns of conjecture out of such a trifling investment of fact.
 
 -- Mark Twain
 %
@@ -484,12 +474,11 @@ It is a wise father that knows his own child.
 
 -- William Shakespeare, "The Merchant of Venice"
 %
-It is by the fortune of God that, in this country, we have three benefits:
-freedom of speech, freedom of thought, and the wisdom never to use either.
+It is by the fortune of God that, in this country, we have three benefits: freedom of speech, freedom of thought, and the wisdom never to use either.
 
 -- Mark Twain
 %
-It is easy to find fault, if one has that disposition.  There was once a man who, not being able to find any other fault with his coal, complained that there were too many prehistoric toads in it.
+It is easy to find fault, if one has that disposition. There was once a man who, not being able to find any other fault with his coal, complained that there were too many prehistoric toads in it.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -509,7 +498,7 @@ It were not best that we should all think alike; it is difference of opinion tha
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
-Its name is Public Opinion.  It is held in reverence.  It settles everything.
+Its name is Public Opinion. It is held in reverence. It settles everything.
 Some think it is the voice of God.
 
 -- Mark Twain
@@ -538,17 +527,16 @@ Let us endeavor so to live that when we come to die even the undertaker will be 
 
 -- Maek Twain, "Pudd'nhead Wilson's Calendar"
 %
-Like an expensive sports car, fine-tuned and well-built, Portia was sleek, shapely, and gorgeous, her red jumpsuit moulding her body, which was as warm as seatcovers in July, her hair as dark as new tires, her eyes flashing like bright hubcaps, and her lips as dewy as the beads of fresh rain on the hood;
-she was a woman driven -- fueled by a single accelerant -- and she needed a man, a man who wouldn't shift from his views, a man to steer her along the right road: a man like Alf Romeo.
+Like an expensive sports car, fine-tuned and well-built, Portia was sleek, shapely, and gorgeous, her red jumpsuit moulding her body, which was as warm as seatcovers in July, her hair as dark as new tires, her eyes flashing like bright hubcaps, and her lips as dewy as the beads of fresh rain on the hood; she was a woman driven -- fueled by a single accelerant -- and she needed a man, a man who wouldn't shift from his views, a man to steer her along the right road: a man like Alf Romeo.
 
--- Rachel Sheeley, winner 
+-- Rachel Sheeley, winner
 The hair ball blocking the drain of the shower reminded Laura she would never see her little dog Pritzi again.
 
--- Claudia Fields, runner-up 
+-- Claudia Fields, runner-up
 It could have been an organically based disturbance of the brain -- perhaps a tumor or a metabolic deficiency -- but after a thorough neurological exam it was determined that Byron was simply a jerk.
 
--- Jeff Jahnke, runner-up 
-Winners in the 7th Annual Bulwer-Lytton Bad Writing Contest.  The contest is named after the author of the immortal lines:  "It was a dark and stormy night."  The object of the contest is to write the opening sentence of the worst possible novel.
+-- Jeff Jahnke, runner-up
+Winners in the 7th Annual Bulwer-Lytton Bad Writing Contest. The contest is named after the author of the immortal lines: "It was a dark and stormy night." The object of the contest is to write the opening sentence of the worst possible novel.
 %
 Lord, what fools these mortals be!
 
@@ -562,7 +550,7 @@ Many a writer seems to think he is never profound except when he can't understan
 
 -- George D. Prentice
 %
-Many enraged psychiatrists are inciting a weary butcher.  The butcher is weary and tired because he has cut meat and steak and lamb for hours and weeks.  He does not desire to chant about anything with raving psychiatrists, but he sings about his gingivectomist, he dreams about a single cosmologist, he thinks about his dog.  The dog is named Herbert.
+Many enraged psychiatrists are inciting a weary butcher. The butcher is weary and tired because he has cut meat and steak and lamb for hours and weeks. He does not desire to chant about anything with raving psychiatrists, but he sings about his gingivectomist, he dreams about a single cosmologist, he thinks about his dog. The dog is named Herbert.
 
 -- Racter, "The Policeman's Beard is Half-Constructed"
 %
@@ -570,8 +558,8 @@ Many pages make a thick book, except for pocket Bibles which are on very very th
 %
 Many pages make a thick book.
 %
-Mind!  I don't mean to say that I know, of my own knowledge, what there is particularly dead about a door-nail.  I might have been inclined, myself, to regard a coffin-nail as the deadest piece of ironmongery in the trade.
-But the wisdom of our ancestors is in the simile; and my unhallowed hands shall not disturb it, or the Country's done for.  You will therefore permit me to repeat, emphatically, that Marley was as dead as a door-nail.
+Mind! I don't mean to say that I know, of my own knowledge, what there is particularly dead about a door-nail. I might have been inclined, myself, to regard a coffin-nail as the deadest piece of ironmongery in the trade.
+But the wisdom of our ancestors is in the simile; and my unhallowed hands shall not disturb it, or the Country's done for. You will therefore permit me to repeat, emphatically, that Marley was as dead as a door-nail.
 
 -- Charles Dickens, "A Christmas Carol"
 %
@@ -580,7 +568,7 @@ Must I hold a candle to my shames?
 -- William Shakespeare, "The Merchant of Venice"
 %
 My dear People.
-My dear Bagginses and Boffins, and my dear Tooks and Brandybucks, and Grubbs, and Chubbs, and Burrowses, and Hornblowers, and Bolgers, Bracegirdles, Goodbodies, Brockhouses and Proudfoots.  Also my good Sackville Bagginses that I welcome back at last to Bag End.  Today is my one hundred and eleventh birthday: I am eleventy-one today!"
+My dear Bagginses and Boffins, and my dear Tooks and Brandybucks, and Grubbs, and Chubbs, and Burrowses, and Hornblowers, and Bolgers, Bracegirdles, Goodbodies, Brockhouses and Proudfoots. Also my good Sackville Bagginses that I welcome back at last to Bag End. Today is my one hundred and eleventh birthday: I am eleventy-one today!"
 
 -- J. R. R. Tolkien
 %
@@ -603,11 +591,11 @@ Within, walls continued upright, bricks met neatly, floors were firm, and doors 
 
 -- Shirley Jackson, "The Haunting of Hill House"
 %
-No violence, gentlemen -- no violence, I beg of you!  Consider the furniture!
+No violence, gentlemen -- no violence, I beg of you! Consider the furniture!
 
 -- Sherlock Holmes
 %
-Noise proves nothing.  Often a hen who has merely laid an egg cackles as if she laid an asteroid.
+Noise proves nothing. Often a hen who has merely laid an egg cackles as if she laid an asteroid.
 
 -- Mark Twain
 %
@@ -628,15 +616,12 @@ O, it is excellent To have a giant's strength; but it is tyrannous To use it lik
 -- Shakespeare, "Measure for Measure", II, 2
 %
 October 12, the Discovery.
-
 It was wonderful to find America, but it would have been more wonderful to miss it.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
 October.
-
 This is one of the peculiarly dangerous months to speculate in stocks in.
-
 The others are July, January, September, April, November, May, March, June, December, August, and February.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
@@ -657,8 +642,7 @@ Perilous to all of us are the devices of an art deeper than we ourselves possess
 
 -- Gandalf the Grey [J.R.R. Tolkien, "Lord of the Rings"]
 %
-Persons attempting to find a motive in this narrative will be prosecuted;
-persons attempting to find a moral in it will be banished; persons attempting to find a plot in it will be shot.  By Order of the Author
+Persons attempting to find a motive in this narrative will be prosecuted; persons attempting to find a moral in it will be banished; persons attempting to find a plot in it will be shot. By Order of the Author
 
 -- Mark Twain, "Tom Sawyer"
 %
@@ -666,7 +650,7 @@ question = ( to ) ? be : ! be;
 
 -- Wm. Shakespeare
 %
-Reader, suppose you were an idiot.  And suppose you were a member of Congress.  But I repeat myself.
+Reader, suppose you were an idiot. And suppose you were a member of Congress. But I repeat myself.
 
 -- Mark Twain
 %
@@ -682,14 +666,14 @@ Repartee is something we think of twenty-four hours too late.
 
 -- Mark Twain
 %
-ROMEO:		Courage, man; the hurt cannot be much.
-MERCUTIO:	No, 'tis not so deep as a well, nor so wide as a church-door; but 'tis enough, 'twill serve.
+ROMEO: Courage, man; the hurt cannot be much.
+MERCUTIO: No, 'tis not so deep as a well, nor so wide as a church-door; but 'tis enough, 'twill serve.
 %
 Seeing that death, a necessary end, Will come when it will come.
 
 -- William Shakespeare, "Julius Caesar"
 %
-She is not refined.  She is not unrefined.  She keeps a parrot.
+She is not refined. She is not unrefined. She keeps a parrot.
 
 -- Mark Twain
 %
@@ -701,13 +685,11 @@ Small things make base men proud.
 
 -- William Shakespeare, "Henry VI"
 %
-So she went into the garden to cut a cabbage leaf to make an apple pie;
-and at the same time a great she-bear, coming up the street pops its head into the shop. "What! no soap?" So he died, and she very imprudently married the barber; and there were present the Picninnies, and the Grand Panjandrum himself, with the little round button at top, and they all fell to playing the game of catch as catch can, till the gunpowder ran out at the heels of their boots.
+So she went into the garden to cut a cabbage leaf to make an apple pie; and at the same time a great she-bear, coming up the street pops its head into the shop. "What! no soap?" So he died, and she very imprudently married the barber; and there were present the Picninnies, and the Grand Panjandrum himself, with the little round button at top, and they all fell to playing the game of catch as catch can, till the gunpowder ran out at the heels of their boots.
 
 -- Samuel Foote
 %
-So so is good, very good, very excellent good:
-and yet it is not; it is but so so.
+So so is good, very good, very excellent good: and yet it is not; it is but so so.
 
 -- William Shakespeare, "As You Like It"
 %
@@ -719,26 +701,26 @@ Something's rotten in the state of Denmark.
 
 -- Shakespeare
 %
-Sometimes I wonder if I'm in my right mind.  Then it passes off and I'm as intelligent as ever.
+Sometimes I wonder if I'm in my right mind. Then it passes off and I'm as intelligent as ever.
 
 -- Samuel Beckett, "Endgame"
 %
-"Speak, thou vast and venerable head," muttered Ahab, "which, though ungarnished with a beard, yet here and there lookest hoary with mosses; speak, mighty head, and tell us the secret thing that is in thee.  Of all divers, thou has dived the deepest.  That head upon which the upper sun now gleams has moved amid the world's foundations.  Where unrecorded names and navies rust, and untold hopes and anchors rot; where in her murderous hold this frigate earth is ballasted with bones of millions of the drowned; there, in that awful water-land, there was thy most familiar home.  Thou hast been where bell or diver never went; has slept by many a sailer's side, where sleepless mothers would give their lives to lay them down.  Thou saw'st the locked lovers when leaping from their flaming ship; heart to heart they sank beneath the exulting wave; true to each other, when heaven seemed false to them.  Thou saw'st the murdered mate when tossed by pirates from the midnight deck; for hours he fell into the deeper midnight of the insatiate maw; and his murderers still sailed on unharmed -- while swift lightnings shivered the neighboring ship that would have borne a righteous husband to outstretched, longing arms.  O head! thou has seen enough to split the planets and make an infidel of Abraham, and not one syllable is thine!"
+"Speak, thou vast and venerable head," muttered Ahab, "which, though ungarnished with a beard, yet here and there lookest hoary with mosses; speak, mighty head, and tell us the secret thing that is in thee. Of all divers, thou has dived the deepest. That head upon which the upper sun now gleams has moved amid the world's foundations. Where unrecorded names and navies rust, and untold hopes and anchors rot; where in her murderous hold this frigate earth is ballasted with bones of millions of the drowned; there, in that awful water-land, there was thy most familiar home. Thou hast been where bell or diver never went; has slept by many a sailer's side, where sleepless mothers would give their lives to lay them down. Thou saw'st the locked lovers when leaping from their flaming ship; heart to heart they sank beneath the exulting wave; true to each other, when heaven seemed false to them. Thou saw'st the murdered mate when tossed by pirates from the midnight deck; for hours he fell into the deeper midnight of the insatiate maw; and his murderers still sailed on unharmed -- while swift lightnings shivered the neighboring ship that would have borne a righteous husband to outstretched, longing arms. O head! thou has seen enough to split the planets and make an infidel of Abraham, and not one syllable is thine!"
 
 -- H. Melville, "Moby Dick"
 %
-Steady movement is more important than speed, much of the time.  So long as there is a regular progression of stimuli to get your mental hooks into, there is room for lateral movement.  Once this begins, its rate is a matter of discretion.
+Steady movement is more important than speed, much of the time. So long as there is a regular progression of stimuli to get your mental hooks into, there is room for lateral movement. Once this begins, its rate is a matter of discretion.
 
 -- Corwin, Prince of Amber
 %
-Stop!  There was first a game of blindman's buff.  Of course there was.
-And I no more believe Topper was really blind than I believe he had eyes in his boots.  My opinion is, that it was a done thing between him and Scrooge's nephew; and that the Ghost of Christmas Present knew it.  The way he went after that plump sister in the lace tucker, was an outrage on the credulity of human nature.
+Stop! There was first a game of blindman's buff. Of course there was.
+And I no more believe Topper was really blind than I believe he had eyes in his boots. My opinion is, that it was a done thing between him and Scrooge's nephew; and that the Ghost of Christmas Present knew it. The way he went after that plump sister in the lace tucker, was an outrage on the credulity of human nature.
 %
 Suspicion always haunts the guilty mind.
 
 -- Wm. Shakespeare
 %
-Swerve me?  The path to my fixed purpose is laid with iron rails, whereon my soul is grooved to run.  Over unsounded gorges, through the rifled hearts of mountains, under torrents' beds, unerringly I rush!
+Swerve me? The path to my fixed purpose is laid with iron rails, whereon my soul is grooved to run. Over unsounded gorges, through the rifled hearts of mountains, under torrents' beds, unerringly I rush!
 
 -- Captain Ahab, "Moby Dick"
 %
@@ -772,10 +754,9 @@ The bone-chilling scream split the warm summer night in two, the first half bein
 
 -- Winning sentence, 1986 Bulwer-Lytton bad fiction contest.
 %
-The Bulwer-Lytton fiction contest is held ever year at San Jose State Univ.  by Professor Scott Rice.  It is held in memory of Edward George Earle Bulwer-Lytton (1803-1873), a rather prolific and popular (in his time) novelist.  He is best known today for having written "The Last Days of Pompeii."
+The Bulwer-Lytton fiction contest is held ever year at San Jose State Univ. by Professor Scott Rice. It is held in memory of Edward George Earle Bulwer-Lytton (1803-1873), a rather prolific and popular (in his time) novelist. He is best known today for having written "The Last Days of Pompeii."
 
-Whenever Snoopy starts typing his novel from the top of his doghouse, beginning "It was a dark and stormy night..." he is borrowing from Lord Bulwer-Lytton.  This was the line that opened his novel, "Paul Clifford,"
-written in 1830.  The full line reveals why it is so bad:
+Whenever Snoopy starts typing his novel from the top of his doghouse, beginning "It was a dark and stormy night..." he is borrowing from Lord Bulwer-Lytton. This was the line that opened his novel, "Paul Clifford," written in 1830. The full line reveals why it is so bad:
 
 It was a dark and stormy night; the rain fell in torrents -- except at occasional intervals, when it was checked by a violent gust of wind which swept up the streets (for it is in London that our scene lies), rattling along the housetops, and fiercely agitating the scanty flame of the lamps that struggled against the darkness.
 %
@@ -823,18 +804,18 @@ The last thing one knows in constructing a work is what to put first.
 
 -- Blaise Pascal
 %
-The Least Perceptive Literary Critic The most important critic in our field of study is Lord Halifax.  A most individual judge of poetry, he once invited Alexander Pope round to give a public reading of his latest poem.
+The Least Perceptive Literary Critic The most important critic in our field of study is Lord Halifax. A most individual judge of poetry, he once invited Alexander Pope round to give a public reading of his latest poem.
 Pope, the leading poet of his day, was greatly surprised when Lord Halifax stopped him four or five times and said, "I beg your pardon, Mr.
 Pope, but there is something in that passage that does not quite please me."
-Pope was rendered speechless, as this fine critic suggested sizeable and unwise emendations to his latest masterpiece.  "Be so good as to mark the place and consider at your leisure.  I'm sure you can give it a better turn."
+Pope was rendered speechless, as this fine critic suggested sizeable and unwise emendations to his latest masterpiece. "Be so good as to mark the place and consider at your leisure. I'm sure you can give it a better turn."
 After the reading, a good friend of Lord Halifax, a certain Dr.
-Garth, took the stunned Pope to one side.  "There is no need to touch the lines," he said.  "All you need do is leave them just as they are, call on Lord Halifax two or three months hence, thank him for his kind observation on those passages, and then read them to him as altered.  I have known him much longer than you have, and will be answerable for the event."
-Pope took his advice, called on Lord Halifax and read the poem exactly as it was before.  His unique critical faculties had lost none of their edge.  "Ay", he commented, "now they are perfectly right.  Nothing can be better."
+Garth, took the stunned Pope to one side. "There is no need to touch the lines," he said. "All you need do is leave them just as they are, call on Lord Halifax two or three months hence, thank him for his kind observation on those passages, and then read them to him as altered. I have known him much longer than you have, and will be answerable for the event."
+Pope took his advice, called on Lord Halifax and read the poem exactly as it was before. His unique critical faculties had lost none of their edge. "Ay", he commented, "now they are perfectly right. Nothing can be better."
 
 -- Stephen Pile, "The Book of Heroic Failures"
 %
-The Least Successful Collector Betsy Baker played a central role in the history of collecting.  She was employed as a servant in the house of John Warburton (1682-1759) who had amassed a fine collection of 58 first edition plays, including most of the works of Shakespeare.
-One day Warburton returned home to find 55 of them charred beyond legibility.  Betsy had either burned them or used them as pie bottoms.  The remaining three folios are now in the British Museum.
+The Least Successful Collector Betsy Baker played a central role in the history of collecting. She was employed as a servant in the house of John Warburton (1682-1759) who had amassed a fine collection of 58 first edition plays, including most of the works of Shakespeare.
+One day Warburton returned home to find 55 of them charred beyond legibility. Betsy had either burned them or used them as pie bottoms. The remaining three folios are now in the British Museum.
 The only comparable literary figure was the maid who in 1835 burned the manuscript of the first volume of Thomas Carlyle's "The Hisory of the French Revolution", thinking it was wastepaper.
 
 -- Stephen Pile, "The Book of Heroic Failures"
@@ -857,12 +838,12 @@ The naked truth of it is, I have no shirt.
 %
 "...The name of the song is called 'Haddocks' Eyes'!"
 "Oh, that's the name of the song, is it?" Alice said, trying to feel interested.
-"No, you don't understand," the Knight said, looking a little vexed.  "That's what the name is called.  The name really is, 'The Aged Aged Man.'"
+"No, you don't understand," the Knight said, looking a little vexed. "That's what the name is called. The name really is, 'The Aged Aged Man.'"
 "Then I ought to have said "That's what the song is called'?"
 Alice corrected herself.
-"No, you oughtn't: that's quite another thing!  The song is called 'Ways and Means':  but that's only what it is called you know!"
+"No, you oughtn't: that's quite another thing! The song is called 'Ways and Means': but that's only what it is called you know!"
 "Well, what is the song then?" said Alice, who was by this time completely bewildered.
-"I was coming to that," the Knight said.  "The song really is "A-sitting on a Gate": and the tune's my own invention."
+"I was coming to that," the Knight said. "The song really is "A-sitting on a Gate": and the tune's my own invention."
 
 --Lewis Carroll, "Through the Looking Glass"
 %
@@ -881,7 +862,7 @@ The only way to keep your health is to eat what you don't want, drink what you d
 The Priest's grey nimbus in a niche where he dressed discreetly.
 I will not sleep here tonight. Home also I cannot go.
 A voice, sweetened and sustained, called to him from the sea.
-Turning the curve he waved his hand.  A sleek brown head, a seal's, far out on the water, round.  Usurper.
+Turning the curve he waved his hand. A sleek brown head, a seal's, far out on the water, round. Usurper.
 
 -- James Joyce, "Ulysses"
 %
@@ -905,7 +886,7 @@ The surest protection against temptation is cowardice.
 
 -- Mark Twain
 %
-The true Southern watermelon is a boon apart, and not to be mentioned with commoner things.  It is chief of the world's luxuries, king by the grace of God over all the fruits of the earth.  When one has tasted it, he knows what the angels eat.  It was not a Southern watermelon that Eve took; we know it because she repented.
+The true Southern watermelon is a boon apart, and not to be mentioned with commoner things. It is chief of the world's luxuries, king by the grace of God over all the fruits of the earth. When one has tasted it, he knows what the angels eat. It was not a Southern watermelon that Eve took; we know it because she repented.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -917,7 +898,7 @@ There are more things in heaven and earth, Horatio, than are dreamt of in your p
 
 -- Wm. Shakespeare, "Hamlet"
 %
-There are three infallible ways of pleasing an author, and the three form a rising scale of compliment: 1, to tell him you have read one of his books; 2, to tell him you have read all of his books; 3, to ask him to let you read the manuscript of his forthcoming book.  No. 1 admits you to his respect; No. 2 admits you to his admiration; No. 3 carries you clear into his heart.
+There are three infallible ways of pleasing an author, and the three form a rising scale of compliment: 1, to tell him you have read one of his books; 2, to tell him you have read all of his books; 3, to ask him to let you read the manuscript of his forthcoming book. No. 1 admits you to his respect; No. 2 admits you to his admiration; No. 3 carries you clear into his heart.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -932,7 +913,7 @@ There is an old time toast which is golden for its beauty.
 
 -- Mark Twain
 %
-There is no character, howsoever good and fine, but it can be destroyed by ridicule, howsoever poor and witless.  Observe the ass, for instance: his character is about perfect, he is the choicest spirit among all the humbler animals, yet see what ridicule has brought him to.  Instead of feeling complimented when we are called an ass, we are left in doubt.
+There is no character, howsoever good and fine, but it can be destroyed by ridicule, howsoever poor and witless. Observe the ass, for instance: his character is about perfect, he is the choicest spirit among all the humbler animals, yet see what ridicule has brought him to. Instead of feeling complimented when we are called an ass, we are left in doubt.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -952,7 +933,7 @@ They have been at a great feast of languages, and stolen the scraps.
 
 -- William Shakespeare, "Love's Labour's Lost"
 %
-They spell it "da Vinci" and pronounce it "da Vinchy".  Foreigners always spell better than they pronounce.
+They spell it "da Vinci" and pronounce it "da Vinchy". Foreigners always spell better than they pronounce.
 
 -- Mark Twain
 %
@@ -986,7 +967,7 @@ Too much is just enough.
 
 -- Mark Twain, on whiskey
 %
-Training is everything.  The peach was once a bitter almond; cauliflower is nothing but cabbage with a college education.
+Training is everything. The peach was once a bitter almond; cauliflower is nothing but cabbage with a college education.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -994,7 +975,7 @@ Truth is the most valuable thing we have -- so let us economize it.
 
 -- Mark Twain
 %
-Unless hours were cups of sack, and minutes capons, and clocks the tongues of bawds, and dials the signs of leaping houses, and the blessed sun himself a fair, hot wench in flame-colored taffeta, I see no reason why thou shouldst be so superfluous to demand the time of the day.  I wasted time and now doth time waste me.
+Unless hours were cups of sack, and minutes capons, and clocks the tongues of bawds, and dials the signs of leaping houses, and the blessed sun himself a fair, hot wench in flame-colored taffeta, I see no reason why thou shouldst be so superfluous to demand the time of the day. I wasted time and now doth time waste me.
 
 -- William Shakespeare
 %
@@ -1006,28 +987,29 @@ Water, taken in moderation cannot hurt anybody.
 
 -- Mark Twain
 %
-We know all about the habits of the ant, we know all about the habits of the bee, but we know nothing at all about the habits of the oyster.  It seems almost certain that we have been choosing the wrong time for studying the oyster.
+We know all about the habits of the ant, we know all about the habits of the bee, but we know nothing at all about the habits of the oyster. It seems almost certain that we have been choosing the wrong time for studying the oyster.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
-We should be careful to get out of an experience only the wisdom that is in it - and stay there, lest we be like the cat that sits down on a hot stove-lid.  She will never sit down on a hot stove-lid again - and that is well; but also she will never sit down on a cold one any more.
+We should be careful to get out of an experience only the wisdom that is in it - and stay there, lest we be like the cat that sits down on a hot stove-lid. She will never sit down on a hot stove-lid again - and that is well; but also she will never sit down on a cold one any more.
 
 -- Mark Twain
 %
-We were young and our happiness dazzled us with its strength.  But there was also a terrible betrayal that lay within me like a Merle Haggard song at a French restaurant. [...]
-I could not tell the girl about the woman of the tollway, of her milk white BMW and her Jordache smile.  There had been a fight.  I had punched her boyfriend, who fought the mechanical bulls.  Everyone told him, "You ride the bull, senor.  You do not fight it."  But he was lean and tough like a bad rib-eye and he fought the bull.  And then he fought me.  And when we finished there were no winners, just men doing what men must do. [...]
+We were young and our happiness dazzled us with its strength. But there was also a terrible betrayal that lay within me like a Merle Haggard song at a French restaurant. [...]
+I could not tell the girl about the woman of the tollway, of her milk white BMW and her Jordache smile. There had been a fight. I had punched her boyfriend, who fought the mechanical bulls. Everyone told him, "You ride the bull, senor. You do not fight it." But he was lean and tough like a bad rib-eye and he fought the bull. And then he fought me. And when we finished there were no winners, just men doing what men must do. [...]
 "Stop the car," the girl said.
-There was a look of terrible sadness in her eyes.  She knew about the woman of the tollway.  I knew not how.  I started to speak, but she raised an arm and spoke with a quiet and peace I will never forget.
+There was a look of terrible sadness in her eyes. She knew about the woman of the tollway. I knew not how. I started to speak, but she raised an arm and spoke with a quiet and peace I will never forget.
 "I do not ask for whom's the tollway belle," she said, "the tollway belle's for thee."
 The next morning our youth was a memory, and our happiness was a lie.
 Life is like a bad margarita with good tequila, I thought as I poured whiskey onto my granola and faced a new day.
 
 -- Peter Applebome, International Imitation Hemingway Competition
 %
-Well, anyway, I was reading this James Bond book, and right away I realized that like most books, it had too many words.  The plot was the same one that all James Bond books have: An evil person tries to blow up the world, but James Bond kills him and his henchmen and makes love to several attractive women.  There, that's it: 24 words.  But the guy who wrote the book took *thousands* of words to say it.
-Or consider "The Brothers Karamazov", by the famous Russian alcoholic Fyodor Dostoyevsky.  It's about these two brothers who kill their father.
-Or maybe only one of them kills the father.  It's impossible to tell because what they mostly do is talk for nearly a thousand pages.  If all Russians talk as much as the Karamazovs did, I don't see how they found time to become a major world power.
-I'm told that Dostoyevsky wrote "The Brothers Karamazov" to raise the question of whether there is a God.  So why didn't he just come right out and say: "Is there a God? It sure beats the heck out of me."
+Well, anyway, I was reading this James Bond book, and right away I realized that like most books, it had too many words. The plot was the same one that all James Bond books have: An evil person tries to blow up the world, but James Bond kills him and his henchmen and makes love to several attractive women. There, that's it: 24 words. But the guy who wrote the book took *thousands* of words to say it.
+Or consider "The Brothers Karamazov", by the famous Russian alcoholic Fyodor Dostoyevsky. It's about these two brothers who kill their father.
+Or maybe only one of them kills the father. It's impossible to tell because what they mostly do is talk for nearly a thousand pages. If all Russians talk as much as the Karamazovs did, I don't see how they found time to become a major world power.
+I'm told that Dostoyevsky wrote "The Brothers Karamazov" to raise the question of whether there is a God. So why didn't he just come right out and say: "Is there a God? It sure beats the heck out of me."
+
 Other famous works could easily have been summarized in a few words:
 
 * "Moby Dick" -- Don't mess around with large whales because they symbolize nature and will kill you.
@@ -1053,7 +1035,7 @@ When I reflect upon the number of disagreeable people who I know who have gone t
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
-When I was younger, I could remember anything, whether it had happened or not; but my faculties are decaying now and soon I shall be so I cannot remember any but the things that never happened.  It is sad to go to pieces like this but we all have to do it.
+When I was younger, I could remember anything, whether it had happened or not; but my faculties are decaying now and soon I shall be so I cannot remember any but the things that never happened. It is sad to go to pieces like this but we all have to do it.
 
 -- Mark Twain
 %
@@ -1077,11 +1059,11 @@ Whenever you find that you are on the side of the majority, it is time to reform
 
 -- Mark Twain
 %
-Whoever has lived long enough to find out what life is, knows how deep a debt of gratitude we owe to Adam, the first great benefactor of our race.  He brought death into the world.
+Whoever has lived long enough to find out what life is, knows how deep a debt of gratitude we owe to Adam, the first great benefactor of our race. He brought death into the world.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
-Why is it that we rejoice at a birth and grieve at a funeral?  It is because we are not the person involved.
+Why is it that we rejoice at a birth and grieve at a funeral? It is because we are not the person involved.
 
 -- Mark Twain, "Pudd'nhead Wilson's Calendar"
 %
@@ -1125,8 +1107,8 @@ You never have to change anything you got up in the middle of the night to write
 
 -- Saul Bellow
 %
-You see, I consider that a man's brain originally is like a little empty attic, and you have to stock it with such furniture as you choose.  A fool takes in all the lumber of every sort he comes across, so that the knowledge which might be useful to him gets crowded out, or at best is jumbled up with a lot of other things, so that he has difficulty in laying his hands upon it.
-Now the skilful workman is very careful indeed as to what he takes into his brain-attic.  He will have nothing but the tools which may help him in doing his work, but of these he has a large assortment, and all in the most perfect order.  It is a mistake to think that that little room has elastic walls and can distend to any extent.  Depend upon it there comes a time when for every addition of knowledge you forget something that you knew before.  It is of the highest importance, therefore, not to have useless facts elbowing out the useful ones.
+You see, I consider that a man's brain originally is like a little empty attic, and you have to stock it with such furniture as you choose. A fool takes in all the lumber of every sort he comes across, so that the knowledge which might be useful to him gets crowded out, or at best is jumbled up with a lot of other things, so that he has difficulty in laying his hands upon it.
+Now the skilful workman is very careful indeed as to what he takes into his brain-attic. He will have nothing but the tools which may help him in doing his work, but of these he has a large assortment, and all in the most perfect order. It is a mistake to think that that little room has elastic walls and can distend to any extent. Depend upon it there comes a time when for every addition of knowledge you forget something that you knew before. It is of the highest importance, therefore, not to have useless facts elbowing out the useful ones.
 
 -- Sir Arthur Conan Doyle, "A Study in Scarlet"
 %
@@ -1142,7 +1124,6 @@ Your manuscript is both good and original, but the part that is good is not orig
 
 -- Samuel Johnson
 %
-Zounds!  I was never so bethumped with words since I first called my brother's father dad.
+Zounds! I was never so bethumped with words since I first called my brother's father dad.
 
 -- William Shakespeare, "Kind John"
-%

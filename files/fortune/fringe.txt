@@ -1486,13 +1486,13 @@ Olivia: Is that safe?
 Peter: Nuh-uh, and it's not pretty either, but you get used to it.
 Olivia: [whispers] I could get used to this. This is my favorite time of day: sunrise. The world is full of promise.
 
--- Fringe - 6:02 AM EST  [3.20]
+-- Fringe - 6:02 AM EST [3.20]
 %
 Astrid: You sure you don't want me to call Olivia?
 Peter: If it doesn't work, she's going to find out soon enough. Just tell her that...
 Astrid: Whatever it is, you tell her yourself.
 
--- Fringe - 6:02 AM EST  [3.20]
+-- Fringe - 6:02 AM EST [3.20]
 %
 Olivia: Walter, what if I can't do it? What if I can't turn it off?
 Walter: I have known you for a long time, Olivia, and I believe that the drawing was no accident. Whoever did it knew the same as I do: that you don't fail.
@@ -2139,17 +2139,17 @@ Astrid: Someone wanted to cook bratwurst.
 Walter: Well, why is the ethanol there and not in the cupboard?
 Astrid: Because someone wanted to use the ethanol to clean the hibachi before they cooked the bratwurst.
 
--- Fringe -  Origin Story [5.05]
+-- Fringe - Origin Story [5.05]
 %
 Peter: I can feel you banging around inside there. But it doesn't matter what you find out, 'cause you and I both know... you're never walking out of here. Whatever the closest thing it is to fear that you can feel, I know that you're feeling it right now. You're not the only one with a skill for reading people.
 Captive Observer: You don't even know what you don't know.
 Peter: We'll see.
 
--- Fringe -  Origin Story [5.05]
+-- Fringe - Origin Story [5.05]
 %
 Captive Observer: I think of you as I would an ant colony as I pass by it. I don't care about the workings of the colony, why one ant is mad at or another or why one ant would kill another or not. To me, it is insignificant. And like an ant colony, you are oblivious to your limitations. You think the black over your head is dark skies... when it is really our shoe.
 
--- Fringe -  Origin Story [5.05]
+-- Fringe - Origin Story [5.05]
 %
 (November 9 2012)
 Walter: This is very important. Do not, under any circumstances... is that raspberry filling?
@@ -2223,4 +2223,3 @@ Peter: No. I got everything I need right here.
 (January 18 2013)
 
 -- Fringe - An Enemy of Fate [5.13]
-%

@@ -26,11 +26,11 @@ A woman should have compassion.
 
 -- Kirk, "Catspaw", stardate 3018.2
 %
-Actual war is a very messy business.  Very, very messy business.
+Actual war is a very messy business. Very, very messy business.
 
 -- Kirk, "A Taste of Armageddon", stardate 3193.0
 %
-After a time, you may find that "having" is not so pleasing a thing, after all, as "wanting."  It is not logical, but it is often true.
+After a time, you may find that "having" is not so pleasing a thing, after all, as "wanting." It is not logical, but it is often true.
 
 -- Spock, "Amok Time", stardate 3372.7
 %
@@ -44,11 +44,11 @@ Another Armenia, Belgium ... the weak innocents who always seem to be located on
 
 -- Kirk, "Errand of Mercy", stardate 3198.4
 %
-Another dream that failed.  There's nothing sadder.
+Another dream that failed. There's nothing sadder.
 
 -- Kirk, "This side of Paradise", stardate 3417.3
 %
-Another war ... must it always be so?  How many comrades have we lost in this way? ...  Obedience.  Duty.  Death, and more death ...
+Another war ... must it always be so? How many comrades have we lost in this way? ... Obedience. Duty. Death, and more death ...
 
 -- Romulan Commander, "Balance of Terror", stardate 1709.2
 %
@@ -58,7 +58,7 @@ Another war ... must it always be so?  How many comrades have we lost in this wa
 %
 Beam me up, Scotty!
 %
-Beam me up, Scotty!  It ate my phaser!
+Beam me up, Scotty! It ate my phaser!
 %
 Beam me up, Scotty, there's no intelligent life down here!
 %
@@ -71,7 +71,7 @@ Behind every great man, there is a woman -- urging him on.
 
 -- Harry Mudd, "I, Mudd", stardate 4513.3
 %
-Blast medicine anyway!  We've learned to tie into every organ in the human body but one.  The brain!  The brain is what life is all about.
+Blast medicine anyway! We've learned to tie into every organ in the human body but one. The brain! The brain is what life is all about.
 
 -- McCoy, "The Menagerie", stardate 3012.4
 %
@@ -79,14 +79,12 @@ Bones: "The man's DEAD, Jim!"
 %
 But Captain -- the engines can't take this much longer!
 %
-But it's real.  And if it's real it can be affected ...  we may not be able to break it, but, I'll bet you credits to Navy Beans we can put a dent in it.
+But it's real. And if it's real it can be affected ... we may not be able to break it, but, I'll bet you credits to Navy Beans we can put a dent in it.
 
 -- deSalle, "Catspaw", stardate 3018.2
 %
 "Can you imagine how life could be improved if we could do away with jealousy, greed, hate ..."
-
-"It can also be improved by eliminating love, tenderness, sentiment --
-the other side of the coin"
+"It can also be improved by eliminating love, tenderness, sentiment -- the other side of the coin"
 
 -- Dr. Roger Corby and Kirk, "What are Little Girls Made Of?", stardate 2712.4
 %
@@ -96,11 +94,11 @@ Change is the essential process of all existence.
 
 -- Spock, "Let That Be Your Last Battlefield", stardate 5730.2
 %
-Compassion -- that's the one things no machine ever had.  Maybe it's the one thing that keeps men ahead of them.
+Compassion -- that's the one things no machine ever had. Maybe it's the one thing that keeps men ahead of them.
 
 -- McCoy, "The Ultimate Computer", stardate 4731.3
 %
-Computers make excellent and efficient servants, but I have no wish to serve under them.  Captain, a starship also runs on loyalty to one man.  And nothing can replace it or him.
+Computers make excellent and efficient servants, but I have no wish to serve under them. Captain, a starship also runs on loyalty to one man. And nothing can replace it or him.
 
 -- Spock, "The Ultimate Computer", stardate 4729.4
 %
@@ -114,23 +112,24 @@ Death, when unnecessary, is a tragic thing.
 
 -- Flint, "Requiem for Methuselah", stardate 5843.7
 %
-Death.  Destruction.  Disease.  Horror.  That's what war is all about.
+Death. Destruction. Disease. Horror. That's what war is all about.
 That's what makes it a thing to be avoided.
 
 -- Kirk, "A Taste of Armageddon", stardate 3193.0
 %
 Deflector shields just came on, Captain.
 %
-Do you know about being with somebody?  Wanting to be?  If I had the whole universe, I'd give it to you, Janice.  When I see you, I feel like I'm hungry all over.  Do you know how that feels?
+Do you know about being with somebody? Wanting to be? If I had the whole universe, I'd give it to you, Janice. When I see you, I feel like I'm hungry all over. Do you know how that feels?
 
 -- Charlie Evans, "Charlie X", stardate 1535.8
 %
-Do you know the one -- "All I ask is a tall ship, and a star to steer her by ..."  You could feel the wind at your back, about you ...  the sounds of the sea beneath you.  And even if you take away the wind and the water, it's still the same.  The ship is yours ... you can feel her
+Do you know the one -- "All I ask is a tall ship, and a star to steer her by ..." You could feel the wind at your back, about you ... the sounds of the sea beneath you. And even if you take away the wind and the water, it's still the same. The ship is yours ... you can feel her
 ... and the stars are still there.
 
 -- Kirk, "The Ultimate Computer", stardate 4729.4
 %
 [Doctors and Bartenders], We both get the same two kinds of customers
+
 -- the living and the dying.
 
 -- Dr. Boyce, "The Menagerie" ("The Cage"), stardate unknown
@@ -140,26 +139,25 @@ Each kiss is as the first.
 -- Miramanee, Kirk's wife, "The Paradise Syndrome", stardate 4842.6
 %
 EARL GREY PROFILES NAME: Jean-Luc Perriwinkle Picard
-OCCUPATION:	Starship Big Cheese
+OCCUPATION: Starship Big Cheese
 AGE: 94
-BIRTHPLACE:	Paris, Terra Sector 
+BIRTHPLACE: Paris, Terra Sector
 EYES: Grey
 SKIN: Tanned
 HAIR: Not much
 LAST MAGAZINE READ: Lobes 'n' Probes, the Ferengi-Betazoid Sex Quarterly
 TEA: Earl Grey. Hot.
-
 EARL GREY NEVER VARIES.
 %
 Earth -- mother of the most beautiful women in the universe.
 
 -- Apollo, "Who Mourns for Adonais?" stardate 3468.1
 %
-Either one of us, by himself, is expendable.  Both of us are not.
+Either one of us, by himself, is expendable. Both of us are not.
 
 -- Kirk, "The Devil in the Dark", stardate 3196.1
 %
-Emotions are alien to me.  I'm a scientist.
+Emotions are alien to me. I'm a scientist.
 
 -- Spock, "This Side of Paradise", stardate 3417.3
 %
@@ -188,7 +186,7 @@ Fascinating, a totally parochial attitude.
 
 -- Spock, "Metamorphosis", stardate 3219.8
 %
-First study the enemy.  Seek weakness.
+First study the enemy. Seek weakness.
 
 -- Romulan Commander, "Balance of Terror", stardate 1709.2
 %
@@ -201,7 +199,7 @@ Four thousand throats may be cut in one night by a running man.
 
 -- Cloud William and Kirk, "The Omega Glory", stardate unknown
 %
-Genius doesn't work on an assembly line basis.  You can't simply say,
+Genius doesn't work on an assembly line basis. You can't simply say,
 "Today I will be brilliant."
 
 -- Kirk, "The Ultimate Computer", stardate 4731.3
@@ -225,7 +223,7 @@ Humans do claim a great deal for that particular emotion (love).
 
 -- Spock, "The Lights of Zetar", stardate 5725.6
 %
-I am pleased to see that we have differences.  May we together become greater than the sum of both of us.
+I am pleased to see that we have differences. May we together become greater than the sum of both of us.
 
 -- Surak of Vulcan, "The Savage Curtain", stardate 5906.4
 %
@@ -233,11 +231,11 @@ I have never understood the female capacity to avoid a direct answer to any ques
 
 -- Spock, "This Side of Paradise", stardate 3417.3
 %
-I object to intellect without discipline;  I object to power without constructive purpose.
+I object to intellect without discipline; I object to power without constructive purpose.
 
 -- Spock, "The Squire of Gothos", stardate 2124.5
 %
-I realize that command does have its fascination, even under circumstances such as these, but I neither enjoy the idea of command nor am I frightened of it.  It simply exists, and I will do whatever logically needs to be done.
+I realize that command does have its fascination, even under circumstances such as these, but I neither enjoy the idea of command nor am I frightened of it. It simply exists, and I will do whatever logically needs to be done.
 
 -- Spock, "The Galileo Seven", stardate 2812.7
 %
@@ -246,36 +244,44 @@ I realize that command does have its fascination, even under circumstances such 
 
 -- Edith Keeler and Kirk, "The City on the Edge of Forever", stardate unknown.
 %
-I thought my people would grow tired of killing.  But you were right, they see it is easier than trading.  And it has its pleasures.  I feel it myself.  Like the hunt, but with richer rewards.
+I thought my people would grow tired of killing. But you were right, they see it is easier than trading. And it has its pleasures. I feel it myself. Like the hunt, but with richer rewards.
 
 -- Apella, "A Private Little War", stardate 4211.8
 %
 "I'm a doctor, not a mechanic."
 
 -- "The Doomsday Machine", when asked if he had heard of the idea of a doomsday machine.
+%
 "I'm a doctor, not an escalator."
 
 -- "Friday's Child", when asked to help the very pregnant Ellen up a steep incline.
+%
 "I'm a doctor, not a bricklayer."
 
 -- Devil in the Dark", when asked to patch up the Horta.
+%
 "I'm a doctor, not an engineer."
 
 -- "Mirror, Mirror", when asked by Scotty for help in Engineering aboard the ISS Enterprise.
+%
 "I'm a doctor, not a coalminer."
 
 -- "The Empath", on being beneath the surface of Minara 2.
+%
 "I'm a surgeon, not a psychiatrist."
 
 -- "City on the Edge of Forever", on Edith Keeler's remark that Kirk talked strangely.
+%
 "I'm no magician, Spock, just an old country doctor."
 
 -- "The Deadly Years", to Spock while trying to cure the aging effects of the rogue comet near Gamma Hydra 4.
+%
 "What am I, a doctor or a moonshuttle conductor?"
 
 -- "The Corbomite Maneuver", when Kirk rushed off from a physical exam to answer the alert.
 %
-I'm a soldier, not a diplomat.  I can only tell the truth.
+%
+I'm a soldier, not a diplomat. I can only tell the truth.
 
 -- Kirk, "Errand of Mercy", stardate 3198.9
 %
@@ -283,7 +289,7 @@ I'm frequently appalled by the low regard you Earthmen have for life.
 
 -- Spock, "The Galileo Seven", stardate 2822.3
 %
-I've already got a female to worry about.  Her name is the Enterprise.
+I've already got a female to worry about. Her name is the Enterprise.
 
 -- Kirk, "The Corbomite Maneuver", stardate 1514.0
 %
@@ -317,7 +323,7 @@ Insufficient facts always invite danger.
 %
 Insults are effective only where emotion is present.
 
--- Spock, "Who Mourns for Adonais?"  stardate 3468.1
+-- Spock, "Who Mourns for Adonais?" stardate 3468.1
 %
 Intuition, however illogical, is recognized as a command prerogative.
 
@@ -331,7 +337,7 @@ Is truth not truth for all?
 
 -- Natira, "For the World is Hollow and I have Touched the Sky", stardate 5476.4.
 %
-It [being a Vulcan] means to adopt a philosophy, a way of life which is logical and beneficial.  We cannot disregard that philosophy merely for personal gain, no matter how important that gain might be.
+It [being a Vulcan] means to adopt a philosophy, a way of life which is logical and beneficial. We cannot disregard that philosophy merely for personal gain, no matter how important that gain might be.
 
 -- Spock, "Journey to Babel", stardate 3842.4
 %
@@ -364,7 +370,7 @@ It would seem that evil retreats when forcibly confronted.
 -- Yarnek of Excalbia, "The Savage Curtain", stardate 5906.5
 %
 "It's hard to believe that something which is neither seen nor felt can do so much harm."
-"That's true.  But an idea can't be seen or felt.  And that's what kept the Troglytes in the mines all these centuries.  A mistaken idea."
+"That's true. But an idea can't be seen or felt. And that's what kept the Troglytes in the mines all these centuries. A mistaken idea."
 
 -- Vanna and Kirk, "The Cloud Minders", stardate 5819.0
 %
@@ -416,13 +422,13 @@ Love sometimes expresses itself in sacrifice.
 
 -- Kirk, "Metamorphosis", stardate 3220.3
 %
-Madness has no purpose.  Or reason.  But it may have a goal.
+Madness has no purpose. Or reason. But it may have a goal.
 
 -- Spock, "The Alternative Factor", stardate 3088.7
 %
 Many Myths are based on truth
 
--- Spock, "The Way to Eden",  stardate 5832.3
+-- Spock, "The Way to Eden", stardate 5832.3
 %
 Men of peace usually are [brave].
 
@@ -436,7 +442,7 @@ Military secrets are the most fleeting of all.
 
 -- Spock, "The Enterprise Incident", stardate 5027.4
 %
-Mind your own business, Spock.  I'm sick of your halfbreed interference.
+Mind your own business, Spock. I'm sick of your halfbreed interference.
 %
 Most legends have their basis in facts.
 
@@ -454,7 +460,7 @@ No one can guarantee the actions of another.
 
 -- Spock, "Day of the Dove", stardate unknown
 %
-No one may kill a man.  Not for any purpose.  It cannot be condoned.
+No one may kill a man. Not for any purpose. It cannot be condoned.
 
 -- Kirk, "Spock's Brain", stardate 5431.6
 %
@@ -479,11 +485,11 @@ Oblivion together does not frighten me, beloved.
 
 -- Thalassa (in Anne Mulhall's body), "Return to Tomorrow", stardate 4770.3.
 %
-Oh, that sound of male ego.  You travel halfway across the galaxy and it's still the same song.
+Oh, that sound of male ego. You travel halfway across the galaxy and it's still the same song.
 
 -- Eve McHuron, "Mudd's Women", stardate 1330.1
 %
-On my planet, to rest is to rest -- to cease using energy.  To me, it is quite illogical to run up and down on green grass, using energy, instead of saving it.
+On my planet, to rest is to rest -- to cease using energy. To me, it is quite illogical to run up and down on green grass, using energy, instead of saving it.
 
 -- Spock, "Shore Leave", stardate 3025.2
 %
@@ -499,7 +505,7 @@ Only a fool fights in a burning house.
 
 -- Kank the Klingon, "Day of the Dove", stardate unknown
 %
-Our missions are peaceful -- not for conquest.  When we do battle, it is only because we have no choice.
+Our missions are peaceful -- not for conquest. When we do battle, it is only because we have no choice.
 
 -- Kirk, "The Squire of Gothos", stardate 2124.5
 %
@@ -507,7 +513,7 @@ Our way is peace.
 
 -- Septimus, the Son Worshiper, "Bread and Circuses", stardate 4040.7.
 %
-Pain is a thing of the mind.  The mind can be controlled.
+Pain is a thing of the mind. The mind can be controlled.
 
 -- Spock, "Operation -- Annihilate!" stardate 3287.2
 %
@@ -525,7 +531,7 @@ Prepare for tomorrow -- get ready.
 
 -- Edith Keeler, "The City On the Edge of Forever", stardate unknown
 %
-Punishment becomes ineffective after a certain point.  Men become insensitive.
+Punishment becomes ineffective after a certain point. Men become insensitive.
 
 -- Eneg, "Patterns of Force", stardate 2534.7
 %
@@ -533,7 +539,7 @@ Respect is a rational process
 
 -- McCoy, "The Galileo Seven", stardate 2822.3
 %
-Romulan women are not like Vulcan females.  We are not dedicated to pure logic and the sterility of non-emotion.
+Romulan women are not like Vulcan females. We are not dedicated to pure logic and the sterility of non-emotion.
 
 -- Romulan Commander, "The Enterprise Incident", stardate 5027.3
 %
@@ -541,7 +547,7 @@ Schshschshchsch.
 
 -- The Gorn, "Arena", stardate 3046.2
 %
-She won' go Warp 7, Cap'n!  The batteries are dead!
+She won' go Warp 7, Cap'n! The batteries are dead!
 %
 Sometimes a feeling is all we humans have to go on.
 
@@ -551,7 +557,7 @@ Sometimes a man will tell his bartender things he'll never tell his doctor.
 
 -- Dr. Phillip Boyce, "The Menagerie" ("The Cage"), stardate unknown.
 %
-Space: the final frontier.  These are the voyages of the starship Enterprise.
+Space: the final frontier. These are the voyages of the starship Enterprise.
 Its five-year mission: to explore strange new worlds; to seek out new life and new civilizations; to boldly go where no man has gone before.
 
 -- Captain James T. Kirk
@@ -584,11 +590,11 @@ The best diplomat I know is a fully activated phaser bank.
 
 -- Spock and Lincoln, "The Savage Curtain", stardate 5906.4
 %
-The face of war has never changed.  Surely it is more logical to heal than to kill.
+The face of war has never changed. Surely it is more logical to heal than to kill.
 
 -- Surak of Vulcan, "The Savage Curtain", stardate 5906.5
 %
-The games have always strengthened us.  Death becomes a familiar pattern.  We don't fear it as you do.
+The games have always strengthened us. Death becomes a familiar pattern. We don't fear it as you do.
 
 -- Proconsul Marcus Claudius, "Bread and Circuses", stardate 4041.2
 %
@@ -615,11 +621,11 @@ The more complex the mind, the greater the need for the simplicity of play.
 
 -- Kirk, "Shore Leave", stardate 3025.8
 %
-The only solution is ... a balance of power.  We arm our side with exactly that much more.  A balance of power -- the trickiest, most difficult, dirtiest game of them all.  But the only one that preserves both sides.
+The only solution is ... a balance of power. We arm our side with exactly that much more. A balance of power -- the trickiest, most difficult, dirtiest game of them all. But the only one that preserves both sides.
 
 -- Kirk, "A Private Little War", stardate 4211.8
 %
-The people of Gideon have always believed that life is sacred.  That the love of life is the greatest gift ... We are incapable of destroying or interfering with the creation of that which we love so deeply -- life in every form from fetus to developed being.
+The people of Gideon have always believed that life is sacred. That the love of life is the greatest gift ... We are incapable of destroying or interfering with the creation of that which we love so deeply -- life in every form from fetus to developed being.
 
 -- Hodin of Gideon, "The Mark of Gideon", stardate 5423.4
 %
@@ -627,8 +633,8 @@ The people of Gideon have always believed that life is sacred.  That the love of
 
 -- Kirk, "Elaan of Troyius", stardate 4372.5
 %
-"The release of emotion is what keeps us health.  Emotionally healthy."
-"That may be, Doctor.  However, I have noted that the healthy release of emotion is frequently unhealthy for those closest to you."
+"The release of emotion is what keeps us health. Emotionally healthy."
+"That may be, Doctor. However, I have noted that the healthy release of emotion is frequently unhealthy for those closest to you."
 
 -- McCoy and Spock, "Plato's Stepchildren", stardate 5784.3
 %
@@ -665,7 +671,7 @@ There is a multi-legged creature crawling on your shoulder.
 
 -- Spock, "A Taste of Armageddon", stardate 3193.9
 %
-There is an old custom among my people.  When a woman saves a man's life, he is grateful.
+There is an old custom among my people. When a woman saves a man's life, he is grateful.
 
 -- Nona, the Kanuto witch woman, "A Private Little War", stardate 4211.8.
 %
@@ -677,20 +683,20 @@ There's a way out of any cage.
 
 -- Captain Christopher Pike, "The Menagerie" ("The Cage"), stardate unknown.
 %
-There's another way to survive.  Mutual trust -- and help.
+There's another way to survive. Mutual trust -- and help.
 
 -- Kirk, "Day of the Dove", stardate unknown
 %
-There's no honorable way to kill, no gentle way to destroy.  There is nothing good in war.  Except its ending.
+There's no honorable way to kill, no gentle way to destroy. There is nothing good in war. Except its ending.
 
 -- Abraham Lincoln, "The Savage Curtain", stardate 5906.5
 %
-There's nothing disgusting about it [the Companion].  It's just another life form, that's all.  You get used to those things.
+There's nothing disgusting about it [the Companion]. It's just another life form, that's all. You get used to those things.
 
 -- McCoy, "Metamorphosis", stardate 3219.8
 %
 "There's only one kind of woman ..."
-"Or man, for that matter.  You either believe in yourself or you don't."
+"Or man, for that matter. You either believe in yourself or you don't."
 
 -- Kirk and Harry Mudd, "Mudd's Women", stardate 1330.1
 %
@@ -718,7 +724,7 @@ Totally illogical, there was no chance.
 
 -- Spock, "The Galileo Seven", stardate 2822.3
 %
-Uncontrolled power will turn even saints into savages.  And we can all be counted on to live down to our lowest impulses.
+Uncontrolled power will turn even saints into savages. And we can all be counted on to live down to our lowest impulses.
 
 -- Parmen, "Plato's Stepchildren", stardate 5784.3
 %
@@ -746,7 +752,7 @@ Vulcans worship peace above all.
 
 -- McCoy, "Return to Tomorrow", stardate 4768.3
 %
-Wait!  You have not been prepared!
+Wait! You have not been prepared!
 
 -- Mr. Atoz, "Tomorrow is Yesterday", stardate 3113.2
 %
@@ -758,17 +764,17 @@ War isn't a good life, but it's life.
 
 -- Kirk, "A Private Little War", stardate 4211.8
 %
-[War] is instinctive.  But the instinct can be fought.  We're human beings with the blood of a million savage years on our hands!  But we can stop it.  We can admit that we're killers ... but we're not going to kill today.  That's all it takes!  Knowing that we're not going to kill today!
+[War] is instinctive. But the instinct can be fought. We're human beings with the blood of a million savage years on our hands! But we can stop it. We can admit that we're killers ... but we're not going to kill today. That's all it takes! Knowing that we're not going to kill today!
 
 -- Kirk, "A Taste of Armageddon", stardate 3193.0
 %
 Warp 7 -- It's a law we can live with.
 %
-We do not colonize.  We conquer.  We rule.  There is no other way for us.
+We do not colonize. We conquer. We rule. There is no other way for us.
 
 -- Rojan, "By Any Other Name", stardate 4657.5
 %
-We fight only when there is no other choice.  We prefer the ways of peaceful contact.
+We fight only when there is no other choice. We prefer the ways of peaceful contact.
 
 -- Kirk, "Spectre of the Gun", stardate 4385.3
 %
@@ -785,14 +791,14 @@ We have phasers, I vote we blast 'em!
 
 -- Deela and Kirk, "Wink of An Eye", stardate 5710.5
 %
-We Klingons believe as you do -- the sick should die.  Only the strong should live.
+We Klingons believe as you do -- the sick should die. Only the strong should live.
 
 -- Kras, "Friday's Child", stardate 3497.2
 %
 We'll pivot at warp 2 and bring all tubes to bear, Mr. Sulu!
 %
 We're all sorry for the other guy when he loses his job to a machine.
-But when it comes to your job -- that's different.  And it always will be different.
+But when it comes to your job -- that's different. And it always will be different.
 
 -- McCoy, "The Ultimate Computer", stardate 4729.4
 %
@@ -803,7 +809,7 @@ Well, Jim, I'm not much of an actor either.
 
 -- Kirk and Dr. Richard Daystrom, "The Ultimate Computer", stardate 4731.3.
 %
-What kind of love is that?  Not to be loved; never to have shown love.
+What kind of love is that? Not to be loved; never to have shown love.
 
 -- Commissioner Nancy Hedford, "Metamorphosis", stardate 3219.8
 %
@@ -812,12 +818,11 @@ What kind of love is that?  Not to be loved; never to have shown love.
 
 -- Sulu and Kirk, "That Which Survives", stardate unknown
 %
-When a child is taught ... its programmed with simple instructions --
-and at some point, if its mind develops properly, it exceeds the sum of what it was taught, thinks independently.
+When a child is taught ... its programmed with simple instructions -- and at some point, if its mind develops properly, it exceeds the sum of what it was taught, thinks independently.
 
 -- Dr. Richard Daystrom, "The Ultimate Computer", stardate 4731.3.
 %
-When dreams become more important than reality, you give up travel, building, creating; you even forget how to repair the machines left behind by your ancestors.  You just sit living and reliving other lives left behind in the thought records.
+When dreams become more important than reality, you give up travel, building, creating; you even forget how to repair the machines left behind by your ancestors. You just sit living and reliving other lives left behind in the thought records.
 
 -- Vina, "The Menagerie" ("The Cage"), stardate unknown
 %
@@ -825,11 +830,11 @@ Where there's no emotion, there's no motive for violence.
 
 -- Spock, "Dagger of the Mind", stardate 2715.1
 %
-Witch!  Witch!  They'll burn ya!
+Witch! Witch! They'll burn ya!
 
 -- Hag, "Tomorrow is Yesterday", stardate unknown
 %
-Without facts, the decision cannot be made logically.  You must rely on your human intuition.
+Without facts, the decision cannot be made logically. You must rely on your human intuition.
 
 -- Spock, "Assignment: Earth", stardate unknown
 %
@@ -853,11 +858,11 @@ Worlds are conquered, galaxies destroyed -- but a woman is always a woman.
 
 -- Kirk, "The Conscience of the King", stardate 2818.9
 %
-Yes, it is written.  Good shall always destroy evil.
+Yes, it is written. Good shall always destroy evil.
 
 -- Sirah the Yang, "The Omega Glory", stardate unknown
 %
-You are an excellent tactician, Captain.  You let your second in command attack while you sit and watch for weakness.
+You are an excellent tactician, Captain. You let your second in command attack while you sit and watch for weakness.
 
 -- Khan Noonian Singh, "Space Seed", stardate 3141.9
 %
@@ -867,31 +872,31 @@ You can't evaluate a man by logic alone.
 %
 You canna change the laws of physics, Captain; I've got to have thirty minutes!
 %
-You Earth people glorified organized violence for forty centuries.  But you imprison those who employ it privately.
+You Earth people glorified organized violence for forty centuries. But you imprison those who employ it privately.
 
 -- Spock, "Dagger of the Mind", stardate 2715.1
 %
-You go slow, be gentle.  It's no one-way street -- you know how you feel and that's all.  It's how the girl feels too.  Don't press.  If the girl feels anything for you at all, you'll know.
+You go slow, be gentle. It's no one-way street -- you know how you feel and that's all. It's how the girl feels too. Don't press. If the girl feels anything for you at all, you'll know.
 
 -- Kirk, "Charlie X", stardate 1535.8
 %
-You humans have that emotional need to express gratitude.  "You're welcome," I believe, is the correct response.
+You humans have that emotional need to express gratitude. "You're welcome," I believe, is the correct response.
 
 -- Spock, "Bread and Circuses", stardate 4041.2
 %
-You say you are lying.  But if everything you say is a lie, then you are telling the truth.  You cannot tell the truth because everything you say is a lie.  You lie, you tell the truth ... but you cannot, for you lie.
+You say you are lying. But if everything you say is a lie, then you are telling the truth. You cannot tell the truth because everything you say is a lie. You lie, you tell the truth ... but you cannot, for you lie.
 
 -- Norman the android, "I, Mudd", stardate 4513.3
 %
-You speak of courage.  Obviously you do not know the difference between courage and foolhardiness.  Always it is the brave ones who die, the soldiers.
+You speak of courage. Obviously you do not know the difference between courage and foolhardiness. Always it is the brave ones who die, the soldiers.
 
 -- Kor, the Klingon Commander, "Errand of Mercy", stardate 3201.7
 %
-You!  What PLANET is this!
+You! What PLANET is this!
 
 -- McCoy, "The City on the Edge of Forever", stardate 3134.0
 %
-You'll learn something about men and women -- the way they're supposed to be.  Caring for each other, being happy with each other, being good to each other.  That's what we call love.  You'll like that a lot.
+You'll learn something about men and women -- the way they're supposed to be. Caring for each other, being happy with each other, being good to each other. That's what we call love. You'll like that a lot.
 
 -- Kirk, "The Apple", stardate 3715.6
 %
@@ -903,11 +908,10 @@ You're dead, Jim.
 
 -- McCoy, "The Tholian Web", stardate unknown
 %
-You're too beautiful to ignore.  Too much woman.
+You're too beautiful to ignore. Too much woman.
 
 -- Kirk to Yeoman Rand, "The Enemy Within", stardate unknown
 %
 Youth doesn't excuse everything.
 
 -- Dr. Janice Lester (in Kirk's body), "Turnabout Intruder", stardate 5928.5.
-%
