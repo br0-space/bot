@@ -21,4 +21,5 @@ telegram:
   baseUrl: "https://api.telegram.org/bot%s/"
   endpointSetWebhook: "setWebhook"
   endpointSendMessage: "sendMessage"
+  endpointSendPhoto: "sendPhoto"
   chatID: ""

@@ -28,11 +28,16 @@ func NewProdClient(logger interfaces.LoggerInterface, config interfaces.Telegram
 }
 
 func (c ProdClient) SendMessage(chatID int64, message interfaces.TelegramMessageStruct) error {
-	c.Log.Debugf("Sending message: %s", message.Text)
+	switch {
+	case message.Photo != "":
+		c.Log.Debugf("Sending photo: %s", message.Photo)
+	default:
+		c.Log.Debugf("Sending message: %s", message.Text)
+	}
 
 	message.ChatID = chatID
 
-	url := c.getUrl()
+	url := c.getUrl(message)
 	requestBytes, err := json.Marshal(message)
 	if err != nil {
 		return err
@@ -58,6 +63,11 @@ func (c ProdClient) SendMessage(chatID int64, message interfaces.TelegramMessage
 	return fmt.Errorf("SendMessage failed with %d: %s", responseBody.ErrorCode, responseBody.Description)
 }
 
-func (c ProdClient) getUrl() string {
-	return fmt.Sprintf(c.Cfg.BaseUrl, c.Cfg.ApiKey) + c.Cfg.EndpointSendMessage
+func (c ProdClient) getUrl(message interfaces.TelegramMessageStruct) string {
+	switch {
+	case message.Photo != "":
+		return fmt.Sprintf(c.Cfg.BaseUrl, c.Cfg.ApiKey) + c.Cfg.EndpointSendPhoto
+	default:
+		return fmt.Sprintf(c.Cfg.BaseUrl, c.Cfg.ApiKey) + c.Cfg.EndpointSendMessage
+	}
 }

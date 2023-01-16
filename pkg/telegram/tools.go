@@ -33,6 +33,21 @@ func MakeMarkdownReply(text string, messageID int64) interfaces.TelegramMessageS
 	}
 }
 
+func MakePhoto(photo string, caption string) interfaces.TelegramMessageStruct {
+	return interfaces.TelegramMessageStruct{
+		Photo:   photo,
+		Caption: caption,
+	}
+}
+
+func MakeMarkdownPhoto(photo string, caption string) interfaces.TelegramMessageStruct {
+	return interfaces.TelegramMessageStruct{
+		Photo:     photo,
+		Caption:   caption,
+		ParseMode: "MarkdownV2",
+	}
+}
+
 func EscapeMarkdown(text string) string {
 	re := regexp.MustCompile("[_*\\[\\]()~`>#+\\-=|{}.!\\\\]")
 

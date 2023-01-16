@@ -14,6 +14,7 @@ import (
 	"github.com/br0-space/bot/pkg/matcher/plusplus"
 	"github.com/br0-space/bot/pkg/matcher/stats"
 	"github.com/br0-space/bot/pkg/matcher/topflop"
+	"github.com/br0-space/bot/pkg/matcher/xkcd"
 	"github.com/br0-space/bot/pkg/telegram"
 	"sync"
 )
@@ -29,6 +30,7 @@ type Registry struct {
 	userStatsRepo    interfaces.UserStatsRepoInterface
 	fortuneService   interfaces.FortuneServiceInterface
 	songlinkService  interfaces.SonglinkServiceInterface
+	xkcdService      interfaces.XkcdServiceInterface
 	matchers         []interfaces.MatcherInterface
 }
 
@@ -41,6 +43,7 @@ func NewRegistry(
 	userStatsRepo interfaces.UserStatsRepoInterface,
 	fortuneService interfaces.FortuneServiceInterface,
 	songlinkService interfaces.SonglinkServiceInterface,
+	xkcdService interfaces.XkcdServiceInterface,
 ) *Registry {
 	registry := &Registry{
 		log:              logger,
@@ -51,6 +54,7 @@ func NewRegistry(
 		userStatsRepo:    userStatsRepo,
 		fortuneService:   fortuneService,
 		songlinkService:  songlinkService,
+		xkcdService:      xkcdService,
 	}
 
 	return registry
@@ -68,6 +72,7 @@ func (r *Registry) Init() {
 	r.registerMatcher(plusplus.MakeMatcher(r.log, r.plusplusRepo))
 	r.registerMatcher(stats.MakeMatcher(r.log, r.userStatsRepo))
 	r.registerMatcher(topflop.MakeMatcher(r.log, r.plusplusRepo))
+	r.registerMatcher(xkcd.MakeMatcher(r.log, r.xkcdService))
 }
 
 func (r *Registry) registerMatcher(matcher interfaces.MatcherInterface) {

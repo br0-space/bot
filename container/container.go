@@ -14,6 +14,7 @@ import (
 	"github.com/br0-space/bot/pkg/state"
 	"github.com/br0-space/bot/pkg/telegram"
 	"github.com/br0-space/bot/pkg/webhook"
+	"github.com/br0-space/bot/pkg/xkcd"
 	"gorm.io/gorm"
 	"sync"
 )
@@ -69,6 +70,7 @@ func ProvideMatchersRegistry() interfaces.MatcherRegistryInterface {
 		ProvideUserStatsRepo(),
 		ProvideFortuneService(),
 		ProvideSonglinkService(),
+		ProvideXkcdService(),
 	)
 }
 
@@ -161,4 +163,8 @@ func ProvideFortuneService() fortune.Service {
 
 func ProvideSonglinkService() interfaces.SonglinkServiceInterface {
 	return songlink.MakeService()
+}
+
+func ProvideXkcdService() interfaces.XkcdServiceInterface {
+	return xkcd.MakeService()
 }

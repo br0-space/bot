@@ -35,6 +35,7 @@ type TelegramConfigStruct struct {
 	BaseUrl             string
 	EndpointSetWebhook  string
 	EndpointSendMessage string
+	EndpointSendPhoto   string
 	ChatID              int64
 }
 

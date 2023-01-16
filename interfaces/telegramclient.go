@@ -9,11 +9,13 @@ type TelegramClientInterface interface {
 
 type TelegramMessageStruct struct {
 	ChatID                int64  `json:"chat_id"`
+	ReplyToMessageID      int64  `json:"reply_to_message_id"`
 	Text                  string `json:"text"`
+	Photo                 string `json:"photo"`
+	Caption               string `json:"caption"`
 	ParseMode             string `json:"parse_mode"`
 	DisableWebPagePreview bool   `json:"disable_web_page_preview"`
 	DisableNotification   bool   `json:"disable_notification"`
-	ReplyToMessageID      int64  `json:"reply_to_message_id"`
 }
 
 type TelegramMessageResponseBodyStruct struct {
