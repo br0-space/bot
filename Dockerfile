@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine as build
+FROM golang:1.19-alpine as build
 
 # Build-time metadata as defined at http://label-schema.org
 ARG CI_COMMIT_SHA
@@ -23,7 +23,8 @@ COPY . .
 
 RUN go build -o bin/br0bot main.go
 
-FROM scratch
+FROM alpine:latest
+RUN apk --no-cache add bash
 
 WORKDIR /opt/br0bot
 
