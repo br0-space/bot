@@ -29,7 +29,7 @@ func MakeMatcher(
 	var cfg Config
 	abstract.LoadMatcherConfig(identifier, &cfg)
 
-	pattern = regexp.MustCompile(fmt.Sprintf(`(?i)\b(%s)\b`, cfg.GetPattern()))
+	pattern = regexp.MustCompile(fmt.Sprintf(`(?i)\b((%s)([+]{2,}|[-]{2,}|\+-|—)?)`, cfg.GetPattern()))
 
 	return Matcher{
 		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help).WithConfig(&cfg.Config),
@@ -49,7 +49,9 @@ func (m Matcher) parseTriggers(matches []string) []string {
 	var triggers []string
 
 	for _, match := range matches {
-		triggers = append(triggers, m.cfg.GetTrigger(match))
+		if trigger := m.cfg.GetTrigger(match); trigger != "" {
+			triggers = append(triggers, trigger)
+		}
 	}
 
 	unique.Sort(unique.StringSlice{P: &triggers})

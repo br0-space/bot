@@ -15,7 +15,7 @@ type Buzzword struct {
 
 func (b Buzzword) Matches(text string) bool {
 	if b.Pattern != "" {
-		pattern := fmt.Sprintf(`(?i)%s`, b.Pattern)
+		pattern := fmt.Sprintf(`(?i)^%s$`, b.Pattern)
 		return regexp.MustCompile(pattern).MatchString(text)
 	}
 
