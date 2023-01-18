@@ -6,7 +6,7 @@ import (
 	"github.com/nishanths/go-xkcd/v2"
 )
 
-const template = "*%s*\n\nxkcd [\\#%d](%s) \\(%d\\.%d\\.%d\\)"
+const template = "*%s*\n\n_%s_\n\nxkcd [\\#%d](%s) \\(%d\\.%d\\.%d\\)"
 
 type Comic struct {
 	base xkcd.Comic
@@ -37,6 +37,7 @@ func (c Comic) ToMarkdown() string {
 	return fmt.Sprintf(
 		template,
 		telegram.EscapeMarkdown(c.base.Title),
+		telegram.EscapeMarkdown(c.base.Alt),
 		c.base.Number,
 		telegram.EscapeMarkdown(c.URL()),
 		c.base.Day,
