@@ -19,7 +19,7 @@ func (b Buzzword) Matches(text string) bool {
 		return regexp.MustCompile(pattern).MatchString(text)
 	}
 
-	return strings.ToLower(b.Trigger) == strings.ToLower(text)
+	return strings.EqualFold(b.Trigger, text)
 }
 
 type Config struct {

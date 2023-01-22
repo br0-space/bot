@@ -90,9 +90,10 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 func (l gormLoggerBridge) getExtraCallDepth() int {
 	extraCallDepth := 1
 	// Stolen from https://github.com/go-gorm/gorm/blob/master/utils/utils.go
+	re := regexp.MustCompile(`gorm.io/gorm`)
 	for i := 2; i < 15; i++ {
 		_, file, _, _ := runtime.Caller(i)
-		if match, _ := regexp.MatchString("gorm.io/gorm", file); match {
+		if match := re.MatchString(file); match {
 			extraCallDepth++
 		} else {
 			break

@@ -7,7 +7,6 @@ import (
 	"github.com/br0-space/bot/pkg/telegram"
 	"github.com/mpvl/unique"
 	"regexp"
-	"strings"
 )
 
 const identifier = "buzzwords"
@@ -68,9 +67,7 @@ func (m Matcher) makeRepliesFromTriggers(triggers []string) ([]interfaces.Telegr
 			return nil, err
 		}
 
-		for _, reply := range triggerReplies {
-			replies = append(replies, reply)
-		}
+		replies = append(replies, triggerReplies...)
 	}
 
 	return replies, nil
@@ -87,14 +84,12 @@ func (m Matcher) makeRepliesFromTrigger(trigger string) ([]interfaces.TelegramMe
 		return nil, err
 	}
 
-	reply := makeReply(template, trigger, value)
+	reply := makeReply(template, value)
 
 	return []interfaces.TelegramMessageStruct{reply}, nil
 }
 
-func makeReply(template string, match string, value int) interfaces.TelegramMessageStruct {
-	match = strings.ToUpper(match[:1]) + match[1:]
-
+func makeReply(template string, value int) interfaces.TelegramMessageStruct {
 	return telegram.MakeMarkdownMessage(
 		fmt.Sprintf(
 			template,

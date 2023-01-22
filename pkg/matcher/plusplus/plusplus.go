@@ -57,9 +57,7 @@ func (m Matcher) makeRepliesFromTokens(tokens []Token) ([]interfaces.TelegramMes
 			return nil, err
 		}
 
-		for _, reply := range tokenReplies {
-			replies = append(replies, reply)
-		}
+		replies = append(replies, tokenReplies...)
 	}
 
 	return replies, nil

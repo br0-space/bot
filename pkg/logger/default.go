@@ -132,9 +132,9 @@ func (l *DefaultLogger) addPrefixToSlice(args ...interface{}) []interface{} {
 	}
 
 	x := args[0]
-	switch v := x.(type) {
+	switch x.(type) {
 	case string:
-		v = l.getPrefix()
+		v := l.getPrefix()
 		args = append([]interface{}{v}, args...)
 	}
 	return args
