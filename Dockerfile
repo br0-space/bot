@@ -21,7 +21,7 @@ ENV CGO_ENABLED=0
 WORKDIR /go/src/app
 COPY . .
 
-RUN go build -o bin/br0bot main.go
+RUN go build -o bin/br0bot bot.go
 
 FROM alpine:latest
 RUN apk --no-cache add bash
