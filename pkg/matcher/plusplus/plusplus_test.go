@@ -2,12 +2,48 @@ package plusplus_test
 
 import (
 	"fmt"
+	"github.com/br0-space/bot/container"
+	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/plusplus"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-var parseTests = []struct {
+func provideMatcher() plusplus.Matcher {
+	return plusplus.MakeMatcher(
+		container.ProvideLogger(),
+		nil,
+	)
+}
+
+func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {
+	return interfaces.NewTestTelegramWebhookMessage(text)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var getInlineMatchesTests = []struct {
+	in       string
+	expected []string
+}{
+	{"foo++ foo-- foo+- foo—", []string{"foo++", "foo--", "foo+-", "foo—"}},
+	{"foo+++ foo---", []string{"foo+++", "foo---"}},
+	{"😁++ ∪++ ▲++", []string{"😁++", "∪++", "▲++"}},
+	{"123++", []string{"123++"}},
+}
+
+func TestGetInlineMatches(t *testing.T) {
+	t.Parallel()
+
+	for _, tt := range getInlineMatchesTests {
+		matches := provideMatcher().GetInlineMatches(newTestMessage(tt.in))
+		assert.Equal(t, tt.expected, matches, tt.in)
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var getTokensTests = []struct {
 	in       []string
 	expected []plusplus.Token
 	err      error
@@ -29,12 +65,15 @@ var parseTests = []struct {
 	{[]string{"foo++bar++"}, []plusplus.Token{{"foo++bar", 1}}, nil},
 	{[]string{"foo"}, nil, fmt.Errorf(`unable to find mode in match "foo"`)},
 	{[]string{"++"}, nil, fmt.Errorf(`unable to find name in match "++"`)},
+	{[]string{"😁++"}, []plusplus.Token{{"😁", 1}}, nil},
+	{[]string{"∪++"}, []plusplus.Token{{"∪", 1}}, nil},
+	{[]string{"▲++"}, []plusplus.Token{{"▲", 1}}, nil},
 }
 
 func TestParseTokens(t *testing.T) {
 	t.Parallel()
 
-	for _, tt := range parseTests {
+	for _, tt := range getTokensTests {
 		tokens, err := plusplus.GetTokens(tt.in)
 		assert.Equal(t, tt.expected, tokens, tt.in)
 		assert.Equal(t, tt.err, err, tt.in)
