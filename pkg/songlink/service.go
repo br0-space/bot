@@ -27,27 +27,28 @@ func (s Service) GetEntryForUrl(url string) (interfaces.SonglinkEntryInterface, 
 	var _type EntryType
 	var ID string
 
-	if spotifyTrackRegex.MatchString(url) {
+	switch {
+	case spotifyTrackRegex.MatchString(url):
 		matches := spotifyTrackRegex.FindStringSubmatch(url)
 		platform = PlatformSpotify
 		_type = Song
 		ID = matches[1]
-	} else if spotifyAlbumRegex.MatchString(url) {
+	case spotifyAlbumRegex.MatchString(url):
 		matches := spotifyAlbumRegex.FindStringSubmatch(url)
 		platform = PlatformSpotify
 		_type = Album
 		ID = matches[1]
-	} else if appleMusicTrackRegex.MatchString(url) {
+	case appleMusicTrackRegex.MatchString(url):
 		matches := appleMusicTrackRegex.FindStringSubmatch(url)
 		platform = PlatformAppleMusic
 		_type = Song
 		ID = matches[1]
-	} else if appleMusicAlbumRegex.MatchString(url) {
+	case appleMusicAlbumRegex.MatchString(url):
 		matches := appleMusicAlbumRegex.FindStringSubmatch(url)
 		platform = PlatformAppleMusic
 		_type = Album
 		ID = matches[1]
-	} else {
+	default:
 		return nil, fmt.Errorf("unable to parse platform, type and ID from %s", url)
 	}
 
@@ -69,13 +70,14 @@ func newSonglinkEntry(platform Platform, _type EntryType, ID string) (interfaces
 	// Since the original URL came from a certain platform, an entity from that platform must exist,
 	// so we can take title and artist from there
 	var entityKey string
-	if platform == "spotify" && _type == Album {
+	switch {
+	case platform == "spotify" && _type == Album:
 		entityKey = fmt.Sprintf("SPOTIFY_ALBUM::%s", ID)
-	} else if platform == "spotify" && _type == Song {
+	case platform == "spotify" && _type == Song:
 		entityKey = fmt.Sprintf("SPOTIFY_SONG::%s", ID)
-	} else if platform == "appleMusic" && _type == Album {
+	case platform == "appleMusic" && _type == Album:
 		entityKey = fmt.Sprintf("ITUNES_ALBUM::%s", ID)
-	} else if platform == "appleMusic" && _type == Song {
+	case platform == "appleMusic" && _type == Song:
 		entityKey = fmt.Sprintf("ITUNES_SONG::%s", ID)
 	}
 	entry.Title = response.Entities[entityKey].Title
@@ -86,13 +88,13 @@ func newSonglinkEntry(platform Platform, _type EntryType, ID string) (interfaces
 		Platform: PlatformSonglink,
 		URL:      response.PageURL,
 	})
-	if platform != PlatformSpotify && response.Links.Spotify.URL != "" {
+	if response.Links.Spotify.URL != "" {
 		entry.Links = append(entry.Links, EntryLink{
 			Platform: PlatformSpotify,
 			URL:      response.Links.Spotify.URL,
 		})
 	}
-	if platform != PlatformAppleMusic && response.Links.AppleMusic.URL != "" {
+	if response.Links.AppleMusic.URL != "" {
 		entry.Links = append(entry.Links, EntryLink{
 			Platform: PlatformAppleMusic,
 			URL:      response.Links.AppleMusic.URL,
