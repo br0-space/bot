@@ -1,6 +1,7 @@
 project_name: bot
 builds:
-  - env: [CGO_ENABLED=0]
+  - main: ./cmd/bot.go
+    env: [CGO_ENABLED=0]
     goos:
       - linux
       - windows
