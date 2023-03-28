@@ -2,7 +2,6 @@ package plusplus_test
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/container"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/plusplus"
 	"github.com/stretchr/testify/assert"
@@ -10,10 +9,7 @@ import (
 )
 
 func provideMatcher() plusplus.Matcher {
-	return plusplus.MakeMatcher(
-		container.ProvideLogger(),
-		nil,
-	)
+	return plusplus.MakeMatcher(nil)
 }
 
 func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {

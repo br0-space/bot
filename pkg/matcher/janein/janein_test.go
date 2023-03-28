@@ -1,7 +1,6 @@
 package janein_test
 
 import (
-	"github.com/br0-space/bot/container"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/janein"
 	"github.com/stretchr/testify/assert"
@@ -48,9 +47,7 @@ var tests = []struct {
 }
 
 func provideMatcher() janein.Matcher {
-	return janein.MakeMatcher(
-		container.ProvideLogger(),
-	)
+	return janein.MakeMatcher()
 }
 
 func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {

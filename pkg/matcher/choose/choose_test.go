@@ -2,7 +2,6 @@ package choose_test
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/container"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/choose"
 	"github.com/stretchr/testify/assert"
@@ -43,9 +42,7 @@ var tests = []struct {
 }
 
 func provideMatcher() choose.Matcher {
-	return choose.MakeMatcher(
-		container.ProvideLogger(),
-	)
+	return choose.MakeMatcher()
 }
 
 func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {

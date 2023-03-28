@@ -1,7 +1,6 @@
 package ping_test
 
 import (
-	"github.com/br0-space/bot/container"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/ping"
 	"github.com/stretchr/testify/assert"
@@ -33,9 +32,7 @@ var tests = []struct {
 }
 
 func provideMatcher() ping.Matcher {
-	return ping.MakeMatcher(
-		container.ProvideLogger(),
-	)
+	return ping.MakeMatcher()
 }
 
 func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {

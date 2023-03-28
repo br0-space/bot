@@ -62,7 +62,7 @@ var tests = []struct {
 				{songlink.PlatformSonglink, "https://song.link/us/i/1140071869"},
 				{songlink.PlatformSpotify, "https://open.spotify.com/track/79lVzvbLCj9AXFGM7FRUVM"},
 				{songlink.PlatformAppleMusic, "https://geo.music.apple.com/de/album/_/1140071785?i=1140071869&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m"},
-				{songlink.PlatformYoutube, "https://www.youtube.com/watch?v=lN9I5fP2Te0"},
+				{songlink.PlatformYoutube, "https://www.youtube.com/watch?v=Q3enDjbwXWc"},
 			},
 		},
 	},
