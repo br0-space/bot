@@ -1,19 +1,19 @@
 package repo
 
 import (
-	"github.com/br0-space/bot/interfaces"
+	logger "github.com/br0-space/bot-logger"
 	"gorm.io/gorm"
 )
 
 type BaseRepo struct {
-	log   interfaces.LoggerInterface
+	log   logger.Interface
 	tx    *gorm.DB
 	model interface{}
 }
 
-func NewBaseRepo(logger interfaces.LoggerInterface, tx *gorm.DB, model interface{}) BaseRepo {
+func NewBaseRepo(tx *gorm.DB, model interface{}) BaseRepo {
 	return BaseRepo{
-		log:   logger,
+		log:   logger.New(),
 		tx:    tx,
 		model: model,
 	}

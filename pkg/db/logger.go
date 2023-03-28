@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	gormLogger "gorm.io/gorm/logger"
 	"regexp"
@@ -16,7 +17,7 @@ type gormLoggerBridge struct {
 	config        gormLogger.Config
 }
 
-func NewGormLoggerBridge(wrappedLogger interfaces.LoggerInterface) gormLogger.Interface {
+func NewGormLoggerBridge(wrappedLogger logger.Interface) gormLogger.Interface {
 	return &gormLoggerBridge{
 		wrappedLogger: wrappedLogger,
 		config: gormLogger.Config{

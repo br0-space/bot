@@ -22,7 +22,6 @@ type Matcher struct {
 }
 
 func MakeMatcher(
-	logger interfaces.LoggerInterface,
 	repo interfaces.PlusplusRepoInterface,
 ) Matcher {
 	var cfg Config
@@ -31,7 +30,7 @@ func MakeMatcher(
 	pattern = regexp.MustCompile(fmt.Sprintf(`(?i)\b((%s)([+]{2,}|[-]{2,}|\+-|—)?)`, cfg.GetPattern()))
 
 	return Matcher{
-		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help).WithConfig(&cfg.Config),
+		Matcher: abstract.MakeMatcher(identifier, pattern, help).WithConfig(&cfg.Config),
 		repo:    repo,
 		cfg:     cfg,
 	}

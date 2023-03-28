@@ -13,10 +13,9 @@ type PlusplusRepo struct {
 	BaseRepo
 }
 
-func NewPlusplusRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *PlusplusRepo {
+func NewPlusplusRepo(tx *gorm.DB) *PlusplusRepo {
 	return &PlusplusRepo{
 		BaseRepo: NewBaseRepo(
-			logger,
 			tx,
 			&interfaces.Plusplus{},
 		),

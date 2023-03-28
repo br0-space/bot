@@ -3,13 +3,14 @@ package webhook
 import (
 	"encoding/json"
 	"fmt"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"net/http"
 	"net/url"
 )
 
 type ProdTools struct {
-	Log interfaces.LoggerInterface
+	Log logger.Interface
 	Cfg interfaces.TelegramConfigStruct
 }
 
@@ -20,9 +21,9 @@ type setWebhookURLResponse struct {
 	Description string `json:"description"`
 }
 
-func NewProdTools(logger interfaces.LoggerInterface, config interfaces.TelegramConfigStruct) *ProdTools {
+func NewProdTools(config interfaces.TelegramConfigStruct) *ProdTools {
 	return &ProdTools{
-		Log: logger,
+		Log: logger.New(),
 		Cfg: config,
 	}
 }

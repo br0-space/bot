@@ -22,9 +22,9 @@ type Matcher struct {
 	abstract.Matcher
 }
 
-func MakeMatcher(logger interfaces.LoggerInterface) Matcher {
+func MakeMatcher() Matcher {
 	return Matcher{
-		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(identifier, pattern, help),
 	}
 }
 

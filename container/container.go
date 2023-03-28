@@ -2,12 +2,12 @@ package container
 
 import (
 	"flag"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/config"
 	_ "github.com/br0-space/bot/pkg/config"
 	"github.com/br0-space/bot/pkg/db"
 	"github.com/br0-space/bot/pkg/fortune"
-	"github.com/br0-space/bot/pkg/logger"
 	"github.com/br0-space/bot/pkg/matcher"
 	"github.com/br0-space/bot/pkg/repo"
 	"github.com/br0-space/bot/pkg/songlink"
@@ -19,8 +19,6 @@ import (
 	"sync"
 )
 
-var loggerInstance interfaces.LoggerInterface
-var loggerLock = &sync.Mutex{}
 var configInstance *interfaces.ConfigStruct
 var configLock = &sync.Mutex{}
 var stateInstance interfaces.StateServiceInterface
@@ -30,19 +28,8 @@ func runsAsTest() bool {
 	return flag.Lookup("test.v") != nil
 }
 
-func ProvideLogger() interfaces.LoggerInterface {
-	loggerLock.Lock()
-	defer loggerLock.Unlock()
-
-	if loggerInstance == nil {
-		if runsAsTest() {
-			loggerInstance = logger.NewNullLogger()
-		} else {
-			loggerInstance = logger.NewDefaultLogger()
-		}
-	}
-
-	return loggerInstance
+func ProvideLogger() logger.Interface {
+	return logger.New()
 }
 
 func ProvideConfig() *interfaces.ConfigStruct {
@@ -62,7 +49,6 @@ func ProvideConfig() *interfaces.ConfigStruct {
 
 func ProvideMatchersRegistry() interfaces.MatcherRegistryInterface {
 	return matcher.NewRegistry(
-		ProvideLogger(),
 		ProvideState(),
 		ProvideTelegramClient(),
 		ProvideMessageStatsRepo(),
@@ -80,7 +66,6 @@ func ProvideState() interfaces.StateServiceInterface {
 
 	if stateInstance == nil {
 		stateInstance = state.NewService(
-			ProvideLogger(),
 			ProvideUserStatsRepo(),
 			ProvideMessageStatsRepo(),
 		)
@@ -91,7 +76,6 @@ func ProvideState() interfaces.StateServiceInterface {
 
 func ProvideTelegramWebhookHandler() interfaces.TelegramWebhookHandlerInterface {
 	return webhook.NewHandler(
-		ProvideLogger(),
 		ProvideConfig(),
 		ProvideMatchersRegistry(),
 		ProvideState(),
@@ -103,7 +87,6 @@ func ProvideTelegramWebhookTools() interfaces.TelegramWebhookToolsInterface {
 		return webhook.NewMockTools()
 	} else {
 		return webhook.NewProdTools(
-			ProvideLogger(),
 			ProvideConfig().Telegram,
 		)
 	}
@@ -114,7 +97,6 @@ func ProvideTelegramClient() interfaces.TelegramClientInterface {
 		return telegram.NewMockClient()
 	} else {
 		return telegram.NewProdClient(
-			ProvideLogger(),
 			ProvideConfig().Telegram,
 		)
 	}
@@ -129,7 +111,6 @@ func ProvideDatabaseConnection() *gorm.DB {
 
 func ProvideDatabaseMigration() interfaces.DatabaseMigrationInterface {
 	return db.MakeDatabaseMigration(
-		ProvideLogger(),
 		ProvideMessageStatsRepo(),
 		ProvidePlusplusRepo(),
 		ProvideUserStatsRepo(),
@@ -138,21 +119,18 @@ func ProvideDatabaseMigration() interfaces.DatabaseMigrationInterface {
 
 func ProvideMessageStatsRepo() interfaces.MessageStatsRepoInterface {
 	return repo.NewMessageStatsRepo(
-		ProvideLogger(),
 		ProvideDatabaseConnection(),
 	)
 }
 
 func ProvidePlusplusRepo() interfaces.PlusplusRepoInterface {
 	return repo.NewPlusplusRepo(
-		ProvideLogger(),
 		ProvideDatabaseConnection(),
 	)
 }
 
 func ProvideUserStatsRepo() interfaces.UserStatsRepoInterface {
 	return repo.NewUserStatsRepo(
-		ProvideLogger(),
 		ProvideDatabaseConnection(),
 	)
 }

@@ -3,25 +3,25 @@ package webhook
 import (
 	"encoding/json"
 	"fmt"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"net/http"
 )
 
 type Handler struct {
-	log      interfaces.LoggerInterface
+	log      logger.Interface
 	cfg      *interfaces.ConfigStruct
 	matchers interfaces.MatcherRegistryInterface
 	state    interfaces.StateServiceInterface
 }
 
 func NewHandler(
-	logger interfaces.LoggerInterface,
 	config *interfaces.ConfigStruct,
 	matchers interfaces.MatcherRegistryInterface,
 	state interfaces.StateServiceInterface,
 ) *Handler {
 	return &Handler{
-		log:      logger,
+		log:      logger.New(),
 		cfg:      config,
 		matchers: matchers,
 		state:    state,

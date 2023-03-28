@@ -1,6 +1,7 @@
 package db
 
 import (
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 )
 
@@ -12,13 +13,12 @@ type DatabaseMigration struct {
 }
 
 func MakeDatabaseMigration(
-	logger interfaces.LoggerInterface,
 	messageStatsRepo interfaces.MessageStatsRepoInterface,
 	plusplusRepo interfaces.PlusplusRepoInterface,
 	userStatsRepo interfaces.UserStatsRepoInterface,
 ) DatabaseMigration {
 	return DatabaseMigration{
-		log:              logger,
+		log:              logger.New(),
 		messageStatsRepo: messageStatsRepo,
 		plusplusRepo:     plusplusRepo,
 		userStatsRepo:    userStatsRepo,

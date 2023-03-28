@@ -14,10 +14,9 @@ type UserStatsRepo struct {
 	BaseRepo
 }
 
-func NewUserStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *UserStatsRepo {
+func NewUserStatsRepo(tx *gorm.DB) *UserStatsRepo {
 	return &UserStatsRepo{
 		BaseRepo: NewBaseRepo(
-			logger,
 			tx,
 			&interfaces.Stats{},
 		),

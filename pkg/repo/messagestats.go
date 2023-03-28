@@ -10,10 +10,9 @@ type MessageStatsRepo struct {
 	BaseRepo
 }
 
-func NewMessageStatsRepo(logger interfaces.LoggerInterface, tx *gorm.DB) *MessageStatsRepo {
+func NewMessageStatsRepo(tx *gorm.DB) *MessageStatsRepo {
 	return &MessageStatsRepo{
 		BaseRepo: NewBaseRepo(
-			logger,
 			tx,
 			&interfaces.MessageStats{},
 		),
