@@ -2,6 +2,7 @@ package matcher
 
 import (
 	"fmt"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/atall"
 	"github.com/br0-space/bot/pkg/matcher/buzzwords"
@@ -22,7 +23,7 @@ import (
 const errorTemplate = "⚠️ *Error in matcher \"%s\"*\n\n%s"
 
 type Registry struct {
-	log              interfaces.LoggerInterface
+	log              logger.Interface
 	state            interfaces.StateServiceInterface
 	telegram         interfaces.TelegramClientInterface
 	messageStatsRepo interfaces.MessageStatsRepoInterface
@@ -35,7 +36,6 @@ type Registry struct {
 }
 
 func NewRegistry(
-	logger interfaces.LoggerInterface,
 	state interfaces.StateServiceInterface,
 	telegram interfaces.TelegramClientInterface,
 	messageStatsRepo interfaces.MessageStatsRepoInterface,
@@ -46,7 +46,7 @@ func NewRegistry(
 	xkcdService interfaces.XkcdServiceInterface,
 ) *Registry {
 	registry := &Registry{
-		log:              logger,
+		log:              logger.New(),
 		state:            state,
 		telegram:         telegram,
 		messageStatsRepo: messageStatsRepo,
@@ -61,18 +61,18 @@ func NewRegistry(
 }
 
 func (r *Registry) Init() {
-	r.registerMatcher(atall.MakeMatcher(r.log, r.userStatsRepo))
-	r.registerMatcher(buzzwords.MakeMatcher(r.log, r.plusplusRepo))
-	r.registerMatcher(choose.MakeMatcher(r.log))
-	r.registerMatcher(goodmorning.MakeMatcher(r.log, r.state, r.fortuneService))
-	r.registerMatcher(fortune.MakeMatcher(r.log, r.fortuneService))
-	r.registerMatcher(janein.MakeMatcher(r.log))
-	r.registerMatcher(musiclinks.MakeMatcher(r.log, r.songlinkService))
-	r.registerMatcher(ping.MakeMatcher(r.log))
-	r.registerMatcher(plusplus.MakeMatcher(r.log, r.plusplusRepo))
-	r.registerMatcher(stats.MakeMatcher(r.log, r.userStatsRepo))
-	r.registerMatcher(topflop.MakeMatcher(r.log, r.plusplusRepo))
-	r.registerMatcher(xkcd.MakeMatcher(r.log, r.xkcdService))
+	r.registerMatcher(atall.MakeMatcher(r.userStatsRepo))
+	r.registerMatcher(buzzwords.MakeMatcher(r.plusplusRepo))
+	r.registerMatcher(choose.MakeMatcher())
+	r.registerMatcher(goodmorning.MakeMatcher(r.state, r.fortuneService))
+	r.registerMatcher(fortune.MakeMatcher(r.fortuneService))
+	r.registerMatcher(janein.MakeMatcher())
+	r.registerMatcher(musiclinks.MakeMatcher(r.songlinkService))
+	r.registerMatcher(ping.MakeMatcher())
+	r.registerMatcher(plusplus.MakeMatcher(r.plusplusRepo))
+	r.registerMatcher(stats.MakeMatcher(r.userStatsRepo))
+	r.registerMatcher(topflop.MakeMatcher(r.plusplusRepo))
+	r.registerMatcher(xkcd.MakeMatcher(r.xkcdService))
 }
 
 func (r *Registry) registerMatcher(matcher interfaces.MatcherInterface) {

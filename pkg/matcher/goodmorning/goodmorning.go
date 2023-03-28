@@ -24,12 +24,11 @@ type Matcher struct {
 }
 
 func MakeMatcher(
-	logger interfaces.LoggerInterface,
 	state interfaces.StateServiceInterface,
 	fortuneService interfaces.FortuneServiceInterface,
 ) Matcher {
 	return Matcher{
-		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(identifier, pattern, help),
 		state:   state,
 		fortune: fortuneService,
 	}

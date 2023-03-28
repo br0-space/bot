@@ -4,12 +4,13 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"net/http"
 )
 
 type ProdClient struct {
-	Log interfaces.LoggerInterface
+	Log logger.Interface
 	Cfg interfaces.TelegramConfigStruct
 }
 
@@ -20,9 +21,9 @@ type sendMessageResponse struct {
 	Description string `json:"description"`
 }
 
-func NewProdClient(logger interfaces.LoggerInterface, config interfaces.TelegramConfigStruct) *ProdClient {
+func NewProdClient(config interfaces.TelegramConfigStruct) *ProdClient {
 	return &ProdClient{
-		Log: logger,
+		Log: logger.New(),
 		Cfg: config,
 	}
 }

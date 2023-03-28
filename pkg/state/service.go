@@ -1,6 +1,7 @@
 package state
 
 import (
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"sync"
 	"time"
@@ -9,19 +10,18 @@ import (
 var getLastPostLock = &sync.Mutex{}
 
 type Service struct {
-	log              interfaces.LoggerInterface
+	log              logger.Interface
 	userStatsRepo    interfaces.UserStatsRepoInterface
 	messageStatsRepo interfaces.MessageStatsRepoInterface
 	lastPost         map[int64]time.Time
 }
 
 func NewService(
-	logger interfaces.LoggerInterface,
 	userStatsRepo interfaces.UserStatsRepoInterface,
 	messageStatsRepo interfaces.MessageStatsRepoInterface,
 ) *Service {
 	state := &Service{
-		log:              logger,
+		log:              logger.New(),
 		userStatsRepo:    userStatsRepo,
 		messageStatsRepo: messageStatsRepo,
 		lastPost:         make(map[int64]time.Time),

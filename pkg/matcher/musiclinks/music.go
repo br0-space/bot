@@ -19,11 +19,10 @@ type Matcher struct {
 }
 
 func MakeMatcher(
-	logger interfaces.LoggerInterface,
 	songlinkService interfaces.SonglinkServiceInterface,
 ) Matcher {
 	return Matcher{
-		Matcher:         abstract.MakeMatcher(logger, identifier, pattern, help),
+		Matcher:         abstract.MakeMatcher(identifier, pattern, help),
 		songlinkService: songlinkService,
 	}
 }

@@ -25,11 +25,10 @@ type Matcher struct {
 }
 
 func MakeMatcher(
-	logger interfaces.LoggerInterface,
 	repo interfaces.UserStatsRepoInterface,
 ) Matcher {
 	return Matcher{
-		Matcher: abstract.MakeMatcher(logger, identifier, pattern, help),
+		Matcher: abstract.MakeMatcher(identifier, pattern, help),
 		repo:    repo,
 	}
 }

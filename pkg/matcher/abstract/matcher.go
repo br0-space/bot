@@ -2,6 +2,7 @@ package abstract
 
 import (
 	"fmt"
+	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/spf13/viper"
 	"regexp"
@@ -9,7 +10,7 @@ import (
 )
 
 type Matcher struct {
-	log        interfaces.LoggerInterface
+	log        logger.Interface
 	identifier string
 	regexp     *regexp.Regexp
 	help       []interfaces.MatcherHelpStruct
@@ -21,13 +22,12 @@ type Config struct {
 }
 
 func MakeMatcher(
-	logger interfaces.LoggerInterface,
 	identifier string,
 	pattern *regexp.Regexp,
 	help []interfaces.MatcherHelpStruct,
 ) Matcher {
 	return Matcher{
-		log:        logger,
+		log:        logger.New(),
 		identifier: identifier,
 		regexp:     pattern,
 		help:       help,
