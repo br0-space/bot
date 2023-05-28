@@ -35,7 +35,7 @@ func (h *Handler) InitMatchers() {
 func (h *Handler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	h.log.Debugf("%s %s %s from %s", req.Method, req.URL, req.Proto, req.RemoteAddr)
 
-	messageIn, err, status := h.parseRequest(req)
+	messageIn, status, err := h.parseRequest(req)
 	if err != nil {
 		h.log.Error(err)
 		http.Error(res, err.Error(), status)
@@ -45,21 +45,21 @@ func (h *Handler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	h.processRequest(*messageIn)
 }
 
-func (h *Handler) parseRequest(req *http.Request) (*interfaces.TelegramWebhookMessageStruct, error, int) {
+func (h *Handler) parseRequest(req *http.Request) (*interfaces.TelegramWebhookMessageStruct, int, error) {
 	if req.Method != http.MethodPost {
-		return nil, fmt.Errorf("method not allowed: %s (actual) != POST (expected)", req.Method), http.StatusMethodNotAllowed
+		return nil, http.StatusMethodNotAllowed, fmt.Errorf("method not allowed: %s (actual) != POST (expected)", req.Method)
 	}
 
 	body := &interfaces.TelegramWebhookBodyStruct{}
 	if err := json.NewDecoder(req.Body).Decode(body); err != nil {
-		return nil, fmt.Errorf("unable to decode request body: %s", err.Error()), http.StatusBadRequest
+		return nil, http.StatusBadRequest, fmt.Errorf("unable to decode request body: %s", err.Error())
 	}
 
 	if body.Message.Chat.ID != h.cfg.Telegram.ChatID {
-		return nil, fmt.Errorf("chat id mismatch: %d (actual) != %d (expected)", body.Message.Chat.ID, h.cfg.Telegram.ChatID), http.StatusOK
+		return nil, http.StatusOK, fmt.Errorf("chat id mismatch: %d (actual) != %d (expected)", body.Message.Chat.ID, h.cfg.Telegram.ChatID)
 	}
 
-	return &body.Message, nil, 0
+	return &body.Message, 0, nil
 }
 
 func (h *Handler) processRequest(messageIn interfaces.TelegramWebhookMessageStruct) {

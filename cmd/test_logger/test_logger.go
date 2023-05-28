@@ -15,5 +15,5 @@ func main() {
 	logger.Warning("warning")
 	logger.Error("error")
 	//logger.Panic("panic")
-	logger.Fatal("fatal")
+	//logger.Fatal("fatal")
 }
