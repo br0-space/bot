@@ -2,7 +2,7 @@ package choose_test
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/interfaces"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/pkg/matcher/choose"
 	"github.com/stretchr/testify/assert"
 	"strings"
@@ -17,7 +17,7 @@ var expected = struct {
 	success: `👁 Das Orakel wurde befragt und hat sich entschieden für: *%s*`,
 }
 
-var expectedReply = []interfaces.TelegramMessageStruct{{
+var expectedReply = []telegramclient.MessageStruct{{
 	ChatID:                0,
 	Text:                  "",
 	ParseMode:             "MarkdownV2",
@@ -28,7 +28,7 @@ var expectedReply = []interfaces.TelegramMessageStruct{{
 
 var tests = []struct {
 	in              string
-	expectedReplies []interfaces.TelegramMessageStruct
+	expectedReplies []telegramclient.MessageStruct
 }{
 	{"", nil},
 	{"foobar", nil},
@@ -45,8 +45,8 @@ func provideMatcher() choose.Matcher {
 	return choose.MakeMatcher()
 }
 
-func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {
-	return interfaces.NewTestTelegramWebhookMessage(text)
+func newTestMessage(text string) telegramclient.WebhookMessageStruct {
+	return telegramclient.TestWebhookMessage(text)
 }
 
 func TestMatcher_DoesMatch(t *testing.T) {

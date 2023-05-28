@@ -3,6 +3,7 @@ package abstract
 import (
 	"fmt"
 	logger "github.com/br0-space/bot-logger"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/spf13/viper"
 	"regexp"
@@ -56,11 +57,11 @@ func (m Matcher) Help() []interfaces.MatcherHelpStruct {
 	return m.help
 }
 
-func (m Matcher) DoesMatch(messageIn interfaces.TelegramWebhookMessageStruct) bool {
+func (m Matcher) DoesMatch(messageIn telegramclient.WebhookMessageStruct) bool {
 	return m.regexp.MatchString(messageIn.Text)
 }
 
-func (m Matcher) GetCommandMatch(messageIn interfaces.TelegramWebhookMessageStruct) []string {
+func (m Matcher) GetCommandMatch(messageIn telegramclient.WebhookMessageStruct) []string {
 	match := m.regexp.FindStringSubmatch(messageIn.Text)
 	if match == nil {
 		return nil
@@ -72,7 +73,7 @@ func (m Matcher) GetCommandMatch(messageIn interfaces.TelegramWebhookMessageStru
 	return match
 }
 
-func (m Matcher) GetInlineMatches(messageIn interfaces.TelegramWebhookMessageStruct) []string {
+func (m Matcher) GetInlineMatches(messageIn telegramclient.WebhookMessageStruct) []string {
 	matches := m.regexp.FindAllString(messageIn.Text, -1)
 	if matches == nil {
 		return []string{}
@@ -85,7 +86,7 @@ func (m Matcher) GetInlineMatches(messageIn interfaces.TelegramWebhookMessageStr
 	return matches
 }
 
-func (m Matcher) HandleError(_ interfaces.TelegramWebhookMessageStruct, identifier string, err error) {
+func (m Matcher) HandleError(_ telegramclient.WebhookMessageStruct, identifier string, err error) {
 	m.log.Error(identifier, err.Error())
 }
 

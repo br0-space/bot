@@ -1,11 +1,13 @@
 package interfaces
 
+import telegramclient "github.com/br0-space/bot-telegramclient"
+
 type ConfigStruct struct {
 	Verbose  bool `mapstructure:"verbose"`
 	Quiet    bool `mapstructure:"quiet"`
 	Server   ServerConfigStruct
 	Database DatabaseConfigStruct
-	Telegram TelegramConfigStruct
+	Telegram telegramclient.ConfigStruct
 }
 
 type ServerConfigStruct struct {
@@ -27,16 +29,6 @@ type DatabaseConfigStruct struct {
 		Timezone string
 	}
 	AutoMigrate bool
-}
-
-type TelegramConfigStruct struct {
-	ApiKey              string
-	WebhookURL          string
-	BaseUrl             string
-	EndpointSetWebhook  string
-	EndpointSendMessage string
-	EndpointSendPhoto   string
-	ChatID              int64
 }
 
 type MatcherConfigStruct struct {

@@ -2,6 +2,7 @@ package plusplus
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
 	"regexp"
@@ -36,7 +37,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 
 	tokens, err := GetTokens(matches)
@@ -47,8 +48,8 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	return m.makeRepliesFromTokens(tokens)
 }
 
-func (m Matcher) makeRepliesFromTokens(tokens []Token) ([]interfaces.TelegramMessageStruct, error) {
-	replies := make([]interfaces.TelegramMessageStruct, 0)
+func (m Matcher) makeRepliesFromTokens(tokens []Token) ([]telegramclient.MessageStruct, error) {
+	replies := make([]telegramclient.MessageStruct, 0)
 
 	for _, token := range tokens {
 		tokenReplies, err := m.makeRepliesFromToken(token)
@@ -62,7 +63,7 @@ func (m Matcher) makeRepliesFromTokens(tokens []Token) ([]interfaces.TelegramMes
 	return replies, nil
 }
 
-func (m Matcher) makeRepliesFromToken(token Token) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeRepliesFromToken(token Token) ([]telegramclient.MessageStruct, error) {
 	value, err := m.repo.Increment(token.Name, token.Increment)
 	if err != nil {
 		return nil, err
@@ -70,7 +71,7 @@ func (m Matcher) makeRepliesFromToken(token Token) ([]interfaces.TelegramMessage
 
 	reply := token.MakeReply(value)
 
-	return []interfaces.TelegramMessageStruct{reply}, nil
+	return []telegramclient.MessageStruct{reply}, nil
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

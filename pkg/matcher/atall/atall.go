@@ -2,9 +2,9 @@ package atall
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"strings"
 )
@@ -29,7 +29,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 	if len(matches) == 0 {
 		return nil, nil
@@ -43,19 +43,19 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	return makeReplies(messageIn.TextOrCaption(), users)
 }
 
-func makeReplies(text string, users []interfaces.StatsUserStruct) ([]interfaces.TelegramMessageStruct, error) {
+func makeReplies(text string, users []interfaces.StatsUserStruct) ([]telegramclient.MessageStruct, error) {
 	text = strings.ReplaceAll(text, "@alle", "")
 	text = strings.ReplaceAll(text, "@all", "")
 
 	for _, user := range users {
 		text += fmt.Sprintf(
 			" [%s](tg://user?id=%d)",
-			telegram.EscapeMarkdown(user.Username),
+			telegramclient.EscapeMarkdown(user.Username),
 			user.ID,
 		)
 	}
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownMessage(text),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownMessage(text),
 	}, nil
 }

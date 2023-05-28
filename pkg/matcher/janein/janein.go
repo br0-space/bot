@@ -2,9 +2,9 @@ package janein
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"math/rand"
 	"regexp"
 	"strings"
@@ -41,7 +41,7 @@ func MakeMatcher() Matcher {
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
@@ -63,15 +63,15 @@ func randomYesOrNo() bool {
 	return rand.Float32() < 0.5
 }
 
-func makeReplies(template string, topic string, messageID int64) ([]interfaces.TelegramMessageStruct, error) {
+func makeReplies(template string, topic string, messageID int64) ([]telegramclient.MessageStruct, error) {
 	if strings.Contains(template, "%s") {
 		template = fmt.Sprintf(
 			template,
-			telegram.EscapeMarkdown(topic),
+			telegramclient.EscapeMarkdown(topic),
 		)
 	}
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownReply(template, messageID),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownReply(template, messageID),
 	}, nil
 }

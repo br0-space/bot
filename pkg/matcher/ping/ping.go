@@ -2,9 +2,9 @@ package ping
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 )
 
@@ -28,12 +28,12 @@ func MakeMatcher() Matcher {
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
 		return nil, fmt.Errorf("message does not match")
 	}
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeReply(template, messageIn.ID),
+	return []telegramclient.MessageStruct{
+		telegramclient.Reply(template, messageIn.ID),
 	}, nil
 }

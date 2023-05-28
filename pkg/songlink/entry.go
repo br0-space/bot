@@ -2,7 +2,7 @@ package songlink
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/pkg/telegram"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 )
 
 type Entry struct {
@@ -20,8 +20,8 @@ type EntryLink struct {
 func (e Entry) ToMarkdown() string {
 	text := fmt.Sprintf(
 		"*%s*\n*%s* · %s\n\n",
-		telegram.EscapeMarkdown(e.Title),
-		telegram.EscapeMarkdown(e.Artist),
+		telegramclient.EscapeMarkdown(e.Title),
+		telegramclient.EscapeMarkdown(e.Artist),
 		e.Type.Natural(),
 	)
 

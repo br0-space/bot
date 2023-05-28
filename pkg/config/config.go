@@ -1,6 +1,7 @@
 package config
 
 import (
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -34,7 +35,7 @@ func NewTestConfig() *interfaces.ConfigStruct {
 		Quiet:    false,
 		Server:   interfaces.ServerConfigStruct{},
 		Database: interfaces.DatabaseConfigStruct{},
-		Telegram: interfaces.TelegramConfigStruct{},
+		Telegram: telegramclient.ConfigStruct{},
 	}
 }
 

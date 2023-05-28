@@ -3,7 +3,8 @@ module github.com/br0-space/bot
 go 1.19
 
 require (
-	github.com/br0-space/bot-logger v0.0.0-20230327235701-9b76b3d387c8
+	github.com/br0-space/bot-logger v0.0.0-20230528034653-b8182586cff5
+	github.com/br0-space/bot-telegramclient v0.1.0
 	github.com/davecgh/go-spew v1.1.1
 	github.com/gorilla/mux v1.8.0
 	github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de

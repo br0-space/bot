@@ -2,7 +2,7 @@ package fortune
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/pkg/telegram"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"regexp"
 	"strings"
 )
@@ -39,7 +39,7 @@ func (f Fortune) ToMarkdown() string {
 		return fmt.Sprintf(
 			typeQuoteTemplate,
 			f.formatLines(f.content),
-			telegram.EscapeMarkdown(*f.source),
+			telegramclient.EscapeMarkdown(*f.source),
 		)
 	default:
 		return "unknown fortune type"
@@ -61,10 +61,10 @@ func (f Fortune) formatLine(line string) string {
 		matches := regexp.MustCompile(lineQuotePattern).FindStringSubmatch(line)
 		return fmt.Sprintf(
 			lineQuoteTemplate,
-			telegram.EscapeMarkdown(matches[1]),
-			telegram.EscapeMarkdown(matches[2]),
+			telegramclient.EscapeMarkdown(matches[1]),
+			telegramclient.EscapeMarkdown(matches[2]),
 		)
 	}
 
-	return telegram.EscapeMarkdown(line)
+	return telegramclient.EscapeMarkdown(line)
 }

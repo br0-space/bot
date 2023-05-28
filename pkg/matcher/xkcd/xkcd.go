@@ -1,9 +1,9 @@
 package xkcd
 
 import (
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"strconv"
 	"strings"
@@ -34,7 +34,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, nil
@@ -56,7 +56,7 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	}
 }
 
-func (m Matcher) makeLatestReplies() ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeLatestReplies() ([]telegramclient.MessageStruct, error) {
 	comic, err := m.xkcdService.Latest()
 	if err != nil {
 		return nil, err
@@ -65,7 +65,7 @@ func (m Matcher) makeLatestReplies() ([]interfaces.TelegramMessageStruct, error)
 	return m.makeReplies(comic), nil
 }
 
-func (m Matcher) makeFromIDReplies(id int) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeFromIDReplies(id int) ([]telegramclient.MessageStruct, error) {
 	comic, err := m.xkcdService.Comic(id)
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (m Matcher) makeFromIDReplies(id int) ([]interfaces.TelegramMessageStruct, 
 	return m.makeReplies(comic), nil
 }
 
-func (m Matcher) makeRandomReplies() ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeRandomReplies() ([]telegramclient.MessageStruct, error) {
 	comic, err := m.xkcdService.Random()
 	if err != nil {
 		return nil, err
@@ -83,8 +83,8 @@ func (m Matcher) makeRandomReplies() ([]interfaces.TelegramMessageStruct, error)
 	return m.makeReplies(comic), nil
 }
 
-func (m Matcher) makeReplies(comic interfaces.XkcdComicInterface) []interfaces.TelegramMessageStruct {
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownPhoto(comic.ImageURL(), comic.ToMarkdown()),
+func (m Matcher) makeReplies(comic interfaces.XkcdComicInterface) []telegramclient.MessageStruct {
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownPhoto(comic.ImageURL(), comic.ToMarkdown()),
 	}
 }

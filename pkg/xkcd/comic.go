@@ -2,7 +2,7 @@ package xkcd
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/pkg/telegram"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/nishanths/go-xkcd/v2"
 )
 
@@ -36,10 +36,10 @@ func (c Comic) ImageURL() string {
 func (c Comic) ToMarkdown() string {
 	return fmt.Sprintf(
 		template,
-		telegram.EscapeMarkdown(c.base.Title),
-		telegram.EscapeMarkdown(c.base.Alt),
+		telegramclient.EscapeMarkdown(c.base.Title),
+		telegramclient.EscapeMarkdown(c.base.Alt),
 		c.base.Number,
-		telegram.EscapeMarkdown(c.URL()),
+		telegramclient.EscapeMarkdown(c.URL()),
 		c.base.Day,
 		c.base.Month,
 		c.base.Year,

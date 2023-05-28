@@ -1,19 +1,20 @@
 package interfaces
 
+import telegramclient "github.com/br0-space/bot-telegramclient"
+
 type MatcherRegistryInterface interface {
-	Init()
-	Process(messageIn TelegramWebhookMessageStruct)
+	Process(messageIn telegramclient.WebhookMessageStruct)
 }
 
 type MatcherInterface interface {
 	IsEnabled() bool
 	Identifier() string
 	Help() []MatcherHelpStruct
-	DoesMatch(messageIn TelegramWebhookMessageStruct) bool
-	GetCommandMatch(messageIn TelegramWebhookMessageStruct) []string
-	GetInlineMatches(messageIn TelegramWebhookMessageStruct) []string
-	Process(messageIn TelegramWebhookMessageStruct) ([]TelegramMessageStruct, error)
-	HandleError(messageIn TelegramWebhookMessageStruct, identifier string, err error)
+	DoesMatch(messageIn telegramclient.WebhookMessageStruct) bool
+	GetCommandMatch(messageIn telegramclient.WebhookMessageStruct) []string
+	GetInlineMatches(messageIn telegramclient.WebhookMessageStruct) []string
+	Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error)
+	HandleError(messageIn telegramclient.WebhookMessageStruct, identifier string, err error)
 }
 
 type MatcherHelpStruct struct {

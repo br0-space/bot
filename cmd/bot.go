@@ -21,20 +21,11 @@ func main() {
 			logger.Fatal(err)
 		}
 	}
-	
-	webhookHandler := container.ProvideTelegramWebhookHandler()
-	webhookTools := container.ProvideTelegramWebhookTools()
-
-	logger.Info("Initializing Matchers")
-	webhookHandler.InitMatchers()
-
-	logger.Info("Initializing Telegram webhook")
-	webhookTools.SetWebhookURL()
 
 	logger.Info("Starting HTTP server listening on", config.Server.ListenAddr)
 
 	r := mux.NewRouter()
-	r.HandleFunc("/webhook", webhookHandler.ServeHTTP)
+	r.HandleFunc("/webhook", container.ProvideTelegramWebhookHandler().ServeHTTP)
 	r.Handle("/metrics", promhttp.Handler())
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	http.Handle("/", r)
