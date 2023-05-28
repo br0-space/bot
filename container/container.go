@@ -5,7 +5,6 @@ import (
 	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/config"
-	_ "github.com/br0-space/bot/pkg/config"
 	"github.com/br0-space/bot/pkg/db"
 	"github.com/br0-space/bot/pkg/fortune"
 	"github.com/br0-space/bot/pkg/matcher"
