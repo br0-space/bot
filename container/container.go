@@ -17,14 +17,12 @@ import (
 	fortune2 "github.com/br0-space/bot/pkg/matchers/fortune"
 	"github.com/br0-space/bot/pkg/matchers/goodmorning"
 	"github.com/br0-space/bot/pkg/matchers/janein"
-	"github.com/br0-space/bot/pkg/matchers/musiclinks"
 	"github.com/br0-space/bot/pkg/matchers/ping"
 	"github.com/br0-space/bot/pkg/matchers/plusplus"
 	"github.com/br0-space/bot/pkg/matchers/stats"
 	"github.com/br0-space/bot/pkg/matchers/topflop"
 	xkcd2 "github.com/br0-space/bot/pkg/matchers/xkcd"
 	"github.com/br0-space/bot/pkg/repo"
-	"github.com/br0-space/bot/pkg/songlink"
 	"github.com/br0-space/bot/pkg/state"
 	"github.com/br0-space/bot/pkg/xkcd"
 	"gorm.io/gorm"
@@ -77,7 +75,6 @@ func ProvideMatchersRegistry() *matcher.Registry {
 		matcherRegistryInstance.Register(goodmorning.MakeMatcher(ProvideState(), ProvideFortuneService()))
 		matcherRegistryInstance.Register(fortune2.MakeMatcher(ProvideFortuneService()))
 		matcherRegistryInstance.Register(janein.MakeMatcher())
-		matcherRegistryInstance.Register(musiclinks.MakeMatcher(ProvideSonglinkService()))
 		matcherRegistryInstance.Register(ping.MakeMatcher())
 		matcherRegistryInstance.Register(plusplus.MakeMatcher(ProvidePlusplusRepo()))
 		matcherRegistryInstance.Register(stats.MakeMatcher(ProvideUserStatsRepo()))
@@ -160,10 +157,6 @@ func ProvideUserStatsRepo() interfaces.UserStatsRepoInterface {
 
 func ProvideFortuneService() fortune.Service {
 	return fortune.MakeService()
-}
-
-func ProvideSonglinkService() interfaces.SonglinkServiceInterface {
-	return songlink.MakeService()
 }
 
 func ProvideXkcdService() interfaces.XkcdServiceInterface {
