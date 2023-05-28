@@ -1,10 +1,11 @@
 package repo
 
 import (
+	"sync"
+
 	"github.com/br0-space/bot/interfaces"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"sync"
 )
 
 var mutexPlusplus sync.Mutex

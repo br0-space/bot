@@ -1,11 +1,12 @@
 package repo
 
 import (
+	"sync"
+	"time"
+
 	"github.com/br0-space/bot/interfaces"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"sync"
-	"time"
 )
 
 var mutexStats sync.Mutex
@@ -49,7 +50,7 @@ func (r UserStatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
 		Order("username asc").
 		Find(&records)
 
-	var users []interfaces.StatsUserStruct
+	users := make([]interfaces.StatsUserStruct, 0, len(records))
 	for _, record := range records {
 		users = append(users, interfaces.StatsUserStruct{
 			ID:       record.UserID,
@@ -69,7 +70,7 @@ func (r UserStatsRepo) GetTopUsers() ([]interfaces.StatsUserStruct, error) {
 		Order("posts desc").
 		Find(&records)
 
-	var users []interfaces.StatsUserStruct
+	users := make([]interfaces.StatsUserStruct, 0, len(records))
 	for _, record := range records {
 		users = append(users, interfaces.StatsUserStruct{
 			ID:       record.UserID,

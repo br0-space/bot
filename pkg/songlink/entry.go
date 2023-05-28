@@ -2,6 +2,7 @@ package songlink
 
 import (
 	"fmt"
+
 	telegramclient "github.com/br0-space/bot-telegramclient"
 )
 
@@ -37,7 +38,7 @@ func (e Entry) ToMarkdown() string {
 		)
 	}
 
-	text = text + fmt.Sprintf(
+	text += fmt.Sprintf(
 		"🔗 [%s](%s)",
 		PlatformSonglink.Natural(),
 		e.Links[0].URL,

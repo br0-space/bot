@@ -2,9 +2,11 @@ package xkcd
 
 import (
 	"context"
+	"crypto/rand"
+	"math/big"
+
 	"github.com/br0-space/bot/interfaces"
 	xkcdv2 "github.com/nishanths/go-xkcd/v2"
-	"math/rand"
 )
 
 type Service struct{}
@@ -19,9 +21,12 @@ func (s Service) Random() (interfaces.XkcdComicInterface, error) {
 		return Comic{}, err
 	}
 
-	number := rand.Intn(latest.Number())
+	number, err := rand.Int(rand.Reader, big.NewInt(int64(latest.Number())))
+	if err != nil {
+		return Comic{}, err
+	}
 
-	return s.Comic(number)
+	return s.Comic(int((*number).Int64()))
 }
 
 func (s Service) Latest() (interfaces.XkcdComicInterface, error) {

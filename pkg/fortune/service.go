@@ -1,12 +1,14 @@
 package fortune
 
 import (
+	"crypto/rand"
 	"fmt"
-	"github.com/br0-space/bot/interfaces"
-	"math/rand"
+	"math/big"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/br0-space/bot/interfaces"
 )
 
 const path = "files/fortune"
@@ -21,6 +23,7 @@ func (f Service) GetList() []string {
 	var filenames []string
 	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		filenames = append(filenames, path)
+
 		return nil
 	})
 	if err != nil {
@@ -43,12 +46,14 @@ func (f Service) Exists(fileToSearch string) bool {
 			return true
 		}
 	}
+
 	return false
 }
 
 func (f Service) GetRandomFortune() (interfaces.FortuneInterface, error) {
 	files := f.GetList()
-	file := files[rand.Intn(len(files))]
+	n, _ := rand.Int(rand.Reader, big.NewInt(int64(len(files))))
+	file := files[int(n.Int64())]
 
 	return f.GetFortune(file)
 }
@@ -62,12 +67,13 @@ func (f Service) GetFortune(file string) (interfaces.FortuneInterface, error) {
 	if err != nil {
 		return Fortune{}, err
 	}
-	fortune := fortunes[rand.Intn(len(fortunes))]
+	n, _ := rand.Int(rand.Reader, big.NewInt(int64(len(fortunes))))
+	fortune := fortunes[int(n.Int64())]
 
 	return MakeFortune(file, fortune), nil
 }
 
-// Read a fortune file and return
+// Read a fortune file and return.
 func (f Service) readFortuneFile(file string) ([]string, error) {
 	filename := fmt.Sprintf("%s/%s.txt", path, file)
 
@@ -76,5 +82,6 @@ func (f Service) readFortuneFile(file string) ([]string, error) {
 	if err == nil {
 		fortunes = strings.Split(string(content), "\n%\n")
 	}
+
 	return fortunes, err
 }

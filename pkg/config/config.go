@@ -1,17 +1,35 @@
 package config
 
 import (
-	telegramclient "github.com/br0-space/bot-telegramclient"
-	"github.com/br0-space/bot/interfaces"
-	"github.com/spf13/pflag"
-	"github.com/spf13/viper"
 	"log"
 	"math/rand"
 	"strings"
 	"time"
+
+	telegramclient "github.com/br0-space/bot-telegramclient"
+	"github.com/br0-space/bot/interfaces"
+	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
 )
 
-func init() {
+var envToConfigMap = map[string]string{
+	"listen_addr":          "server.listenAddr",
+	"db_driver":            "database.driver",
+	"sqlite_file":          "database.sqlite.file",
+	"postgres_host":        "database.postgresql.host",
+	"postgres_port":        "database.postgresql.port",
+	"postgres_db":          "database.postgresql.dbname",
+	"postgres_user":        "database.postgresql.user",
+	"postgres_password":    "database.postgresql.password",
+	"postgres_ssl":         "database.postgresql.ssl",
+	"postgres_timezone":    "database.postgresql.timezone",
+	"db_automigrate":       "database.autoMigrate",
+	"telegram_api_key":     "telegram.apiKey",
+	"telegram_webhook_url": "telegram.webhookUrl",
+	"telegram_chat_id":     "telegram.chatID",
+}
+
+func Init() {
 	// Seed rand before doing anything else
 	rand.Seed(time.Now().UnixNano())
 
@@ -62,26 +80,8 @@ func loadConfig() (*interfaces.ConfigStruct, error) {
 		log.Println("no .env file found")
 	}
 
-	// Mapping between keys in .env file or environment to config
-	envToConfig := map[string]string{
-		"listen_addr":          "server.listenAddr",
-		"db_driver":            "database.driver",
-		"sqlite_file":          "database.sqlite.file",
-		"postgres_host":        "database.postgresql.host",
-		"postgres_port":        "database.postgresql.port",
-		"postgres_db":          "database.postgresql.dbname",
-		"postgres_user":        "database.postgresql.user",
-		"postgres_password":    "database.postgresql.password",
-		"postgres_ssl":         "database.postgresql.ssl",
-		"postgres_timezone":    "database.postgresql.timezone",
-		"db_automigrate":       "database.autoMigrate",
-		"telegram_api_key":     "telegram.apiKey",
-		"telegram_webhook_url": "telegram.webhookUrl",
-		"telegram_chat_id":     "telegram.chatID",
-	}
-
 	// Map directives from environment variables to config
-	for envKey, configKey := range envToConfig {
+	for envKey, configKey := range envToConfigMap {
 		// Value from .env file overwrites value from config.yml
 		val := v.GetString(envKey)
 		if len(val) > 0 {

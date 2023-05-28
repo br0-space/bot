@@ -4,13 +4,16 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	logger "github.com/br0-space/bot-logger"
-	"github.com/br0-space/bot/interfaces"
-	gormLogger "gorm.io/gorm/logger"
 	"regexp"
 	"runtime"
 	"time"
+
+	logger "github.com/br0-space/bot-logger"
+	"github.com/br0-space/bot/interfaces"
+	gormLogger "gorm.io/gorm/logger"
 )
+
+const slowThreshold = 10000 * time.Millisecond
 
 type gormLoggerBridge struct {
 	wrappedLogger interfaces.LoggerInterface
@@ -21,7 +24,7 @@ func NewGormLoggerBridge(wrappedLogger logger.Interface) gormLogger.Interface {
 	return &gormLoggerBridge{
 		wrappedLogger: wrappedLogger,
 		config: gormLogger.Config{
-			SlowThreshold:             10000 * time.Millisecond,
+			SlowThreshold:             slowThreshold,
 			LogLevel:                  gormLogger.Warn,
 			IgnoreRecordNotFoundError: true,
 			Colorful:                  true,
@@ -62,26 +65,26 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 		format := "%s [%.3fms] [rows:%v] %s"
 		sql, rows := fc()
 		if rows == -1 {
-			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, "-", sql)
+			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
 		} else {
-			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, rows, sql)
+			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:gomnd
 		}
 	case elapsed > l.config.SlowThreshold && l.config.SlowThreshold != 0:
 		format := "%s\n[%.3fms] [rows:%v] %s"
 		sql, rows := fc()
 		slowLog := fmt.Sprintf("SLOW SQL >= %v", l.config.SlowThreshold)
 		if rows == -1 {
-			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql)
+			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
 		} else {
-			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, rows, sql)
+			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:gomnd
 		}
 	default:
 		format := "[%.3fms] [rows:%v] %s"
 		sql, rows := fc()
 		if rows == -1 {
-			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, "-", sql)
+			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
 		} else {
-			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, rows, sql)
+			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:gomnd
 		}
 	}
 
@@ -100,5 +103,6 @@ func (l gormLoggerBridge) getExtraCallDepth() int {
 			break
 		}
 	}
+
 	return extraCallDepth
 }

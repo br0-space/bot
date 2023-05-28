@@ -1,9 +1,10 @@
 package songlink_test
 
 import (
+	"testing"
+
 	"github.com/br0-space/bot/pkg/songlink"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 var tests = []struct {

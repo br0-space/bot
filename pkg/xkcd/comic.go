@@ -2,6 +2,7 @@ package xkcd
 
 import (
 	"fmt"
+
 	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/nishanths/go-xkcd/v2"
 )

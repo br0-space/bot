@@ -1,9 +1,10 @@
 package repo
 
 import (
+	"time"
+
 	"github.com/br0-space/bot/interfaces"
 	"gorm.io/gorm"
-	"time"
 )
 
 type MessageStatsRepo struct {

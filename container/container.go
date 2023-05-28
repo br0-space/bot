@@ -2,27 +2,42 @@ package container
 
 import (
 	"flag"
+	"sync"
+
 	logger "github.com/br0-space/bot-logger"
+	matcher "github.com/br0-space/bot-matcher"
 	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/config"
 	"github.com/br0-space/bot/pkg/db"
 	"github.com/br0-space/bot/pkg/fortune"
-	"github.com/br0-space/bot/pkg/matcher"
+	"github.com/br0-space/bot/pkg/matchers/atall"
+	"github.com/br0-space/bot/pkg/matchers/buzzwords"
+	"github.com/br0-space/bot/pkg/matchers/choose"
+	fortune2 "github.com/br0-space/bot/pkg/matchers/fortune"
+	"github.com/br0-space/bot/pkg/matchers/goodmorning"
+	"github.com/br0-space/bot/pkg/matchers/janein"
+	"github.com/br0-space/bot/pkg/matchers/musiclinks"
+	"github.com/br0-space/bot/pkg/matchers/ping"
+	"github.com/br0-space/bot/pkg/matchers/plusplus"
+	"github.com/br0-space/bot/pkg/matchers/stats"
+	"github.com/br0-space/bot/pkg/matchers/topflop"
+	xkcd2 "github.com/br0-space/bot/pkg/matchers/xkcd"
 	"github.com/br0-space/bot/pkg/repo"
 	"github.com/br0-space/bot/pkg/songlink"
 	"github.com/br0-space/bot/pkg/state"
 	"github.com/br0-space/bot/pkg/xkcd"
 	"gorm.io/gorm"
-	"sync"
 )
 
-var configInstance *interfaces.ConfigStruct
-var configLock = &sync.Mutex{}
-var matcherRegistryInstance interfaces.MatcherRegistryInterface
-var matcherRegistryLock = &sync.Mutex{}
-var stateInstance interfaces.StateServiceInterface
-var stateLock = &sync.Mutex{}
+var (
+	configInstance          *interfaces.ConfigStruct
+	configLock              = &sync.Mutex{}
+	matcherRegistryInstance *matcher.Registry
+	matcherRegistryLock     = &sync.Mutex{}
+	stateInstance           interfaces.StateServiceInterface
+	stateLock               = &sync.Mutex{}
+)
 
 func runsAsTest() bool {
 	return flag.Lookup("test.v") != nil
@@ -47,21 +62,27 @@ func ProvideConfig() *interfaces.ConfigStruct {
 	return configInstance
 }
 
-func ProvideMatchersRegistry() interfaces.MatcherRegistryInterface {
+func ProvideMatchersRegistry() *matcher.Registry {
 	matcherRegistryLock.Lock()
 	defer matcherRegistryLock.Unlock()
 
 	if matcherRegistryInstance == nil {
 		matcherRegistryInstance = matcher.NewRegistry(
-			ProvideState(),
+			ProvideLogger(),
 			ProvideTelegramClient(),
-			ProvideMessageStatsRepo(),
-			ProvidePlusplusRepo(),
-			ProvideUserStatsRepo(),
-			ProvideFortuneService(),
-			ProvideSonglinkService(),
-			ProvideXkcdService(),
 		)
+		matcherRegistryInstance.Register(atall.MakeMatcher(ProvideUserStatsRepo()))
+		matcherRegistryInstance.Register(buzzwords.MakeMatcher(ProvidePlusplusRepo()))
+		matcherRegistryInstance.Register(choose.MakeMatcher())
+		matcherRegistryInstance.Register(goodmorning.MakeMatcher(ProvideState(), ProvideFortuneService()))
+		matcherRegistryInstance.Register(fortune2.MakeMatcher(ProvideFortuneService()))
+		matcherRegistryInstance.Register(janein.MakeMatcher())
+		matcherRegistryInstance.Register(musiclinks.MakeMatcher(ProvideSonglinkService()))
+		matcherRegistryInstance.Register(ping.MakeMatcher())
+		matcherRegistryInstance.Register(plusplus.MakeMatcher(ProvidePlusplusRepo()))
+		matcherRegistryInstance.Register(stats.MakeMatcher(ProvideUserStatsRepo()))
+		matcherRegistryInstance.Register(topflop.MakeMatcher(ProvidePlusplusRepo()))
+		matcherRegistryInstance.Register(xkcd2.MakeMatcher(ProvideXkcdService()))
 	}
 
 	return matcherRegistryInstance

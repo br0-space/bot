@@ -1,11 +1,12 @@
 package state
 
 import (
+	"sync"
+	"time"
+
 	logger "github.com/br0-space/bot-logger"
 	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
-	"sync"
-	"time"
 )
 
 var getLastPostLock = &sync.Mutex{}
@@ -54,6 +55,7 @@ func (s *Service) init() {
 	users, err := s.userStatsRepo.GetKnownUsers()
 	if err != nil {
 		s.log.Error("Error while getting known users from DB:", err)
+
 		return
 	}
 
