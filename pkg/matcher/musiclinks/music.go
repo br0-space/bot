@@ -1,9 +1,9 @@
 package musiclinks
 
 import (
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 )
 
@@ -27,10 +27,10 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 
-	res := make([]interfaces.TelegramMessageStruct, 0)
+	res := make([]telegramclient.MessageStruct, 0)
 
 	for _, match := range matches {
 		songlinkEntry, err := m.songlinkService.GetEntryForUrl(match)
@@ -44,8 +44,8 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	return res, nil
 }
 
-func makeReply(songlinkEntry interfaces.SonglinkEntryInterface) interfaces.TelegramMessageStruct {
-	res := telegram.MakeMarkdownMessage(songlinkEntry.ToMarkdown())
+func makeReply(songlinkEntry interfaces.SonglinkEntryInterface) telegramclient.MessageStruct {
+	res := telegramclient.MarkdownMessage(songlinkEntry.ToMarkdown())
 	res.DisableWebPagePreview = true
 
 	return res

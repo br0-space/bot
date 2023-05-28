@@ -2,9 +2,9 @@ package goodmorning
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"time"
 )
@@ -34,7 +34,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	if !m.doesMatch(messageIn) {
 		return nil, nil
 	}
@@ -42,7 +42,7 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	return m.makeReplies(messageIn)
 }
 
-func (m Matcher) doesMatch(messageIn interfaces.TelegramWebhookMessageStruct) bool {
+func (m Matcher) doesMatch(messageIn telegramclient.WebhookMessageStruct) bool {
 	now := time.Now()
 
 	if now.Hour() < 6 || now.Hour() > 14 {
@@ -58,7 +58,7 @@ func (m Matcher) doesMatch(messageIn interfaces.TelegramWebhookMessageStruct) bo
 	return false
 }
 
-func (m Matcher) makeReplies(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeReplies(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	fortune, err := m.fortune.GetRandomFortune()
 	if err != nil {
 		return nil, err
@@ -66,12 +66,12 @@ func (m Matcher) makeReplies(messageIn interfaces.TelegramWebhookMessageStruct) 
 
 	text := fmt.Sprintf(
 		template,
-		telegram.EscapeMarkdown(messageIn.From.FirstnameOrUsername()),
+		telegramclient.EscapeMarkdown(messageIn.From.FirstnameOrUsername()),
 		fortune.ToMarkdown(),
 		fortune.File(),
 	)
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownMessage(text),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownMessage(text),
 	}, nil
 }

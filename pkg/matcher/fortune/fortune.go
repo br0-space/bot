@@ -2,9 +2,9 @@ package fortune
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"strings"
 )
@@ -44,7 +44,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
@@ -60,18 +60,18 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	}
 }
 
-func (m Matcher) makeListReplies() ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeListReplies() ([]telegramclient.MessageStruct, error) {
 	text := fmt.Sprintf(
 		templates.list,
 		strings.Join(m.fortuneService.GetList(), "\n"),
 	)
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownMessage(text),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownMessage(text),
 	}, nil
 }
 
-func (m Matcher) makeRandomReplies() ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeRandomReplies() ([]telegramclient.MessageStruct, error) {
 	fortune, err := m.fortuneService.GetRandomFortune()
 	if err != nil {
 		return nil, err
@@ -83,12 +83,12 @@ func (m Matcher) makeRandomReplies() ([]interfaces.TelegramMessageStruct, error)
 		fortune.File(),
 	)
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownMessage(text),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownMessage(text),
 	}, nil
 }
 
-func (m Matcher) makeFromFileReplies(file string) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeFromFileReplies(file string) ([]telegramclient.MessageStruct, error) {
 	if !m.fortuneService.Exists(file) {
 		return nil, fmt.Errorf(`fortune file "%s" does not exist`, file)
 	}
@@ -103,7 +103,7 @@ func (m Matcher) makeFromFileReplies(file string) ([]interfaces.TelegramMessageS
 		fortune.ToMarkdown(),
 	)
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownMessage(text),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownMessage(text),
 	}, nil
 }

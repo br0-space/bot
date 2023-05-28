@@ -3,6 +3,7 @@ package container
 import (
 	"flag"
 	logger "github.com/br0-space/bot-logger"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/config"
 	"github.com/br0-space/bot/pkg/db"
@@ -11,8 +12,6 @@ import (
 	"github.com/br0-space/bot/pkg/repo"
 	"github.com/br0-space/bot/pkg/songlink"
 	"github.com/br0-space/bot/pkg/state"
-	"github.com/br0-space/bot/pkg/telegram"
-	"github.com/br0-space/bot/pkg/webhook"
 	"github.com/br0-space/bot/pkg/xkcd"
 	"gorm.io/gorm"
 	"sync"
@@ -20,6 +19,8 @@ import (
 
 var configInstance *interfaces.ConfigStruct
 var configLock = &sync.Mutex{}
+var matcherRegistryInstance interfaces.MatcherRegistryInterface
+var matcherRegistryLock = &sync.Mutex{}
 var stateInstance interfaces.StateServiceInterface
 var stateLock = &sync.Mutex{}
 
@@ -47,16 +48,23 @@ func ProvideConfig() *interfaces.ConfigStruct {
 }
 
 func ProvideMatchersRegistry() interfaces.MatcherRegistryInterface {
-	return matcher.NewRegistry(
-		ProvideState(),
-		ProvideTelegramClient(),
-		ProvideMessageStatsRepo(),
-		ProvidePlusplusRepo(),
-		ProvideUserStatsRepo(),
-		ProvideFortuneService(),
-		ProvideSonglinkService(),
-		ProvideXkcdService(),
-	)
+	matcherRegistryLock.Lock()
+	defer matcherRegistryLock.Unlock()
+
+	if matcherRegistryInstance == nil {
+		matcherRegistryInstance = matcher.NewRegistry(
+			ProvideState(),
+			ProvideTelegramClient(),
+			ProvideMessageStatsRepo(),
+			ProvidePlusplusRepo(),
+			ProvideUserStatsRepo(),
+			ProvideFortuneService(),
+			ProvideSonglinkService(),
+			ProvideXkcdService(),
+		)
+	}
+
+	return matcherRegistryInstance
 }
 
 func ProvideState() interfaces.StateServiceInterface {
@@ -73,29 +81,24 @@ func ProvideState() interfaces.StateServiceInterface {
 	return stateInstance
 }
 
-func ProvideTelegramWebhookHandler() interfaces.TelegramWebhookHandlerInterface {
-	return webhook.NewHandler(
-		ProvideConfig(),
-		ProvideMatchersRegistry(),
-		ProvideState(),
+func ProvideTelegramWebhookHandler() telegramclient.WebhookHandlerInterface {
+	matchersRegistry := ProvideMatchersRegistry()
+	stateService := ProvideState()
+
+	return telegramclient.NewHandler(
+		&ProvideConfig().Telegram,
+		func(messageIn telegramclient.WebhookMessageStruct) {
+			matchersRegistry.Process(messageIn)
+			stateService.ProcessMessage(messageIn)
+		},
 	)
 }
 
-func ProvideTelegramWebhookTools() interfaces.TelegramWebhookToolsInterface {
+func ProvideTelegramClient() telegramclient.ClientInterface {
 	if runsAsTest() {
-		return webhook.NewMockTools()
+		return telegramclient.NewMockClient()
 	} else {
-		return webhook.NewProdTools(
-			ProvideConfig().Telegram,
-		)
-	}
-}
-
-func ProvideTelegramClient() interfaces.TelegramClientInterface {
-	if runsAsTest() {
-		return telegram.NewMockClient()
-	} else {
-		return telegram.NewProdClient(
+		return telegramclient.NewClient(
 			ProvideConfig().Telegram,
 		)
 	}

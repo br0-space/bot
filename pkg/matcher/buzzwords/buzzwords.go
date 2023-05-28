@@ -2,9 +2,9 @@ package buzzwords
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"github.com/mpvl/unique"
 	"regexp"
 )
@@ -36,7 +36,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	matches := m.GetInlineMatches(messageIn)
 	triggers := m.parseTriggers(matches)
 
@@ -57,8 +57,8 @@ func (m Matcher) parseTriggers(matches []string) []string {
 	return triggers
 }
 
-func (m Matcher) makeRepliesFromTriggers(triggers []string) ([]interfaces.TelegramMessageStruct, error) {
-	var replies []interfaces.TelegramMessageStruct
+func (m Matcher) makeRepliesFromTriggers(triggers []string) ([]telegramclient.MessageStruct, error) {
+	var replies []telegramclient.MessageStruct
 
 	for _, match := range triggers {
 		triggerReplies, err := m.makeRepliesFromTrigger(match)
@@ -72,7 +72,7 @@ func (m Matcher) makeRepliesFromTriggers(triggers []string) ([]interfaces.Telegr
 	return replies, nil
 }
 
-func (m Matcher) makeRepliesFromTrigger(trigger string) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) makeRepliesFromTrigger(trigger string) ([]telegramclient.MessageStruct, error) {
 	value, err := m.repo.Increment(trigger, 1)
 	if err != nil {
 		return nil, err
@@ -85,11 +85,11 @@ func (m Matcher) makeRepliesFromTrigger(trigger string) ([]interfaces.TelegramMe
 
 	reply := makeReply(template, value)
 
-	return []interfaces.TelegramMessageStruct{reply}, nil
+	return []telegramclient.MessageStruct{reply}, nil
 }
 
-func makeReply(template string, value int) interfaces.TelegramMessageStruct {
-	return telegram.MakeMarkdownMessage(
+func makeReply(template string, value int) telegramclient.MessageStruct {
+	return telegramclient.MarkdownMessage(
 		fmt.Sprintf(
 			template,
 			value,

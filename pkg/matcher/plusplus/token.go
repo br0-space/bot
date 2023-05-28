@@ -2,8 +2,7 @@ package plusplus
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/interfaces"
-	"github.com/br0-space/bot/pkg/telegram"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 )
 
 type Token struct {
@@ -11,7 +10,7 @@ type Token struct {
 	Increment int
 }
 
-func (t Token) MakeReply(value int) interfaces.TelegramMessageStruct {
+func (t Token) MakeReply(value int) telegramclient.MessageStruct {
 	var mode string
 	switch {
 	case t.Increment > 0:
@@ -22,12 +21,12 @@ func (t Token) MakeReply(value int) interfaces.TelegramMessageStruct {
 		mode = "+-"
 	}
 
-	return telegram.MakeMarkdownMessage(
+	return telegramclient.MarkdownMessage(
 		fmt.Sprintf(
 			template,
-			telegram.EscapeMarkdown(mode),
-			telegram.EscapeMarkdown(t.Name),
-			telegram.EscapeMarkdown(fmt.Sprintf("%d", value)),
+			telegramclient.EscapeMarkdown(mode),
+			telegramclient.EscapeMarkdown(t.Name),
+			telegramclient.EscapeMarkdown(fmt.Sprintf("%d", value)),
 		),
 	)
 }

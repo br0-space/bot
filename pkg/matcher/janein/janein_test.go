@@ -1,7 +1,7 @@
 package janein_test
 
 import (
-	"github.com/br0-space/bot/interfaces"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/pkg/matcher/janein"
 	"github.com/stretchr/testify/assert"
 	"strings"
@@ -18,7 +18,7 @@ var expected = struct {
 	no:     `👎 *Nein*, du solltest nicht *foo\* bar\_*\!`,
 }
 
-var expectedReply = []interfaces.TelegramMessageStruct{{
+var expectedReply = []telegramclient.MessageStruct{{
 	ChatID:                0,
 	Text:                  "",
 	ParseMode:             "MarkdownV2",
@@ -29,7 +29,7 @@ var expectedReply = []interfaces.TelegramMessageStruct{{
 
 var tests = []struct {
 	in              string
-	expectedReplies []interfaces.TelegramMessageStruct
+	expectedReplies []telegramclient.MessageStruct
 }{
 	{"", nil},
 	{"foobar", nil},
@@ -50,8 +50,8 @@ func provideMatcher() janein.Matcher {
 	return janein.MakeMatcher()
 }
 
-func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {
-	return interfaces.NewTestTelegramWebhookMessage(text)
+func newTestMessage(text string) telegramclient.WebhookMessageStruct {
+	return telegramclient.TestWebhookMessage(text)
 }
 
 func TestMatcher_DoesMatch(t *testing.T) {

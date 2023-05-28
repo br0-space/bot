@@ -2,9 +2,9 @@ package stats
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"strings"
 )
@@ -33,7 +33,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
 		return nil, fmt.Errorf("message does not match")
 	}
@@ -46,13 +46,13 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	return makeReplies(users)
 }
 
-func makeReplies(users []interfaces.StatsUserStruct) ([]interfaces.TelegramMessageStruct, error) {
+func makeReplies(users []interfaces.StatsUserStruct) ([]telegramclient.MessageStruct, error) {
 	var lines []string
 	for _, user := range users {
 		lines = append(lines, fmt.Sprintf(
 			"%6d | %s",
 			user.Posts,
-			telegram.EscapeMarkdown(user.Username),
+			telegramclient.EscapeMarkdown(user.Username),
 		))
 	}
 
@@ -61,7 +61,7 @@ func makeReplies(users []interfaces.StatsUserStruct) ([]interfaces.TelegramMessa
 		strings.Join(lines, "\n"),
 	)
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownMessage(text),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownMessage(text),
 	}, nil
 }

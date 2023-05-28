@@ -3,6 +3,7 @@ package matcher
 import (
 	"fmt"
 	logger "github.com/br0-space/bot-logger"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/atall"
 	"github.com/br0-space/bot/pkg/matcher/buzzwords"
@@ -16,7 +17,6 @@ import (
 	"github.com/br0-space/bot/pkg/matcher/stats"
 	"github.com/br0-space/bot/pkg/matcher/topflop"
 	"github.com/br0-space/bot/pkg/matcher/xkcd"
-	"github.com/br0-space/bot/pkg/telegram"
 	"sync"
 )
 
@@ -25,7 +25,7 @@ const errorTemplate = "⚠️ *Error in matcher \"%s\"*\n\n%s"
 type Registry struct {
 	log              logger.Interface
 	state            interfaces.StateServiceInterface
-	telegram         interfaces.TelegramClientInterface
+	telegram         telegramclient.ClientInterface
 	messageStatsRepo interfaces.MessageStatsRepoInterface
 	plusplusRepo     interfaces.PlusplusRepoInterface
 	userStatsRepo    interfaces.UserStatsRepoInterface
@@ -37,7 +37,7 @@ type Registry struct {
 
 func NewRegistry(
 	state interfaces.StateServiceInterface,
-	telegram interfaces.TelegramClientInterface,
+	telegram telegramclient.ClientInterface,
 	messageStatsRepo interfaces.MessageStatsRepoInterface,
 	plusplusRepo interfaces.PlusplusRepoInterface,
 	userStatsRepo interfaces.UserStatsRepoInterface,
@@ -56,11 +56,12 @@ func NewRegistry(
 		songlinkService:  songlinkService,
 		xkcdService:      xkcdService,
 	}
+	registry.init()
 
 	return registry
 }
 
-func (r *Registry) Init() {
+func (r *Registry) init() {
 	r.registerMatcher(atall.MakeMatcher(r.userStatsRepo))
 	r.registerMatcher(buzzwords.MakeMatcher(r.plusplusRepo))
 	r.registerMatcher(choose.MakeMatcher())
@@ -81,7 +82,7 @@ func (r *Registry) registerMatcher(matcher interfaces.MatcherInterface) {
 	r.matchers = append(r.matchers, matcher)
 }
 
-func (r *Registry) Process(messageIn interfaces.TelegramWebhookMessageStruct) {
+func (r *Registry) Process(messageIn telegramclient.WebhookMessageStruct) {
 	r.log.Debugf("Processing message from %s: %s", messageIn.From.Username, messageIn.Text)
 
 	// Create a wait group for synchronization
@@ -105,18 +106,18 @@ func (r *Registry) Process(messageIn interfaces.TelegramWebhookMessageStruct) {
 
 			messagesOut, err := m.Process(messageIn)
 			if messagesOut == nil {
-				messagesOut = []interfaces.TelegramMessageStruct{}
+				messagesOut = []telegramclient.MessageStruct{}
 			}
 			if err != nil {
 				r.log.Errorf("Error in matcher %s: %s", m.Identifier(), err)
 
 				messagesOut = append(
 					messagesOut,
-					telegram.MakeMarkdownReply(
+					telegramclient.MarkdownReply(
 						fmt.Sprintf(
 							errorTemplate,
 							m.Identifier(),
-							telegram.EscapeMarkdown(err.Error()),
+							telegramclient.EscapeMarkdown(err.Error()),
 						),
 						messageIn.ID,
 					),

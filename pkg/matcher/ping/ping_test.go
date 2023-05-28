@@ -1,13 +1,13 @@
 package ping_test
 
 import (
-	"github.com/br0-space/bot/interfaces"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/pkg/matcher/ping"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-var expectedReply = []interfaces.TelegramMessageStruct{{
+var expectedReply = []telegramclient.MessageStruct{{
 	ChatID:                0,
 	Text:                  "pong",
 	ParseMode:             "",
@@ -18,7 +18,7 @@ var expectedReply = []interfaces.TelegramMessageStruct{{
 
 var tests = []struct {
 	in              string
-	expectedReplies []interfaces.TelegramMessageStruct
+	expectedReplies []telegramclient.MessageStruct
 }{
 	{"", nil},
 	{"foobar", nil},
@@ -35,8 +35,8 @@ func provideMatcher() ping.Matcher {
 	return ping.MakeMatcher()
 }
 
-func newTestMessage(text string) interfaces.TelegramWebhookMessageStruct {
-	return interfaces.NewTestTelegramWebhookMessage(text)
+func newTestMessage(text string) telegramclient.WebhookMessageStruct {
+	return telegramclient.TestWebhookMessage(text)
 }
 
 func TestMatcher_DoesMatch(t *testing.T) {

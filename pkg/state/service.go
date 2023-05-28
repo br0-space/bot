@@ -2,6 +2,7 @@ package state
 
 import (
 	logger "github.com/br0-space/bot-logger"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"sync"
 	"time"
@@ -31,7 +32,7 @@ func NewService(
 	return state
 }
 
-func (s *Service) ProcessMessage(messageIn interfaces.TelegramWebhookMessageStruct) {
+func (s *Service) ProcessMessage(messageIn telegramclient.WebhookMessageStruct) {
 	s.updateUserStats(messageIn)
 	s.updateMessageStats(messageIn)
 }
@@ -61,7 +62,7 @@ func (s *Service) init() {
 	}
 }
 
-func (s *Service) updateUserStats(messageIn interfaces.TelegramWebhookMessageStruct) {
+func (s *Service) updateUserStats(messageIn telegramclient.WebhookMessageStruct) {
 	s.lastPost[messageIn.From.ID] = time.Now()
 
 	if err := s.userStatsRepo.UpdateStats(
@@ -72,7 +73,7 @@ func (s *Service) updateUserStats(messageIn interfaces.TelegramWebhookMessageStr
 	}
 }
 
-func (s *Service) updateMessageStats(messageIn interfaces.TelegramWebhookMessageStruct) {
+func (s *Service) updateMessageStats(messageIn telegramclient.WebhookMessageStruct) {
 	if err := s.messageStatsRepo.InsertMessageStats(
 		messageIn.From.ID,
 		messageIn.WordCount(),

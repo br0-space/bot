@@ -2,9 +2,9 @@ package topflop
 
 import (
 	"fmt"
+	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/interfaces"
 	"github.com/br0-space/bot/pkg/matcher/abstract"
-	"github.com/br0-space/bot/pkg/telegram"
 	"regexp"
 	"strconv"
 	"strings"
@@ -43,7 +43,7 @@ func MakeMatcher(
 	}
 }
 
-func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]interfaces.TelegramMessageStruct, error) {
+func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.GetCommandMatch(messageIn)
 	if match == nil {
 		return nil, fmt.Errorf("message does not match")
@@ -74,13 +74,13 @@ func (m Matcher) Process(messageIn interfaces.TelegramWebhookMessageStruct) ([]i
 	return makeReplies(records, messageIn.ID)
 }
 
-func makeReplies(records []interfaces.Plusplus, messageID int64) ([]interfaces.TelegramMessageStruct, error) {
+func makeReplies(records []interfaces.Plusplus, messageID int64) ([]telegramclient.MessageStruct, error) {
 	var lines []string
 	for _, record := range records {
 		lines = append(lines, fmt.Sprintf(
 			"%5d | %s",
 			record.Value,
-			telegram.EscapeMarkdown(record.Name),
+			telegramclient.EscapeMarkdown(record.Name),
 		))
 	}
 
@@ -89,7 +89,7 @@ func makeReplies(records []interfaces.Plusplus, messageID int64) ([]interfaces.T
 		strings.Join(lines, "\n"),
 	)
 
-	return []interfaces.TelegramMessageStruct{
-		telegram.MakeMarkdownReply(text, messageID),
+	return []telegramclient.MessageStruct{
+		telegramclient.MarkdownReply(text, messageID),
 	}, nil
 }
