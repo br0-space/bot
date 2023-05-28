@@ -13,8 +13,8 @@ require (
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.2
 	gorm.io/driver/postgres v1.5.0
-	gorm.io/driver/sqlite v1.4.4
-	gorm.io/gorm v1.24.7-0.20230324020705-b444011d094d
+	gorm.io/driver/sqlite v1.5.1
+	gorm.io/gorm v1.25.0
 )
 
 require (
