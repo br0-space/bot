@@ -2,9 +2,10 @@ package fortune
 
 import (
 	"fmt"
-	telegramclient "github.com/br0-space/bot-telegramclient"
 	"regexp"
 	"strings"
+
+	telegramclient "github.com/br0-space/bot-telegramclient"
 )
 
 const (
@@ -59,6 +60,7 @@ func (f Fortune) formatLines(lines []string) string {
 func (f Fortune) formatLine(line string) string {
 	if regexp.MustCompile(lineQuotePattern).MatchString(line) {
 		matches := regexp.MustCompile(lineQuotePattern).FindStringSubmatch(line)
+
 		return fmt.Sprintf(
 			lineQuoteTemplate,
 			telegramclient.EscapeMarkdown(matches[1]),

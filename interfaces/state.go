@@ -1,8 +1,9 @@
 package interfaces
 
 import (
-	telegramclient "github.com/br0-space/bot-telegramclient"
 	"time"
+
+	telegramclient "github.com/br0-space/bot-telegramclient"
 )
 
 type StateServiceInterface interface {

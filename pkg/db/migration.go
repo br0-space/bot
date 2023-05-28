@@ -26,19 +26,25 @@ func MakeDatabaseMigration(
 }
 
 func (m DatabaseMigration) Migrate() error {
-	m.log.Debug("Migrating table", m.messageStatsRepo.(interfaces.RepoInterface).TableName())
-	if err := m.messageStatsRepo.(interfaces.RepoInterface).Migrate(); err != nil {
-		return err
+	if repo, ok := m.messageStatsRepo.(interfaces.RepoInterface); ok {
+		m.log.Debug("Migrating table", repo.TableName())
+		if err := repo.Migrate(); err != nil {
+			return err
+		}
 	}
 
-	m.log.Debug("Migrating table", m.plusplusRepo.(interfaces.RepoInterface).TableName())
-	if err := m.plusplusRepo.(interfaces.RepoInterface).Migrate(); err != nil {
-		return err
+	if repo, ok := m.plusplusRepo.(interfaces.RepoInterface); ok {
+		m.log.Debug("Migrating table", repo.TableName())
+		if err := repo.Migrate(); err != nil {
+			return err
+		}
 	}
 
-	m.log.Debug("Migrating table", m.userStatsRepo.(interfaces.RepoInterface).TableName())
-	if err := m.userStatsRepo.(interfaces.RepoInterface).Migrate(); err != nil {
-		return err
+	if repo, ok := m.userStatsRepo.(interfaces.RepoInterface); ok {
+		m.log.Debug("Migrating table", repo.TableName())
+		if err := repo.Migrate(); err != nil {
+			return err
+		}
 	}
 
 	return nil

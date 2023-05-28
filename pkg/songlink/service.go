@@ -2,8 +2,9 @@ package songlink
 
 import (
 	"fmt"
-	"github.com/br0-space/bot/interfaces"
 	"regexp"
+
+	"github.com/br0-space/bot/interfaces"
 )
 
 type Service struct{}
@@ -55,14 +56,14 @@ func (s Service) GetEntryForUrl(url string) (interfaces.SonglinkEntryInterface, 
 	return newSonglinkEntry(platform, _type, ID)
 }
 
-func newSonglinkEntry(platform Platform, _type EntryType, ID string) (interfaces.SonglinkEntryInterface, error) {
+func newSonglinkEntry(platform Platform, _type EntryType, id string) (interfaces.SonglinkEntryInterface, error) {
 	entry := Entry{
 		Type:  _type,
 		Links: make([]EntryLink, 0),
 	}
 
 	// For all other data we need to do a request to the Songlink API
-	response, err := getSonglinkResponse(platform, _type, ID)
+	response, err := getSonglinkResponse(platform, _type, id)
 	if err != nil {
 		return nil, err
 	}
@@ -72,13 +73,13 @@ func newSonglinkEntry(platform Platform, _type EntryType, ID string) (interfaces
 	var entityKey string
 	switch {
 	case platform == "spotify" && _type == Album:
-		entityKey = fmt.Sprintf("SPOTIFY_ALBUM::%s", ID)
+		entityKey = fmt.Sprintf("SPOTIFY_ALBUM::%s", id)
 	case platform == "spotify" && _type == Song:
-		entityKey = fmt.Sprintf("SPOTIFY_SONG::%s", ID)
+		entityKey = fmt.Sprintf("SPOTIFY_SONG::%s", id)
 	case platform == "appleMusic" && _type == Album:
-		entityKey = fmt.Sprintf("ITUNES_ALBUM::%s", ID)
+		entityKey = fmt.Sprintf("ITUNES_ALBUM::%s", id)
 	case platform == "appleMusic" && _type == Song:
-		entityKey = fmt.Sprintf("ITUNES_SONG::%s", ID)
+		entityKey = fmt.Sprintf("ITUNES_SONG::%s", id)
 	}
 	entry.Title = response.Entities[entityKey].Title
 	entry.Artist = response.Entities[entityKey].Artist

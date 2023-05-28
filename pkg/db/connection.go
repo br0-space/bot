@@ -2,12 +2,13 @@ package db
 
 import (
 	"fmt"
+	"time"
+
 	logger "github.com/br0-space/bot-logger"
 	"github.com/br0-space/bot/interfaces"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"time"
 )
 
 func NewConnection(logger logger.Interface, config interfaces.DatabaseConfigStruct) *gorm.DB {

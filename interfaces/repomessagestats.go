@@ -1,14 +1,15 @@
 package interfaces
 
 import (
-	"gorm.io/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type MessageStats struct {
 	gorm.Model
 	UserID int64 `gorm:"<-:create;index"`
-	//UserStats Stats     `gorm:"foreignKey:user_id;references:user_id;constraint:OnDelete:CASCADE"`
+	// UserStats Stats     `gorm:"foreignKey:user_id;references:user_id;constraint:OnDelete:CASCADE"`
 	Time  time.Time `gorm:"<-:create;index"`
 	Words int       `gorm:"<-:create"`
 }

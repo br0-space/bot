@@ -26,6 +26,7 @@ func (r *BaseRepo) Model() interface{} {
 func (r *BaseRepo) TableName() string {
 	stmt := &gorm.Statement{DB: r.tx}
 	_ = stmt.Parse(r.Model())
+
 	return stmt.Table
 }
 
