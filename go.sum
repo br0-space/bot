@@ -52,6 +52,8 @@ github.com/br0-space/bot-matcher v0.1.1 h1:ZoBoXVipprEWA40pjtbuKK6t3CDFhBopqTN5o
 github.com/br0-space/bot-matcher v0.1.1/go.mod h1:6503xZ9qZKORRl955mI8x20wDx5XVFkNmaSTi4HmMOM=
 github.com/br0-space/bot-telegramclient v0.1.0 h1:U5EFMnHNfOzw9ALLW1vwPV0WKHCeki3ADK+XOsdy2rA=
 github.com/br0-space/bot-telegramclient v0.1.0/go.mod h1:xZ9JyeNTFLloA8TqddRbo9lrdOuOqZu8W2euS8LXlWw=
+github.com/br0-space/bot-telegramclient v0.1.1 h1:Ux5meyJMbfP1+IaUdUEg1I28gEm4nPPWgvckuoFxjAI=
+github.com/br0-space/bot-telegramclient v0.1.1/go.mod h1:6ZGQRzeKtqowtraBZ2lptMM2fg3E5ssy2ttG0d6Fxfc=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash/v2 v2.2.0 h1:DC2CZ1Ep5Y4k3ZQ899DldepgrayRUGE6BBZ/cd9Cj44=
 github.com/cespare/xxhash/v2 v2.2.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
