@@ -52,6 +52,8 @@ github.com/br0-space/bot-matcher v0.1.0 h1:c1RM3NOlgpgm4hLvqvuammies+lI9rY8lIsXV
 github.com/br0-space/bot-matcher v0.1.0/go.mod h1:AtK5O1xV57GzbYY/QyI+2MeDrz6Tc8kr1rzxlsTBfXk=
 github.com/br0-space/bot-matcher v0.1.1 h1:ZoBoXVipprEWA40pjtbuKK6t3CDFhBopqTN5oI2uFwY=
 github.com/br0-space/bot-matcher v0.1.1/go.mod h1:6503xZ9qZKORRl955mI8x20wDx5XVFkNmaSTi4HmMOM=
+github.com/br0-space/bot-matcher v0.1.2 h1:TUJ3/gwNasziPkOrBO/G5ApSLL/e4qesWPta8bQTbsM=
+github.com/br0-space/bot-matcher v0.1.2/go.mod h1:2PQl9CBWdZBn6Dqm4MXE4ikSGjE9QVLSMUPJUb+Nztk=
 github.com/br0-space/bot-telegramclient v0.1.0 h1:U5EFMnHNfOzw9ALLW1vwPV0WKHCeki3ADK+XOsdy2rA=
 github.com/br0-space/bot-telegramclient v0.1.0/go.mod h1:xZ9JyeNTFLloA8TqddRbo9lrdOuOqZu8W2euS8LXlWw=
 github.com/br0-space/bot-telegramclient v0.1.1 h1:Ux5meyJMbfP1+IaUdUEg1I28gEm4nPPWgvckuoFxjAI=
