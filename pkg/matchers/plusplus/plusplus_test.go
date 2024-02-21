@@ -27,6 +27,7 @@ var getInlineMatchesTests = []struct {
 	{"foo+++ foo---", []string{"foo+++", "foo---"}},
 	{"😁++ ∪++ ▲++", []string{"😁++", "∪++", "▲++"}},
 	{"123++", []string{"123++"}},
+	{"foo~!@#$%^&*()_+-[]{};:'\",./<>?bar++", []string{"foo~!@#$%^&*()_+-[]{};:'\",./<>?bar++"}},
 }
 
 func TestGetInlineMatches(t *testing.T) {
