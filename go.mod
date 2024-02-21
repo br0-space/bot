@@ -7,7 +7,7 @@ require (
 	github.com/br0-space/bot-matcher v0.1.2
 	github.com/br0-space/bot-telegramclient v0.1.1
 	github.com/davecgh/go-spew v1.1.1
-	github.com/gorilla/mux v1.8.0
+	github.com/gorilla/mux v1.8.1
 	github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de
 	github.com/nishanths/go-xkcd/v2 v2.0.1
 	github.com/prometheus/client_golang v1.16.0
