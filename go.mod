@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/br0-space/bot-logger v0.1.2
 	github.com/br0-space/bot-matcher v0.1.2
-	github.com/br0-space/bot-telegramclient v0.1.1
+	github.com/br0-space/bot-telegramclient v0.1.2
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/gorilla/mux v1.8.1
 	github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de
