@@ -26,6 +26,7 @@ func MakeMatcher(
 	repo interfaces.PlusplusRepoInterface,
 ) Matcher {
 	var cfg Config
+
 	matcher.LoadMatcherConfig(identifier, &cfg)
 
 	pattern = regexp.MustCompile(fmt.Sprintf(`(?i)\b((%s)([+]{2,}|[-]{2,}|\+-|—)?)`, cfg.GetPattern()))

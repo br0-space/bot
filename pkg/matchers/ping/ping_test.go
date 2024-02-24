@@ -6,15 +6,18 @@ import (
 	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/pkg/matchers/ping"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var expectedReply = []telegramclient.MessageStruct{{
 	ChatID:                0,
+	ReplyToMessageID:      123,
 	Text:                  "pong",
+	Photo:                 "",
+	Caption:               "",
 	ParseMode:             "",
 	DisableWebPagePreview: false,
 	DisableNotification:   false,
-	ReplyToMessageID:      123,
 }}
 
 var tests = []struct {
@@ -55,10 +58,10 @@ func TestMatcher_Process(t *testing.T) {
 	for _, tt := range tests {
 		replies, err := provideMatcher().Process(newTestMessage(tt.in))
 		if tt.expectedReplies == nil {
-			assert.Error(t, err, tt.in)
+			require.Error(t, err, tt.in)
 			assert.Nil(t, replies, tt.in)
 		} else {
-			assert.NoError(t, err, tt.in)
+			require.NoError(t, err, tt.in)
 			assert.NotNil(t, replies, tt.in)
 			assert.Equal(t, tt.expectedReplies, replies, tt.in)
 		}

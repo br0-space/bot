@@ -19,7 +19,12 @@ func NewUserStatsRepo(tx *gorm.DB) *UserStatsRepo {
 	return &UserStatsRepo{
 		BaseRepo: NewBaseRepo(
 			tx,
-			&interfaces.Stats{},
+			&interfaces.Stats{
+				UserID:   0,
+				Username: "",
+				Posts:    0,
+				LastPost: time.Time{},
+			},
 		),
 	}
 }
@@ -28,8 +33,8 @@ func (r UserStatsRepo) UpdateStats(userID int64, username string) error {
 	mutexStats.Lock()
 	defer mutexStats.Unlock()
 
-	return r.tx.Clauses(clause.OnConflict{
-		Columns: []clause.Column{{Name: "user_id"}},
+	return r.tx.Clauses(clause.OnConflict{ //nolint:exhaustruct
+		Columns: []clause.Column{{Name: "user_id"}}, //nolint:exhaustruct
 		DoUpdates: clause.Assignments(map[string]interface{}{
 			"username":  username,
 			"posts":     gorm.Expr("stats.posts + 1"),
@@ -45,6 +50,7 @@ func (r UserStatsRepo) UpdateStats(userID int64, username string) error {
 
 func (r UserStatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
 	var records []interfaces.Stats
+
 	r.tx.
 		Where("user_id != 0").
 		Order("username asc").
@@ -65,6 +71,7 @@ func (r UserStatsRepo) GetKnownUsers() ([]interfaces.StatsUserStruct, error) {
 
 func (r UserStatsRepo) GetTopUsers() ([]interfaces.StatsUserStruct, error) {
 	var records []interfaces.Stats
+
 	r.tx.
 		Where("user_id != 0").
 		Order("posts desc").

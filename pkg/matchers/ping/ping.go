@@ -1,7 +1,7 @@
 package ping
 
 import (
-	"fmt"
+	"errors"
 	"regexp"
 
 	matcher "github.com/br0-space/bot-matcher"
@@ -13,7 +13,10 @@ const identifier = "ping"
 var pattern = regexp.MustCompile(`(?i)^/(ping)(@\w+)?($| )`)
 
 var help = []matcher.HelpStruct{{
+	Command:     "",
 	Description: `Antwortet mit "pong"`,
+	Usage:       "",
+	Example:     "",
 }}
 
 const template = `pong`
@@ -30,7 +33,7 @@ func MakeMatcher() Matcher {
 
 func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
-		return nil, fmt.Errorf("message does not match")
+		return nil, errors.New("message does not match")
 	}
 
 	return []telegramclient.MessageStruct{

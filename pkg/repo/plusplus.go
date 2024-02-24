@@ -18,7 +18,10 @@ func NewPlusplusRepo(tx *gorm.DB) *PlusplusRepo {
 	return &PlusplusRepo{
 		BaseRepo: NewBaseRepo(
 			tx,
-			&interfaces.Plusplus{},
+			&interfaces.Plusplus{
+				Name:  "",
+				Value: 0,
+			},
 		),
 	}
 }
@@ -27,8 +30,8 @@ func (r PlusplusRepo) Increment(name string, increment int) (int, error) {
 	mutexPlusplus.Lock()
 	defer mutexPlusplus.Unlock()
 
-	if err := r.tx.Clauses(clause.OnConflict{
-		Columns: []clause.Column{{Name: "name"}},
+	if err := r.tx.Clauses(clause.OnConflict{ //nolint:exhaustruct
+		Columns: []clause.Column{{Name: "name"}}, //nolint:exhaustruct
 		DoUpdates: clause.Assignments(map[string]interface{}{
 			"value": gorm.Expr("plusplus.value + ?", increment),
 		}),

@@ -1,6 +1,7 @@
 package fortune
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -48,7 +49,7 @@ func MakeMatcher(
 func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.CommandMatch(messageIn)
 	if match == nil {
-		return nil, fmt.Errorf("message does not match")
+		return nil, errors.New("message does not match")
 	}
 
 	switch strings.TrimSpace(match[3]) {

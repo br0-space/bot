@@ -7,6 +7,7 @@ import (
 	telegramclient "github.com/br0-space/bot-telegramclient"
 	"github.com/br0-space/bot/pkg/matchers/janein"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var expected = struct {
@@ -21,11 +22,13 @@ var expected = struct {
 
 var expectedReply = []telegramclient.MessageStruct{{
 	ChatID:                0,
+	ReplyToMessageID:      123,
 	Text:                  "",
+	Photo:                 "",
+	Caption:               "",
 	ParseMode:             "MarkdownV2",
 	DisableWebPagePreview: false,
 	DisableNotification:   false,
-	ReplyToMessageID:      123,
 }}
 
 var tests = []struct {
@@ -70,14 +73,15 @@ func TestMatcher_Process(t *testing.T) {
 	for _, tt := range tests {
 		replies, err := provideMatcher().Process(newTestMessage(tt.in))
 		if tt.expectedReplies == nil {
-			assert.Error(t, err, tt.in)
+			require.Error(t, err, tt.in)
 			assert.Nil(t, replies, tt.in)
 		} else {
-			assert.NoError(t, err, tt.in)
+			require.NoError(t, err, tt.in)
 			assert.NotNil(t, replies, tt.in)
 			assert.Len(t, replies, 1, tt.in)
 
 			expectedReplies := tt.expectedReplies
+
 			switch {
 			case strings.Contains((replies)[0].Text, "behindert"):
 				expectedReplies[0].Text = expected.insult

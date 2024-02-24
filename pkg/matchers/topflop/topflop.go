@@ -1,6 +1,7 @@
 package topflop
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -49,27 +50,32 @@ func MakeMatcher(
 func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.CommandMatch(messageIn)
 	if match == nil {
-		return nil, fmt.Errorf("message does not match")
+		return nil, errors.New("message does not match")
 	}
 
 	cmd := match[0]
 	limit := defaultLimit
+
 	if match[3] != "" {
 		res, err := strconv.ParseInt(match[3], 10, 0)
 		if err != nil {
 			return nil, err
 		}
+
 		limit = int(res)
 	}
 
 	var records []interfaces.Plusplus
+
 	var err error
+
 	switch cmd {
 	case "top":
 		records, err = m.repo.FindTops(limit)
 	case "flop":
 		records, err = m.repo.FindFlops(limit)
 	}
+
 	if err != nil {
 		return nil, err
 	}

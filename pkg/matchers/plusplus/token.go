@@ -2,6 +2,7 @@ package plusplus
 
 import (
 	"fmt"
+	"strconv"
 
 	telegramclient "github.com/br0-space/bot-telegramclient"
 )
@@ -12,14 +13,10 @@ type Token struct {
 }
 
 func (t Token) MakeReply(value int) telegramclient.MessageStruct {
-	var mode string
-	switch {
-	case t.Increment > 0:
-		mode = fmt.Sprintf("+%d", t.Increment)
-	case t.Increment < 0:
-		mode = fmt.Sprintf("%d", t.Increment)
-	default:
-		mode = "+-"
+	mode := strconv.Itoa(t.Increment)
+
+	if t.Increment > 0 {
+		mode = "+" + mode
 	}
 
 	return telegramclient.MarkdownMessage(
@@ -27,7 +24,7 @@ func (t Token) MakeReply(value int) telegramclient.MessageStruct {
 			template,
 			telegramclient.EscapeMarkdown(mode),
 			telegramclient.EscapeMarkdown(t.Name),
-			telegramclient.EscapeMarkdown(fmt.Sprintf("%d", value)),
+			telegramclient.EscapeMarkdown(strconv.Itoa(value)),
 		),
 	)
 }

@@ -25,9 +25,10 @@ func NewGormLoggerBridge(wrappedLogger logger.Interface) gormLogger.Interface {
 		wrappedLogger: wrappedLogger,
 		config: gormLogger.Config{
 			SlowThreshold:             slowThreshold,
-			LogLevel:                  gormLogger.Warn,
-			IgnoreRecordNotFoundError: true,
 			Colorful:                  true,
+			IgnoreRecordNotFoundError: true,
+			ParameterizedQueries:      false,
+			LogLevel:                  gormLogger.Warn,
 		},
 	}
 }
@@ -60,10 +61,12 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 
 	// Stolen from https://github.com/op/go-logging/blob/master/logger.go
 	elapsed := time.Since(begin)
+
 	switch {
 	case err != nil && (!errors.Is(err, gormLogger.ErrRecordNotFound) || !l.config.IgnoreRecordNotFoundError):
 		format := "%s [%.3fms] [rows:%v] %s"
 		sql, rows := fc()
+
 		if rows == -1 {
 			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
 		} else {
@@ -73,6 +76,7 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 		format := "%s\n[%.3fms] [rows:%v] %s"
 		sql, rows := fc()
 		slowLog := fmt.Sprintf("SLOW SQL >= %v", l.config.SlowThreshold)
+
 		if rows == -1 {
 			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
 		} else {
@@ -81,6 +85,7 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 	default:
 		format := "[%.3fms] [rows:%v] %s"
 		sql, rows := fc()
+
 		if rows == -1 {
 			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
 		} else {
@@ -95,6 +100,7 @@ func (l gormLoggerBridge) getExtraCallDepth() int {
 	extraCallDepth := 1
 	// Stolen from https://github.com/go-gorm/gorm/blob/master/utils/utils.go
 	re := regexp.MustCompile(`gorm.io/gorm`)
+
 	for i := 2; i < 15; i++ {
 		_, file, _, _ := runtime.Caller(i)
 		if match := re.MatchString(file); match {

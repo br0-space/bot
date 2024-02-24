@@ -1,6 +1,7 @@
 package stats
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -15,7 +16,10 @@ const identifier = "stats"
 var pattern = regexp.MustCompile(`(?i)^/(stats)(@\w+)?($| )`)
 
 var help = []matcher.HelpStruct{{
+	Command:     "",
 	Description: `Zeigt eine Liste der dem Bot bekannten User an.`,
+	Usage:       "",
+	Example:     "",
 }}
 
 const template = "```\n%s\n```"
@@ -36,7 +40,7 @@ func MakeMatcher(
 
 func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	if !m.DoesMatch(messageIn) {
-		return nil, fmt.Errorf("message does not match")
+		return nil, errors.New("message does not match")
 	}
 
 	users, err := m.repo.GetTopUsers()

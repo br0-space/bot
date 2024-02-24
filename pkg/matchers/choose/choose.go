@@ -2,6 +2,7 @@ package choose
 
 import (
 	"crypto/rand"
+	"errors"
 	"fmt"
 	"math/big"
 	"regexp"
@@ -45,7 +46,7 @@ func MakeMatcher() Matcher {
 func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.CommandMatch(messageIn)
 	if match == nil {
-		return nil, fmt.Errorf("message does not match")
+		return nil, errors.New("message does not match")
 	}
 
 	match[3] = strings.TrimSpace(match[3])

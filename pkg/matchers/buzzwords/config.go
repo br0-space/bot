@@ -31,6 +31,7 @@ type Config struct {
 
 func (c Config) GetPattern() string {
 	var patterns []string
+
 	for _, buzzword := range c.Buzzwords {
 		if buzzword.Pattern != "" {
 			patterns = append(patterns, buzzword.Pattern)
@@ -56,6 +57,7 @@ func (c Config) GetTrigger(match string) string {
 
 func (c Config) GetReply(match string) (string, error) {
 	pattern := regexp.MustCompile(fmt.Sprintf(`(?i)(\W)%s(\W)`, match))
+
 	var reply string
 
 	for _, buzzword := range c.Buzzwords {
@@ -64,6 +66,7 @@ func (c Config) GetReply(match string) (string, error) {
 
 			break
 		}
+
 		if buzzword.Trigger == match {
 			reply = buzzword.Reply
 

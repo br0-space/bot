@@ -28,6 +28,7 @@ func MakeDatabaseMigration(
 func (m DatabaseMigration) Migrate() error {
 	if repo, ok := m.messageStatsRepo.(interfaces.RepoInterface); ok {
 		m.log.Debug("Migrating table", repo.TableName())
+
 		if err := repo.Migrate(); err != nil {
 			return err
 		}
@@ -35,6 +36,7 @@ func (m DatabaseMigration) Migrate() error {
 
 	if repo, ok := m.plusplusRepo.(interfaces.RepoInterface); ok {
 		m.log.Debug("Migrating table", repo.TableName())
+
 		if err := repo.Migrate(); err != nil {
 			return err
 		}
@@ -42,6 +44,7 @@ func (m DatabaseMigration) Migrate() error {
 
 	if repo, ok := m.userStatsRepo.(interfaces.RepoInterface); ok {
 		m.log.Debug("Migrating table", repo.TableName())
+
 		if err := repo.Migrate(); err != nil {
 			return err
 		}

@@ -1,7 +1,7 @@
 package plusplus_test
 
 import (
-	"fmt"
+	"errors"
 	"testing"
 
 	telegramclient "github.com/br0-space/bot-telegramclient"
@@ -61,8 +61,8 @@ var getTokensTests = []struct {
 	{[]string{"foo++", "bar--"}, []plusplus.Token{{"foo", 1}, {"bar", -1}}, nil},
 	{[]string{"foo+bar++"}, []plusplus.Token{{"foo+bar", 1}}, nil},
 	{[]string{"foo++bar++"}, []plusplus.Token{{"foo++bar", 1}}, nil},
-	{[]string{"foo"}, nil, fmt.Errorf(`unable to find mode in match "foo"`)},
-	{[]string{"++"}, nil, fmt.Errorf(`unable to find name in match "++"`)},
+	{[]string{"foo"}, nil, errors.New(`unable to find mode in match "foo"`)},
+	{[]string{"++"}, nil, errors.New(`unable to find name in match "++"`)},
 	{[]string{"😁++"}, []plusplus.Token{{"😁", 1}}, nil},
 	{[]string{"∪++"}, []plusplus.Token{{"∪", 1}}, nil},
 	{[]string{"▲++"}, []plusplus.Token{{"▲", 1}}, nil},
@@ -94,9 +94,9 @@ var getTokenIncrementTests = []struct {
 	{"+-", 0, nil},
 	{"-+", 0, nil},
 	{"—", -1, nil},
-	{"foo", 0, fmt.Errorf(`unable to get increment value from mode "foo"`)},
-	{"+--", 0, fmt.Errorf(`unable to get increment value from mode "+--"`)},
-	{"-++", 0, fmt.Errorf(`unable to get increment value from mode "-++"`)},
+	{"foo", 0, errors.New(`unable to get increment value from mode "foo"`)},
+	{"+--", 0, errors.New(`unable to get increment value from mode "+--"`)},
+	{"-++", 0, errors.New(`unable to get increment value from mode "-++"`)},
 }
 
 func TestGetTokenIncrement(t *testing.T) {
