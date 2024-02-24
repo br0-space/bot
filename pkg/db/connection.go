@@ -33,7 +33,7 @@ func NewConnection(logger logger.Interface, config interfaces.DatabaseConfigStru
 		logger.Panic("unknown database driver", config.Driver)
 	}
 
-	db, err := gorm.Open(dialector, &gorm.Config{
+	db, err := gorm.Open(dialector, &gorm.Config{ //nolint:exhaustruct
 		FullSaveAssociations:   false,
 		AllowGlobalUpdate:      false,
 		SkipDefaultTransaction: true,

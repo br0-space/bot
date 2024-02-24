@@ -7,89 +7,24 @@ linters-settings:
     disabled-checks:
       - commentFormatting
 linters:
-  disable-all: false
-  enable:
-    - errcheck
-    - gosimple
-    - govet
-    - ineffassign
-    - staticcheck
-    - typecheck
-    - unused
-    - asasalint
-    - asciicheck
-    - bidichk
-#    - bodyclose
-    - containedctx
-    - contextcheck
-#    - cyclop
-    - decorder
-#    - depguard
-    - dogsled
-    - dupl
-    - dupword
-    - durationcheck
-    - errchkjson
-    - errname
-    - errorlint
-    - execinquery
-    - exhaustive
-#    - exhaustruct
-    - exportloopref
-    - forbidigo
-    - forcetypeassert
-    - funlen
-    - gci
-    - gocheckcompilerdirectives
-#    - gochecknoglobals
-    - gochecknoinits
-    - gocognit
-    - goconst
-    - gocritic
-    - gocyclo
-    - godot
-#    - goerr113
-    - gofmt
-    - gofumpt
-    - goheader
-    - goimports
-    - gomnd
-    - gomoddirectives
-    - gosec
-    - grouper
-    - importas
-#    - interfacebloat
-#    - ireturn
-#    - lll
-    - maintidx
-    - makezero
-    - misspell
-    - musttag
-    - nakedret
-    - nestif
-    - nilerr
-    - nilnil
-    - nlreturn
-#    - noctx
-    - nolintlint
-    - nonamedreturns
-    - nosprintfhostport
-    - paralleltest
-    - prealloc
-    - predeclared
-    - reassign
-    - rowserrcheck
-    - sqlclosecheck
-    - tagliatelle
-    - tenv
-    - testpackage
-    - thelper
-    - tparallel
-    - unconvert
-    - unparam
-    - usestdlibvars
-#    - varnamelen
-    - wastedassign
-    - whitespace
-#    - wrapcheck
-#    - wsl
+  enable-all: true
+  disable:
+    - golint # deprecated
+    - deadcode # deprecated
+    - ifshort # deprecated
+    - varcheck # deprecated
+    - nosnakecase # deprecated
+    - structcheck # deprecated
+    - scopelint # deprecated
+    - maligned # deprecated
+    - exhaustivestruct # deprecated
+    - interfacer # deprecated
+    - lll # long lines
+    - depguard
+    - gochecknoglobals
+    - interfacebloat
+    - ireturn
+    - varnamelen
+    - goerr113 # remove later!
+    - wrapcheck # remove later!
+    - noctx # remove later!

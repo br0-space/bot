@@ -21,7 +21,8 @@ func MakeService() Service {
 
 func (f Service) GetList() []string {
 	var filenames []string
-	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
+
+	err := filepath.Walk(path, func(path string, _ os.FileInfo, _ error) error {
 		filenames = append(filenames, path)
 
 		return nil
@@ -31,6 +32,7 @@ func (f Service) GetList() []string {
 	}
 
 	files := make([]string, 0)
+
 	for _, filename := range filenames {
 		if filename[len(filename)-4:] == ".txt" {
 			files = append(files, filename[len(path)+1:len(filename)-4])
@@ -67,7 +69,9 @@ func (f Service) GetFortune(file string) (interfaces.FortuneInterface, error) {
 	if err != nil {
 		return Fortune{}, err
 	}
+
 	n, _ := rand.Int(rand.Reader, big.NewInt(int64(len(fortunes))))
+
 	fortune := fortunes[int(n.Int64())]
 
 	return MakeFortune(file, fortune), nil
@@ -78,7 +82,9 @@ func (f Service) readFortuneFile(file string) ([]string, error) {
 	filename := fmt.Sprintf("%s/%s.txt", path, file)
 
 	content, err := os.ReadFile(filename)
-	var fortunes []string = nil
+
+	var fortunes []string
+
 	if err == nil {
 		fortunes = strings.Split(string(content), "\n%\n")
 	}

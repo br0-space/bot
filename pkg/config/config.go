@@ -51,9 +51,9 @@ func NewTestConfig() *interfaces.ConfigStruct {
 	return &interfaces.ConfigStruct{
 		Verbose:  false,
 		Quiet:    false,
-		Server:   interfaces.ServerConfigStruct{},
-		Database: interfaces.DatabaseConfigStruct{},
-		Telegram: telegramclient.ConfigStruct{},
+		Server:   interfaces.ServerConfigStruct{},   //nolint:exhaustruct
+		Database: interfaces.DatabaseConfigStruct{}, //nolint:exhaustruct
+		Telegram: telegramclient.ConfigStruct{},     //nolint:exhaustruct
 	}
 }
 
@@ -70,12 +70,14 @@ func loadConfig() (*interfaces.ConfigStruct, error) {
 
 	// Load config file
 	v.SetConfigFile("config.yaml")
+
 	if err := v.ReadInConfig(); err != nil {
 		log.Panicln(err)
 	}
 
 	// Load .env file
 	v.SetConfigFile(".env")
+
 	if err := v.MergeInConfig(); err != nil {
 		log.Println("no .env file found")
 	}

@@ -2,6 +2,7 @@ package janein
 
 import (
 	"crypto/rand"
+	"errors"
 	"fmt"
 	"math/big"
 	"regexp"
@@ -47,7 +48,7 @@ func MakeMatcher() Matcher {
 func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
 	match := m.CommandMatch(messageIn)
 	if match == nil {
-		return nil, fmt.Errorf("message does not match")
+		return nil, errors.New("message does not match")
 	}
 
 	match[3] = strings.TrimSpace(match[3])
@@ -57,9 +58,9 @@ func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]teleg
 
 	if randomYesOrNo() {
 		return makeReplies(templates.yes, match[3], messageIn.ID)
-	} else {
-		return makeReplies(templates.no, match[3], messageIn.ID)
 	}
+
+	return makeReplies(templates.no, match[3], messageIn.ID)
 }
 
 func randomYesOrNo() bool {

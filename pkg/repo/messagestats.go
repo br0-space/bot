@@ -15,7 +15,11 @@ func NewMessageStatsRepo(tx *gorm.DB) *MessageStatsRepo {
 	return &MessageStatsRepo{
 		BaseRepo: NewBaseRepo(
 			tx,
-			&interfaces.MessageStats{},
+			&interfaces.MessageStats{
+				UserID: 0,
+				Time:   time.Time{},
+				Words:  0,
+			},
 		),
 	}
 }
@@ -41,14 +45,14 @@ func (r MessageStatsRepo) GetKnownUserIDs() ([]int64, error) {
 
 func (r MessageStatsRepo) GetWordCounts() ([]interfaces.MessageStatsWordCountStruct, error) {
 	var records []interfaces.MessageStatsWordCountStruct
-	err := r.tx.Model(&interfaces.MessageStats{}).
-		Joins("UserStats").
-		Select(`"message_stats".user_id, "UserStats".username, count("message_stats".words) as words`).
-		Where(`"message_stats"user_id != 0`).
-		Group(`"message_stats".user_id, "UserStats".id, "UserStats".username`).
-		Order(`count("message_stats".words) desc`).
-		Scan(&records).
-		Error
+	err := r.tx.Model(&interfaces.MessageStats{}). //nolint:exhaustruct
+							Joins("UserStats").
+							Select(`"message_stats".user_id, "UserStats".username, count("message_stats".words) as words`).
+							Where(`"message_stats"user_id != 0`).
+							Group(`"message_stats".user_id, "UserStats".id, "UserStats".username`).
+							Order(`count("message_stats".words) desc`).
+							Scan(&records).
+							Error
 
 	return records, err
 }

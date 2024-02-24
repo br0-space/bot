@@ -26,6 +26,7 @@ func (t Type) getFortune(text string) Fortune {
 	text = strings.TrimSpace(text)
 
 	var lines []string
+
 	var source *string
 
 	switch t {
@@ -39,6 +40,7 @@ func (t Type) getFortune(text string) Fortune {
 
 	return Fortune{
 		_type:   t,
+		file:    "",
 		content: lines,
 		source:  source,
 	}
