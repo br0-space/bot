@@ -7,7 +7,6 @@ import (
 	"github.com/br0-space/bot/container"
 	"github.com/br0-space/bot/pkg/config"
 	"github.com/gorilla/mux"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/pflag"
 )
 
@@ -36,7 +35,7 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/webhook", container.ProvideTelegramWebhookHandler().ServeHTTP)
-	r.Handle("/metrics", promhttp.Handler())
+	// r.Handle("/metrics", promhttp.Handler())
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	http.Handle("/", r)
 
