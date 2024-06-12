@@ -1,11 +1,13 @@
 module github.com/br0-space/bot
 
-go 1.19
+go 1.22
+
+toolchain go1.22.4
 
 require (
 	github.com/br0-space/bot-logger v0.1.2
 	github.com/br0-space/bot-matcher v0.1.3
-	github.com/br0-space/bot-telegramclient v0.1.2
+	github.com/br0-space/bot-telegramclient v0.1.3
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/gorilla/mux v1.8.1
 	github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de
