@@ -68,9 +68,9 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 		sql, rows := fc()
 
 		if rows == -1 {
-			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
+			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:mnd
 		} else {
-			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:gomnd
+			l.wrappedLogger.Errorf(format, err, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:mnd
 		}
 	case elapsed > l.config.SlowThreshold && l.config.SlowThreshold != 0:
 		format := "%s\n[%.3fms] [rows:%v] %s"
@@ -78,18 +78,18 @@ func (l gormLoggerBridge) Trace(_ context.Context, begin time.Time, fc func() (s
 		slowLog := fmt.Sprintf("SLOW SQL >= %v", l.config.SlowThreshold)
 
 		if rows == -1 {
-			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
+			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:mnd
 		} else {
-			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:gomnd
+			l.wrappedLogger.Warningf(format, slowLog, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:mnd
 		}
 	default:
 		format := "[%.3fms] [rows:%v] %s"
 		sql, rows := fc()
 
 		if rows == -1 {
-			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:gomnd
+			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, "-", sql) //nolint:mnd
 		} else {
-			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:gomnd
+			l.wrappedLogger.Debugf(format, float64(elapsed.Nanoseconds())/1e6, rows, sql) //nolint:mnd
 		}
 	}
 

@@ -9,22 +9,14 @@ linters-settings:
 linters:
   enable-all: true
   disable:
-    - golint # deprecated
-    - deadcode # deprecated
-    - ifshort # deprecated
-    - varcheck # deprecated
-    - nosnakecase # deprecated
-    - structcheck # deprecated
-    - scopelint # deprecated
-    - maligned # deprecated
-    - exhaustivestruct # deprecated
-    - interfacer # deprecated
     - lll # long lines
     - depguard
     - gochecknoglobals
     - interfacebloat
     - ireturn
     - varnamelen
-    - goerr113 # remove later!
+    - err113 # remove later!
     - wrapcheck # remove later!
     - noctx # remove later!
+    - execinquery # deprecated
+    - gomnd # deprecated

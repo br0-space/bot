@@ -8,3 +8,5 @@
 /httpRequests/
 GitlabLint.xml
 php.xml
+# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
