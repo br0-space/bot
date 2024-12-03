@@ -18,5 +18,4 @@ linters:
     - err113 # remove later!
     - wrapcheck # remove later!
     - noctx # remove later!
-    - execinquery # deprecated
-    - gomnd # deprecated
+    - exportloopref # deprecated

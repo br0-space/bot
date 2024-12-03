@@ -33,7 +33,7 @@ func NewGormLoggerBridge(wrappedLogger logger.Interface) gormLogger.Interface {
 	}
 }
 
-func (l *gormLoggerBridge) LogMode(_ gormLogger.LogLevel) gormLogger.Interface {
+func (l gormLoggerBridge) LogMode(_ gormLogger.LogLevel) gormLogger.Interface {
 	// Ignore (log level is set elsewhere)
 	return l
 }
