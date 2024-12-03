@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   db:
     env_file: .env
@@ -9,12 +7,12 @@ services:
      - ./data/postgres:/var/lib/postgresql
     ports:
      - 5432:5432
-  kmptnzbot:
+  bot:
+    restart: unless-stopped
     env_file: .env
     build: .
     image: kmptnz/bot:latest
     ports:
      - 3000:3000
     volumes:
-     - ./config.yml:/opt/kmptnzbot/config.yml
-    restart: always
+     - ./config.yaml:/opt/br0bot/config.yaml
