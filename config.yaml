@@ -2,15 +2,15 @@ server:
   listenAddr: ":3000"
 
 database:
-  driver: "sqlite"
+  driver: "postgres"
   sqlite:
     file: "test.db"
   postgresql:
-    host: "127.0.0.1"
+    host: "postgres"
     port: 5432
-    dbName: ""
-    user: ""
-    password: ""
+    dbName: "postgres"
+    user: "postgres"
+    password: "postgres"
     ssl: "disable"
     timezone: "UTC"
   autoMigrate: false
