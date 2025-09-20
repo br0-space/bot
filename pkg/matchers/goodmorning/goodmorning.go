@@ -61,16 +61,24 @@ func (m Matcher) doesMatch(messageIn telegramclient.WebhookMessageStruct) bool {
 }
 
 func (m Matcher) makeReplies(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
-	fortune, err := m.fortune.GetRandomFortune()
-	if err != nil {
-		return nil, err
+	var (
+		fortuneText string
+		fortuneFile string
+	)
+
+	if fortune, err := m.fortune.GetRandomFortune(); err != nil {
+		fortuneText = err.Error()
+		fortuneFile = "-"
+	} else {
+		fortuneText = fortune.ToMarkdown()
+		fortuneFile = fortune.File()
 	}
 
 	text := fmt.Sprintf(
 		template,
 		telegramclient.EscapeMarkdown(messageIn.From.FirstnameOrUsername()),
-		fortune.ToMarkdown(),
-		fortune.File(),
+		fortuneText,
+		fortuneFile,
 	)
 
 	return []telegramclient.MessageStruct{

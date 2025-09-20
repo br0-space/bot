@@ -1,0 +1,3 @@
+buzzwords:
+  - trigger: "buzzwords_test"
+    reply: "Test of buzzwords trigger no\\. %d"
