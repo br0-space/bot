@@ -61,8 +61,10 @@ func (m Matcher) doesMatch(messageIn telegramclient.WebhookMessageStruct) bool {
 }
 
 func (m Matcher) makeReplies(messageIn telegramclient.WebhookMessageStruct) ([]telegramclient.MessageStruct, error) {
-	var fortuneText string
-	var fortuneFile string
+	var (
+		fortuneText string
+		fortuneFile string
+	)
 
 	if fortune, err := m.fortune.GetRandomFortune(); err != nil {
 		fortuneText = err.Error()
