@@ -34,6 +34,7 @@ func (r MessageStatsRepo) InsertMessageStats(userID int64, words int) error {
 
 func (r MessageStatsRepo) GetKnownUserIDs() ([]int64, error) {
 	var userIDs []int64
+
 	err := r.tx.
 		Select("DISTINCT user_id").
 		Where("user_id != 0").
@@ -45,6 +46,7 @@ func (r MessageStatsRepo) GetKnownUserIDs() ([]int64, error) {
 
 func (r MessageStatsRepo) GetWordCounts() ([]interfaces.MessageStatsWordCountStruct, error) {
 	var records []interfaces.MessageStatsWordCountStruct
+
 	err := r.tx.Model(&interfaces.MessageStats{}). //nolint:exhaustruct
 							Joins("UserStats").
 							Select(`"message_stats".user_id, "UserStats".username, count("message_stats".words) as words`).

@@ -26,6 +26,7 @@ func (b Buzzword) Matches(text string) bool {
 
 type Config struct {
 	matcher.Config
+
 	Buzzwords []Buzzword `mapstructure:"buzzwords"`
 }
 

@@ -35,6 +35,7 @@ const template = "```\n%s\n```"
 
 type Matcher struct {
 	matcher.Matcher
+
 	repo interfaces.PlusplusRepoInterface
 }
 

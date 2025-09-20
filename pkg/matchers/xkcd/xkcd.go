@@ -23,6 +23,7 @@ var help = []matcher.HelpStruct{{
 
 type Matcher struct {
 	matcher.Matcher
+
 	xkcdService interfaces.XkcdServiceInterface
 }
 
@@ -47,11 +48,12 @@ func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]teleg
 	case subCommand == "latest":
 		return m.makeLatestReplies()
 	case regexp.MustCompile(`^\d+$`).MatchString(subCommand):
-		if id, err := strconv.Atoi(subCommand); err != nil {
+		id, err := strconv.Atoi(subCommand)
+		if err != nil {
 			return nil, err
-		} else {
-			return m.makeFromIDReplies(id)
 		}
+
+		return m.makeFromIDReplies(id)
 	default:
 		return m.makeRandomReplies()
 	}
