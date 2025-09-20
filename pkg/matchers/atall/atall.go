@@ -18,6 +18,7 @@ var help []matcher.HelpStruct
 
 type Matcher struct {
 	matcher.Matcher
+
 	repo interfaces.UserStatsRepoInterface
 }
 

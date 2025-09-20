@@ -8,10 +8,11 @@ import (
 
 type Stats struct {
 	gorm.Model `exhaustruct:"optional"`
-	UserID     int64  `gorm:"<-:create;uniqueIndex"`
-	Username   string `gorm:"<-"`
-	Posts      uint32 `gorm:"<-"`
-	LastPost   time.Time
+
+	UserID   int64  `gorm:"<-:create;uniqueIndex"`
+	Username string `gorm:"<-"`
+	Posts    uint32 `gorm:"<-"`
+	LastPost time.Time
 }
 
 type StatsUserStruct struct {

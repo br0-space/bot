@@ -27,6 +27,7 @@ const template = `\[%s\] *%s* ist jetzt auf *%s*`
 
 type Matcher struct {
 	matcher.Matcher
+
 	repo interfaces.PlusplusRepoInterface
 }
 

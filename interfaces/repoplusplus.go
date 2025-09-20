@@ -4,8 +4,9 @@ import "gorm.io/gorm"
 
 type Plusplus struct {
 	gorm.Model `exhaustruct:"optional"`
-	Name       string `gorm:"<-:create;uniqueIndex"`
-	Value      int    `gorm:"<-;index"`
+
+	Name  string `gorm:"<-:create;uniqueIndex"`
+	Value int    `gorm:"<-;index"`
 }
 
 type PlusplusRepoInterface interface {

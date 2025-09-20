@@ -1,6 +1,6 @@
 module github.com/br0-space/bot
 
-go 1.23
+go 1.25
 
 require (
 	github.com/br0-space/bot-logger v0.1.3
