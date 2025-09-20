@@ -34,6 +34,7 @@ var templates = struct {
 
 type Matcher struct {
 	matcher.Matcher
+
 	fortuneService interfaces.FortuneServiceInterface
 }
 

@@ -20,6 +20,7 @@ var template = "Guten Morgen %s\\!\n\n%s\n\n_\\[from `%s`\\]_"
 
 type Matcher struct {
 	matcher.Matcher
+
 	state   interfaces.StateServiceInterface
 	fortune interfaces.FortuneServiceInterface
 }
