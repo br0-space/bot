@@ -54,6 +54,9 @@ func (f Service) Exists(fileToSearch string) bool {
 
 func (f Service) GetRandomFortune() (interfaces.FortuneInterface, error) {
 	files := f.GetList()
+	if len(files) == 0 {
+		return Fortune{}, fmt.Errorf("no fortune files found")
+	}
 	n, _ := rand.Int(rand.Reader, big.NewInt(int64(len(files))))
 	file := files[int(n.Int64())]
 
