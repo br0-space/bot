@@ -6,3 +6,6 @@
 
 # Compiled binary
 main
+
+# JetBrains IDE files
+/.idea/copilot.data.migration.*
