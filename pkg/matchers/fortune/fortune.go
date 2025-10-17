@@ -64,9 +64,16 @@ func (m Matcher) Process(messageIn telegramclient.WebhookMessageStruct) ([]teleg
 }
 
 func (m Matcher) makeListReplies() ([]telegramclient.MessageStruct, error) {
+	files := m.fortuneService.GetList()
+
+	escapedFiles := make([]string, len(files))
+	for i, file := range files {
+		escapedFiles[i] = telegramclient.EscapeMarkdown(file)
+	}
+
 	text := fmt.Sprintf(
 		templates.list,
-		strings.Join(m.fortuneService.GetList(), "\n"),
+		strings.Join(escapedFiles, "\n"),
 	)
 
 	return []telegramclient.MessageStruct{
