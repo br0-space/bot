@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/br0-space/bot-logger v0.1.4
-	github.com/br0-space/bot-matcher v0.1.6
+	github.com/br0-space/bot-matcher v0.2.0
 	github.com/br0-space/bot-telegramclient v0.1.4
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/gorilla/mux v1.8.1
