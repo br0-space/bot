@@ -35,7 +35,7 @@ func (r UserStatsRepo) UpdateStats(userID int64, username string) error {
 
 	return r.tx.Clauses(clause.OnConflict{ //nolint:exhaustruct
 		Columns: []clause.Column{{Name: "user_id"}}, //nolint:exhaustruct
-		DoUpdates: clause.Assignments(map[string]interface{}{
+		DoUpdates: clause.Assignments(map[string]any{
 			"username":  username,
 			"posts":     gorm.Expr("stats.posts + 1"),
 			"last_post": time.Now(),

@@ -38,19 +38,19 @@ func (l gormLoggerBridge) LogMode(_ gormLogger.LogLevel) gormLogger.Interface {
 	return l
 }
 
-func (l gormLoggerBridge) Info(_ context.Context, msg string, data ...interface{}) {
+func (l gormLoggerBridge) Info(_ context.Context, msg string, data ...any) {
 	l.wrappedLogger.SetExtraCallDepth(l.getExtraCallDepth())
 	l.wrappedLogger.Infof(msg, data...)
 	l.wrappedLogger.ResetExtraCallDepth()
 }
 
-func (l gormLoggerBridge) Warn(_ context.Context, msg string, data ...interface{}) {
+func (l gormLoggerBridge) Warn(_ context.Context, msg string, data ...any) {
 	l.wrappedLogger.SetExtraCallDepth(l.getExtraCallDepth())
 	l.wrappedLogger.Warningf(msg, data...)
 	l.wrappedLogger.ResetExtraCallDepth()
 }
 
-func (l gormLoggerBridge) Error(_ context.Context, msg string, data ...interface{}) {
+func (l gormLoggerBridge) Error(_ context.Context, msg string, data ...any) {
 	l.wrappedLogger.SetExtraCallDepth(l.getExtraCallDepth())
 	l.wrappedLogger.Errorf(msg, data...)
 	l.wrappedLogger.ResetExtraCallDepth()

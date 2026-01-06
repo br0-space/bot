@@ -49,13 +49,16 @@ func makeReplies(text string, users []interfaces.StatsUserStruct) ([]telegramcli
 	text = strings.ReplaceAll(text, "@alle", "")
 	text = strings.ReplaceAll(text, "@all", "")
 
+	var textSb52 strings.Builder
 	for _, user := range users {
-		text += fmt.Sprintf(
+		textSb52.WriteString(fmt.Sprintf(
 			" [%s](tg://user?id=%d)",
 			telegramclient.EscapeMarkdown(user.Username),
 			user.ID,
-		)
+		))
 	}
+
+	text += textSb52.String()
 
 	return []telegramclient.MessageStruct{
 		telegramclient.MarkdownMessage(text),

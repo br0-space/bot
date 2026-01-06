@@ -8,10 +8,10 @@ import (
 type BaseRepo struct {
 	log   logger.Interface
 	tx    *gorm.DB
-	model interface{}
+	model any
 }
 
-func NewBaseRepo(tx *gorm.DB, model interface{}) BaseRepo {
+func NewBaseRepo(tx *gorm.DB, model any) BaseRepo {
 	return BaseRepo{
 		log:   logger.New(),
 		tx:    tx,
@@ -19,7 +19,7 @@ func NewBaseRepo(tx *gorm.DB, model interface{}) BaseRepo {
 	}
 }
 
-func (r *BaseRepo) Model() interface{} {
+func (r *BaseRepo) Model() any {
 	return r.model
 }
 
