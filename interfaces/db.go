@@ -11,7 +11,7 @@ type DatabaseRepositoryInterface interface {
 }
 
 type RepoInterface interface {
-	Model() interface{}
+	Model() any
 	TableName() string
 	Migrate() error
 }
