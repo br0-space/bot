@@ -32,7 +32,7 @@ func (r PlusplusRepo) Increment(name string, increment int) (int, error) {
 
 	if err := r.tx.Clauses(clause.OnConflict{ //nolint:exhaustruct
 		Columns: []clause.Column{{Name: "name"}}, //nolint:exhaustruct
-		DoUpdates: clause.Assignments(map[string]interface{}{
+		DoUpdates: clause.Assignments(map[string]any{
 			"value": gorm.Expr("plusplus.value + ?", increment),
 		}),
 	}).Create(&interfaces.Plusplus{

@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/br0-space/bot/interfaces"
@@ -51,13 +52,7 @@ func (f Service) GetList() []string {
 // Exists checks whether a fortune file with the given name exists in the fortune directory.
 // The name should be provided without the .txt extension.
 func (f Service) Exists(fileToSearch string) bool {
-	for _, file := range f.GetList() {
-		if file == fileToSearch {
-			return true
-		}
-	}
-
-	return false
+	return slices.Contains(f.GetList(), fileToSearch)
 }
 
 // fortuneEntry represents a single fortune with its source file and text content.

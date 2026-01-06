@@ -64,9 +64,12 @@ func (f Fortune) ToMarkdown() string {
 func (f Fortune) formatLines(lines []string) string {
 	res := ""
 
+	var resSb67 strings.Builder
 	for _, line := range lines {
-		res += f.formatLine(line) + "\n"
+		resSb67.WriteString(f.formatLine(line) + "\n")
 	}
+
+	res += resSb67.String()
 
 	return strings.TrimSpace(res)
 }
