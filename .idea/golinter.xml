@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GoLinterFmtOnSave">
+    <option name="enabledOnSave" value="true" />
+  </component>
   <component name="GoLinterSettings">
-    <option name="concurrency" value="4" />
+    <option name="concurrency" value="16" />
+    <option name="customConfigFile" value="$PROJECT_DIR$/../bot-matcher/.golangci.yml" />
     <option name="enabledLinters">
       <list>
         <option value="decorder" />
@@ -100,7 +104,9 @@
         <option value="gocheckcompilerdirectives" />
       </list>
     </option>
+    <option name="fastOnly" value="false" />
     <option name="goLinterExe" value="/opt/homebrew/bin/golangci-lint" />
     <option name="linterSelected" value="true" />
+    <option name="useCustomConfigFile" value="true" />
   </component>
 </project>
