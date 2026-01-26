@@ -30,6 +30,12 @@ type Config struct {
 	Buzzwords []Buzzword `mapstructure:"buzzwords"`
 }
 
+// GetEmbeddedMatcherConfigPtr exposes a pointer to the embedded matcher.Config.
+// This allows the generic matcher.WithCustomConfigType to wire base-level config behaviors like IsEnabled.
+func (c Config) GetEmbeddedMatcherConfigPtr() *matcher.Config {
+	return &c.Config
+}
+
 func (c Config) GetPattern() string {
 	var patterns []string
 
