@@ -17,25 +17,26 @@ var pattern *regexp.Regexp
 var help []matcher.HelpStruct
 
 type Matcher struct {
-	matcher.Matcher
+	matcher.WithCustomConfigType[Config]
 
 	repo interfaces.PlusplusRepoInterface
-	cfg  Config
 }
 
 func MakeMatcher(
 	repo interfaces.PlusplusRepoInterface,
 ) Matcher {
-	var cfg Config
+	cfgs, err := matcher.LoadMatcherConfig[Config](identifier)
+	if err != nil {
+		panic(fmt.Sprintf("failed to load matcher config for %s: %v", identifier, err))
+	}
 
-	matcher.LoadMatcherConfig(identifier, &cfg)
+	cfg := cfgs[0]
 
 	pattern = regexp.MustCompile(fmt.Sprintf(`(?i)\b((%s)([+]{2,}|[-]{2,}|\+-|—)?)`, cfg.GetPattern()))
 
 	return Matcher{
-		Matcher: matcher.MakeMatcher(identifier, pattern, help).WithConfig(&cfg.Config),
-		repo:    repo,
-		cfg:     cfg,
+		WithCustomConfigType: matcher.MakeMatcherWithCustomConfigType(identifier, pattern, help, cfg),
+		repo:                 repo,
 	}
 }
 
@@ -50,7 +51,7 @@ func (m Matcher) parseTriggers(matches []string) []string {
 	var triggers []string
 
 	for _, match := range matches {
-		if trigger := m.cfg.GetTrigger(match); trigger != "" {
+		if trigger := m.Config().GetTrigger(match); trigger != "" {
 			triggers = append(triggers, trigger)
 		}
 	}
@@ -81,7 +82,7 @@ func (m Matcher) makeRepliesFromTrigger(trigger string) ([]telegramclient.Messag
 		return nil, err
 	}
 
-	template, err := m.cfg.GetReply(trigger)
+	template, err := m.Config().GetReply(trigger)
 	if err != nil {
 		return nil, err
 	}
