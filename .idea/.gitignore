@@ -1,12 +1,20 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-GitlabLint.xml
-php.xml
-# GitHub Copilot persisted chat sessions
-/copilot/chatSessions
+# Ignore everything in .idea by default
+*
+
+# Keep this file
+!.gitignore
+
+# --- Core IntelliJ project/module definition (share) ---
+!modules.xml
+!*.iml
+!vcs.xml
+
+# --- Team-wide style & quality settings (share) ---
+!codeStyles/
+!codeStyles/**
+!inspectionProfiles/
+!inspectionProfiles/**
+
+# --- Go plugin settings (share if you want consistent IDE behavior) ---
+!go.imports.xml
+!golinter.xml
