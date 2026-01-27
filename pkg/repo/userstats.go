@@ -33,8 +33,8 @@ func (r UserStatsRepo) UpdateStats(userID int64, username string) error {
 	mutexStats.Lock()
 	defer mutexStats.Unlock()
 
-	return r.tx.Clauses(clause.OnConflict{ //nolint:exhaustruct
-		Columns: []clause.Column{{Name: "user_id"}}, //nolint:exhaustruct
+	return r.tx.Clauses(clause.OnConflict{
+		Columns: []clause.Column{{Name: "user_id"}},
 		DoUpdates: clause.Assignments(map[string]any{
 			"username":  username,
 			"posts":     gorm.Expr("stats.posts + 1"),

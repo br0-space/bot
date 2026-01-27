@@ -40,7 +40,7 @@ func main() {
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	http.Handle("/", r)
 
-	srv := &http.Server{ //nolint:exhaustruct
+	srv := &http.Server{
 		Addr:           cfg.Server.ListenAddr,
 		Handler:        r,
 		ReadTimeout:    readTimeout,

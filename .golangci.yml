@@ -17,6 +17,7 @@ linters:
     - wrapcheck
     - noinlineerr
     - wsl # replaced by wsl_v5
+    - exhaustruct
   settings:
     gocritic:
       disabled-checks:
