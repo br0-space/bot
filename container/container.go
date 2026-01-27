@@ -19,6 +19,7 @@ import (
 	"github.com/br0-space/bot/pkg/matchers/janein"
 	"github.com/br0-space/bot/pkg/matchers/ping"
 	"github.com/br0-space/bot/pkg/matchers/plusplus"
+	"github.com/br0-space/bot/pkg/matchers/roll"
 	"github.com/br0-space/bot/pkg/matchers/stats"
 	"github.com/br0-space/bot/pkg/matchers/topflop"
 	xkcd2 "github.com/br0-space/bot/pkg/matchers/xkcd"
@@ -77,6 +78,7 @@ func ProvideMatchersRegistry() *matcher.Registry {
 		matcherRegistryInstance.Register(janein.MakeMatcher())
 		matcherRegistryInstance.Register(ping.MakeMatcher())
 		matcherRegistryInstance.Register(plusplus.MakeMatcher(ProvidePlusplusRepo()))
+		matcherRegistryInstance.Register(roll.MakeMatcher(ProvideRollRepo()))
 		matcherRegistryInstance.Register(stats.MakeMatcher(ProvideUserStatsRepo()))
 		matcherRegistryInstance.Register(topflop.MakeMatcher(ProvidePlusplusRepo()))
 		matcherRegistryInstance.Register(xkcd2.MakeMatcher(ProvideXkcdService()))
@@ -106,8 +108,8 @@ func ProvideTelegramWebhookHandler() telegramclient.WebhookHandlerInterface {
 	return telegramclient.NewHandler(
 		&ProvideConfig().Telegram,
 		func(messageIn telegramclient.WebhookMessageStruct) {
-			matchersRegistry.Process(messageIn)
 			stateService.ProcessMessage(messageIn)
+			matchersRegistry.Process(messageIn)
 		},
 	)
 }
@@ -133,6 +135,7 @@ func ProvideDatabaseMigration() interfaces.DatabaseMigrationInterface {
 	return db.MakeDatabaseMigration(
 		ProvideMessageStatsRepo(),
 		ProvidePlusplusRepo(),
+		ProvideRollRepo(),
 		ProvideUserStatsRepo(),
 	)
 }
@@ -145,6 +148,12 @@ func ProvideMessageStatsRepo() interfaces.MessageStatsRepoInterface {
 
 func ProvidePlusplusRepo() interfaces.PlusplusRepoInterface {
 	return repo.NewPlusplusRepo(
+		ProvideDatabaseConnection(),
+	)
+}
+
+func ProvideRollRepo() interfaces.RollRepoInterface {
+	return repo.NewRollRepo(
 		ProvideDatabaseConnection(),
 	)
 }

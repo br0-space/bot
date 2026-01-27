@@ -24,7 +24,7 @@ func (r *BaseRepo) Model() any {
 }
 
 func (r *BaseRepo) TableName() string {
-	stmt := &gorm.Statement{DB: r.tx} //nolint:exhaustruct
+	stmt := &gorm.Statement{DB: r.tx}
 	_ = stmt.Parse(r.Model())
 
 	return stmt.Table

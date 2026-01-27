@@ -30,8 +30,8 @@ func (r PlusplusRepo) Increment(name string, increment int) (int, error) {
 	mutexPlusplus.Lock()
 	defer mutexPlusplus.Unlock()
 
-	if err := r.tx.Clauses(clause.OnConflict{ //nolint:exhaustruct
-		Columns: []clause.Column{{Name: "name"}}, //nolint:exhaustruct
+	if err := r.tx.Clauses(clause.OnConflict{
+		Columns: []clause.Column{{Name: "name"}},
 		DoUpdates: clause.Assignments(map[string]any{
 			"value": gorm.Expr("plusplus.value + ?", increment),
 		}),

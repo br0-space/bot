@@ -46,9 +46,9 @@ func NewTestConfig() *interfaces.ConfigStruct {
 	return &interfaces.ConfigStruct{
 		Verbose:  false,
 		Quiet:    false,
-		Server:   interfaces.ServerConfigStruct{},   //nolint:exhaustruct
-		Database: interfaces.DatabaseConfigStruct{}, //nolint:exhaustruct
-		Telegram: telegramclient.ConfigStruct{},     //nolint:exhaustruct
+		Server:   interfaces.ServerConfigStruct{},
+		Database: interfaces.DatabaseConfigStruct{},
+		Telegram: telegramclient.ConfigStruct{},
 	}
 }
 
