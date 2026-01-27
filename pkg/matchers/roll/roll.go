@@ -37,19 +37,25 @@ const (
 
 var (
 	criticalHitMessages = []string{
-		"Natural 20! The dice gods smile upon you!",
-		"Perfect roll! Everything goes exactly right!",
-		"Amazing! You couldn't have done better!",
-		"Legendary success! Tales will be told of this roll!",
-		"Jackpot! Maximum power achieved!",
+		"You cleaved the dragon in twain with a single mighty blow!",
+		"The gods themselves smile upon your roll!",
+		"Your enemies flee in terror at your prowess!",
+		"Natural 20! The dice love you today!",
+		"Perfection! Even the DM is impressed!",
+		"You've peaked! It's all downhill from here... just kidding!",
+		"The prophecy is true! You are the chosen one!",
+		"Your grandmother would be so proud!",
 	}
 
 	criticalFailureMessages = []string{
-		"Natural 1! Even your dice betray you!",
-		"Catastrophic failure! Everything that could go wrong, did!",
-		"Ouch! The dice gods laugh at your misfortune!",
-		"Epic fail! You'll never live this down!",
-		"Disaster! Your dice must hate you!",
+		"You tripped over your own feet and face-planted into the mud!",
+		"You shot yourself in the foot. Literally.",
+		"The dice gods have forsaken you!",
+		"Natural 1! Time to update your character sheet... in memoriam.",
+		"You somehow managed to critical fail at rolling dice. Impressive!",
+		"Your weapon flies out of your hand and hits your ally!",
+		"You sneezed at the wrong moment. Catastrophically.",
+		"The DM is laughing. Everyone is laughing. You are not laughing.",
 	}
 )
 
