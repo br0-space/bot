@@ -24,7 +24,7 @@ type DatabaseConfigStruct struct {
 		Port     uint
 		DBName   string
 		User     string
-		Password string
+		Password string //nolint:gosec // G117: false positive, this is a config struct field, not a hardcoded secret
 		SSL      string
 		Timezone string
 	}

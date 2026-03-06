@@ -108,8 +108,8 @@ func ProvideTelegramWebhookHandler() telegramclient.WebhookHandlerInterface {
 	return telegramclient.NewHandler(
 		&ProvideConfig().Telegram,
 		func(messageIn telegramclient.WebhookMessageStruct) {
-			stateService.ProcessMessage(messageIn)
 			matchersRegistry.Process(messageIn)
+			stateService.ProcessMessage(messageIn)
 		},
 	)
 }
