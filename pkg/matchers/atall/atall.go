@@ -51,11 +51,9 @@ func makeReplies(text string, users []interfaces.StatsUserStruct) ([]telegramcli
 
 	var textSb52 strings.Builder
 	for _, user := range users {
-		textSb52.WriteString(fmt.Sprintf(
-			" [%s](tg://user?id=%d)",
+		fmt.Fprintf(&textSb52, " [%s](tg://user?id=%d)",
 			telegramclient.EscapeMarkdown(user.Username),
-			user.ID,
-		))
+			user.ID)
 	}
 
 	text += textSb52.String()
